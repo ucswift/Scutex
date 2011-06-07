@@ -1,0 +1,979 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ScutexModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ScutexModelStoreContainer">
+          <EntitySet Name="DBVersions" EntityType="ScutexModel.Store.DBVersions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Features" EntityType="ScutexModel.Store.Features" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KeyGeneratorTypes" EntityType="ScutexModel.Store.KeyGeneratorTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LicenseKeys" EntityType="ScutexModel.Store.LicenseKeys" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Licenses" EntityType="ScutexModel.Store.Licenses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LicenseSetFeatures" EntityType="ScutexModel.Store.LicenseSetFeatures" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LicenseSets" EntityType="ScutexModel.Store.LicenseSets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductEditions" EntityType="ScutexModel.Store.ProductEditions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="ScutexModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductVersions" EntityType="ScutexModel.Store.ProductVersions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Services" EntityType="ScutexModel.Store.Services" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TrialExpirationOptions" EntityType="ScutexModel.Store.TrialExpirationOptions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TrialSettings" EntityType="ScutexModel.Store.TrialSettings" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Features_Products" Association="ScutexModel.Store.FK_Features_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Features" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseKeys_LicenseKeys" Association="ScutexModel.Store.FK_LicenseKeys_LicenseKeys">
+            <End Role="LicenseSets" EntitySet="LicenseSets" />
+            <End Role="LicenseKeys" EntitySet="LicenseKeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Licenses_KeyGeneratorTypes" Association="ScutexModel.Store.FK_Licenses_KeyGeneratorTypes">
+            <End Role="KeyGeneratorTypes" EntitySet="KeyGeneratorTypes" />
+            <End Role="Licenses" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Licenses_Products" Association="ScutexModel.Store.FK_Licenses_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Licenses" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Licenses_Services" Association="ScutexModel.Store.FK_Licenses_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Licenses" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSetFeatures_Features" Association="ScutexModel.Store.FK_LicenseSetFeatures_Features">
+            <End Role="Features" EntitySet="Features" />
+            <End Role="LicenseSetFeatures" EntitySet="LicenseSetFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSetFeatures_LicenseSets" Association="ScutexModel.Store.FK_LicenseSetFeatures_LicenseSets">
+            <End Role="LicenseSets" EntitySet="LicenseSets" />
+            <End Role="LicenseSetFeatures" EntitySet="LicenseSetFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSets_Licenses" Association="ScutexModel.Store.FK_LicenseSets_Licenses">
+            <End Role="Licenses" EntitySet="Licenses" />
+            <End Role="LicenseSets" EntitySet="LicenseSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductEditions_Products" Association="ScutexModel.Store.FK_ProductEditions_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductEditions" EntitySet="ProductEditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVersions_Products" Association="ScutexModel.Store.FK_ProductVersions_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductVersions" EntitySet="ProductVersions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrialSettings_Licenses" Association="ScutexModel.Store.FK_TrialSettings_Licenses">
+            <End Role="Licenses" EntitySet="Licenses" />
+            <End Role="TrialSettings" EntitySet="TrialSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrialSettings_TrialExpirationOptions" Association="ScutexModel.Store.FK_TrialSettings_TrialExpirationOptions">
+            <End Role="TrialExpirationOptions" EntitySet="TrialExpirationOptions" />
+            <End Role="TrialSettings" EntitySet="TrialSettings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DBVersions">
+          <Key>
+            <PropertyRef Name="DBVersionId" />
+          </Key>
+          <Property Name="DBVersionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Features">
+          <Key>
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Name="FeatureId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="UniquePad" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KeyGeneratorTypes">
+          <Key>
+            <PropertyRef Name="KeyGeneratorTypeId" />
+          </Key>
+          <Property Name="KeyGeneratorTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LicenseKeys">
+          <Key>
+            <PropertyRef Name="LicenseKeyId" />
+          </Key>
+          <Property Name="LicenseKeyId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseSetId" Type="int" Nullable="false" />
+          <Property Name="LicenseKey" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="HashedLicenseKey" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Licenses">
+          <Key>
+            <PropertyRef Name="LicenseId" />
+          </Key>
+          <Property Name="LicenseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="KeyGeneratorTypeId" Type="int" Nullable="false" />
+          <Property Name="UniqueId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="PrivateKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PublicKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BuyNowUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProductUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="EulaUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="TrialTryButtonDelay" Type="int" Nullable="false" />
+          <Property Name="SupportEmail" Type="varchar" MaxLength="250" />
+          <Property Name="SalesEmail" Type="varchar" MaxLength="250" />
+          <Property Name="ServiceId" Type="int" />
+        </EntityType>
+        <EntityType Name="LicenseSetFeatures">
+          <Key>
+            <PropertyRef Name="LicenseSetFeatureId" />
+          </Key>
+          <Property Name="LicenseSetFeatureId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseSetId" Type="int" Nullable="false" />
+          <Property Name="FeatureId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LicenseSets">
+          <Key>
+            <PropertyRef Name="LicenseSetId" />
+          </Key>
+          <Property Name="LicenseSetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LicenseType" Type="int" Nullable="false" />
+          <Property Name="UniquePad" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MaxUsers" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductEditions">
+          <Key>
+            <PropertyRef Name="ProductEditionId" />
+          </Key>
+          <Property Name="ProductEditionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="UniquePad" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductVersions">
+          <Key>
+            <PropertyRef Name="ProductVersionId" />
+          </Key>
+          <Property Name="ProductVersionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="VersionDisplay" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="VersionMask" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ClientUrl" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="ManagementUrl" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Token" Type="varchar(max)" Nullable="false" />
+          <Property Name="InboundPublicKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="InboundPrivateKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="OutboundPublicKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="OutboundPrivateKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="ManagementInboundPublicKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="ManagementInboundPrivateKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="ManagementOutboundPublicKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="ManagementOutboundPrivateKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="UniquePad" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Initialized" Type="bit" Nullable="false" />
+          <Property Name="Tested" Type="bit" Nullable="false" />
+          <Property Name="LockToIp" Type="bit" Nullable="false" />
+          <Property Name="ClientRequestToken" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="ManagementRequestToken" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrialExpirationOptions">
+          <Key>
+            <PropertyRef Name="TrialExpirationOptionId" />
+          </Key>
+          <Property Name="TrialExpirationOptionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TrialSettings">
+          <Key>
+            <PropertyRef Name="TrialSettingId" />
+          </Key>
+          <Property Name="TrialSettingId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseId" Type="int" Nullable="false" />
+          <Property Name="TrialExpirationOptionId" Type="int" Nullable="false" />
+          <Property Name="ExpirationData" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Features_Products">
+          <End Role="Products" Type="ScutexModel.Store.Products" Multiplicity="1" />
+          <End Role="Features" Type="ScutexModel.Store.Features" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Features">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseKeys_LicenseKeys">
+          <End Role="LicenseSets" Type="ScutexModel.Store.LicenseSets" Multiplicity="1" />
+          <End Role="LicenseKeys" Type="ScutexModel.Store.LicenseKeys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseSets">
+              <PropertyRef Name="LicenseSetId" />
+            </Principal>
+            <Dependent Role="LicenseKeys">
+              <PropertyRef Name="LicenseSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Licenses_KeyGeneratorTypes">
+          <End Role="KeyGeneratorTypes" Type="ScutexModel.Store.KeyGeneratorTypes" Multiplicity="1" />
+          <End Role="Licenses" Type="ScutexModel.Store.Licenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KeyGeneratorTypes">
+              <PropertyRef Name="KeyGeneratorTypeId" />
+            </Principal>
+            <Dependent Role="Licenses">
+              <PropertyRef Name="KeyGeneratorTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Licenses_Products">
+          <End Role="Products" Type="ScutexModel.Store.Products" Multiplicity="1" />
+          <End Role="Licenses" Type="ScutexModel.Store.Licenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Licenses">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Licenses_Services">
+          <End Role="Services" Type="ScutexModel.Store.Services" Multiplicity="0..1" />
+          <End Role="Licenses" Type="ScutexModel.Store.Licenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Licenses">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSetFeatures_Features">
+          <End Role="Features" Type="ScutexModel.Store.Features" Multiplicity="1" />
+          <End Role="LicenseSetFeatures" Type="ScutexModel.Store.LicenseSetFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Features">
+              <PropertyRef Name="FeatureId" />
+            </Principal>
+            <Dependent Role="LicenseSetFeatures">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSetFeatures_LicenseSets">
+          <End Role="LicenseSets" Type="ScutexModel.Store.LicenseSets" Multiplicity="1" />
+          <End Role="LicenseSetFeatures" Type="ScutexModel.Store.LicenseSetFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseSets">
+              <PropertyRef Name="LicenseSetId" />
+            </Principal>
+            <Dependent Role="LicenseSetFeatures">
+              <PropertyRef Name="LicenseSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSets_Licenses">
+          <End Role="Licenses" Type="ScutexModel.Store.Licenses" Multiplicity="1" />
+          <End Role="LicenseSets" Type="ScutexModel.Store.LicenseSets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Licenses">
+              <PropertyRef Name="LicenseId" />
+            </Principal>
+            <Dependent Role="LicenseSets">
+              <PropertyRef Name="LicenseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductEditions_Products">
+          <End Role="Products" Type="ScutexModel.Store.Products" Multiplicity="1" />
+          <End Role="ProductEditions" Type="ScutexModel.Store.ProductEditions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductEditions">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVersions_Products">
+          <End Role="Products" Type="ScutexModel.Store.Products" Multiplicity="1" />
+          <End Role="ProductVersions" Type="ScutexModel.Store.ProductVersions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductVersions">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrialSettings_Licenses">
+          <End Role="Licenses" Type="ScutexModel.Store.Licenses" Multiplicity="1" />
+          <End Role="TrialSettings" Type="ScutexModel.Store.TrialSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Licenses">
+              <PropertyRef Name="LicenseId" />
+            </Principal>
+            <Dependent Role="TrialSettings">
+              <PropertyRef Name="LicenseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrialSettings_TrialExpirationOptions">
+          <End Role="TrialExpirationOptions" Type="ScutexModel.Store.TrialExpirationOptions" Multiplicity="1" />
+          <End Role="TrialSettings" Type="ScutexModel.Store.TrialSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrialExpirationOptions">
+              <PropertyRef Name="TrialExpirationOptionId" />
+            </Principal>
+            <Dependent Role="TrialSettings">
+              <PropertyRef Name="TrialExpirationOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ScutexModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ScutexEntities">
+          <EntitySet Name="DBVersions" EntityType="ScutexModel.DBVersion" />
+          <EntitySet Name="Features" EntityType="ScutexModel.Feature" />
+          <EntitySet Name="KeyGeneratorTypes" EntityType="ScutexModel.KeyGeneratorType" />
+          <EntitySet Name="LicenseKeys" EntityType="ScutexModel.LicenseKey" />
+          <EntitySet Name="Licenses" EntityType="ScutexModel.License" />
+          <EntitySet Name="LicenseSetFeatures" EntityType="ScutexModel.LicenseSetFeature" />
+          <EntitySet Name="LicenseSets" EntityType="ScutexModel.LicenseSet" />
+          <EntitySet Name="ProductEditions" EntityType="ScutexModel.ProductEdition" />
+          <EntitySet Name="Products" EntityType="ScutexModel.Product" />
+          <EntitySet Name="ProductVersions" EntityType="ScutexModel.ProductVersion" />
+          <EntitySet Name="Services" EntityType="ScutexModel.Service" />
+          <EntitySet Name="TrialExpirationOptions" EntityType="ScutexModel.TrialExpirationOption" />
+          <EntitySet Name="TrialSettings" EntityType="ScutexModel.TrialSetting" />
+          <AssociationSet Name="FK_Features_Products" Association="ScutexModel.FK_Features_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSetFeatures_Features" Association="ScutexModel.FK_LicenseSetFeatures_Features">
+            <End Role="Feature" EntitySet="Features" />
+            <End Role="LicenseSetFeature" EntitySet="LicenseSetFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Licenses_KeyGeneratorTypes" Association="ScutexModel.FK_Licenses_KeyGeneratorTypes">
+            <End Role="KeyGeneratorType" EntitySet="KeyGeneratorTypes" />
+            <End Role="License" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseKeys_LicenseKeys" Association="ScutexModel.FK_LicenseKeys_LicenseKeys">
+            <End Role="LicenseSet" EntitySet="LicenseSets" />
+            <End Role="LicenseKey" EntitySet="LicenseKeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Licenses_Products" Association="ScutexModel.FK_Licenses_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="License" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Licenses_Services" Association="ScutexModel.FK_Licenses_Services">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="License" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSets_Licenses" Association="ScutexModel.FK_LicenseSets_Licenses">
+            <End Role="License" EntitySet="Licenses" />
+            <End Role="LicenseSet" EntitySet="LicenseSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrialSettings_Licenses" Association="ScutexModel.FK_TrialSettings_Licenses">
+            <End Role="License" EntitySet="Licenses" />
+            <End Role="TrialSetting" EntitySet="TrialSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSetFeatures_LicenseSets" Association="ScutexModel.FK_LicenseSetFeatures_LicenseSets">
+            <End Role="LicenseSet" EntitySet="LicenseSets" />
+            <End Role="LicenseSetFeature" EntitySet="LicenseSetFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductEditions_Products" Association="ScutexModel.FK_ProductEditions_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductEdition" EntitySet="ProductEditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductVersions_Products" Association="ScutexModel.FK_ProductVersions_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductVersion" EntitySet="ProductVersions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrialSettings_TrialExpirationOptions" Association="ScutexModel.FK_TrialSettings_TrialExpirationOptions">
+            <End Role="TrialExpirationOption" EntitySet="TrialExpirationOptions" />
+            <End Role="TrialSetting" EntitySet="TrialSettings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DBVersion">
+          <Key>
+            <PropertyRef Name="DBVersionId" />
+          </Key>
+          <Property Type="Int32" Name="DBVersionId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Type="Int32" Name="FeatureId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="UniquePad" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="ScutexModel.FK_Features_Products" FromRole="Feature" ToRole="Product" />
+          <NavigationProperty Name="LicenseSetFeatures" Relationship="ScutexModel.FK_LicenseSetFeatures_Features" FromRole="Feature" ToRole="LicenseSetFeature" />
+        </EntityType>
+        <EntityType Name="KeyGeneratorType">
+          <Key>
+            <PropertyRef Name="KeyGeneratorTypeId" />
+          </Key>
+          <Property Type="Int32" Name="KeyGeneratorTypeId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Licenses" Relationship="ScutexModel.FK_Licenses_KeyGeneratorTypes" FromRole="KeyGeneratorType" ToRole="License" />
+        </EntityType>
+        <EntityType Name="LicenseKey">
+          <Key>
+            <PropertyRef Name="LicenseKeyId" />
+          </Key>
+          <Property Type="Int64" Name="LicenseKeyId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="LicenseSetId" Nullable="false" />
+          <Property Type="String" Name="LicenseKey1" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HashedLicenseKey" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <NavigationProperty Name="LicenseSet" Relationship="ScutexModel.FK_LicenseKeys_LicenseKeys" FromRole="LicenseKey" ToRole="LicenseSet" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="LicenseId" />
+          </Key>
+          <Property Type="Int32" Name="LicenseId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="KeyGeneratorTypeId" Nullable="false" />
+          <Property Type="Guid" Name="UniqueId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PrivateKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PublicKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BuyNowUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EulaUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" />
+          <Property Type="Int32" Name="TrialTryButtonDelay" Nullable="false" />
+          <Property Type="String" Name="SupportEmail" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SalesEmail" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ServiceId" />
+          <NavigationProperty Name="KeyGeneratorType" Relationship="ScutexModel.FK_Licenses_KeyGeneratorTypes" FromRole="License" ToRole="KeyGeneratorType" />
+          <NavigationProperty Name="Product" Relationship="ScutexModel.FK_Licenses_Products" FromRole="License" ToRole="Product" />
+          <NavigationProperty Name="Service" Relationship="ScutexModel.FK_Licenses_Services" FromRole="License" ToRole="Service" />
+          <NavigationProperty Name="LicenseSets" Relationship="ScutexModel.FK_LicenseSets_Licenses" FromRole="License" ToRole="LicenseSet" />
+          <NavigationProperty Name="TrialSettings" Relationship="ScutexModel.FK_TrialSettings_Licenses" FromRole="License" ToRole="TrialSetting" />
+        </EntityType>
+        <EntityType Name="LicenseSetFeature">
+          <Key>
+            <PropertyRef Name="LicenseSetFeatureId" />
+          </Key>
+          <Property Type="Int32" Name="LicenseSetFeatureId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="LicenseSetId" Nullable="false" />
+          <Property Type="Int32" Name="FeatureId" Nullable="false" />
+          <NavigationProperty Name="Feature" Relationship="ScutexModel.FK_LicenseSetFeatures_Features" FromRole="LicenseSetFeature" ToRole="Feature" />
+          <NavigationProperty Name="LicenseSet" Relationship="ScutexModel.FK_LicenseSetFeatures_LicenseSets" FromRole="LicenseSetFeature" ToRole="LicenseSet" />
+        </EntityType>
+        <EntityType Name="LicenseSet">
+          <Key>
+            <PropertyRef Name="LicenseSetId" />
+          </Key>
+          <Property Type="Int32" Name="LicenseSetId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="LicenseId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LicenseType" Nullable="false" />
+          <Property Type="Guid" Name="UniquePad" Nullable="false" />
+          <Property Type="Int32" Name="MaxUsers" />
+          <NavigationProperty Name="LicenseKeys" Relationship="ScutexModel.FK_LicenseKeys_LicenseKeys" FromRole="LicenseSet" ToRole="LicenseKey" />
+          <NavigationProperty Name="License" Relationship="ScutexModel.FK_LicenseSets_Licenses" FromRole="LicenseSet" ToRole="License" />
+          <NavigationProperty Name="LicenseSetFeatures" Relationship="ScutexModel.FK_LicenseSetFeatures_LicenseSets" FromRole="LicenseSet" ToRole="LicenseSetFeature" />
+        </EntityType>
+        <EntityType Name="ProductEdition">
+          <Key>
+            <PropertyRef Name="ProductEditionId" />
+          </Key>
+          <Property Type="Int32" Name="ProductEditionId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="ScutexModel.FK_ProductEditions_Products" FromRole="ProductEdition" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Type="Int32" Name="ProductId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UniquePad" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Features" Relationship="ScutexModel.FK_Features_Products" FromRole="Product" ToRole="Feature" />
+          <NavigationProperty Name="Licenses" Relationship="ScutexModel.FK_Licenses_Products" FromRole="Product" ToRole="License" />
+          <NavigationProperty Name="ProductEditions" Relationship="ScutexModel.FK_ProductEditions_Products" FromRole="Product" ToRole="ProductEdition" />
+          <NavigationProperty Name="ProductVersions" Relationship="ScutexModel.FK_ProductVersions_Products" FromRole="Product" ToRole="ProductVersion" />
+        </EntityType>
+        <EntityType Name="ProductVersion">
+          <Key>
+            <PropertyRef Name="ProductVersionId" />
+          </Key>
+          <Property Type="Int32" Name="ProductVersionId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="VersionDisplay" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VersionMask" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="ScutexModel.FK_ProductVersions_Products" FromRole="ProductVersion" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Type="Int32" Name="ServiceId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ClientUrl" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementUrl" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Token" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InboundPublicKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InboundPrivateKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OutboundPublicKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OutboundPrivateKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementInboundPublicKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementInboundPrivateKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementOutboundPublicKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementOutboundPrivateKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="UniquePad" Nullable="false" />
+          <Property Type="Boolean" Name="Initialized" Nullable="false" />
+          <Property Type="Boolean" Name="Tested" Nullable="false" />
+          <Property Type="Boolean" Name="LockToIp" Nullable="false" />
+          <Property Type="String" Name="ClientRequestToken" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementRequestToken" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="Licenses" Relationship="ScutexModel.FK_Licenses_Services" FromRole="Service" ToRole="License" />
+        </EntityType>
+        <EntityType Name="TrialExpirationOption">
+          <Key>
+            <PropertyRef Name="TrialExpirationOptionId" />
+          </Key>
+          <Property Type="Int32" Name="TrialExpirationOptionId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TrialSettings" Relationship="ScutexModel.FK_TrialSettings_TrialExpirationOptions" FromRole="TrialExpirationOption" ToRole="TrialSetting" />
+        </EntityType>
+        <EntityType Name="TrialSetting">
+          <Key>
+            <PropertyRef Name="TrialSettingId" />
+          </Key>
+          <Property Type="Int32" Name="TrialSettingId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="LicenseId" Nullable="false" />
+          <Property Type="Int32" Name="TrialExpirationOptionId" Nullable="false" />
+          <Property Type="String" Name="ExpirationData" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="License" Relationship="ScutexModel.FK_TrialSettings_Licenses" FromRole="TrialSetting" ToRole="License" />
+          <NavigationProperty Name="TrialExpirationOption" Relationship="ScutexModel.FK_TrialSettings_TrialExpirationOptions" FromRole="TrialSetting" ToRole="TrialExpirationOption" />
+        </EntityType>
+        <Association Name="FK_Features_Products">
+          <End Type="ScutexModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ScutexModel.Feature" Role="Feature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Feature">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSetFeatures_Features">
+          <End Type="ScutexModel.Feature" Role="Feature" Multiplicity="1" />
+          <End Type="ScutexModel.LicenseSetFeature" Role="LicenseSetFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feature">
+              <PropertyRef Name="FeatureId" />
+            </Principal>
+            <Dependent Role="LicenseSetFeature">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Licenses_KeyGeneratorTypes">
+          <End Type="ScutexModel.KeyGeneratorType" Role="KeyGeneratorType" Multiplicity="1" />
+          <End Type="ScutexModel.License" Role="License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KeyGeneratorType">
+              <PropertyRef Name="KeyGeneratorTypeId" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="KeyGeneratorTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseKeys_LicenseKeys">
+          <End Type="ScutexModel.LicenseSet" Role="LicenseSet" Multiplicity="1" />
+          <End Type="ScutexModel.LicenseKey" Role="LicenseKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseSet">
+              <PropertyRef Name="LicenseSetId" />
+            </Principal>
+            <Dependent Role="LicenseKey">
+              <PropertyRef Name="LicenseSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Licenses_Products">
+          <End Type="ScutexModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ScutexModel.License" Role="License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Licenses_Services">
+          <End Type="ScutexModel.Service" Role="Service" Multiplicity="0..1" />
+          <End Type="ScutexModel.License" Role="License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSets_Licenses">
+          <End Type="ScutexModel.License" Role="License" Multiplicity="1" />
+          <End Type="ScutexModel.LicenseSet" Role="LicenseSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="License">
+              <PropertyRef Name="LicenseId" />
+            </Principal>
+            <Dependent Role="LicenseSet">
+              <PropertyRef Name="LicenseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrialSettings_Licenses">
+          <End Type="ScutexModel.License" Role="License" Multiplicity="1" />
+          <End Type="ScutexModel.TrialSetting" Role="TrialSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="License">
+              <PropertyRef Name="LicenseId" />
+            </Principal>
+            <Dependent Role="TrialSetting">
+              <PropertyRef Name="LicenseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSetFeatures_LicenseSets">
+          <End Type="ScutexModel.LicenseSet" Role="LicenseSet" Multiplicity="1" />
+          <End Type="ScutexModel.LicenseSetFeature" Role="LicenseSetFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseSet">
+              <PropertyRef Name="LicenseSetId" />
+            </Principal>
+            <Dependent Role="LicenseSetFeature">
+              <PropertyRef Name="LicenseSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductEditions_Products">
+          <End Type="ScutexModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ScutexModel.ProductEdition" Role="ProductEdition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductEdition">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductVersions_Products">
+          <End Type="ScutexModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ScutexModel.ProductVersion" Role="ProductVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductVersion">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrialSettings_TrialExpirationOptions">
+          <End Type="ScutexModel.TrialExpirationOption" Role="TrialExpirationOption" Multiplicity="1" />
+          <End Type="ScutexModel.TrialSetting" Role="TrialSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrialExpirationOption">
+              <PropertyRef Name="TrialExpirationOptionId" />
+            </Principal>
+            <Dependent Role="TrialSetting">
+              <PropertyRef Name="TrialExpirationOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ScutexModelStoreContainer" CdmEntityContainer="ScutexEntities">
+          <EntitySetMapping Name="DBVersions">
+            <EntityTypeMapping TypeName="ScutexModel.DBVersion">
+              <MappingFragment StoreEntitySet="DBVersions">
+                <ScalarProperty Name="DBVersionId" ColumnName="DBVersionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Features">
+            <EntityTypeMapping TypeName="ScutexModel.Feature">
+              <MappingFragment StoreEntitySet="Features">
+                <ScalarProperty Name="UniquePad" ColumnName="UniquePad" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyGeneratorTypes">
+            <EntityTypeMapping TypeName="ScutexModel.KeyGeneratorType">
+              <MappingFragment StoreEntitySet="KeyGeneratorTypes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="KeyGeneratorTypeId" ColumnName="KeyGeneratorTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseKeys">
+            <EntityTypeMapping TypeName="ScutexModel.LicenseKey">
+              <MappingFragment StoreEntitySet="LicenseKeys">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="HashedLicenseKey" ColumnName="HashedLicenseKey" />
+                <ScalarProperty Name="LicenseKey1" ColumnName="LicenseKey" />
+                <ScalarProperty Name="LicenseSetId" ColumnName="LicenseSetId" />
+                <ScalarProperty Name="LicenseKeyId" ColumnName="LicenseKeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Licenses">
+            <EntityTypeMapping TypeName="ScutexModel.License">
+              <MappingFragment StoreEntitySet="Licenses">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="SalesEmail" ColumnName="SalesEmail" />
+                <ScalarProperty Name="SupportEmail" ColumnName="SupportEmail" />
+                <ScalarProperty Name="TrialTryButtonDelay" ColumnName="TrialTryButtonDelay" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="EulaUrl" ColumnName="EulaUrl" />
+                <ScalarProperty Name="ProductUrl" ColumnName="ProductUrl" />
+                <ScalarProperty Name="BuyNowUrl" ColumnName="BuyNowUrl" />
+                <ScalarProperty Name="PublicKey" ColumnName="PublicKey" />
+                <ScalarProperty Name="PrivateKey" ColumnName="PrivateKey" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+                <ScalarProperty Name="KeyGeneratorTypeId" ColumnName="KeyGeneratorTypeId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseSetFeatures">
+            <EntityTypeMapping TypeName="ScutexModel.LicenseSetFeature">
+              <MappingFragment StoreEntitySet="LicenseSetFeatures">
+                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+                <ScalarProperty Name="LicenseSetId" ColumnName="LicenseSetId" />
+                <ScalarProperty Name="LicenseSetFeatureId" ColumnName="LicenseSetFeatureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseSets">
+            <EntityTypeMapping TypeName="ScutexModel.LicenseSet">
+              <MappingFragment StoreEntitySet="LicenseSets">
+                <ScalarProperty Name="MaxUsers" ColumnName="MaxUsers" />
+                <ScalarProperty Name="UniquePad" ColumnName="UniquePad" />
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+                <ScalarProperty Name="LicenseSetId" ColumnName="LicenseSetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductEditions">
+            <EntityTypeMapping TypeName="ScutexModel.ProductEdition">
+              <MappingFragment StoreEntitySet="ProductEditions">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductEditionId" ColumnName="ProductEditionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ScutexModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="UniquePad" ColumnName="UniquePad" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductVersions">
+            <EntityTypeMapping TypeName="ScutexModel.ProductVersion">
+              <MappingFragment StoreEntitySet="ProductVersions">
+                <ScalarProperty Name="VersionMask" ColumnName="VersionMask" />
+                <ScalarProperty Name="VersionDisplay" ColumnName="VersionDisplay" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductVersionId" ColumnName="ProductVersionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="ScutexModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ManagementRequestToken" ColumnName="ManagementRequestToken" />
+                <ScalarProperty Name="ClientRequestToken" ColumnName="ClientRequestToken" />
+                <ScalarProperty Name="LockToIp" ColumnName="LockToIp" />
+                <ScalarProperty Name="Tested" ColumnName="Tested" />
+                <ScalarProperty Name="Initialized" ColumnName="Initialized" />
+                <ScalarProperty Name="UniquePad" ColumnName="UniquePad" />
+                <ScalarProperty Name="ManagementOutboundPrivateKey" ColumnName="ManagementOutboundPrivateKey" />
+                <ScalarProperty Name="ManagementOutboundPublicKey" ColumnName="ManagementOutboundPublicKey" />
+                <ScalarProperty Name="ManagementInboundPrivateKey" ColumnName="ManagementInboundPrivateKey" />
+                <ScalarProperty Name="ManagementInboundPublicKey" ColumnName="ManagementInboundPublicKey" />
+                <ScalarProperty Name="OutboundPrivateKey" ColumnName="OutboundPrivateKey" />
+                <ScalarProperty Name="OutboundPublicKey" ColumnName="OutboundPublicKey" />
+                <ScalarProperty Name="InboundPrivateKey" ColumnName="InboundPrivateKey" />
+                <ScalarProperty Name="InboundPublicKey" ColumnName="InboundPublicKey" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ManagementUrl" ColumnName="ManagementUrl" />
+                <ScalarProperty Name="ClientUrl" ColumnName="ClientUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrialExpirationOptions">
+            <EntityTypeMapping TypeName="ScutexModel.TrialExpirationOption">
+              <MappingFragment StoreEntitySet="TrialExpirationOptions">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TrialExpirationOptionId" ColumnName="TrialExpirationOptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrialSettings">
+            <EntityTypeMapping TypeName="ScutexModel.TrialSetting">
+              <MappingFragment StoreEntitySet="TrialSettings">
+                <ScalarProperty Name="ExpirationData" ColumnName="ExpirationData" />
+                <ScalarProperty Name="TrialExpirationOptionId" ColumnName="TrialExpirationOptionId" />
+                <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+                <ScalarProperty Name="TrialSettingId" ColumnName="TrialSettingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="DB" xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <EntityTypeShape EntityType="ScutexModel.DBVersion" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2110807291666674" />
+        <EntityTypeShape EntityType="ScutexModel.Feature" Width="1.5" PointX="3" PointY="4.75" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="ScutexModel.KeyGeneratorType" Width="1.5" PointX="3.75" PointY="7.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="ScutexModel.LicenseKey" Width="1.5" PointX="10.5" PointY="9.375" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="ScutexModel.License" Width="1.5" PointX="6" PointY="7.875" Height="5.057109374999996" />
+        <EntityTypeShape EntityType="ScutexModel.LicenseSetFeature" Width="1.5" PointX="5.25" PointY="4.875" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="ScutexModel.LicenseSet" Width="1.5" PointX="8.25" PointY="9.125" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="ScutexModel.ProductEdition" Width="1.5" PointX="3" PointY="13.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="ScutexModel.Product" Width="1.5" PointX="0.75" PointY="7.125" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="ScutexModel.ProductVersion" Width="1.5" PointX="3" PointY="16" Height="1.9802864583333264" />
+        <EntityTypeShape EntityType="ScutexModel.Service" Width="1.5" PointX="3.75" PointY="19.125" Height="5.057109374999996" />
+        <EntityTypeShape EntityType="ScutexModel.TrialExpirationOption" Width="1.5" PointX="9" PointY="6.625" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="ScutexModel.TrialSetting" Width="1.5" PointX="11.25" PointY="6.375" Height="2.1725878906250102" />
+        <AssociationConnector Association="ScutexModel.FK_Features_Products" >
+          <ConnectorPoint PointX="2.25" PointY="7.40625" />
+          <ConnectorPoint PointX="3.34375" PointY="7.40625" />
+          <ConnectorPoint PointX="3.34375" PointY="6.922587890624996" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_LicenseSetFeatures_Features" >
+          <ConnectorPoint PointX="4.5" PointY="5.8651432291666694" />
+          <ConnectorPoint PointX="5.25" PointY="5.8651432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_Licenses_KeyGeneratorTypes" >
+          <ConnectorPoint PointX="5.25" PointY="8.6103417968750016" />
+          <ConnectorPoint PointX="6" PointY="8.6103417968750016" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_LicenseKeys_LicenseKeys" >
+          <ConnectorPoint PointX="9.75" PointY="10.461293945312502" />
+          <ConnectorPoint PointX="10.5" PointY="10.461293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_Licenses_Products" >
+          <ConnectorPoint PointX="2.25" PointY="9.5451871744791674" />
+          <ConnectorPoint PointX="6" PointY="9.5451871744791674" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_Licenses_Services" >
+          <ConnectorPoint PointX="5.25" PointY="21.653554687499998" />
+          <ConnectorPoint PointX="6.75" PointY="21.653554687499998" />
+          <ConnectorPoint PointX="6.75" PointY="12.932109374999996" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_LicenseSets_Licenses" >
+          <ConnectorPoint PointX="7.5" PointY="10.499746093750002" />
+          <ConnectorPoint PointX="8.25" PointY="10.499746093750002" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_TrialSettings_Licenses" >
+          <ConnectorPoint PointX="7.5" PointY="8.4153857421875031" />
+          <ConnectorPoint PointX="8.5104166666666661" PointY="8.4153857421875031" />
+          <ConnectorPoint PointX="8.6770833333333339" PointY="8.4153857421875031" />
+          <ConnectorPoint PointX="11.25" PointY="8.4153857421875031" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_LicenseSetFeatures_LicenseSets" >
+          <ConnectorPoint PointX="8.59375" PointY="9.125" />
+          <ConnectorPoint PointX="8.59375" PointY="5.71875" />
+          <ConnectorPoint PointX="6.75" PointY="5.71875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_ProductEditions_Products" >
+          <ConnectorPoint PointX="1.5" PointY="9.6821907552083317" />
+          <ConnectorPoint PointX="1.5" PointY="14.393992513020834" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="14.393992513020834" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="14.393992513020834" />
+          <ConnectorPoint PointX="3" PointY="14.393992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_ProductVersions_Products" >
+          <ConnectorPoint PointX="1.9062525" PointY="9.6821907552083317" />
+          <ConnectorPoint PointX="1.9062525" PointY="16.990143229166662" />
+          <ConnectorPoint PointX="3" PointY="16.990143229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexModel.FK_TrialSettings_TrialExpirationOptions" >
+          <ConnectorPoint PointX="10.5" PointY="7.422841796874998" />
+          <ConnectorPoint PointX="11.25" PointY="7.422841796874998" />
+        </AssociationConnector>
+      </Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

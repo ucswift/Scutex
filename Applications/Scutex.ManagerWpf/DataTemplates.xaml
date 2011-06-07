@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:classes="clr-namespace:WaveTech.Scutex.Manager.Classes" 
+                    xmlns:Converter="clr-namespace:WaveTech.Scutex.Manager.Converters" xmlns:System="clr-namespace:System;assembly=mscorlib" 
+                    xmlns:Model="clr-namespace:WaveTech.Scutex.Model;assembly=WaveTech.Scutex.Model">
+
+	<Converter:GuidToStringConverter x:Key="guidToStringConverter" />
+
+	<classes:UIContext x:Key="dataContext" />
+
+	<ObjectDataProvider x:Key="licenseData" ObjectInstance="{StaticResource dataContext}" MethodName="GetLicense"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="productsData" ObjectInstance="{StaticResource dataContext}" MethodName="GetProducts"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="licenseSetData" ObjectInstance="{StaticResource dataContext}" MethodName="GetLicenseSets"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="latestLicensesData" ObjectInstance="{StaticResource dataContext}" MethodName="GetLatestLicenses"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="allLicensesData" ObjectInstance="{StaticResource dataContext}" MethodName="GetAllLicenses"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="allServicesData" ObjectInstance="{StaticResource dataContext}" MethodName="GetAllServices"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="allActiveServicesData" ObjectInstance="{StaticResource dataContext}" MethodName="GetAllActiveServices"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="allLicensesAndSetData" ObjectInstance="{StaticResource dataContext}" MethodName="GetAllLicensesAndSets"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="allProductsLicensesAndSetsData" ObjectInstance="{StaticResource dataContext}" MethodName="GetAllProcutsLicensesAndSets"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
+	<ObjectDataProvider x:Key="licenseKeyTypesEnumData" MethodName="GetValues" ObjectType="{x:Type System:Enum}" >
+		<ObjectDataProvider.MethodParameters>
+			<x:Type TypeName="Model:KeyGeneratorTypes" />
+		</ObjectDataProvider.MethodParameters>
+	</ObjectDataProvider>
+
+	<ObjectDataProvider x:Key="trialNotificaitonTypesEnumData" MethodName="GetValues" ObjectType="{x:Type System:Enum}" >
+		<ObjectDataProvider.MethodParameters>
+			<x:Type TypeName="Model:TrialNotificationTypes" />
+		</ObjectDataProvider.MethodParameters>
+	</ObjectDataProvider>
+</ResourceDictionary>

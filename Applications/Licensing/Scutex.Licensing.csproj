@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5EFB6698-A12A-421C-9467-E298F27661FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WaveTech.Scutex.Licensing</RootNamespace>
+    <AssemblyName>WaveTech.Scutex.Licensing</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\Other\Scutex-PubPriv-KeyFile.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\References\Automapper\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\References\SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.Editors.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.Editors.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="StructureMap, Version=2.6.1.1, Culture=neutral, PublicKeyToken=d9e244627cc0a396, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Gui\ChangeToColorConverter.cs" />
+    <Compile Include="Gui\GuiRoot.cs" />
+    <Compile Include="Gui\LicenseWindow.xaml.cs">
+      <DependentUpon>LicenseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\LocalizationRoot.cs" />
+    <Compile Include="Gui\MoreInfoContent.xaml.cs">
+      <DependentUpon>MoreInfoContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\RegisterContent.xaml.cs">
+      <DependentUpon>RegisterContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\WelcomeContent.xaml.cs">
+      <DependentUpon>WelcomeContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\BrowserHelper.cs" />
+    <Compile Include="LicensingManager.cs" />
+    <Compile Include="MasterHooker.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ThreadRunner.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Other\Scutex-PubPriv-KeyFile.snk">
+      <Link>Scutex-PubPriv-KeyFile.snk</Link>
+    </None>
+    <EmbeddedResource Include="..\..\Other\Scutex.Licensing-Pub-KeyFile.snk">
+      <Link>Scutex.Licensing-Pub-KeyFile.snk</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Gui\Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Gui\LicenseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\MoreInfoContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\RegisterContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Resources\Themes\Black.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\WelcomeContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Framework\Scutex.Framework.csproj">
+      <Project>{129D128C-FDD4-495C-BA8B-72DC88B56965}</Project>
+      <Name>Scutex.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Model\Scutex.Model.csproj">
+      <Project>{9C5F0DEA-954E-40BC-9B6C-62183D63022F}</Project>
+      <Name>Scutex.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Services\Scutex.Services.csproj">
+      <Project>{78E7AA24-339E-4B0B-A6DE-BC359EBFDAE1}</Project>
+      <Name>Scutex.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Generators\SmallStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorSmall.csproj">
+      <Project>{58D27055-380F-4C72-844F-3D9D48CC9D5F}</Project>
+      <Name>Scutex.Generators.StaticKeyGeneratorSmall</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\AsymmetricEncryptionProvider\Scutex.Providers.AsymmetricEncryptionProvider.csproj">
+      <Project>{2396BFD0-DCB8-4E7F-86A8-13B0FC3E5906}</Project>
+      <Name>Scutex.Providers.AsymmetricEncryptionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\CompressionProvider\Scutex.Providers.CompressionProvider.csproj">
+      <Project>{E5453AF7-49B9-468C-96E2-F4B0ABF49A73}</Project>
+      <Name>Scutex.Providers.CompressionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\HashingProvider\Scutex.Providers.HashingProvider.csproj">
+      <Project>{0388C0A9-7FEF-4E1D-9743-9EAAF6F3060F}</Project>
+      <Name>Scutex.Providers.HashingProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\ObjectSerializationProvider\Scutex.Providers.ObjectSerializationProvider.csproj">
+      <Project>{FBBF7D09-0CC4-435E-A2AC-9503FA3680CE}</Project>
+      <Name>Scutex.Providers.ObjectSerializationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.ComBypassProvider\Scutex.Providers.ComBypassProvider.csproj">
+      <Project>{6FCCCC8F-59D1-47B1-BDF0-D21FA1AA8353}</Project>
+      <Name>Scutex.Providers.ComBypassProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.DataGenerationProvider\Scutex.Providers.DataGenerationProvider.csproj">
+      <Project>{FE4D7E56-A192-46CB-A020-94F415EF35DD}</Project>
+      <Name>Scutex.Providers.DataGenerationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.NetworkTimeProvider\Scutex.Providers.NetworkTimeProvider.csproj">
+      <Project>{2D7EF293-72B3-4AD2-9ABC-4A4BE1A3B2F9}</Project>
+      <Name>Scutex.Providers.NetworkTimeProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\SymmetricEncryptionProvider\Scutex.Providers.SymmetricEncryptionProvider.csproj">
+      <Project>{899EB8A9-D905-40F4-8F51-EF1A3B92BE67}</Project>
+      <Name>Scutex.Providers.SymmetricEncryptionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\WebServicesProvider\Scutex.Providers.WebServicesProvider.csproj">
+      <Project>{777A1E31-E5B9-41CF-B293-332D44DDC2E6}</Project>
+      <Name>Scutex.Providers.WebServicesProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\WmiDataProvider\Scutex.Providers.WmiDataProvider.csproj">
+      <Project>{B58E86F4-1CB6-4B20-979C-AF259D8EB862}</Project>
+      <Name>Scutex.Providers.WmiDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ClientDataRepository\Scutex.Repositories.ClientDataRepository.csproj">
+      <Project>{ED70B9F9-C186-4C8A-84AE-9EE4E4737CE6}</Project>
+      <Name>Scutex.Repositories.ClientDataRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\..\Images\Scutex2.ico">
+      <Link>Scutex2.ico</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Scutex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Gui\Resources\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ScutexNewIcon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

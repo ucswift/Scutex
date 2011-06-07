@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C5F0DEA-954E-40BC-9B6C-62183D63022F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WaveTech.Scutex.Model</RootNamespace>
+    <AssemblyName>WaveTech.Scutex.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\Other\Scutex-PubPriv-KeyFile.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ActivationLog.cs" />
+    <Compile Include="ActivationResults.cs" />
+    <Compile Include="ActivationStatus.cs" />
+    <Compile Include="BaseServiceResult.cs" />
+    <Compile Include="DeactivatedReasons.cs" />
+    <Compile Include="Events\LicenseSavedEvent.cs" />
+    <Compile Include="Events\ServicesUpdatedEvent.cs" />
+    <Compile Include="Exceptions\ScutexAuditException.cs" />
+    <Compile Include="InteractionModes.cs" />
+    <Compile Include="Interfaces\Providers\IDatabaseUpdateProvider.cs" />
+    <Compile Include="Interfaces\Providers\IProductsProvider.cs" />
+    <Compile Include="Interfaces\Providers\IReportingProvider.cs" />
+    <Compile Include="Interfaces\Repositories\IActivationLogRepoistory.cs" />
+    <Compile Include="Interfaces\Repositories\ILicenseKeyRepository.cs" />
+    <Compile Include="Interfaces\Services\IComApiWrappingService.cs" />
+    <Compile Include="Interfaces\Providers\IComBypassProvider.cs" />
+    <Compile Include="Interfaces\Services\IConsoleInteractionService.cs" />
+    <Compile Include="Interfaces\Services\IEventLogInteractionService.cs" />
+    <Compile Include="Interfaces\Services\IKeyService.cs" />
+    <Compile Include="Interfaces\Services\ILicenseActivationService.cs" />
+    <Compile Include="Interfaces\Services\IRegisterService.cs" />
+    <Compile Include="Interfaces\Services\IReportingService.cs" />
+    <Compile Include="Interfaces\Services\IValidationService.cs" />
+    <Compile Include="Interfaces\Wcf\IActivationLogService.cs" />
+    <Compile Include="Interfaces\Wcf\ICommonService.cs" />
+    <Compile Include="Interfaces\Wcf\IKeyPairService.cs" />
+    <Compile Include="Interfaces\Wcf\IProductManagementService.cs" />
+    <Compile Include="KeyData.cs" />
+    <Compile Include="LicenseActivationPayload.cs" />
+    <Compile Include="ProcessCodes.cs" />
+    <Compile Include="RegisterResult.cs" />
+    <Compile Include="Results\ActivationResult.cs" />
+    <Compile Include="Results\AddLicenseKeysForProductResult.cs" />
+    <Compile Include="Results\GetAllActivationLogsResult.cs" />
+    <Compile Include="Results\GetAllLicenseActivationsResult.cs" />
+    <Compile Include="Results\GetLicenseKeysForProductData.cs" />
+    <Compile Include="Results\GetLicenseKeysForProductResult.cs" />
+    <Compile Include="Results\QueryActiveServiceProductsResult.cs" />
+    <Compile Include="Results\QueryActiveServiceProductsResultData.cs" />
+    <Compile Include="ServiceData\AddLicenseKeysForProductData.cs" />
+    <Compile Include="ServiceLicenseKey.cs" />
+    <Compile Include="ServiceProduct.cs" />
+    <Compile Include="ServiceLicenseSet.cs" />
+    <Compile Include="AddProductResult.cs" />
+    <Compile Include="BaseObject.cs" />
+    <Compile Include="BitStrengths.cs" />
+    <Compile Include="Characters.cs" />
+    <Compile Include="ClientLicense.cs" />
+    <Compile Include="EncryptionInfo.cs" />
+    <Compile Include="Events\FormSavedEvent.cs" />
+    <Compile Include="Events\FormUpdatedEvent.cs" />
+    <Compile Include="Events\LicenseInitializedEvent.cs" />
+    <Compile Include="Events\ProductsUpdatedEvent.cs" />
+    <Compile Include="Events\ShowProductsWindowEvent.cs" />
+    <Compile Include="Exceptions\EncryptionInfoException.cs" />
+    <Compile Include="Exceptions\ScutexAttemptsException.cs" />
+    <Compile Include="Exceptions\ScutexLicenseException.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Feature.cs" />
+    <Compile Include="HashTypes.cs" />
+    <Compile Include="InitializationResult.cs" />
+    <Compile Include="Interfaces\Framework\IEventAggregator.cs" />
+    <Compile Include="Interfaces\Framework\IListener.cs" />
+    <Compile Include="Interfaces\Generators\IKeyGenerator.cs" />
+    <Compile Include="Interfaces\Applications\ILicensingManager.cs" />
+    <Compile Include="Interfaces\Providers\IAsymmetricEncryptionProvider.cs" />
+    <Compile Include="Interfaces\Providers\IHashingProvider.cs" />
+    <Compile Include="Interfaces\Providers\ILicenseActiviationProvider.cs" />
+    <Compile Include="Interfaces\Providers\INetworkTimeProvider.cs" />
+    <Compile Include="Interfaces\Providers\INumberDataGeneratorProvider.cs" />
+    <Compile Include="Interfaces\Providers\IObjectSerializationProvider.cs" />
+    <Compile Include="Interfaces\Providers\IServiceStatusProvider.cs" />
+    <Compile Include="Interfaces\Providers\IStringDataGeneratorProvider.cs" />
+    <Compile Include="Interfaces\Providers\ISymmetricEncryptionProvider.cs" />
+    <Compile Include="Interfaces\Providers\IWmiDataProvider.cs" />
+    <Compile Include="Interfaces\Providers\IZipCompressionProvider.cs" />
+    <Compile Include="Interfaces\Repositories\IClientRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICommonRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFeaturesRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILicenseSetsRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILicensesRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IClientLicenseRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IServiceProductsRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IServicesRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITrialSettingsRepository.cs" />
+    <Compile Include="Interfaces\Services\IClientLicenseService.cs" />
+    <Compile Include="Interfaces\Services\IEncodingService.cs" />
+    <Compile Include="Interfaces\Services\IHardwareFingerprintService.cs" />
+    <Compile Include="Interfaces\Services\IKeyExportService.cs" />
+    <Compile Include="Interfaces\Services\ILicenseKeyService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Services\ILicenseManagerService.cs" />
+    <Compile Include="Interfaces\Services\ILicenseService.cs" />
+    <Compile Include="Interfaces\Services\ILicenseSetService.cs" />
+    <Compile Include="Interfaces\Services\ILicensingService.cs" />
+    <Compile Include="Interfaces\Services\IPackingService.cs" />
+    <Compile Include="Interfaces\Services\IProductsService.cs" />
+    <Compile Include="Interfaces\Services\IServicesService.cs" />
+    <Compile Include="Interfaces\Services\ITrialSettingsService.cs" />
+    <Compile Include="Interfaces\Services\IWcfPackagingService.cs" />
+    <Compile Include="Interfaces\Wcf\IControlService.cs" />
+    <Compile Include="Interfaces\Wcf\IIKeyService.cs" />
+    <Compile Include="Interfaces\Wcf\IMasterService.cs" />
+    <Compile Include="KeyGeneratorTypes.cs" />
+    <Compile Include="License.cs" />
+    <Compile Include="LicenseActivation.cs" />
+    <Compile Include="LicenseBase.cs" />
+    <Compile Include="LicenseKey.cs" />
+    <Compile Include="LicenseSet.cs" />
+    <Compile Include="LicenseAttribute.cs" />
+    <Compile Include="LicenseCapability.cs" />
+    <Compile Include="LicenseDataCheckTypes.cs" />
+    <Compile Include="LicenseGenerationOptions.cs" />
+    <Compile Include="LicensePlaceholder.cs" />
+    <Compile Include="LicenseTrialSettings.cs" />
+    <Compile Include="MasterServiceData.cs" />
+    <Compile Include="NotifyEventArgs.cs" />
+    <Compile Include="NotifyList.cs" />
+    <Compile Include="PlaceholderTypes.cs" />
+    <Compile Include="KeyPair.cs" />
+    <Compile Include="ScutexLicense.cs" />
+    <Compile Include="LicenseKeyTypes.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="ServiceLicense.cs" />
+    <Compile Include="SetupTestProductResult.cs" />
+    <Compile Include="StatusRequestResult.cs" />
+    <Compile Include="Token.cs" />
+    <Compile Include="TrailNotificationSettings.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TrialExpirationOptions.cs" />
+    <Compile Include="TrialFaultReasons.cs" />
+    <Compile Include="TrialInterfaceInteraction.cs" />
+    <Compile Include="TrialNotificationTypes.cs" />
+    <Compile Include="TrialSettings.cs" />
+    <Compile Include="ValidationResult.cs" />
+    <Compile Include="ValidationTypes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Other\Scutex-PubPriv-KeyFile.snk">
+      <Link>Scutex-PubPriv-KeyFile.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

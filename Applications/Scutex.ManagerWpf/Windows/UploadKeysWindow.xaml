@@ -1,0 +1,62 @@
+﻿<Ribbon:XamRibbonWindow x:Class="WaveTech.Scutex.Manager.Windows.UploadKeysWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+		xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3" 
+	  xmlns:UserControls="clr-namespace:WaveTech.Scutex.Manager.UserControls" x:Name="uploadKeysWindow"
+		Title="Upload Keys" Height="300" Width="300" WindowStartupLocation="CenterOwner">
+	<Ribbon:XamRibbonWindow.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/DataTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Ribbon:XamRibbonWindow.Resources>
+
+	<Ribbon:RibbonWindowContentHost>
+		<Ribbon:RibbonWindowContentHost.Ribbon>
+			<Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
+			</Ribbon:XamRibbon>
+		</Ribbon:RibbonWindowContentHost.Ribbon>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			
+			<GroupBox Grid.Row="1" Grid.Column="0" Header="Upload Keys to Service" Margin="4,4,4,4" Foreground="White">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="30" />
+						<RowDefinition Height="30" />
+						<RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="70" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="Service: " />
+                    <ComboBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="cboServices" ItemsSource="{Binding Source={StaticResource allActiveServicesData}}" DisplayMemberPath="Name" SelectedItem="{Binding Service, ElementName=uploadKeysWindow, Mode=TwoWay}" SelectionChanged="cboServices_SelectionChanged" />
+
+					<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="License Sets: " />
+                    <ComboBox Grid.Row="1" Grid.Column="1" Margin="4,4,4,4" x:Name="cboLicenseSets" ItemsSource="{Binding Source={StaticResource allProductsLicensesAndSetsData}}" DisplayMemberPath="NameForDisplay" SelectedItem="{Binding LicenseSet, ElementName=uploadKeysWindow, Mode=TwoWay}" SelectionChanged="cboLicenseSets_SelectionChanged" />
+
+					<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="Local Keys: " />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" x:Name="lblLocalKeyCount" Text="0" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="Service Keys: " />
+                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" x:Name="lblServiceKeyCount" Text="0" />
+
+                    <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="Synchronize" x:Name="btnSynchronize" Click="btnSynchronize_Click" />
+                </Grid>
+			</GroupBox>
+            <UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" 
+              WindowHeight="{Binding ElementName=CurrentPresenter, Path=ActualHeight}" WindowWidth="{Binding ElementName=CurrentPresenter, Path=ActualWidth}" />
+		</Grid>
+	</Ribbon:RibbonWindowContentHost>
+</Ribbon:XamRibbonWindow>

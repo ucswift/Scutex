@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8D73AF40-9401-48BB-839D-C7EDDEFF8E7C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WaveTech.Scutex.Manager</RootNamespace>
+    <AssemblyName>LicensingManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\Other\Scutex-PubPriv-KeyFile.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Scutex.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=0.3.0.54, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.DataPresenter.ExcelExporter.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.DataPresenter.ExcelExporter.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.DataPresenter.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.DataPresenter.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.Editors.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.Editors.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.Ribbon.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.Ribbon.v10.3.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="StructureMap, Version=2.6.1.1, Culture=neutral, PublicKeyToken=d9e244627cc0a396, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="TriAxis.RunSharp">
+      <HintPath>..\..\References\RunSharp\TriAxis.RunSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPF.Themes">
+      <HintPath>..\..\References\Wpf\WPF.Themes.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\WPF Toolkit\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Classes\ConfigFileHelper.cs" />
+    <Compile Include="Classes\DatabaseFileHelper.cs" />
+    <Compile Include="Classes\DataConverters.cs" />
+    <Compile Include="Classes\DemoHostHelper.cs" />
+    <Compile Include="Classes\UploadProductDisplayData.cs" />
+    <Compile Include="Classes\Win32.cs" />
+    <Compile Include="Classes\WindowHelper.cs" />
+    <Compile Include="Controls\SimulatedWindow.cs" />
+    <Compile Include="Controls\Wizard.cs" />
+    <Compile Include="Converters\GuidToStringConverter.cs" />
+    <Compile Include="Forms\ProjectForm.xaml.cs">
+      <DependentUpon>ProjectForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WelcomeScreenForm.xaml.cs">
+      <DependentUpon>WelcomeScreenForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterHooker.cs" />
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\ProductsScreen.xaml.cs">
+      <DependentUpon>ProductsScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AboutBox.xaml.cs">
+      <DependentUpon>AboutBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CodeWindow.xaml.cs">
+      <DependentUpon>CodeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GenerationWindow.xaml.cs">
+      <DependentUpon>GenerationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewProductWindow.xaml.cs">
+      <DependentUpon>NewProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewServiceWindow.xaml.cs">
+      <DependentUpon>NewServiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\OpenProjectWindow.xaml.cs">
+      <DependentUpon>OpenProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ProductsWindow.xaml.cs">
+      <DependentUpon>ProductsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ServiceLogWindow.xaml.cs">
+      <DependentUpon>ServiceLogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UpdateServiceWindow.xaml.cs">
+      <DependentUpon>UpdateServiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UploadKeysWindow.xaml.cs">
+      <DependentUpon>UploadKeysWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UploadProductsWindow.xaml.cs">
+      <DependentUpon>UploadProductsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ViewServicesWindow.xaml.cs">
+      <DependentUpon>ViewServicesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\FirstTimeWizardPresentationModel.cs" />
+    <Compile Include="Wizards\FirstTimeWizard.xaml.cs">
+      <DependentUpon>FirstTimeWizard.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\BasicSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\LicenseSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\ProjectForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\TrialSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\WelcomeScreenForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="..\..\Common\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\LocalizationRoot.cs" />
+    <Compile Include="Classes\UIContext.cs" />
+    <Compile Include="Classes\XamRibbonLocalizationRoot.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="Forms\BasicSettings.xaml.cs">
+      <DependentUpon>BasicSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LicenseSettings.xaml.cs">
+      <DependentUpon>LicenseSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TrialSettings.xaml.cs">
+      <DependentUpon>TrialSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Screens\ProductsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Block.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LoadingAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AboutBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GenerationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NewProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NewServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\OpenProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ProductsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ServiceLogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UpdateServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UploadKeysWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UploadProductsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ViewServicesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wizards\FirstTimeWizard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="..\..\Documentation\ScutexDocumentation.chm">
+      <Link>ScutexDocumentation.chm</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\lib\ClientService\Web.config">
+      <Link>lib\Services\ClientService\Web.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Other\Scutex-PubPriv-KeyFile.snk">
+      <Link>Scutex-PubPriv-KeyFile.snk</Link>
+    </None>
+    <None Include="..\..\Other\Scutex.Licensing-PubPriv-KeyFile.snk">
+      <Link>Scutex.Licensing-PubPriv-KeyFile.snk</Link>
+    </None>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\application-48x48.png" />
+    <Resource Include="img\blog-post-48x48.png" />
+    <Resource Include="img\blog-post-edit-48x48.png" />
+    <Resource Include="img\CD-icon-48.png" />
+    <Resource Include="img\chart-48x48.png" />
+    <Resource Include="img\community-users-48x48.png" />
+    <Resource Include="img\Control-Panel-48x48.png" />
+    <Resource Include="img\database-add-48x48.png" />
+    <Resource Include="img\database-next-48x48.png" />
+    <Resource Include="img\database-previous-48x48.png" />
+    <Resource Include="img\database-process-48x48.png" />
+    <Resource Include="img\file-48x48.png" />
+    <Resource Include="img\Folder-48x48.png" />
+    <Resource Include="img\forward-new-mail-48x48.png" />
+    <Resource Include="img\help-48x48.png" />
+    <Resource Include="img\home-next-48x48.png" />
+    <Resource Include="img\Key-48x48.png" />
+    <Resource Include="img\Memo-48x48.png" />
+    <Resource Include="img\My-Documents-48x48.png" />
+    <Resource Include="img\Private-Folder-48x48.png" />
+    <Resource Include="img\process-add-48x48.png" />
+    <Resource Include="img\Sistema-Locked-48x48.png" />
+    <Resource Include="img\users-48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\ScutexImageSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\About_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Scutex.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Framework\Scutex.Framework.csproj">
+      <Project>{129D128C-FDD4-495C-BA8B-72DC88B56965}</Project>
+      <Name>Scutex.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Model\Scutex.Model.csproj">
+      <Project>{9C5F0DEA-954E-40BC-9B6C-62183D63022F}</Project>
+      <Name>Scutex.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Services\Scutex.Services.csproj">
+      <Project>{78E7AA24-339E-4B0B-A6DE-BC359EBFDAE1}</Project>
+      <Name>Scutex.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Generators\SmallStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorSmall.csproj">
+      <Project>{58D27055-380F-4C72-844F-3D9D48CC9D5F}</Project>
+      <Name>Scutex.Generators.StaticKeyGeneratorSmall</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\AsymmetricEncryptionProvider\Scutex.Providers.AsymmetricEncryptionProvider.csproj">
+      <Project>{2396BFD0-DCB8-4E7F-86A8-13B0FC3E5906}</Project>
+      <Name>Scutex.Providers.AsymmetricEncryptionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\CompressionProvider\Scutex.Providers.CompressionProvider.csproj">
+      <Project>{E5453AF7-49B9-468C-96E2-F4B0ABF49A73}</Project>
+      <Name>Scutex.Providers.CompressionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\HashingProvider\Scutex.Providers.HashingProvider.csproj">
+      <Project>{0388C0A9-7FEF-4E1D-9743-9EAAF6F3060F}</Project>
+      <Name>Scutex.Providers.HashingProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\ObjectSerializationProvider\Scutex.Providers.ObjectSerializationProvider.csproj">
+      <Project>{FBBF7D09-0CC4-435E-A2AC-9503FA3680CE}</Project>
+      <Name>Scutex.Providers.ObjectSerializationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.DatabaseUpdateProvider\Scutex.Providers.DatabaseUpdateProvider.csproj">
+      <Project>{15E64BB9-1163-4C10-B7FA-3E6A32ABEBC1}</Project>
+      <Name>Scutex.Providers.DatabaseUpdateProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.DataGenerationProvider\Scutex.Providers.DataGenerationProvider.csproj">
+      <Project>{FE4D7E56-A192-46CB-A020-94F415EF35DD}</Project>
+      <Name>Scutex.Providers.DataGenerationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.NetworkTimeProvider\Scutex.Providers.NetworkTimeProvider.csproj">
+      <Project>{2D7EF293-72B3-4AD2-9ABC-4A4BE1A3B2F9}</Project>
+      <Name>Scutex.Providers.NetworkTimeProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\SymmetricEncryptionProvider\Scutex.Providers.SymmetricEncryptionProvider.csproj">
+      <Project>{899EB8A9-D905-40F4-8F51-EF1A3B92BE67}</Project>
+      <Name>Scutex.Providers.SymmetricEncryptionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\WebServicesProvider\Scutex.Providers.WebServicesProvider.csproj">
+      <Project>{777A1E31-E5B9-41CF-B293-332D44DDC2E6}</Project>
+      <Name>Scutex.Providers.WebServicesProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\WmiDataProvider\Scutex.Providers.WmiDataProvider.csproj">
+      <Project>{B58E86F4-1CB6-4B20-979C-AF259D8EB862}</Project>
+      <Name>Scutex.Providers.WmiDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ClientDataRepository\Scutex.Repositories.ClientDataRepository.csproj">
+      <Project>{ED70B9F9-C186-4C8A-84AE-9EE4E4737CE6}</Project>
+      <Name>Scutex.Repositories.ClientDataRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ManagerDataRepository\Scutex.Repositories.ManagerDataRepository.csproj">
+      <Project>{9103121F-A76B-478A-99F0-3EAEEE865958}</Project>
+      <Name>Scutex.Repositories.ManagerDataRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Licensing\Scutex.Licensing.csproj">
+      <Project>{5EFB6698-A12A-421C-9467-E298F27661FF}</Project>
+      <Name>Scutex.Licensing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Close_Large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.9.2">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2005 Express Edition SP2 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\Database\ScutexService-CreateDb.sql">
+      <Link>lib\Services\ScutexService-CreateDb.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\lib\ClientService\ActivationService.svc">
+      <Link>lib\Services\ClientService\ActivationService.svc</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\lib\ManagementService\bin\WaveTech.Scutex.WcfServices.ServicesLibrary.dll">
+      <Link>lib\Services\ManagementService\bin\WaveTech.Scutex.WcfServices.ServicesLibrary.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\lib\WaveTech.Scutex.WcfServices.ServicesLibrary.dll">
+      <Link>lib\Services\ClientService\bin\WaveTech.Scutex.WcfServices.ServicesLibrary.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\ConfigFileSQE2005.txt" />
+    <Content Include="db\ScutexDb05.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="db\ScutexDb05_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ScutexDb05.mdf</DependentUpon>
+    </Content>
+    <Content Include="db\ScutexDb08.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="db\ScutexDb08_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ScutexDb08.mdf</DependentUpon>
+    </Content>
+    <EmbeddedResource Include="Resources\ConfigFileSQE2008.txt" />
+    <Resource Include="img\Code-48x48.png" />
+    <Resource Include="img\ProductAdd-48x48.png" />
+    <Resource Include="img\ProductDelete-48x48.png" />
+    <Resource Include="img\ProductEdit-48x48.png" />
+    <Content Include="ScutexDb.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ScutexDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ScutexDb.mdf</DependentUpon>
+    </Content>
+    <Resource Include="img\search-server-icon-48x48.png" />
+    <Resource Include="img\tick-48x48.png" />
+    <Resource Include="img\view-48x48.png" />
+    <Resource Include="Scutex3.ico" />
+    <EmbeddedResource Include="Resources\ConfigFile.txt" />
+    <Resource Include="img\add-server-icon-48x48.png" />
+    <Resource Include="img\download-server-icon-48x48.png" />
+    <Resource Include="img\remove-server-icon-48x48.png" />
+    <Resource Include="img\upload-server-icon-48x48.png" />
+    <Content Include="..\..\lib\ClientService\bin\ClientService.dll">
+      <Link>lib\Services\ClientService\bin\ClientService.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\lib\WaveTech.Scutex.Licensing.dll">
+      <Link>lib\WaveTech.Scutex.Licensing.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dbs\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

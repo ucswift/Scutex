@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ScutexServiceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ScutexServiceModelStoreContainer">
+          <EntitySet Name="ActivationLogs" EntityType="ScutexServiceModel.Store.ActivationLogs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LicenseActivations" EntityType="ScutexServiceModel.Store.LicenseActivations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LicenseKeys" EntityType="ScutexServiceModel.Store.LicenseKeys" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Licenses" EntityType="ScutexServiceModel.Store.Licenses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LicenseSets" EntityType="ScutexServiceModel.Store.LicenseSets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Master" EntityType="ScutexServiceModel.Store.Master" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_LicenseActivations_LicenseKeys" Association="ScutexServiceModel.Store.FK_LicenseActivations_LicenseKeys">
+            <End Role="LicenseKeys" EntitySet="LicenseKeys" />
+            <End Role="LicenseActivations" EntitySet="LicenseActivations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseKeys_LicenseSets" Association="ScutexServiceModel.Store.FK_LicenseKeys_LicenseSets">
+            <End Role="LicenseSets" EntitySet="LicenseSets" />
+            <End Role="LicenseKeys" EntitySet="LicenseKeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSets_Licenses" Association="ScutexServiceModel.Store.FK_LicenseSets_Licenses">
+            <End Role="Licenses" EntitySet="Licenses" />
+            <End Role="LicenseSets" EntitySet="LicenseSets" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActivationLogs">
+          <Key>
+            <PropertyRef Name="ActivationLogId" />
+          </Key>
+          <Property Name="ActivationLogId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseKey" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="ActivationResult" Type="int" Nullable="false" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="250" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LicenseActivations">
+          <Key>
+            <PropertyRef Name="LicenseActivationId" />
+          </Key>
+          <Property Name="LicenseActivationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseKeyId" Type="int" Nullable="false" />
+          <Property Name="ActivationToken" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OriginalToken" Type="uniqueidentifier" />
+          <Property Name="ActivatedOn" Type="datetime" Nullable="false" />
+          <Property Name="HardwareHash" Type="varchar(max)" />
+          <Property Name="ActivationStatus" Type="int" Nullable="false" />
+          <Property Name="ActivationStatusUpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LicenseKeys">
+          <Key>
+            <PropertyRef Name="LicenseKeyId" />
+          </Key>
+          <Property Name="LicenseKeyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseSetId" Type="int" Nullable="false" />
+          <Property Name="Key" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ActivationCount" Type="int" Nullable="false" />
+          <Property Name="Deactivated" Type="bit" Nullable="false" />
+          <Property Name="DeactivatedReason" Type="int" />
+          <Property Name="DeactivatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Licenses">
+          <Key>
+            <PropertyRef Name="LicenseId" />
+          </Key>
+          <Property Name="LicenseId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="LicenseSets">
+          <Key>
+            <PropertyRef Name="LicenseSetId" />
+          </Key>
+          <Property Name="LicenseSetId" Type="int" Nullable="false" />
+          <Property Name="LicenseId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="LicenseType" Type="int" Nullable="false" />
+          <Property Name="MaxUsers" Type="int" />
+        </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="MasterId" />
+          </Key>
+          <Property Name="MasterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientInboundKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="ClientOutboundKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="ManagementInboundKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="ManagementOutboundKey" Type="varchar(max)" Nullable="false" />
+          <Property Name="Token" Type="varchar(max)" Nullable="false" />
+          <Property Name="Initialized" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_LicenseActivations_LicenseKeys">
+          <End Role="LicenseKeys" Type="ScutexServiceModel.Store.LicenseKeys" Multiplicity="1" />
+          <End Role="LicenseActivations" Type="ScutexServiceModel.Store.LicenseActivations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseKeys">
+              <PropertyRef Name="LicenseKeyId" />
+            </Principal>
+            <Dependent Role="LicenseActivations">
+              <PropertyRef Name="LicenseKeyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseKeys_LicenseSets">
+          <End Role="LicenseSets" Type="ScutexServiceModel.Store.LicenseSets" Multiplicity="1" />
+          <End Role="LicenseKeys" Type="ScutexServiceModel.Store.LicenseKeys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseSets">
+              <PropertyRef Name="LicenseSetId" />
+            </Principal>
+            <Dependent Role="LicenseKeys">
+              <PropertyRef Name="LicenseSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSets_Licenses">
+          <End Role="Licenses" Type="ScutexServiceModel.Store.Licenses" Multiplicity="1" />
+          <End Role="LicenseSets" Type="ScutexServiceModel.Store.LicenseSets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Licenses">
+              <PropertyRef Name="LicenseId" />
+            </Principal>
+            <Dependent Role="LicenseSets">
+              <PropertyRef Name="LicenseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ScutexServiceModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ScutexServiceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActivationLogs" EntityType="ScutexServiceModel.ActivationLog" />
+          <EntitySet Name="LicenseActivations" EntityType="ScutexServiceModel.LicenseActivation" />
+          <EntitySet Name="LicenseKeys" EntityType="ScutexServiceModel.LicenseKey" />
+          <EntitySet Name="Licenses" EntityType="ScutexServiceModel.License" />
+          <EntitySet Name="LicenseSets" EntityType="ScutexServiceModel.LicenseSet" />
+          <EntitySet Name="Masters" EntityType="ScutexServiceModel.Master" />
+          <AssociationSet Name="FK_LicenseActivations_LicenseKeys" Association="ScutexServiceModel.FK_LicenseActivations_LicenseKeys">
+            <End Role="LicenseKey" EntitySet="LicenseKeys" />
+            <End Role="LicenseActivation" EntitySet="LicenseActivations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseKeys_LicenseSets" Association="ScutexServiceModel.FK_LicenseKeys_LicenseSets">
+            <End Role="LicenseSet" EntitySet="LicenseSets" />
+            <End Role="LicenseKey" EntitySet="LicenseKeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseSets_Licenses" Association="ScutexServiceModel.FK_LicenseSets_Licenses">
+            <End Role="License" EntitySet="Licenses" />
+            <End Role="LicenseSet" EntitySet="LicenseSets" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActivationLog">
+          <Key>
+            <PropertyRef Name="ActivationLogId" />
+          </Key>
+          <Property Type="Int32" Name="ActivationLogId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LicenseKey" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ActivationResult" Nullable="false" />
+          <Property Type="String" Name="IPAddress" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Timestamp" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LicenseActivation">
+          <Key>
+            <PropertyRef Name="LicenseActivationId" />
+          </Key>
+          <Property Type="Int32" Name="LicenseActivationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LicenseKeyId" Nullable="false" />
+          <Property Type="Guid" Name="ActivationToken" Nullable="false" />
+          <Property Type="Guid" Name="OriginalToken" />
+          <Property Type="DateTime" Name="ActivatedOn" Nullable="false" />
+          <Property Type="String" Name="HardwareHash" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ActivationStatus" Nullable="false" />
+          <Property Type="DateTime" Name="ActivationStatusUpdatedOn" Nullable="false" />
+          <NavigationProperty Name="LicenseKey" Relationship="ScutexServiceModel.FK_LicenseActivations_LicenseKeys" FromRole="LicenseActivation" ToRole="LicenseKey" />
+        </EntityType>
+        <EntityType Name="LicenseKey">
+          <Key>
+            <PropertyRef Name="LicenseKeyId" />
+          </Key>
+          <Property Type="Int32" Name="LicenseKeyId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LicenseSetId" Nullable="false" />
+          <Property Type="String" Name="Key" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="Int32" Name="ActivationCount" Nullable="false" />
+          <Property Type="Boolean" Name="Deactivated" Nullable="false" />
+          <Property Type="Int32" Name="DeactivatedReason" />
+          <Property Type="DateTime" Name="DeactivatedOn" />
+          <NavigationProperty Name="LicenseActivations" Relationship="ScutexServiceModel.FK_LicenseActivations_LicenseKeys" FromRole="LicenseKey" ToRole="LicenseActivation" />
+          <NavigationProperty Name="LicenseSet" Relationship="ScutexServiceModel.FK_LicenseKeys_LicenseSets" FromRole="LicenseKey" ToRole="LicenseSet" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="LicenseId" />
+          </Key>
+          <Property Type="Int32" Name="LicenseId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LicenseSets" Relationship="ScutexServiceModel.FK_LicenseSets_Licenses" FromRole="License" ToRole="LicenseSet" />
+        </EntityType>
+        <EntityType Name="LicenseSet">
+          <Key>
+            <PropertyRef Name="LicenseSetId" />
+          </Key>
+          <Property Type="Int32" Name="LicenseSetId" Nullable="false" />
+          <Property Type="Int32" Name="LicenseId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LicenseType" Nullable="false" />
+          <Property Type="Int32" Name="MaxUsers" />
+          <NavigationProperty Name="LicenseKeys" Relationship="ScutexServiceModel.FK_LicenseKeys_LicenseSets" FromRole="LicenseSet" ToRole="LicenseKey" />
+          <NavigationProperty Name="License" Relationship="ScutexServiceModel.FK_LicenseSets_Licenses" FromRole="LicenseSet" ToRole="License" />
+        </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="MasterId" />
+          </Key>
+          <Property Type="Int32" Name="MasterId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="ServiceId" Nullable="false" />
+          <Property Type="String" Name="ClientInboundKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ClientOutboundKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementInboundKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ManagementOutboundKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Token" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Initialized" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_LicenseActivations_LicenseKeys">
+          <End Type="ScutexServiceModel.LicenseKey" Role="LicenseKey" Multiplicity="1" />
+          <End Type="ScutexServiceModel.LicenseActivation" Role="LicenseActivation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseKey">
+              <PropertyRef Name="LicenseKeyId" />
+            </Principal>
+            <Dependent Role="LicenseActivation">
+              <PropertyRef Name="LicenseKeyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseKeys_LicenseSets">
+          <End Type="ScutexServiceModel.LicenseSet" Role="LicenseSet" Multiplicity="1" />
+          <End Type="ScutexServiceModel.LicenseKey" Role="LicenseKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseSet">
+              <PropertyRef Name="LicenseSetId" />
+            </Principal>
+            <Dependent Role="LicenseKey">
+              <PropertyRef Name="LicenseSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseSets_Licenses">
+          <End Type="ScutexServiceModel.License" Role="License" Multiplicity="1" />
+          <End Type="ScutexServiceModel.LicenseSet" Role="LicenseSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="License">
+              <PropertyRef Name="LicenseId" />
+            </Principal>
+            <Dependent Role="LicenseSet">
+              <PropertyRef Name="LicenseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ScutexServiceModelStoreContainer" CdmEntityContainer="ScutexServiceEntities">
+          <EntitySetMapping Name="ActivationLogs">
+            <EntityTypeMapping TypeName="ScutexServiceModel.ActivationLog">
+              <MappingFragment StoreEntitySet="ActivationLogs">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="ActivationResult" ColumnName="ActivationResult" />
+                <ScalarProperty Name="LicenseKey" ColumnName="LicenseKey" />
+                <ScalarProperty Name="ActivationLogId" ColumnName="ActivationLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseActivations">
+            <EntityTypeMapping TypeName="ScutexServiceModel.LicenseActivation">
+              <MappingFragment StoreEntitySet="LicenseActivations">
+                <ScalarProperty Name="ActivationStatusUpdatedOn" ColumnName="ActivationStatusUpdatedOn" />
+                <ScalarProperty Name="ActivationStatus" ColumnName="ActivationStatus" />
+                <ScalarProperty Name="HardwareHash" ColumnName="HardwareHash" />
+                <ScalarProperty Name="ActivatedOn" ColumnName="ActivatedOn" />
+                <ScalarProperty Name="OriginalToken" ColumnName="OriginalToken" />
+                <ScalarProperty Name="ActivationToken" ColumnName="ActivationToken" />
+                <ScalarProperty Name="LicenseKeyId" ColumnName="LicenseKeyId" />
+                <ScalarProperty Name="LicenseActivationId" ColumnName="LicenseActivationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseKeys">
+            <EntityTypeMapping TypeName="ScutexServiceModel.LicenseKey">
+              <MappingFragment StoreEntitySet="LicenseKeys">
+                <ScalarProperty Name="DeactivatedOn" ColumnName="DeactivatedOn" />
+                <ScalarProperty Name="DeactivatedReason" ColumnName="DeactivatedReason" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="ActivationCount" ColumnName="ActivationCount" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="LicenseSetId" ColumnName="LicenseSetId" />
+                <ScalarProperty Name="LicenseKeyId" ColumnName="LicenseKeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Licenses">
+            <EntityTypeMapping TypeName="ScutexServiceModel.License">
+              <MappingFragment StoreEntitySet="Licenses">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseSets">
+            <EntityTypeMapping TypeName="ScutexServiceModel.LicenseSet">
+              <MappingFragment StoreEntitySet="LicenseSets">
+                <ScalarProperty Name="MaxUsers" ColumnName="MaxUsers" />
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+                <ScalarProperty Name="LicenseSetId" ColumnName="LicenseSetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masters">
+            <EntityTypeMapping TypeName="ScutexServiceModel.Master">
+              <MappingFragment StoreEntitySet="Master">
+                <ScalarProperty Name="Initialized" ColumnName="Initialized" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ManagementOutboundKey" ColumnName="ManagementOutboundKey" />
+                <ScalarProperty Name="ManagementInboundKey" ColumnName="ManagementInboundKey" />
+                <ScalarProperty Name="ClientOutboundKey" ColumnName="ClientOutboundKey" />
+                <ScalarProperty Name="ClientInboundKey" ColumnName="ClientInboundKey" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DB">
+        <EntityTypeShape EntityType="ScutexServiceModel.ActivationLog" Width="1.5" PointX="0.75" PointY="4.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="ScutexServiceModel.LicenseActivation" Width="1.5" PointX="7.5" PointY="1.125" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="ScutexServiceModel.LicenseKey" Width="1.5" PointX="5.25" PointY="1" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="ScutexServiceModel.License" Width="1.5" PointX="0.75" PointY="1.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="ScutexServiceModel.LicenseSet" Width="1.5" PointX="3" PointY="1.25" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="ScutexServiceModel.Master" Width="1.5" PointX="2.75" PointY="4.75" Height="2.5571907552083317" />
+        <AssociationConnector Association="ScutexServiceModel.FK_LicenseActivations_LicenseKeys" >
+          <ConnectorPoint PointX="6.75" PointY="2.49974609375" />
+          <ConnectorPoint PointX="7.5" PointY="2.49974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexServiceModel.FK_LicenseKeys_LicenseSets" >
+          <ConnectorPoint PointX="4.5" PointY="2.4324446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="2.4324446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScutexServiceModel.FK_LicenseSets_Licenses" >
+          <ConnectorPoint PointX="2.25" PointY="2.422841796875" />
+          <ConnectorPoint PointX="3" PointY="2.422841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

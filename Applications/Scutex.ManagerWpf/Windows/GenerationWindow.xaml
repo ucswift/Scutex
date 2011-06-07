@@ -1,0 +1,122 @@
+﻿<Ribbon:XamRibbonWindow xmlns:igEditors="clr-namespace:Infragistics.Windows.Editors;assembly=InfragisticsWpf4.Editors.v10.3"  
+												xmlns:igWindows="clr-namespace:Infragistics.Windows.Controls;assembly=InfragisticsWpf4.v10.3"  
+												x:Class="WaveTech.Scutex.Manager.Windows.GenerationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+												xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3" 
+												xmlns:UserControls="clr-namespace:WaveTech.Scutex.Manager.UserControls" x:Name="generationWindow"
+                        Title="Generate License Keys" Height="500" Width="500" WindowStartupLocation="CenterOwner">
+    <Ribbon:XamRibbonWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Ribbon:XamRibbonWindow.Resources>
+    <Ribbon:RibbonWindowContentHost>
+        <Ribbon:RibbonWindowContentHost.Ribbon>
+            <Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
+            </Ribbon:XamRibbon>
+        </Ribbon:RibbonWindowContentHost.Ribbon>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Row="0" Grid.Column="0" Header="License Settings" Margin="4,4,4,4" Foreground="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <igWindows:XamTabControl Grid.Row="0" Grid.Column="0">
+                        <igWindows:TabItemEx Header="License Key Types">
+                            <igWindows:TabItemEx.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="55" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <GroupBox Grid.Row="0" Grid.Column="0" Header="License Set" Margin="4,4,4,4">
+                                        <WrapPanel>
+                                            <ComboBox x:Name="cboLicenseSet" Width="250" ItemsSource="{Binding Source={StaticResource licenseSetData}}" DisplayMemberPath="Name" SelectionChanged="cboLicenseSet_SelectionChanged" />
+                                        </WrapPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Grid.Row="1" Grid.Column="0" Header="Key Type" Margin="4,4,4,4">
+                                        <WrapPanel>
+                                            <RadioButton x:Name="cboSingleUser" Content="Single User" Margin="4,4,4,4" />
+                                            <RadioButton x:Name="cboMultiUser" Content="Multi User" Margin="4,4,4,4" />
+                                            <RadioButton x:Name="cboHardwareLock" Content="Hardware Lock" Margin="4,4,4,4" />
+                                            <RadioButton x:Name="cboUnlimited" Content="Unlimied" Margin="4,4,4,4" />
+                                            <RadioButton x:Name="cboEnterprise" Content="Enteprise" Margin="4,4,4,4" />
+                                        </WrapPanel>
+                                    </GroupBox>
+                                </Grid>
+                            </igWindows:TabItemEx.Content>
+                        </igWindows:TabItemEx>
+                        <igWindows:TabItemEx Header="License Key Data" Visibility="Collapsed">
+                            <igWindows:TabItemEx.Content>
+                                <Canvas />
+                            </igWindows:TabItemEx.Content>
+                        </igWindows:TabItemEx>
+                    </igWindows:XamTabControl>
+
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition />
+                            <RowDefinition Height="35" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="1" Text="Keys to Generate:" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                        <igEditors:XamNumericEditor x:Name="txtKeysToGenerate" Grid.Row="2"  Margin="4,4,4,4" SpinButtonDisplayMode="Always" Mask="nnnnnnnnnnnn" PadChar="0" />
+
+                        <!--<Ribbon:ButtonTool Grid.Row="4" x:Name="btnGenerateKeys" Content="Generate Keys" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnGenerateKeys_Click" />-->
+                        <Button Grid.Row="4" x:Name="btnGenerateKeys" Content="Generate Keys" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnGenerateKeys_Click" />
+                    </Grid>
+                </Grid>
+                
+                
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Grid.Column="0" Header="License Keys" Margin="4,4,4,4" Foreground="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="lstLicenseKeys" ItemsSource="{Binding License.TrialNotificationType, ElementName=trialSettingsControl, Mode=TwoWay}" />
+                    
+                    <!--<Ribbon:ButtonTool Grid.Row="1" Grid.Column="1" x:Name="btnSaveAndExport" Margin="4,4,4,4" Content="Save and Export Keys" HorizontalAlignment="Right" Click="btnSaveAndExport_Click"  />-->
+                    <Button Grid.Row="1" Grid.Column="1" x:Name="btnSaveAndExport" Margin="4,4,4,4" Content="Save and Export Keys" HorizontalAlignment="Right" Click="btnSaveAndExport_Click" />
+                </Grid>
+            </GroupBox>
+
+            <UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="2"
+              WindowHeight="{Binding ElementName=CurrentPresenter, Path=ActualHeight}" WindowWidth="{Binding ElementName=CurrentPresenter, Path=ActualWidth}" />
+        </Grid>
+    </Ribbon:RibbonWindowContentHost>
+</Ribbon:XamRibbonWindow>

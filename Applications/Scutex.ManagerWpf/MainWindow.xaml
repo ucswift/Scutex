@@ -1,0 +1,249 @@
+﻿<my:XamRibbonWindow xmlns:my="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3"  
+										x:Class="WaveTech.Scutex.Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:igRibbon="http://infragistics.com/Ribbon"
+        xmlns:local="clr-namespace:WaveTech.Scutex.Manager"
+        xmlns:Classes="clr-namespace:WaveTech.Scutex.Manager.Classes" 
+        Title="Scutex Licensing Manager" WindowStartupLocation="CenterScreen"
+        MinWidth="800" MinHeight="580" Height="580" Width="800" ResizeMode="CanResizeWithGrip">
+
+	<my:XamRibbonWindow.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="DataTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</my:XamRibbonWindow.Resources>
+
+	<igRibbon:RibbonWindowContentHost>
+		<igRibbon:RibbonWindowContentHost.Ribbon>
+			<igRibbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" RibbonTabItemSelected="myRibbon_RibbonTabItemSelected">
+				<igRibbon:XamRibbon.Resources>
+				</igRibbon:XamRibbon.Resources>
+				<!-- ApplicationMenu -->
+				<igRibbon:XamRibbon.ApplicationMenu>
+					<igRibbon:ApplicationMenu Image="img/ScutexImageSmall.png" RecentItemsHeader="{Binding ElementName=root, Path=ApplicationMenu_RecentItems_Header}">
+						<igRibbon:ButtonTool Command="{x:Static local:Commands.NewCommand}" Caption="{Binding ElementName=root, Path=ApplicationMenu_Button_New}" LargeImage="img/file-48x48.png"/>
+						<igRibbon:ButtonTool Caption="{Binding ElementName=root, Path=ApplicationMenu_Button_Open}" LargeImage="img/Folder-48x48.png" Command="{x:Static local:Commands.OpenCommand}" />
+						<igRibbon:ButtonTool Caption="{Binding ElementName=root, Path=ApplicationMenu_Button_Save}" LargeImage="img/Memo-48x48.png" Command="{x:Static local:Commands.SaveCommand}" />
+						<igRibbon:ButtonTool Caption="{Binding ElementName=root, Path=ApplicationMenu_Button_Close}" LargeImage="img/Close_Large.png" Command="{x:Static local:Commands.CloseProjectCommand}" />
+						<igRibbon:SeparatorTool/>
+						<igRibbon:ApplicationMenu.RecentItems>
+
+						</igRibbon:ApplicationMenu.RecentItems>
+						<igRibbon:ApplicationMenu.FooterToolbar>
+							<igRibbon:ApplicationMenuFooterToolbar>
+								<igRibbon:ButtonTool x:Name="btnMenuExit" Caption="{Binding ElementName=root, Path=ApplicationMenu_Button_Exit}" Click="btnMenuExit_Click"/>
+							</igRibbon:ApplicationMenuFooterToolbar>
+						</igRibbon:ApplicationMenu.FooterToolbar>
+					</igRibbon:ApplicationMenu>
+				</igRibbon:XamRibbon.ApplicationMenu>
+				<!-- End ApplicationMenu -->
+				<!-- QuickAccessToolbar -->
+				<igRibbon:XamRibbon.QuickAccessToolbar>
+					<igRibbon:QuickAccessToolbar>
+
+					</igRibbon:QuickAccessToolbar>
+				</igRibbon:XamRibbon.QuickAccessToolbar>
+				<!-- End QuickAccessToolbar -->
+				<!-- Tabs -->
+				<igRibbon:XamRibbon.Tabs>
+					<igRibbon:RibbonTabItem x:Name="HomeTab" Header="{Binding ElementName=root, Path=Tab_Home_Header}">
+						<!-- RibbonGroup-->
+						<igRibbon:RibbonGroup Id="HomeGroup" Caption="{Binding ElementName=root, Path=Tab_Group_Home_Caption}">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Home_Button_New}"
+                                      Command="{x:Static local:Commands.NewCommand}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      LargeImage="img/file-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Home_Button_Open}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.OpenCommand}"
+                                      LargeImage="img/Folder-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Home_Button_Save}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.SaveCommand}"
+                                      LargeImage="img/Memo-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Home_Button_Close}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.CloseProjectCommand}"
+                                      LargeImage="img/Close_Large.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+						<!-- End RibbonGroup-->
+						<!-- RibbonGroup-->
+						<igRibbon:RibbonGroup Id="LicensingGroup" Caption="{Binding ElementName=root, Path=Tab_Group_Licensing_Caption}">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Licensing_Button_Generate}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                    Command="{x:Static local:Commands.GenerateKeysCommand}"
+                                      LargeImage="img/Key-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Licensing_Button_Code}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.SoftwareCodeCommand}"
+                                      LargeImage="img/Sistema-Locked-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_System_Button_Test}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.DemoCommand}"
+                                      LargeImage="img/view-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_System_Button_Validate}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.ValidateProjectCommand}"
+                                      LargeImage="img/tick-48x48.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+						<!-- End RibbonGroup-->
+
+						<!-- RibbonGroup-->
+						<igRibbon:RibbonGroup Id="HelpGroup" Caption="{Binding ElementName=root, Path=Tab_Group_Help_Caption}">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Help_Button_Help}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.HelpCommand}"
+                                      LargeImage="img/help-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Help_Button_Homepage}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.HomeCommand}"
+                                      LargeImage="img/home-next-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_Help_Button_About}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.AboutCommand}"
+                                      LargeImage="img/About_32.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+						<!-- End RibbonGroup-->
+
+						<!-- RibbonGroup-->
+						<igRibbon:RibbonGroup Id="SystemGroup" Caption="{Binding ElementName=root, Path=Tab_Group_System_Caption}" Visibility="Hidden">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_System_Button_Products}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.ProductsCommand}"
+                                      LargeImage="img/CD-icon-48.png"/>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_System_Button_GenerateCode}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.ProductsCommand}"
+                                      LargeImage="img/Code-48x48.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+						<!-- End RibbonGroup-->
+
+					</igRibbon:RibbonTabItem>
+
+					<igRibbon:RibbonTabItem x:Name="DatabaseTab" Header="{Binding ElementName=root, Path=Tab_Database_Header}" Visibility="Collapsed">
+
+					</igRibbon:RibbonTabItem>
+
+					<igRibbon:RibbonTabItem x:Name="ProductsTab" Header="{Binding ElementName=root, Path=Tab_Products_Header}">
+						<igRibbon:RibbonGroup Id="ProductsGeneralGroup" Caption="{Binding ElementName=root, Path=Tab_ProductsGeneral_Header}">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ProductsGeneral_Button_New}"
+                                      Command="{x:Static local:Commands.NewProductsCommand}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      LargeImage="img/ProductAdd-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ProductsGeneral_Button_Edit}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.EditProductCommand}"
+                                      LargeImage="img/ProductEdit-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ProductsGeneral_Button_Remove}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.RemoveProductCommand}"
+                                      LargeImage="img/ProductDelete-48x48.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+						<igRibbon:RibbonGroup Id="ProductsCodeGroup" Caption="{Binding ElementName=root, Path=Tab_ProductsCode_Header}">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_System_Button_GenerateCode}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.ProductsCommand}"
+                                      LargeImage="img/Code-48x48.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+					</igRibbon:RibbonTabItem>
+
+					<igRibbon:RibbonTabItem x:Name="ServicesTab" Header="{Binding ElementName=root, Path=Tab_Services_Header}">
+						<!-- RibbonGroup-->
+						<igRibbon:RibbonGroup Id="ServiceGeneralGroup" Caption="{Binding ElementName=root, Path=Tab_ServicesGeneral_Header}">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ServiceManagement_Button_New}"
+                                      Command="{x:Static local:Commands.NewServiceCommand}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      LargeImage="img/add-server-icon-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ServiceManagement_Button_Remove}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.RemoveServiceCommand}"
+                                      LargeImage="img/remove-server-icon-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ServiceManagement_Button_ViewServices}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.ViewServicesCommand}"
+                                      LargeImage="img/search-server-icon-48x48.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+						<igRibbon:RibbonGroup Id="ServiceMangementGroup" Caption="{Binding ElementName=root, Path=Tab_Group_ServiceManagement_Text}">
+							<igRibbon:ToolHorizontalWrapPanel>
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ServiceManagement_Button_Upload}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.UploadProductCommand}"
+                                      LargeImage="img/upload-server-icon-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ServiceManagement_Button_UploadKeys}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.UploadKeysCommand}"
+                                      LargeImage="img/upload-server-icon-48x48.png"/>
+
+								<igRibbon:ButtonTool
+                                      Caption="{Binding ElementName=root, Path=Tab_Group_ServiceManagement_Button_Download}"
+                                      igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"
+                                      Command="{x:Static local:Commands.DownloadLogsCommand}"
+                                      LargeImage="img/download-server-icon-48x48.png"/>
+							</igRibbon:ToolHorizontalWrapPanel>
+						</igRibbon:RibbonGroup>
+						<!-- End RibbonGroup-->
+					</igRibbon:RibbonTabItem>
+				</igRibbon:XamRibbon.Tabs>
+				<!-- End Tabs -->
+				<!-- ContextualTabGroups -->
+				<igRibbon:XamRibbon.ContextualTabGroups>
+
+				</igRibbon:XamRibbon.ContextualTabGroups>
+				<!-- End ContextualTabGroups -->
+			</igRibbon:XamRibbon>
+		</igRibbon:RibbonWindowContentHost.Ribbon>
+		<Classes:XamRibbonLocalizationRoot x:Name="root" Padding="10" />
+	</igRibbon:RibbonWindowContentHost>
+</my:XamRibbonWindow>

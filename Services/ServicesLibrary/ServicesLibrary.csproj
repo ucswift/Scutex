@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8969C10D-485B-40A0-A4AC-FA71806C3E25}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WaveTech.Scutex.WcfServices.ServicesLibrary</RootNamespace>
+    <AssemblyName>WaveTech.Scutex.WcfServices.ServicesLibrary</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>False</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\Other\Scutex-PubPriv-KeyFile.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\References\Automapper\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\References\SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap, Version=2.6.1.1, Culture=neutral, PublicKeyToken=d9e244627cc0a396, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="CoreWebServiceHostFactory.cs" />
+    <Compile Include="ErrorHandler.cs" />
+    <Compile Include="ErrorHandlerElement.cs" />
+    <Compile Include="Interfaces\Client\IActivationService.cs" />
+    <Compile Include="Interfaces\Management\ILicensingService.cs" />
+    <Compile Include="Interfaces\Management\IProductsService.cs" />
+    <Compile Include="Interfaces\Management\IReportingService.cs" />
+    <Compile Include="Interfaces\Management\IStatusService.cs" />
+    <Compile Include="LoggingHelper.cs" />
+    <Compile Include="MasterHooker.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ServicesLibraryRegistry.cs" />
+    <Compile Include="Services\ActivationLogService.cs" />
+    <Compile Include="Services\Client\ActivationService.cs" />
+    <Compile Include="Services\Management\LicensingService.cs" />
+    <Compile Include="Services\Management\ProductsService.cs" />
+    <Compile Include="Services\Management\ReportingService.cs" />
+    <Compile Include="Services\Management\StatusService.cs" />
+    <Compile Include="Services\CommonService.cs" />
+    <Compile Include="Services\ControlService.cs" />
+    <Compile Include="Services\KeyPairService.cs" />
+    <Compile Include="Services\KeyManagementService.cs" />
+    <Compile Include="Services\MasterService.cs" />
+    <Compile Include="Services\ProductManagementService.cs" />
+    <Compile Include="Services\TokenService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Framework\Scutex.Framework.csproj">
+      <Project>{129D128C-FDD4-495C-BA8B-72DC88B56965}</Project>
+      <Name>Scutex.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Model\Scutex.Model.csproj">
+      <Project>{9C5F0DEA-954E-40BC-9B6C-62183D63022F}</Project>
+      <Name>Scutex.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Services\Scutex.Services.csproj">
+      <Project>{78E7AA24-339E-4B0B-A6DE-BC359EBFDAE1}</Project>
+      <Name>Scutex.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Generators\SmallStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorSmall.csproj">
+      <Project>{58D27055-380F-4C72-844F-3D9D48CC9D5F}</Project>
+      <Name>Scutex.Generators.StaticKeyGeneratorSmall</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\AsymmetricEncryptionProvider\Scutex.Providers.AsymmetricEncryptionProvider.csproj">
+      <Project>{2396BFD0-DCB8-4E7F-86A8-13B0FC3E5906}</Project>
+      <Name>Scutex.Providers.AsymmetricEncryptionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\HashingProvider\Scutex.Providers.HashingProvider.csproj">
+      <Project>{0388C0A9-7FEF-4E1D-9743-9EAAF6F3060F}</Project>
+      <Name>Scutex.Providers.HashingProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\ObjectSerializationProvider\Scutex.Providers.ObjectSerializationProvider.csproj">
+      <Project>{FBBF7D09-0CC4-435E-A2AC-9503FA3680CE}</Project>
+      <Name>Scutex.Providers.ObjectSerializationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.DataGenerationProvider\Scutex.Providers.DataGenerationProvider.csproj">
+      <Project>{FE4D7E56-A192-46CB-A020-94F415EF35DD}</Project>
+      <Name>Scutex.Providers.DataGenerationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.NetworkTimeProvider\Scutex.Providers.NetworkTimeProvider.csproj">
+      <Project>{2D7EF293-72B3-4AD2-9ABC-4A4BE1A3B2F9}</Project>
+      <Name>Scutex.Providers.NetworkTimeProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\SymmetricEncryptionProvider\Scutex.Providers.SymmetricEncryptionProvider.csproj">
+      <Project>{899EB8A9-D905-40F4-8F51-EF1A3B92BE67}</Project>
+      <Name>Scutex.Providers.SymmetricEncryptionProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\WmiDataProvider\Scutex.Providers.WmiDataProvider.csproj">
+      <Project>{B58E86F4-1CB6-4B20-979C-AF259D8EB862}</Project>
+      <Name>Scutex.Providers.WmiDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ClientDataRepository\Scutex.Repositories.ClientDataRepository.csproj">
+      <Project>{ED70B9F9-C186-4C8A-84AE-9EE4E4737CE6}</Project>
+      <Name>Scutex.Repositories.ClientDataRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ServicesDataRepository\Scutex.Repositories.ServicesDataRepository.csproj">
+      <Project>{2CE790DD-36A3-412B-9CE6-6CF353FFF75D}</Project>
+      <Name>Scutex.Repositories.ServicesDataRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\..\Other\Scutex-PubPriv-KeyFile.snk">
+      <Link>Scutex-PubPriv-KeyFile.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

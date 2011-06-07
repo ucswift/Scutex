@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="1450958d-0a07-46b2-b1b5-e434cfb8e4f2" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="2c4a6ef1-b0c9-446b-b78b-4a0253d26b94" name="Providers" forbiddenNamespace="WaveTech.Scutex.Model">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="ad527950-b7e5-419f-bf02-a054eb96f42d" direction="Forward">
+          <layerMoniker Id="5f77a1ea-9a45-4206-a6d3-e997903b0643" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="c1c123b6-c9b4-4b61-bd41-87b46d3c9c21" direction="Forward">
+          <layerMoniker Id="a2270477-daf3-4dad-8958-e1b05915c5e4" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="305bf951-a172-4c83-b95f-f68509b40a0a" direction="Forward">
+          <layerMoniker Id="08615894-0c9c-4ca2-956e-63514fc3ddec" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="192fb03c-5000-413b-9383-64a1f0069285" direction="Bidirectional">
+          <layerMoniker Id="3865ec2a-31a7-4dcf-8ef3-d3f021b32edb" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="34e49675-fffd-41a9-af8b-5f71b67ed0d0" name="Scutex.Providers.WmiDataProvider">
+          <ArtifactNode Label="Scutex.Providers.WmiDataProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/WmiDataProvider/Scutex.Providers.WmiDataProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.WmiDataProvider)" Label="WaveTech.Scutex.Providers.WmiDataProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="70e72327-be64-4cfa-85d3-94c1b73828e6" name="Scutex.Providers.NetworkTimeProvider">
+          <ArtifactNode Label="Scutex.Providers.NetworkTimeProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/Scutex.Providers.NetworkTimeProvider/Scutex.Providers.NetworkTimeProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.NetworkTimeProvider)" Label="WaveTech.Scutex.Providers.NetworkTimeProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="76ae2c71-8097-46d6-a8b2-8620a5a208fb" name="Scutex.Providers.HashingProvider">
+          <ArtifactNode Label="Scutex.Providers.HashingProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/HashingProvider/Scutex.Providers.HashingProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.HashingProvider)" Label="WaveTech.Scutex.Providers.HashingProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="d373a16e-0462-463d-8e4f-8cc738a26ef3" name="Scutex.Providers.CompressionProvider">
+          <ArtifactNode Label="Scutex.Providers.CompressionProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/CompressionProvider/Scutex.Providers.CompressionProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.CompressionProvider)" Label="WaveTech.Scutex.Providers.CompressionProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="959d93e2-e86d-43f4-8bf9-fb25d176f2f5" name="Scutex.Providers.DataGenerationProvider">
+          <ArtifactNode Label="Scutex.Providers.DataGenerationProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/Scutex.Providers.DataGenerationProvider/Scutex.Providers.DataGenerationProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.DataGenerationProvider)" Label="WaveTech.Scutex.Providers.DataGenerationProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="9c27827e-3d33-439b-a3d8-e652aa24581b" name="Scutex.Providers.ObjectSerializationProvider">
+          <ArtifactNode Label="Scutex.Providers.ObjectSerializationProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/ObjectSerializationProvider/Scutex.Providers.ObjectSerializationProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.ObjectSerializationProvider)" Label="WaveTech.Scutex.Providers.ObjectSerializationProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="26225c1d-17ce-4037-9588-3c856e39b512" name="Scutex.Providers.SymmetricEncryptionProvider">
+          <ArtifactNode Label="Scutex.Providers.SymmetricEncryptionProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/SymmetricEncryptionProvider/Scutex.Providers.SymmetricEncryptionProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.SymmetricEncryptionProvider)" Label="WaveTech.Scutex.Providers.SymmetricEncryptionProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="b0dae24d-b2c4-436e-a364-ea01042503f8" name="Scutex.Providers.AsymmetricEncryptionProvider">
+          <ArtifactNode Label="Scutex.Providers.AsymmetricEncryptionProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/AsymmetricEncryptionProvider/Scutex.Providers.AsymmetricEncryptionProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.AsymmetricEncryptionProvider)" Label="WaveTech.Scutex.Providers.AsymmetricEncryptionProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="cb2aa029-25bf-407e-a6f8-e52c015853dc" name="Scutex.Providers.WebServicesProvider">
+          <ArtifactNode Label="Scutex.Providers.WebServicesProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/WebServicesProvider/Scutex.Providers.WebServicesProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.WebServicesProvider)" Label="WaveTech.Scutex.Providers.WebServicesProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="64520310-007b-47c1-9cce-b22305d326d7" name="WaveTech.Scutex.Providers">
+          <ArtifactNode Label="WaveTech.Scutex.Providers" Category="CodeSchema_Namespace" Id="(Namespace=WaveTech.Scutex.Providers)" />
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.WmiDataProvider)" Label="WaveTech.Scutex.Providers.WmiDataProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.WebServicesProvider)" Label="WaveTech.Scutex.Providers.WebServicesProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.SymmetricEncryptionProvider)" Label="WaveTech.Scutex.Providers.SymmetricEncryptionProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.ObjectSerializationProvider)" Label="WaveTech.Scutex.Providers.ObjectSerializationProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.NetworkTimeProvider)" Label="WaveTech.Scutex.Providers.NetworkTimeProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.HashingProvider)" Label="WaveTech.Scutex.Providers.HashingProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.DataGenerationProvider)" Label="WaveTech.Scutex.Providers.DataGenerationProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.CompressionProvider)" Label="WaveTech.Scutex.Providers.CompressionProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.AsymmetricEncryptionProvider)" Label="WaveTech.Scutex.Providers.AsymmetricEncryptionProvider.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=WaveTech.Scutex.Providers)" Label="WaveTech.Scutex.Providers" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="7413d114-2a11-4985-8113-ed759fb9b3f7" name="Scutex.Providers.DatabaseUpdateProvider">
+          <ArtifactNode Label="Scutex.Providers.DatabaseUpdateProvider" Category="CodeSchema_Project" Id="(Assembly=../../Providers/Scutex.Providers.DatabaseUpdateProvider/Scutex.Providers.DatabaseUpdateProvider.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Providers.DatabaseUpdateProvider)" Label="WaveTech.Scutex.Providers.DatabaseUpdateProvider.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="08615894-0c9c-4ca2-956e-63514fc3ddec" name="Model" requiredNamespace="WaveTech.Scutex.Model">
+      <references>
+        <reference Id="bb525db9-d7c1-4e8e-bc28-67bc36486e9e" name="Scutex.Model">
+          <ArtifactNode Label="Scutex.Model" Category="CodeSchema_Project" Id="(Assembly=../../Core/Model/Scutex.Model.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Model)" Label="WaveTech.Scutex.Model.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="b6a19a34-0555-499c-86cf-b9f3a9631847" name="User Interaction&#xD;&#xA;Systems" forbiddenNamespace="WaveTech.Scutex.Model">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="f7a28278-7133-4ba4-8e7b-9ade6fdd64a2" direction="Forward">
+          <layerMoniker Id="f9ac0d74-a04c-48c5-a187-d8734c6a91a5" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="5a0d4a54-126b-4cc3-bf45-3ee554f04541" direction="Forward">
+          <layerMoniker Id="08615894-0c9c-4ca2-956e-63514fc3ddec" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="97d7d75a-be8b-480d-a959-2de8123eb897" direction="Forward">
+          <layerMoniker Id="06ba2185-8800-4775-8637-430dd6000c66" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="38e95b92-aebb-48a9-aed0-3a2015f0f59e" name="Scutex.ManagerWpf">
+          <ArtifactNode Label="Scutex.ManagerWpf" Category="CodeSchema_Project" Id="(Assembly=../../Applications/Scutex.ManagerWpf/Scutex.ManagerWpf.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=LicensingManager)" Label="LicensingManager.exe" Category="FileSystem.Category.FileOfType.exe">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="48056a3a-88fe-4b35-92ae-2f97ec221e6a" name="Scutex.Licensing">
+          <ArtifactNode Label="Scutex.Licensing" Category="CodeSchema_Project" Id="(Assembly=../../Applications/Licensing/Scutex.Licensing.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Licensing)" Label="WaveTech.Scutex.Licensing.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="f9ac0d74-a04c-48c5-a187-d8734c6a91a5" name="Framework" requiredNamespace="WaveTech.Scutex.Framework" forbiddenNamespace="WaveTech.Scutex.Model" forbiddenNamespaceDependencies="WaveTech.Scutex.Providers;WaveTech.Scutex.Generators;WaveTech.Scutex.Services;WaveTech.Scutex.Generators;WaveTech.Scutex.Repositories">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="5db6d52c-4f68-4dcd-8078-3cd7c6005a37" direction="Forward">
+          <layerMoniker Id="985c982a-f5b3-47d2-808b-ff3f4d2b8202" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="a952b660-b623-4551-850f-cf098cd7ab77" direction="Forward">
+          <layerMoniker Id="08615894-0c9c-4ca2-956e-63514fc3ddec" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="ea01157f-f430-4a10-9876-c381e1560809" name="Scutex.Framework">
+          <ArtifactNode Label="Scutex.Framework" Category="CodeSchema_Project" Id="(Assembly=../../Core/Framework/Scutex.Framework.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Framework)" Label="WaveTech.Scutex.Framework.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="3117e55c-0601-49b2-8851-b4e39e7b58e2" name="Repositories" forbiddenNamespace="WaveTech.Scutex.Model">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="181c7bd9-ceee-4ed7-a6f3-490d6cc9cfe7" direction="Forward">
+          <layerMoniker Id="08615894-0c9c-4ca2-956e-63514fc3ddec" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="4f62818f-c3c4-461a-a471-68233e3d9652" direction="Forward">
+          <layerMoniker Id="2c4a6ef1-b0c9-446b-b78b-4a0253d26b94" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="7380081e-05b6-4c14-ac3c-d7ba424cb0ea" direction="Forward">
+          <layerMoniker Id="b81cf700-51d6-4bbf-8464-cc37fe618e3c" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="3b30a10a-7f36-422c-8aa2-5f9c5a4adcb6" name="Scutex.Repositories.ClientDataRepository">
+          <ArtifactNode Label="Scutex.Repositories.ClientDataRepository" Category="CodeSchema_Project" Id="(Assembly=../../Repositories/ClientDataRepository/Scutex.Repositories.ClientDataRepository.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Repositories.ClientDataRepository)" Label="WaveTech.Scutex.Repositories.ClientDataRepository.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="f40e86ad-3cd4-4b3f-8785-25eb7b99d11e" name="Scutex.Repositories.ManagerDataRepository">
+          <ArtifactNode Label="Scutex.Repositories.ManagerDataRepository" Category="CodeSchema_Project" Id="(Assembly=../../Repositories/ManagerDataRepository/Scutex.Repositories.ManagerDataRepository.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Repositories.ManagerDataRepository)" Label="WaveTech.Scutex.Repositories.ManagerDataRepository.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="94e7ee1b-1b36-4195-95e1-0e90498a7ff3" name="Scutex.Repositories.ServicesDataRepository">
+          <ArtifactNode Label="Scutex.Repositories.ServicesDataRepository" Category="CodeSchema_Project" Id="(Assembly=../../Repositories/ServicesDataRepository/Scutex.Repositories.ServicesDataRepository.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Repositories.ServicesDataRepository)" Label="WaveTech.Scutex.Repositories.ServicesDataRepository.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="c19d86db-2f06-44ba-9800-95770fc66d67" name="Generators" requiredNamespace="WaveTech.Scutex.Generators" forbiddenNamespace="WaveTech.Scutex.Model" forbiddenNamespaceDependencies="WaveTech.Scutex.Services">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="3bc107e3-b0f7-4b17-b206-4276f76252df" direction="Forward">
+          <layerMoniker Id="08615894-0c9c-4ca2-956e-63514fc3ddec" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="5d534caa-0740-4402-845c-d5d367f483b1" direction="Forward">
+          <layerMoniker Id="2c4a6ef1-b0c9-446b-b78b-4a0253d26b94" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="5caa6809-8de2-4d6e-9ef3-0337f21c00c5" name="Scutex.Generators.DyanmicKeyGeneratorSmall">
+          <ArtifactNode Label="Scutex.Generators.DyanmicKeyGeneratorSmall" Category="CodeSchema_Project" Id="(Assembly=../../Generators/DyanmicKeyGeneratorSmall/Scutex.Generators.DyanmicKeyGeneratorSmall.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Generators.DyanmicKeyGeneratorSmall)" Label="WaveTech.Scutex.Generators.DyanmicKeyGeneratorSmall.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="15a7f81a-3e9c-43ab-94c5-2d44147fbc24" name="Scutex.Generators.StaticKeyGeneratorSmall">
+          <ArtifactNode Label="Scutex.Generators.StaticKeyGeneratorSmall" Category="CodeSchema_Project" Id="(Assembly=../../Generators/SmallStaticKeyGenerator/Scutex.Generators.StaticKeyGeneratorSmall.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Generators.StaticKeyGeneratorSmall)" Label="WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="9d850317-7e68-412f-bd42-a886066e27c6" name="Scutex.Generators.DynamicKeyGeneratorLarge">
+          <ArtifactNode Label="Scutex.Generators.DynamicKeyGeneratorLarge" Category="CodeSchema_Project" Id="(Assembly=../../Generators/DynamicKeyGenerator/Scutex.Generators.DynamicKeyGeneratorLarge.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Generators.DynamicKeyGenerator)" Label="WaveTech.Scutex.Generators.DynamicKeyGenerator.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="b03ec5d2-a7b8-4537-9dac-6f5e1e066cb5" name="Scutex.Generators.StaticKeyGeneratorLarge">
+          <ArtifactNode Label="Scutex.Generators.StaticKeyGeneratorLarge" Category="CodeSchema_Project" Id="(Assembly=../../Generators/StaticKeyGenerator/Scutex.Generators.StaticKeyGeneratorLarge.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Generators.StaticKeyGeneratorLarge)" Label="WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="06ba2185-8800-4775-8637-430dd6000c66" name="Core Services" forbiddenNamespace="WaveTech.Scutex.Model">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="a7c2afe2-b3d7-4a58-b6de-794ed636d5ef" direction="Forward">
+          <layerMoniker Id="08615894-0c9c-4ca2-956e-63514fc3ddec" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="6d58747d-25f8-4729-b55d-327ea5afd6be" direction="Forward">
+          <layerMoniker Id="2c4a6ef1-b0c9-446b-b78b-4a0253d26b94" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="cb4bb2bf-597c-44b7-9745-45c7c76c4ebe" direction="Forward">
+          <layerMoniker Id="c19d86db-2f06-44ba-9800-95770fc66d67" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="35d40703-7d84-47e5-a186-774352b071c9" direction="Forward">
+          <layerMoniker Id="3117e55c-0601-49b2-8851-b4e39e7b58e2" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="157d2255-b8bd-444d-803c-648ea54e080b" direction="Forward">
+          <layerMoniker Id="f9ac0d74-a04c-48c5-a187-d8734c6a91a5" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="923dab63-7ab3-46d2-9a52-069bff7f5a33" name="Scutex.Services">
+          <ArtifactNode Label="Scutex.Services" Category="CodeSchema_Project" Id="(Assembly=../../Core/Services/Scutex.Services.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Services)" Label="WaveTech.Scutex.Services.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="3865ec2a-31a7-4dcf-8ef3-d3f021b32edb" name="WCF Services" forbiddenNamespace="WaveTech.Scutex.Model">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="b3c723bc-956a-45bc-bcc4-0d85be5476a5" direction="Forward">
+          <layerMoniker Id="08615894-0c9c-4ca2-956e-63514fc3ddec" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="d6f19db7-94fe-4e38-9177-4240e4a21f14" direction="Forward">
+          <layerMoniker Id="f9ac0d74-a04c-48c5-a187-d8734c6a91a5" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="0fdcba7b-24d1-4bae-bfe7-38694a226603" direction="Forward">
+          <layerMoniker Id="3117e55c-0601-49b2-8851-b4e39e7b58e2" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="b1a94834-3c82-498e-86f5-c7e7388d72f6" direction="Forward">
+          <layerMoniker Id="06ba2185-8800-4775-8637-430dd6000c66" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="b06e4cc2-430d-44c1-9ad1-1a27400a8de7" direction="Forward">
+          <layerMoniker Id="c19d86db-2f06-44ba-9800-95770fc66d67" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="1febe5a6-5046-4389-8761-513fc5d11cf0" name="ClientService">
+          <ArtifactNode Label="ClientService" Category="CodeSchema_Project" Id="(Assembly=../../Services/ClientService/ClientService.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ClientService)" Label="ClientService.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="2faa6004-b626-43c2-b7ea-70aa04d029e9" name="ManagementService">
+          <ArtifactNode Label="ManagementService" Category="CodeSchema_Project" Id="(Assembly=../../Services/ManagementService/ManagementService.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ManagementService)" Label="ManagementService.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="efe6405a-8c84-4f7a-8bb9-be014c40442d" name="ServicesLibrary">
+          <ArtifactNode Label="ServicesLibrary" Category="CodeSchema_Project" Id="(Assembly=../../Services/ServicesLibrary/ServicesLibrary.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.WcfServices.ServicesLibrary)" Label="WaveTech.Scutex.WcfServices.ServicesLibrary.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="ed67fca0-85ea-438a-82e8-2aa1ebd976e7" name="WaveTech.Scutex.WcfServices.ServicesLibrary">
+          <ArtifactNode Label="WaveTech.Scutex.WcfServices.ServicesLibrary" Category="CodeSchema_Namespace" Id="(Namespace=WaveTech.Scutex.WcfServices.ServicesLibrary)" />
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.WcfServices.ServicesLibrary)" Label="WaveTech.Scutex.WcfServices.ServicesLibrary.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=WaveTech.Scutex.WcfServices.ServicesLibrary)" Label="WaveTech.Scutex.WcfServices.ServicesLibrary.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=WaveTech.Scutex.WcfServices.ServicesLibrary)" Label="WaveTech.Scutex.WcfServices.ServicesLibrary" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="5f77a1ea-9a45-4206-a6d3-e997903b0643" name="Encryption Library">
+      <references>
+        <reference Id="7ac8867b-be85-48f2-a5f0-210bf893a916" name="BouncyCastle.Crypto.dll">
+          <ArtifactNode Label="BouncyCastle.Crypto.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../References/BouncyCastle/BouncyCastle.Crypto.dll)">
+            <Category Ref="CodeSchema_Assembly" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=BouncyCastle.Crypto)" Label="BouncyCastle.Crypto.dll" Category="FileSystem.Category.FileOfType.dll">
+            <Category Ref="CodeSchema_Assembly" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="a2270477-daf3-4dad-8958-e1b05915c5e4" name="Compression Library">
+      <references>
+        <reference Id="759d3270-6375-4572-bc79-77e7e031dcd7" name="ICSharpCode.SharpZipLib.dll">
+          <ArtifactNode Label="ICSharpCode.SharpZipLib.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../References/SharpZipLib/ICSharpCode.SharpZipLib.dll)">
+            <Category Ref="CodeSchema_Assembly" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ICSharpCode.SharpZipLib)" Label="ICSharpCode.SharpZipLib.dll" Category="FileSystem.Category.FileOfType.dll">
+            <Category Ref="CodeSchema_Assembly" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="b81cf700-51d6-4bbf-8464-cc37fe618e3c" name="Automapper">
+      <references>
+        <reference Id="c917581b-e7fd-4212-871e-3c5ec621af80" name="AutoMapper.dll">
+          <ArtifactNode Label="AutoMapper.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../References/Automapper/AutoMapper.dll)">
+            <Category Ref="CodeSchema_Assembly" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=AutoMapper)" Label="AutoMapper.dll" Category="FileSystem.Category.FileOfType.dll">
+            <Category Ref="CodeSchema_Assembly" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="985c982a-f5b3-47d2-808b-ff3f4d2b8202" name="NLog" />
+  </layers>
+</layerModel>

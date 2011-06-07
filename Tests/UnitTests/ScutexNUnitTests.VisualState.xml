@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]G:\Projects\Scutex\Tests\UnitTests\ScutexNUnitTests.nunit</TopNode>
+  <SelectedNode>[0-1083]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests.when_validating_a_single_key.should_be_98_precent_accurate_when_validating_100000_bad_licenses</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]G:\Projects\Scutex\Tests\UnitTests\ScutexNUnitTests.nunit" Expanded="true" />
+    <Node UniqueName="[0-1085]G:\Projects\Scutex\Tests\UnitTests\bin\Debug\WaveTech.Scutex.UnitTests.dll" Expanded="true" />
+    <Node UniqueName="[0-1086]WaveTech" Expanded="true" />
+    <Node UniqueName="[0-1087]WaveTech.Scutex" Expanded="true" />
+    <Node UniqueName="[0-1088]WaveTech.Scutex.UnitTests" Expanded="true" />
+    <Node UniqueName="[0-1090]WaveTech.Scutex.UnitTests.Foundational" Expanded="true" />
+    <Node UniqueName="[0-1008]WaveTech.Scutex.UnitTests.Foundational.MathTests" Expanded="true" />
+    <Node UniqueName="[0-1006]WaveTech.Scutex.UnitTests.Foundational.RandomNumberTests" Expanded="true" />
+    <Node UniqueName="[0-1093]WaveTech.Scutex.UnitTests.Generators" Expanded="true" />
+    <Node UniqueName="[0-1094]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests" Expanded="true" />
+    <Node UniqueName="[0-1077]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests.when_generating_a_single_key" Expanded="true" />
+    <Node UniqueName="[0-1064]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests.when_using_get_weighting_modifer" Expanded="true" />
+    <Node UniqueName="[0-1073]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests.when_using_the_key_value_deobfuscator" Expanded="true" />
+    <Node UniqueName="[0-1069]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests.when_using_the_key_value_obfuscator" Expanded="true" />
+    <Node UniqueName="[0-1049]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests.when_using_the_licese_placeholders_with_generationoptions" Expanded="true" />
+    <Node UniqueName="[0-1081]WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests.when_validating_a_single_key" Expanded="true" />
+    <Node UniqueName="[0-1092]WaveTech.Scutex.UnitTests.Model" Expanded="true" />
+    <Node UniqueName="[0-1044]WaveTech.Scutex.UnitTests.Model.CharactersTests" Expanded="true" />
+    <Node UniqueName="[0-1033]WaveTech.Scutex.UnitTests.Model.EncryptionInfoTests" Expanded="true" />
+    <Node UniqueName="[0-1091]WaveTech.Scutex.UnitTests.Providers" Expanded="true" />
+    <Node UniqueName="[0-1028]WaveTech.Scutex.UnitTests.Providers.AsymmetricEncryptionProviderTests" Expanded="true" />
+    <Node UniqueName="[0-1089]WaveTech.Scutex.UnitTests.Services" Expanded="true" />
+    <Node UniqueName="[0-1023]WaveTech.Scutex.UnitTests.Services.LicenseKeyServiceTests" Expanded="true" />
+  </Nodes>
+</VisualState>

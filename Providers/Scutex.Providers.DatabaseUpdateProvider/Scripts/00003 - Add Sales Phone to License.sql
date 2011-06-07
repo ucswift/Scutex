@@ -1,0 +1,3 @@
+﻿-- Version: 95FD153C-06DE-486B-A460-F0FDA50FB0C2
+ALTER TABLE dbo.Licenses ADD
+	SalesPhone nvarchar(50) NULL

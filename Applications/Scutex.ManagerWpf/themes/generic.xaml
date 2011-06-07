@@ -1,0 +1,858 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WaveTech.Scutex.Manager"
+    xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+
+    <LinearGradientBrush x:Key="WindowBackgroundBrush" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FF555555" Offset="0" />
+        <GradientStop Color="#FF1C1C1C" Offset="1" />
+    </LinearGradientBrush>
+
+    <Style TargetType="{x:Type Controls:SimulatedWindow}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:SimulatedWindow}">
+                    <Controls:SimulatedWindow_Root x:Name="root">
+                        <Border BorderThickness="1" BorderBrush="#FF545454" CornerRadius="8,8,0,0" SnapsToDevicePixels="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Border CornerRadius="7,7,0,0" SnapsToDevicePixels="True">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStopCollection>
+                                                    <GradientStop Color="#FF8b8c8c" Offset="0" />
+                                                    <GradientStop Color="#FF8b8c8c" Offset="0.05" />
+                                                    <GradientStop Color="#FF48494a" Offset="0.44" />
+                                                    <GradientStop Color="#FF1b1d1f" Offset="0.4401" />
+                                                    <GradientStop Color="#FF17191a" Offset="0.9" />
+                                                    <GradientStop Color="#FF000000" Offset="1" />
+                                                </GradientStopCollection>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Grid>
+                                        <DockPanel HorizontalAlignment="Left" Margin="5,0,0,5">
+                                            <Viewbox Width="16" Height="16" DockPanel.Dock="Left" Margin="4">
+                                                <Canvas x:Name="Icon" Width="173.333" Height="94.667">
+                                                    <Path RenderTransformOrigin="0.505099562044569,0.297572934770739" Stretch="Fill" Stroke="#FF5C85CC" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="96.826" Height="84.83" Canvas.Left="37.155" Canvas.Top="38.656" Data="F1 M3.1669989,0.49999994 L44.688,0.49999994 44.818264,0.52629864 C45.737457,0.43774635 46.657188,0.87180156 47.192734,1.7029029 L71.499916,39.424603 C72.119568,40.386227 72.042648,41.596577 71.38118,42.451008 L47.977543,81.350433 C47.580173,82.332458 46.608467,83.013451 45.484646,82.99688 L2.1303594,82.357445 L1.5170581,82.224182 C1.3811389,82.236198 1.2508576,82.208275 1.1321081,82.140541 1.10764,82.138023 1.0861477,82.128571 1.0674345,82.113075 C0.49260253,81.968498 -0.013851314,81.59951 -0.36115319,81.064835 L-24.587879,43.767494 C-24.810854,43.424225 -24.944761,43.048782 -24.975601,42.66571 C-25.16848,41.972782 -25.062151,41.20723 -24.636518,40.558723 L0.61528879,2.0843363 L1.0056624,1.6897432 C1.4454449,0.96031141 2.2524664,0.49999991 3.1669989,0.49999994 z">
+                                                        <Path.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="0.99999999999999911" ScaleY="0.99999999999999911"/>
+                                                                <SkewTransform AngleX="0" AngleY="0"/>
+                                                                <RotateTransform Angle="180"/>
+                                                                <TranslateTransform X="0" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Path.RenderTransform>
+                                                        <Path.Fill>
+                                                            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                                                <GradientStop Color="#FF0048B3" Offset="0.009"/>
+                                                                <GradientStop Color="#FF145EBD" Offset="1"/>
+                                                                <GradientStop Color="#FF3077CF" Offset="0.454"/>
+                                                            </LinearGradientBrush>
+                                                        </Path.Fill>
+                                                    </Path>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" RadiusX="2.667" RadiusY="2.667" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="48.5" Height="44.25" Canvas.Left="64.547" Canvas.Top="45.167">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <SkewTransform AngleX="-30.054" AngleY="0"/>
+                                                                <RotateTransform Angle="0"/>
+                                                                <TranslateTransform X="10.921" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                                                <GradientStop Color="#FF257CDD" Offset="0.026"/>
+                                                                <GradientStop Color="#FF73B8FC" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                        <Rectangle.Stroke>
+                                                            <LinearGradientBrush EndPoint="0.011,0.015" StartPoint="0.989,0.985">
+                                                                <GradientStop Color="#FF82B1E8" Offset="0.009"/>
+                                                                <GradientStop Color="#FF2D81DE" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Stroke>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" Stroke="{x:Null}" RadiusX="2.667" RadiusY="2.667" Width="49.851" Height="43.916" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Canvas.Left="48.755" Canvas.Top="4.751">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <SkewTransform AngleX="-30.053999999999988" AngleY="0"/>
+                                                                <RotateTransform Angle="0"/>
+                                                                <TranslateTransform X="0" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="0.978,0.993" StartPoint="0.022,0.007">
+                                                                <GradientStop Color="#FFC3E8FB" Offset="0.347"/>
+                                                                <GradientStop Color="#FF2C79D2" Offset="0.595"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" Stroke="#FF0048B3" RadiusX="2.667" RadiusY="2.667" Height="49.703" Opacity="0.385" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="39.369" Canvas.Left="47.257" Canvas.Top="29.182">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1.01"/>
+                                                                <SkewTransform AngleX="0.906" AngleY="32.743"/>
+                                                                <RotateTransform Angle="147.995"/>
+                                                                <TranslateTransform X="8.444" Y="14.269"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="0.695,0.569" StartPoint="0.009,0.159">
+                                                                <GradientStop Color="#00499AF5" Offset="0"/>
+                                                                <GradientStop Color="#FF0048B4" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" Stroke="{x:Null}" RadiusX="2.667" RadiusY="2.667" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="39.994" Height="53.668" Canvas.Left="110.872" Canvas.Top="46.173">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="0.624" ScaleY="0.758"/>
+                                                                <SkewTransform AngleX="32.529" AngleY="-60.208"/>
+                                                                <RotateTransform Angle="0"/>
+                                                                <TranslateTransform X="-20.472" Y="-25.753"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="-0.051,0.346" StartPoint="1.051,0.654">
+                                                                <GradientStop Color="#660B519F" Offset="0"/>
+                                                                <GradientStop Color="#79BBE3F8" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" Stroke="#FF5C85CC" RadiusX="2.667" RadiusY="2.667" Height="49.703" Width="39.369" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Canvas.Left="55.701" Canvas.Top="43.451">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="0.99" ScaleY="1.003"/>
+                                                                <SkewTransform AngleX="-0.625" AngleY="33.649"/>
+                                                                <RotateTransform Angle="147.08900000000003"/>
+                                                                <TranslateTransform X="-0.327" Y="-0.004"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="-0.095,0.333" StartPoint="0.877,0.379">
+                                                                <GradientStop Color="#00499AF5" Offset="0.646"/>
+                                                                <GradientStop Color="#FF7BC1FE" Offset="0.787"/>
+                                                                <GradientStop Color="#FF1560BE" Offset="0.9"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" RadiusX="2.667" RadiusY="2.667" Width="49.851" Height="43.916" Opacity="0.72" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Canvas.Left="48.755" Canvas.Top="4.751">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <SkewTransform AngleX="-30.054" AngleY="0"/>
+                                                                <RotateTransform Angle="0"/>
+                                                                <TranslateTransform X="0" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="0.528,0.251" StartPoint="0.542,1.221">
+                                                                <GradientStop Color="#FFC3E8FB" Offset="0.285"/>
+                                                                <GradientStop Color="#79307AD2" Offset="1"/>
+                                                                <GradientStop Color="#915898DD" Offset="0.64"/>
+                                                                <GradientStop Color="#70629FDF" Offset="0.342"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                        <Rectangle.Stroke>
+                                                            <LinearGradientBrush EndPoint="0.008,0.014" StartPoint="0.992,0.986">
+                                                                <GradientStop Color="#FF0048B3" Offset="0"/>
+                                                                <GradientStop Color="#A1C3E8FB" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Stroke>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" Stroke="{x:Null}" RadiusX="2.667" RadiusY="2.667" Width="39.994" Height="53.668" Opacity="0.43" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Canvas.Left="90.4" Canvas.Top="20.42">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1.1121843449688698" ScaleY="0.89904230950639952"/>
+                                                                <SkewTransform AngleX="0" AngleY="-27.678999999999974"/>
+                                                                <RotateTransform Angle="-32.529"/>
+                                                                <TranslateTransform X="0" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="1.001,0.502" StartPoint="-0.001,0.498">
+                                                                <GradientStop Color="#FF276FCB" Offset="0"/>
+                                                                <GradientStop Color="#339DCBEF" Offset="0.297"/>
+                                                                <GradientStop Color="#00BBE3F8" Offset="0.223"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" RadiusX="2.667" RadiusY="2.667" Width="49.851" Height="43.916" Opacity="0.81" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Canvas.Left="48.755" Canvas.Top="4.751">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <SkewTransform AngleX="-30.053999999999988" AngleY="0"/>
+                                                                <RotateTransform Angle="0"/>
+                                                                <TranslateTransform X="0" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="0.223,0.735" StartPoint="1.219,0.769">
+                                                                <GradientStop Color="#B8C3E8FB" Offset="0.263"/>
+                                                                <GradientStop Color="#79307AD2" Offset="1"/>
+                                                                <GradientStop Color="#915898DD" Offset="0.64"/>
+                                                                <GradientStop Color="#4C629FDF" Offset="0.353"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                        <Rectangle.Stroke>
+                                                            <LinearGradientBrush EndPoint="0.008,0.014" StartPoint="0.992,0.986">
+                                                                <GradientStop Color="#FF0048B3" Offset="0"/>
+                                                                <GradientStop Color="#FFC3E8FB" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Stroke>
+                                                    </Rectangle>
+                                                    <Rectangle RenderTransformOrigin="0.5,0.5" RadiusX="2.667" RadiusY="2.667" Width="49.851" Height="44.249" Opacity="0.81" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Canvas.Left="48.851" Canvas.Top="4.418">
+                                                        <Rectangle.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <SkewTransform AngleX="-30.053999999999988" AngleY="0"/>
+                                                                <RotateTransform Angle="0"/>
+                                                                <TranslateTransform X="0" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Rectangle.RenderTransform>
+                                                        <Rectangle.Fill>
+                                                            <LinearGradientBrush EndPoint="1.232,1.25" StartPoint="0.29,0.254">
+                                                                <GradientStop Color="#B8C3E8FB" Offset="0"/>
+                                                                <GradientStop Color="#4C629FDF" Offset="0.28"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Fill>
+                                                        <Rectangle.Stroke>
+                                                            <LinearGradientBrush EndPoint="0.008,0.014" StartPoint="0.992,0.986">
+                                                                <GradientStop Color="#FF0048B3" Offset="0"/>
+                                                                <GradientStop Color="#FFC3E8FB" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Rectangle.Stroke>
+                                                    </Rectangle>
+                                                    <Path RenderTransformOrigin="0.102124101014026,0.257516972748229" Fill="#FFC8C8CA" Stretch="Fill" Stroke="{x:Null}" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="66.76" Height="88.666" TextElement.Foreground="#FFC8C8CA" Canvas.Left="-13.533" Canvas.Top="2.006" Data="F1 M2.6669998,0 L10.708001,0 C12.180943,0 13.375,1.1940566 13.375001,2.6669998 L13.375001,42.999001 C13.375,43.55933 13.202202,44.0793 12.8664,44.480614 C13.597816,44.768265 14.258077,45.203846 14.8346,45.667 L65.038879,85.999001 C66.87236,87.471947 67.164642,88.666 65.691696,88.666 L57.650696,88.666 C56.177753,88.666 53.497364,87.471947 51.663879,85.999001 L1.4596012,45.667 C0.075850435,44.555355 -0.43004522,43.602558 0.041846391,43.206272 C0.0027463713,43.139641 0,43.069641 7.8113999E-08,42.999001 L7.8113999E-08,2.6669998 C0,1.1940566 1.1940566,0 2.6669998,0 z">
+                                                        <Path.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <SkewTransform AngleX="-31.79" AngleY="0"/>
+                                                                <RotateTransform Angle="0"/>
+                                                                <TranslateTransform X="28.422" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Path.RenderTransform>
+                                                    </Path>
+                                                    <Path RenderTransformOrigin="0.102124101014026,0.257516972748229" Fill="#FFC8C8CA" Stretch="Fill" Stroke="{x:Null}" Height="88.666" TextElement.Foreground="#FFC8C8CA" Data="F1 M2.6669998,0 L10.708001,0 C12.180943,0 13.375,1.1940566 13.375001,2.6669998 L13.375001,42.999001 C13.375,43.55933 13.202202,44.0793 12.8664,44.480614 C13.597816,44.768265 14.258077,45.203846 14.8346,45.667 L65.038879,85.999001 C66.87236,87.471947 67.164642,88.666 65.691696,88.666 L57.650696,88.666 C56.177753,88.666 53.497364,87.471947 51.663879,85.999001 L1.4596012,45.667 C0.075850435,44.555355 -0.43004522,43.602558 0.041846391,43.206272 C0.0027463713,43.139641 0,43.069641 7.8113999E-08,42.999001 L7.8113999E-08,2.6669998 C0,1.1940566 1.1940566,0 2.6669998,0 z" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="66.76" Canvas.Left="143.224" Canvas.Top="46.34">
+                                                        <Path.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                                <SkewTransform AngleX="-31.789999999999992" AngleY="0"/>
+                                                                <RotateTransform Angle="179.426"/>
+                                                                <TranslateTransform X="0" Y="0"/>
+                                                            </TransformGroup>
+                                                        </Path.RenderTransform>
+                                                    </Path>
+                                                </Canvas>
+                                            </Viewbox>
+                                            <TextBlock Text="{Binding ElementName=root, Path=Title_MyWindow}" Foreground="WhiteSmoke" Margin="5,0,0,0" FontFamily="SegoeUI" FontSize="13" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                        </DockPanel>
+                                        <DockPanel HorizontalAlignment="Right" Margin="0,0,5,0">
+                                            <Grid Height="25">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="25"/>
+                                                    <ColumnDefinition Width="25"/>
+                                                    <ColumnDefinition Width="25"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button x:Name="minimizeButton">
+                                                    <Button.Style>
+                                                        <Style  TargetType="{x:Type Button}">
+                                                            <Setter Property="Template">
+                                                                <Setter.Value>
+                                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                                        <Grid Background="Transparent">
+                                                                            <Grid x:Name="background" Visibility="Collapsed">
+                                                                                <Rectangle x:Name="captionHottrackBorderCenter" SnapsToDevicePixels="True" RadiusX="3" RadiusY="3" StrokeThickness="1">
+                                                                                    <Rectangle.Stroke>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF56606d" Offset="0" />
+                                                                                                    <GradientStop Color="#FF5f656c" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Stroke>
+                                                                                    <Rectangle.Fill>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FFbdc3cb" Offset="0" />
+                                                                                                    <GradientStop Color="#FF929ba7" Offset="0.25" />
+                                                                                                    <GradientStop Color="#FF8894a1" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF717e8e" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FFa4bdcb" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Fill>
+                                                                                </Rectangle>
+                                                                                <Rectangle x:Name="captionHottrackInnerBorder" Margin="1" SnapsToDevicePixels="True" RadiusX="2" RadiusY="2" StrokeThickness="1">
+                                                                                    <Rectangle.Stroke>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FFcdd3da" Offset="0" />
+                                                                                                    <GradientStop Color="#FFa5abb3" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF888f98" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FF8f969f" Offset="0.6000000238418579" />
+                                                                                                    <GradientStop Color="#FFdadfe3" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Stroke>
+                                                                                </Rectangle>
+                                                                            </Grid>
+                                                                            <Border x:Name="minimizeGlyph" Width="7" Height="2" Background="#FF818080" BorderThickness="0,0,0,1" BorderBrush="#FF939CA8" VerticalAlignment="Bottom" Margin="0,0,0,8"/>
+                                                                        </Grid>
+                                                                        <ControlTemplate.Triggers>
+                                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                                <Setter TargetName="background" Property="Visibility" Value="Visible"/>
+                                                                                <Setter TargetName="minimizeGlyph" Property="Background" Value="#FF363535"/>
+                                                                                <Setter TargetName="minimizeGlyph" Property="BorderBrush" Value="#FF454C56"/>
+                                                                            </Trigger>
+                                                                            <Trigger Property="IsPressed" Value="True">
+                                                                                <Setter TargetName="background" Property="Visibility" Value="Visible"/>
+                                                                                <Setter TargetName="minimizeGlyph" Property="Background" Value="#FF818080"/>
+                                                                                <Setter TargetName="minimizeGlyph" Property="BorderBrush" Value="#FF939CA8"/>
+                                                                                <Setter TargetName="captionHottrackBorderCenter" Property="Stroke">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF222429" Offset="0" />
+                                                                                                    <GradientStop Color="#FF141413" Offset="0.25" />
+                                                                                                    <GradientStop Color="#FF141413" Offset="0.75" />
+                                                                                                    <GradientStop Color="#FF1d1d1d" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="captionHottrackBorderCenter" Property="Fill">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF3a3a3a" Offset="0" />
+                                                                                                    <GradientStop Color="#FF5b5b5b" Offset="0.1" />
+                                                                                                    <GradientStop Color="#FF2b2b2b" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF000000" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FF07090b" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="captionHottrackInnerBorder" Property="Stroke">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF464646" Offset="0" />
+                                                                                                    <GradientStop Color="#FF717171" Offset="0.15000000596046448" />
+                                                                                                    <GradientStop Color="#FF555555" Offset="0.4490000009536743" />
+                                                                                                    <GradientStop Color="#FF333333" Offset="0.44999998807907104" />
+                                                                                                    <GradientStop Color="#FF333333" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                            </Trigger>
+
+                                                                        </ControlTemplate.Triggers>
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Style>
+                                                    </Button.Style>
+                                                </Button>
+                                                <Button x:Name="maximizeRestoreButton" Grid.Column="1">
+                                                    <Button.Style>
+                                                        <Style  TargetType="{x:Type Button}">
+                                                            <Setter Property="Template">
+                                                                <Setter.Value>
+                                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                                        <Grid Background="Transparent">
+                                                                            <Grid x:Name="background" Visibility="Collapsed">
+                                                                                <Rectangle x:Name="captionHottrackBorderCenter" SnapsToDevicePixels="True" RadiusX="3" RadiusY="3" StrokeThickness="1">
+                                                                                    <Rectangle.Stroke>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF56606d" Offset="0" />
+                                                                                                    <GradientStop Color="#FF5f656c" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Stroke>
+                                                                                    <Rectangle.Fill>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FFbdc3cb" Offset="0" />
+                                                                                                    <GradientStop Color="#FF929ba7" Offset="0.25" />
+                                                                                                    <GradientStop Color="#FF8894a1" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF717e8e" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FFa4bdcb" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Fill>
+                                                                                </Rectangle>
+                                                                                <Rectangle x:Name="captionHottrackInnerBorder" Margin="1" SnapsToDevicePixels="True" RadiusX="2" RadiusY="2" StrokeThickness="1">
+                                                                                    <Rectangle.Stroke>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FFcdd3da" Offset="0" />
+                                                                                                    <GradientStop Color="#FFa5abb3" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF888f98" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FF8f969f" Offset="0.6000000238418579" />
+                                                                                                    <GradientStop Color="#FFdadfe3" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Stroke>
+                                                                                </Rectangle>
+                                                                            </Grid>
+                                                                            <Path x:Name="glyphBackground"
+                                                                            Height="7" Width="9"
+                                                                            Stretch="Fill"
+                                                                            Data="M 44,17 C44,17 51,17 51,17 51,17 51,20 51,20 51,20 44,20 44,20 44,20 44,17 44,17 zM 43,14 C43,14 43,21 43,21 43,21 52,21 52,21 52,21 52,14 52,14 52,14 43,14 43,14 z"
+                                                                            SnapsToDevicePixels="True"
+                                                                            Fill="#FF9BA1A8"
+                                                                            Margin="0,3,0,0" VerticalAlignment="Center" Visibility="Collapsed"/>
+                                                                            <Path x:Name="glyphForeground"
+                                                                            Height="7" Width="9"
+                                                                            Stretch="Fill"
+                                                                            Data="M 44,17 C44,17 51,17 51,17 51,17 51,20 51,20 51,20 44,20 44,20 44,20 44,17 44,17 zM 43,14 C43,14 43,21 43,21 43,21 52,21 52,21 52,21 52,14 52,14 52,14 43,14 43,14 z"
+                                                                            SnapsToDevicePixels="True"
+                                                                            Margin="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                                <Path.Fill>
+                                                                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                        <LinearGradientBrush.GradientStops>
+                                                                                            <GradientStopCollection>
+                                                                                                <GradientStop Color="#FF818080" Offset="0" />
+                                                                                                <GradientStop Color="#FF848c95" Offset="0.05000000074505806" />
+                                                                                                <GradientStop Color="#FF9fa9b7" Offset="0.75" />
+                                                                                                <GradientStop Color="#FF9fa9b7" Offset="1" />
+                                                                                            </GradientStopCollection>
+                                                                                        </LinearGradientBrush.GradientStops>
+                                                                                    </LinearGradientBrush>
+                                                                                </Path.Fill>
+                                                                            </Path>
+                                                                        </Grid>
+                                                                        <ControlTemplate.Triggers>
+                                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                                <Setter TargetName="background" Property="Visibility" Value="Visible"/>
+                                                                                <Setter TargetName="glyphForeground" Property="Fill">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF363535" Offset="0" />
+                                                                                                    <GradientStop Color="#FF3b424a" Offset="0.05000000074505806" />
+                                                                                                    <GradientStop Color="#FF4f5763" Offset="0.75" />
+                                                                                                    <GradientStop Color="#FF4f5763" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="glyphBackground" Property="Visibility" Value="Visible"/>
+                                                                            </Trigger>
+                                                                            <Trigger Property="IsPressed" Value="True">
+                                                                                <Setter TargetName="background" Property="Visibility" Value="Visible"/>
+                                                                                <Setter TargetName="glyphForeground" Property="Fill">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF818080" Offset="0" />
+                                                                                                    <GradientStop Color="#FF848c95" Offset="0.05000000074505806" />
+                                                                                                    <GradientStop Color="#FF9fa9b7" Offset="0.75" />
+                                                                                                    <GradientStop Color="#FF9fa9b7" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="glyphBackground" Property="Visibility" Value="Collapsed"/>
+                                                                                <Setter TargetName="captionHottrackBorderCenter" Property="Stroke">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF222429" Offset="0" />
+                                                                                                    <GradientStop Color="#FF141413" Offset="0.25" />
+                                                                                                    <GradientStop Color="#FF141413" Offset="0.75" />
+                                                                                                    <GradientStop Color="#FF1d1d1d" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="captionHottrackBorderCenter" Property="Fill">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF3a3a3a" Offset="0" />
+                                                                                                    <GradientStop Color="#FF5b5b5b" Offset="0.1" />
+                                                                                                    <GradientStop Color="#FF2b2b2b" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF000000" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FF07090b" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="captionHottrackInnerBorder" Property="Stroke">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF464646" Offset="0" />
+                                                                                                    <GradientStop Color="#FF717171" Offset="0.15000000596046448" />
+                                                                                                    <GradientStop Color="#FF555555" Offset="0.4490000009536743" />
+                                                                                                    <GradientStop Color="#FF333333" Offset="0.44999998807907104" />
+                                                                                                    <GradientStop Color="#FF333333" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                            </Trigger>
+
+                                                                        </ControlTemplate.Triggers>
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Style>
+                                                    </Button.Style>
+                                                </Button>
+                                                <Button x:Name="closeButton" Grid.Column="2">
+                                                    <Button.Style>
+                                                        <Style  TargetType="{x:Type Button}">
+                                                            <Setter Property="Template">
+                                                                <Setter.Value>
+                                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                                        <Grid Background="Transparent" >
+                                                                            <Grid x:Name="background" Visibility="Collapsed">
+                                                                                <Rectangle x:Name="captionHottrackBorderCenter" SnapsToDevicePixels="True" RadiusX="3" RadiusY="3" StrokeThickness="1">
+                                                                                    <Rectangle.Stroke>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF56606d" Offset="0" />
+                                                                                                    <GradientStop Color="#FF5f656c" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Stroke>
+                                                                                    <Rectangle.Fill>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FFbdc3cb" Offset="0" />
+                                                                                                    <GradientStop Color="#FF929ba7" Offset="0.25" />
+                                                                                                    <GradientStop Color="#FF8894a1" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF717e8e" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FFa4bdcb" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Fill>
+                                                                                </Rectangle>
+                                                                                <Rectangle x:Name="captionHottrackInnerBorder" Margin="1" SnapsToDevicePixels="True" RadiusX="2" RadiusY="2" StrokeThickness="1">
+                                                                                    <Rectangle.Stroke>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FFcdd3da" Offset="0" />
+                                                                                                    <GradientStop Color="#FFa5abb3" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF888f98" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FF8f969f" Offset="0.6000000238418579" />
+                                                                                                    <GradientStop Color="#FFdadfe3" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Rectangle.Stroke>
+                                                                                </Rectangle>
+                                                                            </Grid>
+                                                                            <Path x:Name="glyphBackground"
+                                                                            Height="7" Width="9"
+                                                                            Stretch="Fill"
+                                                                            Data="M 646,303 C646,303 644.5,305 644.5,305 644.5,305 643,303 643,303 643,303 640,303 640,303 640,303 643,307 643,307 643,307 640,311 640,311 640,311 643,311 643,311 643,311 644.5,309 644.5,309 644.5,309 646,311 646,311 646,311 649,311 649,311 649,311 646,307 646,307 646,307 649,303 649,303 649,303 646,303 646,303 z"
+                                                                            SnapsToDevicePixels="True"
+                                                                            Fill="#FF9BA1A8"
+                                                                            Margin="0,3,0,0" VerticalAlignment="Center" Visibility="Collapsed"/>
+                                                                            <Path x:Name="glyphForeground"
+                                                                            Height="7" Width="9"
+                                                                            Stretch="Fill"
+                                                                            Data="M 646,303 C646,303 644.5,305 644.5,305 644.5,305 643,303 643,303 643,303 640,303 640,303 640,303 643,307 643,307 643,307 640,311 640,311 640,311 643,311 643,311 643,311 644.5,309 644.5,309 644.5,309 646,311 646,311 646,311 649,311 649,311 649,311 646,307 646,307 646,307 649,303 649,303 649,303 646,303 646,303 z"
+                                                                            SnapsToDevicePixels="True"
+                                                                            Margin="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                                <Path.Fill>
+                                                                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                        <LinearGradientBrush.GradientStops>
+                                                                                            <GradientStopCollection>
+                                                                                                <GradientStop Color="#FF818080" Offset="0" />
+                                                                                                <GradientStop Color="#FF848c95" Offset="0.05000000074505806" />
+                                                                                                <GradientStop Color="#FF9fa9b7" Offset="0.75" />
+                                                                                                <GradientStop Color="#FF9fa9b7" Offset="1" />
+                                                                                            </GradientStopCollection>
+                                                                                        </LinearGradientBrush.GradientStops>
+                                                                                    </LinearGradientBrush>
+                                                                                </Path.Fill>
+                                                                            </Path>
+                                                                        </Grid>
+                                                                        <ControlTemplate.Triggers>
+                                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                                <Setter TargetName="background" Property="Visibility" Value="Visible"/>
+                                                                                <Setter TargetName="glyphForeground" Property="Fill">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF363535" Offset="0" />
+                                                                                                    <GradientStop Color="#FF3b424a" Offset="0.05000000074505806" />
+                                                                                                    <GradientStop Color="#FF4f5763" Offset="0.75" />
+                                                                                                    <GradientStop Color="#FF4f5763" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="glyphBackground" Property="Visibility" Value="Visible"/>
+                                                                            </Trigger>
+                                                                            <Trigger Property="IsPressed" Value="True">
+                                                                                <Setter TargetName="background" Property="Visibility" Value="Visible"/>
+                                                                                <Setter TargetName="glyphForeground" Property="Fill">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF818080" Offset="0" />
+                                                                                                    <GradientStop Color="#FF848c95" Offset="0.05000000074505806" />
+                                                                                                    <GradientStop Color="#FF9fa9b7" Offset="0.75" />
+                                                                                                    <GradientStop Color="#FF9fa9b7" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="glyphBackground" Property="Visibility" Value="Collapsed"/>
+                                                                                <Setter TargetName="captionHottrackBorderCenter" Property="Stroke">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF222429" Offset="0" />
+                                                                                                    <GradientStop Color="#FF141413" Offset="0.25" />
+                                                                                                    <GradientStop Color="#FF141413" Offset="0.75" />
+                                                                                                    <GradientStop Color="#FF1d1d1d" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="captionHottrackBorderCenter" Property="Fill">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF3a3a3a" Offset="0" />
+                                                                                                    <GradientStop Color="#FF5b5b5b" Offset="0.1" />
+                                                                                                    <GradientStop Color="#FF2b2b2b" Offset="0.449" />
+                                                                                                    <GradientStop Color="#FF000000" Offset="0.45" />
+                                                                                                    <GradientStop Color="#FF07090b" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter TargetName="captionHottrackInnerBorder" Property="Stroke">
+                                                                                    <Setter.Value>
+                                                                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                                            <LinearGradientBrush.GradientStops>
+                                                                                                <GradientStopCollection>
+                                                                                                    <GradientStop Color="#FF464646" Offset="0" />
+                                                                                                    <GradientStop Color="#FF717171" Offset="0.15000000596046448" />
+                                                                                                    <GradientStop Color="#FF555555" Offset="0.4490000009536743" />
+                                                                                                    <GradientStop Color="#FF333333" Offset="0.44999998807907104" />
+                                                                                                    <GradientStop Color="#FF333333" Offset="1" />
+                                                                                                </GradientStopCollection>
+                                                                                            </LinearGradientBrush.GradientStops>
+                                                                                        </LinearGradientBrush>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                            </Trigger>
+
+                                                                        </ControlTemplate.Triggers>
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Style>
+                                                    </Button.Style>
+                                                </Button>
+                                            </Grid>
+                                        </DockPanel>
+                                    </Grid>
+                                </Border>
+                                <Border x:Name="captionHighlightStroke" CornerRadius="7,7,0,0" BorderThickness="1,1,1,0" SnapsToDevicePixels="True">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStopCollection>
+                                                    <GradientStop Color="#FFb4b5b5" Offset="0" />
+                                                    <GradientStop Color="#00b4b5b5" Offset="1" />
+                                                </GradientStopCollection>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                </Border>
+                                <ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}"/>
+                            </Grid>
+                        </Border>
+                    </Controls:SimulatedWindow_Root>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--WIZARD CONTROL-->
+    <Controls:NavigationMultiConverter x:Key="navigationMultiConverter" />
+
+    <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.HeaderPanelBorderResourceKey}">
+        <Setter Property="Background" Value="#FFFFFF" />
+        <Setter Property="BorderBrush" Value="#A0A0A0" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.SideHeaderPanelBorderResourceKey}">
+        <Setter Property="Background" Value="#FFFFFF" />
+        <Setter Property="BorderBrush" Value="#A0A0A0" />
+        <Setter Property="BorderThickness" Value="0,0,1,0" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.ContentPanelBorderResourceKey}">
+        <Setter Property="Background" Value="#FFFFFF" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.NavigationPanelBorderResourceKey}">
+        <Setter Property="Background" Value="#F0F0F0" />
+        <Setter Property="BorderBrush" Value="#A0A0A0" />
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+        <Setter Property="Padding" Value="7" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="{x:Static Controls:Wizard.NavigationButtonResourceKey}">
+        <Setter Property="Width" Value="76"/>
+        <Setter Property="Height" Value="24" />
+    </Style>
+
+    <Style TargetType="{x:Type Controls:Wizard}">
+        <Setter Property="Background" Value="#F0F0F0" />
+        <Setter Property="BorderBrush" Value="#A0A0A0" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:Wizard}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--WIZARD HEADER-->
+                            <Border x:Name="HeaderBorder" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"
+                                    Style="{DynamicResource {ComponentResourceKey ResourceId=HeaderPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                <ContentControl x:Name="HeaderPresenter" Content="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.Header}" />
+                            </Border>
+
+                            <!--WIZARD SIDE HEADER-->
+                            <Border x:Name="SideHeaderBorder" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
+                                    Style="{DynamicResource {ComponentResourceKey ResourceId=SideHeaderPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                <ContentControl x:Name="SideHeaderPresenter" Content="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.SideHeader}"  />
+                            </Border>
+
+                            <!--WIZARD MAIN CONTENT-->
+                            <Border Grid.Row="1" Grid.Column="1"
+                                    Style="{DynamicResource {ComponentResourceKey ResourceId=ContentPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                <ContentControl Content="{TemplateBinding ActivePage}"
+                                                Margin="{TemplateBinding Padding}" />
+                            </Border>
+
+                            <!--WIZARD NAVIGATION-->
+                            <Border Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                <Grid>
+                                    <Button x:Name="PART_Help" HorizontalAlignment="Left" Content="Help"
+                                        Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}"
+                                        IsEnabled="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.CanHelp}"></Button>
+
+                                    <StackPanel Height="26" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button x:Name="PART_Cancel" Content="Cancel" Margin="0,0,7,0"
+                                            Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}"
+                                            IsEnabled="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.CanCancel}"></Button>
+                                        <Button x:Name="PART_Previous" Content="Previous" Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                            <Button.IsEnabled>
+                                                <MultiBinding Converter="{StaticResource navigationMultiConverter}">
+                                                    <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanNavigatePrevious" />
+                                                    <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanPrevious" />
+                                                </MultiBinding>
+                                            </Button.IsEnabled>
+                                        </Button>
+                                        <Button x:Name="PART_Next" Content="Next" Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                            <Button.IsEnabled>
+                                                <MultiBinding Converter="{StaticResource navigationMultiConverter}">
+                                                    <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanNavigateNext" />
+                                                    <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanNext" />
+                                                </MultiBinding>
+                                            </Button.IsEnabled>
+                                        </Button>
+                                        <Button x:Name="PART_Finish" Content="Finish" Margin="7,0,0,0"
+                                            Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}"
+                                            IsEnabled="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.CanFinish}"></Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="SideHeaderPresenter" Property="HasContent" Value="False">
+                            <Setter TargetName="SideHeaderBorder" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger SourceName="HeaderPresenter" Property="HasContent" Value="False">
+                            <Setter TargetName="HeaderBorder" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--END OF WIZARD CONTROL-->
+</ResourceDictionary>

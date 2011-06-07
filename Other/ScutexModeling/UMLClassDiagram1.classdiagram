@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="44fe9f35-fdf4-45a8-960e-837950e72ba3" name="UMLClassDiagram1" linkedPackageId="0efddd0a-4291-4244-9760-00ea228a5371" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="b6324a9f-a3e2-4b63-bd6f-e4cbf45b9838">
+      <profileInstance Id="dcd4eb4d-1ba5-4d6a-a23f-50981be51363" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="42b1b828-481e-4e6e-adf6-ec0570868e52">
+      <profileInstance Id="c255c90c-8dd9-490e-bd4d-ab7c0279afe0" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="dc84fde7-d6c4-4709-a192-5d0c80f59062" name="LicensesRepoisotry" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f6da63f1-210f-4385-a695-a523a35b1fa7" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="526b32bf-3d6b-4d2e-90c0-a96436455b7e" name="ProductsRepository" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="06f1018f-dab6-4641-bac9-f13e924da4fb" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d34d160a-d54e-4980-a1ba-9773d598e5ee" name="LicenseSetsRepository" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8d38cc75-da12-4969-9157-80c4dc4f6b60" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3e2d1ed4-86f6-4f5c-947d-7e9518c81314" name="Class22" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cea1a816-1956-4b30-81b6-4eb17ac19de3" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="0efddd0a-4291-4244-9760-00ea228a5371" name="ScutexModeling">
+    <elementDefinition Id="c4e9696b-bcfc-4d28-bddd-0fe6e08e445c" />
+  </package>
+</logicalClassDesignerModel>

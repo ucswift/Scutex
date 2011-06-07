@@ -1,0 +1,282 @@
+﻿<Ribbon:XamRibbonWindow x:Class="WaveTech.Scutex.Manager.Wizards.FirstTimeWizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls" 
+        xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3" 
+        xmlns:Classes="clr-namespace:WaveTech.Scutex.Manager.Classes" xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes" 
+        Title="Scutex Frist Run Wizard" Height="500" Width="600" WindowStartupLocation="CenterScreen" Topmost="True" 
+        Closing="XamRibbonWindow_Closing" ResizeMode="NoResize">
+    <Ribbon:XamRibbonWindow.Resources>
+        <Controls:NavigationMultiConverter x:Key="navigationMultiConverter" />
+
+        <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.HeaderPanelBorderResourceKey}">
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderBrush" Value="#A0A0A0" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+
+        <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.SideHeaderPanelBorderResourceKey}">
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderBrush" Value="#A0A0A0" />
+            <Setter Property="BorderThickness" Value="0,0,1,0" />
+        </Style>
+
+        <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.ContentPanelBorderResourceKey}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                        <GradientStop Color="#FFA4ADBB" Offset="0.521"/>
+                        <GradientStop Color="#FFD7E0EA" Offset="0.194"/>
+                        <GradientStop Color="#FFBAC1CF" Offset="0.811"/>
+                        <GradientStop Color="#FFBCC5D5" Offset="0.507"/>
+                        <GradientStop Color="#FFE3E4E6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.NavigationPanelBorderResourceKey}">
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderBrush" Value="#A0A0A0" />
+            <Setter Property="BorderThickness" Value="0,1,0,0" />
+            <Setter Property="Padding" Value="7" />
+        </Style>
+
+        <Style TargetType="Button" x:Key="{x:Static Controls:Wizard.NavigationButtonResourceKey}">
+            <Setter Property="Width" Value="76"/>
+            <Setter Property="Height" Value="24" />
+        </Style>
+
+        <Style TargetType="{x:Type Controls:Wizard}">
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderBrush" Value="#A0A0A0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Controls:Wizard}">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!--WIZARD HEADER-->
+                                <Border x:Name="HeaderBorder" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"
+                                    Style="{DynamicResource {ComponentResourceKey ResourceId=HeaderPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                    <ContentControl x:Name="HeaderPresenter" Content="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.Header}" />
+                                </Border>
+
+                                <!--WIZARD SIDE HEADER-->
+                                <Border x:Name="SideHeaderBorder" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
+                                    Style="{DynamicResource {ComponentResourceKey ResourceId=SideHeaderPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                    <ContentControl x:Name="SideHeaderPresenter" Content="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.SideHeader}"  />
+                                </Border>
+
+                                <!--WIZARD MAIN CONTENT-->
+                                <Border Grid.Row="1" Grid.Column="1"
+                                    Style="{DynamicResource {ComponentResourceKey ResourceId=ContentPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                    <ContentControl Content="{TemplateBinding ActivePage}"
+                                                Margin="{TemplateBinding Padding}" />
+                                </Border>
+
+                                <!--WIZARD NAVIGATION-->
+                                <Border Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationPanelBorderResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                    <Grid>
+                                        <Button x:Name="PART_Help" HorizontalAlignment="Left" Content="Help"
+                                                                                IsEnabled="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.CanHelp}"></Button>
+
+                                        <StackPanel Height="26" Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button x:Name="PART_Cancel" Content="Cancel" Margin="0,0,7,0"
+                                            Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}"
+                                            IsEnabled="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.CanCancel}"></Button>
+                                            <Button x:Name="PART_Previous" Content="Previous" Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                                <Button.IsEnabled>
+                                                    <MultiBinding Converter="{StaticResource navigationMultiConverter}">
+                                                        <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanNavigatePrevious" />
+                                                        <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanPrevious" />
+                                                    </MultiBinding>
+                                                </Button.IsEnabled>
+                                            </Button>
+                                            <Button x:Name="PART_Next" Content="Next" Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}">
+                                                <Button.IsEnabled>
+                                                    <MultiBinding Converter="{StaticResource navigationMultiConverter}">
+                                                        <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanNavigateNext" />
+                                                        <Binding RelativeSource="{x:Static RelativeSource.TemplatedParent}" Path="ActivePage.CanNext" />
+                                                    </MultiBinding>
+                                                </Button.IsEnabled>
+                                            </Button>
+                                            <Button x:Name="PART_Finish" Content="Finish" Margin="7,0,0,0"
+                                            Style="{DynamicResource {ComponentResourceKey ResourceId=NavigationButtonResourceKey, TypeInTargetAssembly={x:Type Controls:Wizard}}}"
+                                            IsEnabled="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Path=ActivePage.CanFinish}"></Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="SideHeaderPresenter" Property="HasContent" Value="False">
+                                <Setter TargetName="SideHeaderBorder" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger SourceName="HeaderPresenter" Property="HasContent" Value="False">
+                                <Setter TargetName="HeaderBorder" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Ribbon:XamRibbonWindow.Resources>
+
+    <Ribbon:RibbonWindowContentHost>
+        <Ribbon:RibbonWindowContentHost.Ribbon>
+            <Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
+            </Ribbon:XamRibbon>
+        </Ribbon:RibbonWindowContentHost.Ribbon>
+        <Grid>
+            <Controls:Wizard x:Name="m_Wizard" CancelClick="Wizard_OnCancelClick" FinishClick="Wizard_OnFinishClick">
+
+                <!--Hello Page-->
+                <Controls:WizardPage>
+                    <Controls:WizardPage.Header>
+                        <StackPanel>
+                            <Label FontSize="18" FontWeight="Bold" Content="Welcome to the First Run Wizard" />
+                            <Label Margin="10,-5,0,0" Content="This wizard will guide you though the inital setup of the Sctuex Licensing Manager" />
+                        </StackPanel>
+                    </Controls:WizardPage.Header>
+
+                    <Controls:WizardPage.SideHeader>
+
+                        <StackPanel>
+                            <TextBlock Text="" />
+                        </StackPanel>
+
+                    </Controls:WizardPage.SideHeader>
+
+
+                    <Border Margin="20,50,20,20" VerticalAlignment="Top">
+                        <TextBlock TextWrapping="Wrap" MaxWidth="500" Text="In this wizard you will set the required data to get the Scutex Licensing Manager running. Please have a Microsoft SQL Express Edition, Microsoft SQL Server 2005 or newer that is accessable (either local or remote) before you continue this wizard. In addition you will need to have a database created, Scutex or another name of your choosing." />
+                    </Border>
+                </Controls:WizardPage>
+
+                <Controls:WizardPage x:Name="wizardPageDbInfo" CanNext="False">
+                    <Controls:WizardPage.Header>
+                        <StackPanel>
+                            <Label FontSize="18" FontWeight="Bold" Content="Database Settings" />
+                            <Label Margin="10,-5,0,0" Content="Please supply the connection information for your database" />
+                        </StackPanel>
+                    </Controls:WizardPage.Header>
+
+                    <Border Margin="20,50,20,20" VerticalAlignment="Top">
+                        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="125" />
+                                <ColumnDefinition Width="225" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Database Type:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Margin="2,1,2,1" />
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                                <TextBlock Width="10px" />
+                                <RadioButton x:Name="rdoSQLServer" Content="SQL Server" Checked="rdoSQLServer_Checked" />
+                                <TextBlock Width="10px" />
+                                <RadioButton x:Name="rdoSQLExpress" Content="SQL Express" Checked="rdoSQLExpress_Checked" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Server name:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Margin="2,1,2,1" />
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Database name:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Margin="2,1,2,1" />
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Authentication:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Margin="2,1,2,1" />
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="User name:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Margin="20,1,2,1"/>
+                            <TextBlock Grid.Row="6" Grid.Column="0" Text="Password:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Margin="20,1,2,1" />
+
+
+                            <TextBox Grid.Row="2" Grid.Column="1" Margin="4,4,4,4"  x:Name="txtServerName" Text="{Binding ServerName}" TextChanged="txtServerName_TextChanged" />
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="4,4,4,4" x:Name="txtDatabaseName" Text="{Binding DatabaseName}" TextChanged="txtDatabaseName_TextChanged" />
+
+                            <ComboBox Grid.Row="4" Grid.Column="1" x:Name="cboAuthenticationType" SelectionChanged="cboAuthenticationType_SelectionChanged" SelectedIndex="{Binding AuthenticationType}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem IsSelected="True">Windows Authentication</ComboBoxItem>
+                                    <ComboBoxItem>SQL Server Authentication</ComboBoxItem>
+                                </ComboBox.Items>
+                            </ComboBox>
+
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="20,4,4,4" x:Name="txtUserName" IsEnabled="False" Background="Gray" Text="{Binding UserName}" TextChanged="txtUserName_TextChanged" />
+                            <PasswordBox Grid.Row="6" Grid.Column="1" Margin="20,4,4,4" x:Name="txtPassword" IsEnabled="False" Background="Gray" PasswordChanged="txtPassword_PasswordChanged" />
+                        </Grid>
+                    </Border>
+                </Controls:WizardPage>
+
+                <Controls:WizardPage x:Name="wizardPageTestDb" PageShow="wizardPageTestDb_PageShow" PageClose="wizardPageTestDb_PageClose" CanNext="False">
+                    <Controls:WizardPage.Header>
+                        <StackPanel>
+                            <Label FontSize="18" FontWeight="Bold" Content="Testing Database Connection" />
+                            <Label Margin="10,-5,0,0" Content="Please wait while the database is tested" />
+                        </StackPanel>
+                    </Controls:WizardPage.Header>
+
+                    <Border Margin="20,50,20,20" VerticalAlignment="Top">
+                        <StackPanel>
+                            <TextBlock Height="100" />
+                            <Label FontSize="16" x:Name="lblDbTestText" Content="Database test in progress, please wait..." HorizontalAlignment="Center" />
+                            <ProgressBar x:Name="pdgTestDatabaseProgress" IsIndeterminate="True" Height="22" Margin="0,0,0,2.5"/>
+                        </StackPanel>
+                    </Border>
+                </Controls:WizardPage>
+
+                <Controls:WizardPage x:Name="wizardPageDbValidation" PageShow="wizardPageDbValidation_PageShow"  PageClose="wizardPageDbValidation_PageClose"  CanNext="False">
+                    <Controls:WizardPage.Header>
+                        <StackPanel>
+                            <Label FontSize="18" FontWeight="Bold" Content="Validating the System" />
+                            <Label Margin="10,-5,0,0" Content="Please wait while the system is validated" />
+                        </StackPanel>
+                    </Controls:WizardPage.Header>
+
+                    <Border Margin="20,50,20,20" VerticalAlignment="Top">
+                        <StackPanel>
+                            <TextBlock Height="75" />
+                            <Label FontSize="16" x:Name="lblDbValidateText" Content="Please wait while the system is validated..." HorizontalAlignment="Center" />
+                            <ProgressBar x:Name="pdgValidateDatabaseProgress" IsIndeterminate="True" Height="22" Margin="0,0,0,2.5"/>
+                            <ListBox x:Name="lstValidationIssues"/>
+                        </StackPanel>
+                    </Border>
+                </Controls:WizardPage>
+
+                <Controls:WizardPage CanFinish="True">
+                    <Controls:WizardPage.Header>
+                        <StackPanel>
+                            <Label FontSize="18" FontWeight="Bold" Content="Finished the First Run Wizard " />
+                            <Label Margin="10,-5,0,0" Content="You can now finish the wizard" />
+                        </StackPanel>
+                    </Controls:WizardPage.Header>
+
+                    <Border Margin="20,50,20,20" VerticalAlignment="Top">
+                        <TextBlock TextWrapping="Wrap" MaxWidth="500" Text="Thank you for completing the First Run Wizard. If you pointed the Scutex Licensing Manager at a fresh database it will be populate with the baseline schema and data requied to run the Manager. If this is an existing database nothing will be modified." />
+                    </Border>
+                </Controls:WizardPage>
+
+            </Controls:Wizard>
+        </Grid>
+    </Ribbon:RibbonWindowContentHost>
+</Ribbon:XamRibbonWindow>

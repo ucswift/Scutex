@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="WaveTech.Scutex.Manager.Forms.WelcomeScreenForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:igWindows="clr-namespace:Infragistics.Windows.Controls;assembly=InfragisticsWPF4.v10.3" x:Name="welcomeScreenControl"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+	<UserControl.Resources>
+
+	</UserControl.Resources>
+	<Grid>
+		<GroupBox>
+			<GroupBox.Background>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFFFFFF" Offset="0"/>
+					<GradientStop Color="#FFA4ADBB" Offset="0.521"/>
+					<GradientStop Color="#FFD7E0EA" Offset="0.194"/>
+					<GradientStop Color="#FFBAC1CF" Offset="0.811"/>
+					<GradientStop Color="#FFBCC5D5" Offset="0.507"/>
+					<GradientStop Color="#FFE3E4E6" Offset="1"/>
+				</LinearGradientBrush>
+			</GroupBox.Background>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="20" />
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="600" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Scutex Community Edition" FontSize="14" Foreground="Black" FontWeight="Bold" />
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Margin="5,0,0,0" TextWrapping="Wrap">
+					Welcome to Scutex Community Edition. To begin using Scutex you can start a new licensing project by clicking the "New" button. 
+					You can use the "Verify" button at any time to ensure that your licensing project is in good order. To see how your customers
+					will see Scutex and interact with your licensing project and product with it you can click the "Test Demo" button and see the 
+					trial form.
+				</TextBlock>
+
+
+				<TextBlock Grid.Row="0" Grid.Column="1" Text="Quick Links" FontSize="14" Foreground="Black" FontWeight="Bold" />
+
+				<StackPanel Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top">
+					<TextBlock>
+						<Hyperlink x:Name="hplSupport" Click="hplSupport_Click">
+                <TextBlock ToolTip="Premier Support">Premier Support</TextBlock>
+            </Hyperlink>
+					</TextBlock>
+					<TextBlock>
+						<Hyperlink x:Name="hplDocumentation" Click="hplDocumentation_Click">
+                <TextBlock ToolTip="Documentation">Online Documentation</TextBlock>
+            </Hyperlink>
+					</TextBlock>
+					<TextBlock>
+						<Hyperlink x:Name="hplVideosClick" Click="hplVideosClick_Click">
+                <TextBlock ToolTip="Videos">Videos</TextBlock>
+            </Hyperlink>
+					</TextBlock>
+					<TextBlock>
+						<Hyperlink x:Name="hplForums" Click="hplForums_Click">
+                <TextBlock ToolTip="Forums">Forums</TextBlock>
+            </Hyperlink>
+					</TextBlock>
+					<TextBlock>
+						<Hyperlink x:Name="hplHelpDesk" Click="hplHelpDesk_Click">
+                <TextBlock ToolTip="Help Desk">Help Desk</TextBlock>
+            </Hyperlink>
+					</TextBlock>
+				</StackPanel>
+
+				<StackPanel Margin="5,0,0,0" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom">
+					<TextBlock FontWeight="Bold">Licensing Status: </TextBlock>
+					<TextBlock Margin="5,0,0,0" Foreground="Green">Licensed</TextBlock>
+					<TextBlock Margin="20,0,0,0" FontWeight="Bold">Licensing Level: </TextBlock>
+					<TextBlock Margin="5,0,0,0" Foreground="Green">Community Edition</TextBlock>
+				</StackPanel>
+				<TextBlock x:Name="txtVersion" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Bottom">Version: </TextBlock>
+			</Grid>
+		</GroupBox>
+	</Grid>
+</UserControl>

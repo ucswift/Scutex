@@ -1,0 +1,77 @@
+﻿<Ribbon:XamRibbonWindow x:Class="WaveTech.Scutex.Manager.Windows.ServiceLogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3" 
+        xmlns:igWindows="clr-namespace:Infragistics.Windows.Controls;assembly=InfragisticsWpf4.v10.3" 
+        xmlns:igDP="clr-namespace:Infragistics.Windows.DataPresenter;assembly=InfragisticsWpf4.DataPresenter.v10.3" 
+				xmlns:UserControls="clr-namespace:WaveTech.Scutex.Manager.UserControls" 
+				Title="Service Logs" Height="350" Width="550" WindowStartupLocation="CenterOwner" x:Name="serviceLogsWindow">
+    <Ribbon:XamRibbonWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Ribbon:XamRibbonWindow.Resources>
+
+    <Ribbon:RibbonWindowContentHost>
+        <Ribbon:RibbonWindowContentHost.Ribbon>
+            <Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
+            </Ribbon:XamRibbon>
+        </Ribbon:RibbonWindowContentHost.Ribbon>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Grid.Row="0" Grid.Column="0" Text="Service: " />
+                <ComboBox Grid.Row="0" Grid.Column="0" x:Name="cboServices" Width="150" ItemsSource="{Binding Source={StaticResource allActiveServicesData}}" DisplayMemberPath="Name" SelectedItem="{Binding Service, ElementName=serviceLogsWindow, Mode=TwoWay}" />
+                <TextBlock Width="10" />
+                <Button Content="Refresh" x:Name="btnRefresh" Click="btnRefresh_Click" />
+            </StackPanel>
+
+            <igWindows:XamTabControl Grid.Row="1" Grid.Column="0" TabStripPlacement="Top">
+                <igWindows:TabItemEx Header="Activation Logs">
+                    <igWindows:TabItemEx.Content>
+                        <igDP:XamDataGrid Grid.Row="0" x:Name="gridActivationLogs" AllowDrop="False" IsManipulationEnabled="True">
+                            <igDP:XamDataGrid.GroupByArea>
+                                <igDP:GroupByArea IsEnabled="False" />
+                            </igDP:XamDataGrid.GroupByArea>
+                            <igDP:XamDataGrid.FieldLayouts>
+                                <igDP:FieldLayout>
+                                    <igDP:FieldLayout.Fields>
+
+                                    </igDP:FieldLayout.Fields>
+                                </igDP:FieldLayout>
+                            </igDP:XamDataGrid.FieldLayouts>
+                        </igDP:XamDataGrid>
+                    </igWindows:TabItemEx.Content>
+                </igWindows:TabItemEx>
+                <igWindows:TabItemEx Header="License Activiations">
+                    <igWindows:TabItemEx.Content>
+                        <igDP:XamDataGrid Grid.Row="0" x:Name="gridLicenseActiviations" AllowDrop="False" IsManipulationEnabled="True">
+                                <igDP:XamDataGrid.GroupByArea>
+                                    <igDP:GroupByArea IsEnabled="False" />
+                                </igDP:XamDataGrid.GroupByArea>
+                                <igDP:XamDataGrid.FieldLayouts>
+                                    <igDP:FieldLayout>
+                                        <igDP:FieldLayout.Fields>
+
+                                        </igDP:FieldLayout.Fields>
+                                    </igDP:FieldLayout>
+                                </igDP:XamDataGrid.FieldLayouts>
+                            </igDP:XamDataGrid>
+                    </igWindows:TabItemEx.Content>
+                </igWindows:TabItemEx>
+            </igWindows:XamTabControl>
+
+            <UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" 
+              WindowHeight="{Binding ElementName=CurrentPresenter, Path=ActualHeight}" WindowWidth="{Binding ElementName=CurrentPresenter, Path=ActualWidth}" />
+        </Grid>
+    </Ribbon:RibbonWindowContentHost>
+</Ribbon:XamRibbonWindow>

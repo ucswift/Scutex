@@ -1,0 +1,52 @@
+﻿<Ribbon:XamRibbonWindow x:Class="WaveTech.Scutex.Manager.Windows.NewProductWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+						xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWPF4.Ribbon.v10.3" xmlns:igDP="clr-namespace:Infragistics.Windows.DataPresenter;assembly=InfragisticsWPF4.DataPresenter.v10.3" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Title="New Product" Height="300" Width="300" WindowStartupLocation="CenterOwner">
+	<Ribbon:XamRibbonWindow.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/DataTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Ribbon:XamRibbonWindow.Resources>
+	<Ribbon:RibbonWindowContentHost>
+		<Ribbon:RibbonWindowContentHost.Ribbon>
+			<Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
+			</Ribbon:XamRibbon>
+		</Ribbon:RibbonWindowContentHost.Ribbon>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+
+			<GroupBox Grid.Row="0" Grid.Column="0" Header="New Product" Foreground="White" Margin="4,4,4,4">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="5" />
+						<RowDefinition Height="25" />
+						<RowDefinition Height="25" />
+						<RowDefinition Height="25" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="32" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Grid.Row="1" Text="Product Name:" Foreground="Azure" />
+					<TextBox Grid.Row="2" x:Name="txtProductName" />
+					<TextBlock Grid.Row="3" Text="Product Description:" Foreground="Azure" />
+					<TextBox Grid.Row="4" x:Name="txtProductDescription" />
+					<!--<Ribbon:ButtonTool Grid.Row="5" x:Name="btnAddProduct" Caption="Add Product" HorizontalAlignment="Right" Click="btnAddProduct_Click" Foreground="RoyalBlue" />-->
+					<Button Grid.Row="5" x:Name="btnAddProduct" Content="Add Product" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnAddProduct_Click" />
+				</Grid>
+			</GroupBox>
+		</Grid>
+	</Ribbon:RibbonWindowContentHost>
+</Ribbon:XamRibbonWindow>

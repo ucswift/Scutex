@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="G:\Projects\Scutex\lib\ClientService" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/WaveTech.Scutex.Providers.NetworkTimeProvider.dll" publishTime="05/26/2010 15:31:12" />
+    <file relUrl="bin/WaveTech.Scutex.WcfServices.ServicesLibrary.dll" publishTime="05/26/2010 15:31:13" />
+    <file relUrl="bin/WaveTech.Scutex.Services.dll" publishTime="05/26/2010 15:31:12" />
+    <file relUrl="bin/WaveTech.Scutex.Providers.ObjectSerializationProvider.dll" publishTime="05/26/2010 15:31:12" />
+    <file relUrl="bin/WaveTech.Scutex.Providers.HashingProvider.dll" publishTime="05/26/2010 15:31:12" />
+    <file relUrl="bin/WaveTech.Scutex.Providers.WmiDataProvider.dll" publishTime="05/26/2010 15:31:10" />
+    <file relUrl="bin/WaveTech.Scutex.Providers.AsymmetricEncryptionProvider.dll" publishTime="05/26/2010 15:31:11" />
+    <file relUrl="bin/NLog.dll" publishTime="05/20/2010 11:44:06" />
+    <file relUrl="bin/StructureMap.dll" publishTime="05/26/2010 14:53:00" />
+    <file relUrl="Web.config" publishTime="05/26/2010 15:39:14" />
+    <file relUrl="bin/ClientService.dll" publishTime="05/26/2010 15:39:14" />
+    <file relUrl="bin/WaveTech.Scutex.Providers.SymmetricEncryptionProvider.dll" publishTime="05/26/2010 15:31:11" />
+    <file relUrl="bin/BouncyCastle.Crypto.dll" publishTime="08/19/2009 02:00:20" />
+    <file relUrl="bin/WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.dll" publishTime="05/26/2010 15:31:12" />
+    <file relUrl="bin/WaveTech.Scutex.Framework.dll" publishTime="05/26/2010 15:31:10" />
+    <file relUrl="ActivationService.svc" publishTime="05/24/2010 16:56:01" />
+    <file relUrl="bin/WaveTech.Scutex.Model.dll" publishTime="05/26/2010 15:31:10" />
+  </publishProfile>
+</publishData>

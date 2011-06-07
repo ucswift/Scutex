@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{81d2fd11-681f-4ee5-af03-9243e2ca804e}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>ScutexModeling</Name>
+    <RootNamespace>ScutexModeling</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <ValidateArchitecture>true</ValidateArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Content Include="UMLClassDiagram1.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLClassDiagram1.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLClassDiagram1.classdiagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="Graph1.dgml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\ScutexModeling.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="LayerDiagram1.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagram1.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram1.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagram1.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram1.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Applications\Licensing\Scutex.Licensing.csproj">
+      <Name>Scutex.Licensing</Name>
+      <Project>{5efb6698-a12a-421c-9467-e298f27661ff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Applications\Scutex.ManagerWpf\Scutex.ManagerWpf.csproj">
+      <Name>Scutex.ManagerWpf</Name>
+      <Project>{8d73af40-9401-48bb-839d-c7eddeff8e7c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Framework\Scutex.Framework.csproj">
+      <Name>Scutex.Framework</Name>
+      <Project>{129d128c-fdd4-495c-ba8b-72dc88b56965}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Model\Scutex.Model.csproj">
+      <Name>Scutex.Model</Name>
+      <Project>{9c5f0dea-954e-40bc-9b6c-62183d63022f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Services\Scutex.Services.csproj">
+      <Name>Scutex.Services</Name>
+      <Project>{78e7aa24-339e-4b0b-a6de-bc359ebfdae1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Generators\SmallStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorSmall.csproj">
+      <Name>Scutex.Generators.StaticKeyGeneratorSmall</Name>
+      <Project>{58d27055-380f-4c72-844f-3d9d48cc9d5f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\AsymmetricEncryptionProvider\Scutex.Providers.AsymmetricEncryptionProvider.csproj">
+      <Name>Scutex.Providers.AsymmetricEncryptionProvider</Name>
+      <Project>{2396bfd0-dcb8-4e7f-86a8-13b0fc3e5906}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\CompressionProvider\Scutex.Providers.CompressionProvider.csproj">
+      <Name>Scutex.Providers.CompressionProvider</Name>
+      <Project>{e5453af7-49b9-468c-96e2-f4b0abf49a73}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\HashingProvider\Scutex.Providers.HashingProvider.csproj">
+      <Name>Scutex.Providers.HashingProvider</Name>
+      <Project>{0388c0a9-7fef-4e1d-9743-9eaaf6f3060f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\ObjectSerializationProvider\Scutex.Providers.ObjectSerializationProvider.csproj">
+      <Name>Scutex.Providers.ObjectSerializationProvider</Name>
+      <Project>{fbbf7d09-0cc4-435e-a2ac-9503fa3680ce}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.DatabaseUpdateProvider\Scutex.Providers.DatabaseUpdateProvider.csproj">
+      <Name>Scutex.Providers.DatabaseUpdateProvider</Name>
+      <Project>{15e64bb9-1163-4c10-b7fa-3e6a32abebc1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.DataGenerationProvider\Scutex.Providers.DataGenerationProvider.csproj">
+      <Name>Scutex.Providers.DataGenerationProvider</Name>
+      <Project>{fe4d7e56-a192-46cb-a020-94f415ef35dd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\Scutex.Providers.NetworkTimeProvider\Scutex.Providers.NetworkTimeProvider.csproj">
+      <Name>Scutex.Providers.NetworkTimeProvider</Name>
+      <Project>{2d7ef293-72b3-4ad2-9abc-4a4be1a3b2f9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\SymmetricEncryptionProvider\Scutex.Providers.SymmetricEncryptionProvider.csproj">
+      <Name>Scutex.Providers.SymmetricEncryptionProvider</Name>
+      <Project>{899eb8a9-d905-40f4-8f51-ef1a3b92be67}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\WebServicesProvider\Scutex.Providers.WebServicesProvider.csproj">
+      <Name>Scutex.Providers.WebServicesProvider</Name>
+      <Project>{777a1e31-e5b9-41cf-b293-332d44ddc2e6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Providers\WmiDataProvider\Scutex.Providers.WmiDataProvider.csproj">
+      <Name>Scutex.Providers.WmiDataProvider</Name>
+      <Project>{b58e86f4-1cb6-4b20-979c-af259d8eb862}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ClientDataRepository\Scutex.Repositories.ClientDataRepository.csproj">
+      <Name>Scutex.Repositories.ClientDataRepository</Name>
+      <Project>{ed70b9f9-c186-4c8a-84ae-9ee4e4737ce6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ManagerDataRepository\Scutex.Repositories.ManagerDataRepository.csproj">
+      <Name>Scutex.Repositories.ManagerDataRepository</Name>
+      <Project>{9103121f-a76b-478a-99f0-3eaeee865958}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\ServicesDataRepository\Scutex.Repositories.ServicesDataRepository.csproj">
+      <Name>Scutex.Repositories.ServicesDataRepository</Name>
+      <Project>{2ce790dd-36a3-412b-9ce6-6cf353fff75d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ClientService\ClientService.csproj">
+      <Name>ClientService</Name>
+      <Project>{1627620d-180f-46de-a190-6ad11de24ea4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ManagementService\ManagementService.csproj">
+      <Name>ManagementService</Name>
+      <Project>{51e012e9-4cc3-470b-b474-eb404f3c6f0c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ServicesLibrary\ServicesLibrary.csproj">
+      <Name>ServicesLibrary</Name>
+      <Project>{8969c10d-485b-40a0-a4ac-fa71806c3e25}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=0.3.0.54, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
+      <Name>AutoMapper</Name>
+      <HintPath>..\..\References\Automapper\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.5.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <Name>BouncyCastle.Crypto</Name>
+      <HintPath>..\..\References\BouncyCastle\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <Name>ICSharpCode.SharpZipLib</Name>
+      <HintPath>..\..\References\SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
