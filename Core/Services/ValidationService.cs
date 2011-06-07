@@ -46,6 +46,12 @@ namespace WaveTech.Scutex.Services
 			ValidationResult result = new ValidationResult();
 			result.IsValid = true;
 
+			if (license.Product == null)
+			{
+				result.IsValid = false;
+				result.ValidationErrors.Add("License project must contain a Product.");
+			}
+
 			if (license.LicenseSets != null && license.LicenseSets.Count > 0)
 			{
 				bool isNonEnterprise = false;
@@ -69,6 +75,11 @@ namespace WaveTech.Scutex.Services
 						result.ValidationErrors.Add("A LicenseSet exists that is non-Enterprise without a service tied to the license.");
 					}
 				}
+			}
+			else
+			{
+				result.IsValid = false;
+				result.ValidationErrors.Add("License project must contain at least one License Set.");
 			}
 
 			return result;

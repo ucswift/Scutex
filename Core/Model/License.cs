@@ -23,6 +23,11 @@ namespace WaveTech.Scutex.Model
 		public License()
 		{
 			TrialSettings = new LicenseTrialSettings();
+		  base.KeyGeneratorType = KeyGeneratorTypes.StaticSmall;
+
+			TrialSettings.ExpirationOptions = TrialExpirationOptions.Days;
+			TrialSettings.ExpirationData = "30";
+			base.TrailNotificationSettings.TryButtonDelay = 7;
 		}
 		#endregion Constructor
 

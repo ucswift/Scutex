@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using WaveTech.Scutex.Generators.StaticKeyGeneratorLarge;
+using WaveTech.Scutex.Generators.StaticKeyGeneratorSmall;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Interfaces.Providers;
 using WaveTech.Scutex.Model.Interfaces.Repositories;

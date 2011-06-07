@@ -2,9 +2,9 @@
 {
 	public enum TrialNotificationTypes
 	{
-		Form						= 0,
-		MessageBox			= 1,
-		TraySlider			= 2,
-		SplashScreen		= 3
+		Form						= 0
+		//MessageBox			= 1,
+		//TraySlider			= 2,
+		//SplashScreen		= 3
 	}
 }
