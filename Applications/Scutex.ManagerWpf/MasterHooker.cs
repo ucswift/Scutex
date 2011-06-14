@@ -49,6 +49,11 @@ namespace WaveTech.Scutex.Manager
 			Generators.StaticKeyGeneratorSmall.Hooker.HookStaticKeyGeneratorSmall();
 		}
 
+		public static void HookLargeStaticKeyGenerator()
+		{
+			Generators.StaticKeyGeneratorLarge.Hooker.HookStaticKeyGeneratorLarge();
+		}
+
 		internal static void HookDataGenerationProvider()
 		{
 			Providers.DataGenerationProvider.Hooker.HookDataGenerationProvider();

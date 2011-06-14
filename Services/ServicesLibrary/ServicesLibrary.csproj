@@ -155,6 +155,10 @@
       <Project>{78E7AA24-339E-4B0B-A6DE-BC359EBFDAE1}</Project>
       <Name>Scutex.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Generators\LargeStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorLarge.csproj">
+      <Project>{61ED9CC2-E40A-4DAE-B591-4576222B686E}</Project>
+      <Name>Scutex.Generators.StaticKeyGeneratorLarge</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Generators\SmallStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorSmall.csproj">
       <Project>{58D27055-380F-4C72-844F-3D9D48CC9D5F}</Project>
       <Name>Scutex.Generators.StaticKeyGeneratorSmall</Name>

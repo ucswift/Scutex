@@ -129,14 +129,6 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\References\SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="InfragisticsWPF4.Editors.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.Editors.v10.3.dll</HintPath>
-    </Reference>
-    <Reference Include="InfragisticsWPF4.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\Infragistics\InfragisticsWPF4.v10.3.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -174,6 +166,7 @@
     </Compile>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Gui\ChangeToColorConverter.cs" />
+    <Compile Include="Gui\Controls\MaskedTextBox.cs" />
     <Compile Include="Gui\GuiRoot.cs" />
     <Compile Include="Gui\LicenseWindow.xaml.cs">
       <DependentUpon>LicenseWindow.xaml</DependentUpon>
@@ -257,6 +250,10 @@
     <ProjectReference Include="..\..\Core\Services\Scutex.Services.csproj">
       <Project>{78E7AA24-339E-4B0B-A6DE-BC359EBFDAE1}</Project>
       <Name>Scutex.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Generators\LargeStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorLarge.csproj">
+      <Project>{61ED9CC2-E40A-4DAE-B591-4576222B686E}</Project>
+      <Name>Scutex.Generators.StaticKeyGeneratorLarge</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Generators\SmallStaticKeyGenerator\Scutex.Generators.StaticKeyGeneratorSmall.csproj">
       <Project>{58D27055-380F-4C72-844F-3D9D48CC9D5F}</Project>

@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
+using WaveTech.Scutex.Manager.Forms;
 using WaveTech.Scutex.Manager.Windows;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Events;
@@ -202,8 +203,10 @@ namespace WaveTech.Scutex.Manager
 		{
 			MainWindow mainWindow = (MainWindow)sender;
 			mainWindow.root.Content = null;
-
 			UIContext.License = null;
+
+			WelcomeScreenForm welcomeScreenForm = new WelcomeScreenForm();
+			mainWindow.root.Content = welcomeScreenForm;
 		}
 
 		private static void SoftwareCode(object sender, ExecutedRoutedEventArgs e)

@@ -70,6 +70,33 @@ namespace WaveTech.Scutex.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string KeyGeneratorTypes_None {
+            get {
+                return ResourceManager.GetString("KeyGeneratorTypes_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Large Static Key (25 Chars).
+        /// </summary>
+        public static string KeyGeneratorTypes_StaticLarge {
+            get {
+                return ResourceManager.GetString("KeyGeneratorTypes_StaticLarge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small Static Key (13 Chars).
+        /// </summary>
+        public static string KeyGeneratorTypes_StaticSmall {
+            get {
+                return ResourceManager.GetString("KeyGeneratorTypes_StaticSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Shared_ApplicationMenu_Button_Close {

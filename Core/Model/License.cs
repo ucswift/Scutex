@@ -24,6 +24,7 @@ namespace WaveTech.Scutex.Model
 		{
 			TrialSettings = new LicenseTrialSettings();
 		  base.KeyGeneratorType = KeyGeneratorTypes.StaticSmall;
+			base.TrailNotificationSettings = new TrailNotificationSettings();
 
 			TrialSettings.ExpirationOptions = TrialExpirationOptions.Days;
 			TrialSettings.ExpirationData = "30";

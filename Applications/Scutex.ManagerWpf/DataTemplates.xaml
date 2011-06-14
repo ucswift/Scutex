@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                     xmlns:classes="clr-namespace:WaveTech.Scutex.Manager.Classes" 
                     xmlns:Converter="clr-namespace:WaveTech.Scutex.Manager.Converters" xmlns:System="clr-namespace:System;assembly=mscorlib" 
-                    xmlns:Model="clr-namespace:WaveTech.Scutex.Model;assembly=WaveTech.Scutex.Model">
+                    xmlns:Model="clr-namespace:WaveTech.Scutex.Model;assembly=WaveTech.Scutex.Model" xmlns:Framework="clr-namespace:WaveTech.Scutex.Framework;assembly=WaveTech.Scutex.Framework">
 
 	<Converter:GuidToStringConverter x:Key="guidToStringConverter" />
 
@@ -35,7 +35,15 @@
 	<ObjectDataProvider x:Key="allProductsLicensesAndSetsData" ObjectInstance="{StaticResource dataContext}" MethodName="GetAllProcutsLicensesAndSets"
             IsAsynchronous="False"  IsInitialLoadEnabled="False" />
 
-	<ObjectDataProvider x:Key="licenseKeyTypesEnumData" MethodName="GetValues" ObjectType="{x:Type System:Enum}" >
+	<!--<ObjectDataProvider x:Key="licenseKeyTypesEnumData" MethodName="GetDescriptionForEnum" ObjectType="{x:Type Framework:EnumHelper}" >
+		<ObjectDataProvider.MethodParameters>
+			<x:Type TypeName="Model:KeyGeneratorTypes" />
+		</ObjectDataProvider.MethodParameters>
+	</ObjectDataProvider>-->
+
+	<ObjectDataProvider x:Key="licenseKeyTypesEnumData"
+                            MethodName="GetValues" 
+                            ObjectType="{x:Type System:Enum}">
 		<ObjectDataProvider.MethodParameters>
 			<x:Type TypeName="Model:KeyGeneratorTypes" />
 		</ObjectDataProvider.MethodParameters>
@@ -46,4 +54,6 @@
 			<x:Type TypeName="Model:TrialNotificationTypes" />
 		</ObjectDataProvider.MethodParameters>
 	</ObjectDataProvider>
+
+	<Converter:EnumToFriendlyNameConverter x:Key="enumItemsConverter"/>
 </ResourceDictionary>

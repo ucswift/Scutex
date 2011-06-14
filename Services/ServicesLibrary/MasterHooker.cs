@@ -52,6 +52,11 @@
 			Generators.StaticKeyGeneratorSmall.Hooker.HookStaticKeyGeneratorSmall();
 		}
 
+		internal static void HooKLargeKeyGenerator()
+		{
+			Generators.StaticKeyGeneratorLarge.Hooker.HookStaticKeyGeneratorLarge();
+		}
+
 		internal static void HookClientDataRepo()
 		{
 			Repositories.ClientDataRepository.Hooker.HookClientDataDepository();

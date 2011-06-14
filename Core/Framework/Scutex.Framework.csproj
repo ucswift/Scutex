@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="ApplicationConstants.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="EnumHelper.cs" />
     <Compile Include="EventAggregator.cs" />
     <Compile Include="FrameworkRegistry.cs" />
     <Compile Include="InstanceNames.cs" />

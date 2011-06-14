@@ -43,10 +43,10 @@ namespace WaveTech.Scutex.Licensing.Gui
 			switch (_clientLicense.KeyGeneratorType)
 			{
 				case KeyGeneratorTypes.StaticSmall:
-					{
-						txtLicenseKey.Mask = @">AAA\-AAAAAA\-AAAA";
-						txtLicenseKey.NullText = "XXX-XXXXXX-XXXX";
-					}
+					txtLicenseKey.InputMask = @"www-wwwwww-wwww";
+					break;
+				case KeyGeneratorTypes.StaticLarge:
+					txtLicenseKey.InputMask = @"wwwww-wwwww-wwwww-wwwww-wwwww";
 					break;
 			}
 		}
