@@ -8,6 +8,7 @@ using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Interfaces.Repositories;
 using WaveTech.Scutex.Model.Interfaces.Services;
 using WaveTech.Scutex.Model.Interfaces.Wcf;
+using WaveTech.Scutex.Model.Results;
 using WaveTech.Scutex.Providers.AsymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.DataGenerationProvider;
 using WaveTech.Scutex.Providers.HashingProvider;
@@ -74,10 +75,11 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 				clientRepository = new ClientRepository(new ScutexServiceEntities());
 				keyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
 				masterService = new MasterService(commonRepository);
-				activationLogRepository = new ActivationLogRepoistory(new ScutexServiceEntities());
 
-				activationLogService = new ActivationLogService(activationLogRepository, hashingProvider);
-				keyService = new KeyManagementService(clientRepository, licenseKeyService, activationLogService, hashingProvider, serviceProductsRepository);
+				var mockActivationLogRepository = new Mock<IActivationLogRepoistory>();
+				mockActivationLogRepository.Setup(log => log.SaveActivationLog(It.IsAny<Scutex.Model.ActivationLog>()));
+
+				activationLogService = new ActivationLogService(mockActivationLogRepository.Object, hashingProvider);
 				commonService = new CommonService();
 
 				string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
@@ -98,6 +100,8 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 				var mockCommonRepository = new Mock<ICommonRepository>();
 				mockCommonRepository.Setup(repo => repo.GetMasterServiceData()).Returns(masterServiceData);
 
+				masterService = new MasterService(mockCommonRepository.Object);
+
 				keyPairService = new KeyPairService(mockCommonService.Object, mockCommonRepository.Object);
 				controlService = new ControlService(symmetricEncryptionProvider, keyPairService, packingService, masterService, objectSerializationProvider, asymmetricEncryptionProvider);
 				servicesRepository = new ServicesRepository(new ScutexEntities());
@@ -105,8 +109,9 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 				licenseActiviationProvider = new LicenseActiviationProvider(asymmetricEncryptionProvider, symmetricEncryptionProvider, objectSerializationProvider);
 				servicesService = new ServicesService(servicesRepository, serviceStatusProvider, packingService, licenseActiviationProvider, null, null, null, null, null);
 				licenseKeyService = new LicenseKeyService(keyGenerator, packingService, clientLicenseService);
-				activationService = new ActivationService(controlService, keyService, keyPairService, objectSerializationProvider, asymmetricEncryptionProvider, null, null);
-
+				keyService = new KeyManagementService(clientRepository, licenseKeyService, activationLogService, hashingProvider, serviceProductsRepository);
+				activationService = new ActivationService(controlService, keyService, keyPairService, objectSerializationProvider, asymmetricEncryptionProvider, activationLogService, masterService);
+	
 				string serviceData;
 
 				using (TextReader reader = new StreamReader(path + "\\Data\\Service.dat"))
@@ -138,6 +143,69 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 				string encryptedResult = activationService.ActivateLicense(encryptedToken, encryptedData);
 
 				Assert.IsNotNull(encryptedResult);
+			}
+
+			[TestMethod]
+			public void should_be_valid_request()
+			{
+				string clientToken = packingService.PackToken(service.GetClientToken());
+
+				LicenseActivationPayload payload = new LicenseActivationPayload();
+				payload.LicenseKey = "999-999999-9999";
+				payload.ServiceLicense = new ServiceLicense(servicesService.CreateTestClientLicense(service));
+
+				string encryptedToken = symmetricEncryptionProvider.Encrypt(clientToken, servicesService.GetClientStandardEncryptionInfo(service));
+				string serializedPayload = objectSerializationProvider.Serialize(payload);
+				string encryptedData = asymmetricEncryptionProvider.EncryptPrivate(serializedPayload, servicesService.CreateTestClientLicense(service).ServicesKeys);
+
+
+				string encryptedResult = activationService.ActivateLicense(encryptedToken, encryptedData);
+				string decryptedResult = asymmetricEncryptionProvider.DecryptPublic(encryptedResult, servicesService.CreateTestClientLicense(service).ServicesKeys);
+				ActivationResult result = objectSerializationProvider.Deserialize<ActivationResult>(decryptedResult);
+
+				Assert.IsTrue(result.WasRequestValid);
+			}
+
+			[TestMethod]
+			public void should_not_have_exception()
+			{
+				string clientToken = packingService.PackToken(service.GetClientToken());
+
+				LicenseActivationPayload payload = new LicenseActivationPayload();
+				payload.LicenseKey = "999-999999-9999";
+				payload.ServiceLicense = new ServiceLicense(servicesService.CreateTestClientLicense(service));
+
+				string encryptedToken = symmetricEncryptionProvider.Encrypt(clientToken, servicesService.GetClientStandardEncryptionInfo(service));
+				string serializedPayload = objectSerializationProvider.Serialize(payload);
+				string encryptedData = asymmetricEncryptionProvider.EncryptPrivate(serializedPayload, servicesService.CreateTestClientLicense(service).ServicesKeys);
+
+
+				string encryptedResult = activationService.ActivateLicense(encryptedToken, encryptedData);
+				string decryptedResult = asymmetricEncryptionProvider.DecryptPublic(encryptedResult, servicesService.CreateTestClientLicense(service).ServicesKeys);
+				ActivationResult result = objectSerializationProvider.Deserialize<ActivationResult>(decryptedResult);
+
+				Assert.IsFalse(result.WasException);
+			}
+
+			[TestMethod]
+			public void should_not_have_been_successful()
+			{
+				string clientToken = packingService.PackToken(service.GetClientToken());
+
+				LicenseActivationPayload payload = new LicenseActivationPayload();
+				payload.LicenseKey = "999-999999-9999";
+				payload.ServiceLicense = new ServiceLicense(servicesService.CreateTestClientLicense(service));
+
+				string encryptedToken = symmetricEncryptionProvider.Encrypt(clientToken, servicesService.GetClientStandardEncryptionInfo(service));
+				string serializedPayload = objectSerializationProvider.Serialize(payload);
+				string encryptedData = asymmetricEncryptionProvider.EncryptPrivate(serializedPayload, servicesService.CreateTestClientLicense(service).ServicesKeys);
+
+
+				string encryptedResult = activationService.ActivateLicense(encryptedToken, encryptedData);
+				string decryptedResult = asymmetricEncryptionProvider.DecryptPublic(encryptedResult, servicesService.CreateTestClientLicense(service).ServicesKeys);
+				ActivationResult result = objectSerializationProvider.Deserialize<ActivationResult>(decryptedResult);
+
+				Assert.IsFalse(result.WasOperationSuccessful);
 			}
 		}
 	}

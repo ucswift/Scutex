@@ -24,11 +24,14 @@ namespace WaveTech.Scutex.UnitTests.Wcf
 			protected ControlService controlService;
 			protected Scutex.Model.Service service;
 
+			internal ServicesRepository servicesRepository;
+			internal CommonRepository commonRepository;
+
 			[TestInitialize]
 			public void Before_each_test()
 			{
-				ServicesRepository servicesRepository = new ServicesRepository(new ScutexEntities());
-				CommonRepository commonRepository = new CommonRepository(new ScutexServiceEntities());
+				//ServicesRepository servicesRepository = new ServicesRepository(new ScutexEntities());
+				//CommonRepository commonRepository = new CommonRepository(new ScutexServiceEntities());
 
 				AsymmetricEncryptionProvider asymmetricEncryptionProvider = new AsymmetricEncryptionProvider();
 				SymmetricEncryptionProvider symmetricEncryptionProvider = new SymmetricEncryptionProvider();
@@ -59,7 +62,7 @@ namespace WaveTech.Scutex.UnitTests.Wcf
 		{
 			[TestMethod]
 			[HostType("Moles")]
-			public void encryption_infos_should_match()
+			public void client_encryption_infos_should_match()
 			{
 				string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
 				path = path.Replace("file:\\", "");
@@ -77,10 +80,10 @@ namespace WaveTech.Scutex.UnitTests.Wcf
 
 
 				string inKey1 = service.InboundKeyPair.PublicKey.Substring(0, (service.InboundKeyPair.PublicKey.Length / 2));
-				string inKey2 = service.InboundKeyPair.PublicKey.Substring(inKey1.Length, (service.InboundKeyPair.PublicKey.Length / 2));
+				string inKey2 = service.InboundKeyPair.PublicKey.Substring(inKey1.Length, (service.InboundKeyPair.PublicKey.Length - inKey1.Length));
 
-				string outKey1 = service.OutboundKeyPair.PrivateKey.Substring(0, (service.OutboundKeyPair.PublicKey.Length / 2));
-				string outKey2 = service.OutboundKeyPair.PrivateKey.Substring(outKey1.Length, (service.OutboundKeyPair.PublicKey.Length / 2));
+				string outKey1 = service.OutboundKeyPair.PrivateKey.Substring(0, (service.OutboundKeyPair.PrivateKey.Length / 2));
+				string outKey2 = service.OutboundKeyPair.PrivateKey.Substring(outKey1.Length, (service.OutboundKeyPair.PrivateKey.Length - outKey1.Length));
 
 				using (StreamWriter writer = new StreamWriter(inFile))
 				{
@@ -93,7 +96,7 @@ namespace WaveTech.Scutex.UnitTests.Wcf
 				}
 
 
-				EncryptionInfo ei1 = servicesService.GetManagementStandardEncryptionInfo(service);
+				EncryptionInfo ei1 = servicesService.GetClientStandardEncryptionInfo(service);
 				EncryptionInfo ei2 = controlService.GetStandardEncryptionInfo();
 
 				Assert.IsTrue(ei1.Equals(ei2));
@@ -119,10 +122,10 @@ namespace WaveTech.Scutex.UnitTests.Wcf
 
 
 				string inKey1 = service.ManagementInboundKeyPair.PublicKey.Substring(0, (service.ManagementInboundKeyPair.PublicKey.Length / 2));
-				string inKey2 = service.ManagementInboundKeyPair.PublicKey.Substring(inKey1.Length, (service.ManagementInboundKeyPair.PublicKey.Length / 2));
+				string inKey2 = service.ManagementInboundKeyPair.PublicKey.Substring(inKey1.Length, (service.ManagementInboundKeyPair.PublicKey.Length - inKey1.Length));
 
-				string outKey1 = service.ManagementOutboundKeyPair.PrivateKey.Substring(0, (service.ManagementOutboundKeyPair.PublicKey.Length / 2));
-				string outKey2 = service.ManagementOutboundKeyPair.PrivateKey.Substring(outKey1.Length, (service.ManagementOutboundKeyPair.PublicKey.Length / 2));
+				string outKey1 = service.ManagementOutboundKeyPair.PrivateKey.Substring(0, (service.ManagementOutboundKeyPair.PrivateKey.Length / 2));
+				string outKey2 = service.ManagementOutboundKeyPair.PrivateKey.Substring(outKey1.Length, (service.ManagementOutboundKeyPair.PrivateKey.Length - outKey1.Length));
 
 				using (StreamWriter writer = new StreamWriter(inFile))
 				{
