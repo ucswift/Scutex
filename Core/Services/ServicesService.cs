@@ -280,8 +280,6 @@ namespace WaveTech.Scutex.Services
 			return ei;
 		}
 
-
-
 		public bool AddProductToService(License license, List<LicenseSet> licenseSets, Service service)
 		{
 			ServiceProduct sp = new ServiceProduct();

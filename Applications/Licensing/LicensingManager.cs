@@ -308,14 +308,63 @@ namespace WaveTech.Scutex.Licensing
 			{
 				List<string> data = _comBypassProvider.GetComBypass();
 
+				if (!BasicTLSPreDataChecks(data))
+					throw new Exception();
+
 				publicKey = encodingService.Decode(data[0]);
 				dllCheck = encodingService.Decode(data[1]);
+
+				if (!BasicTLSPostDataChecks(publicKey, dllCheck))
+					throw new Exception();
 			}
 			catch
 			{
 				GetAttributeDataFromTLSFailed();
 				throw new ScutexAuditException();
 			}
+		}
+
+		private bool BasicTLSPreDataChecks(List<string> data)
+		{
+			bool isValid = true;
+
+			if (data.Count == 2)
+			{
+				if (!data[0].Contains("|"))
+					isValid = false;
+
+				if (!data[1].Contains("|"))
+					isValid = false;
+
+				if (data[0].Length < 150)
+					isValid = false;
+
+				if (data[1].Length < 150)
+					isValid = false;
+			}
+			else
+				isValid = false;
+			
+
+			return isValid;
+		}
+
+		private bool BasicTLSPostDataChecks(string publicKey, string dllCheck)
+		{
+			bool isValid = true;
+
+			if (String.IsNullOrEmpty(publicKey) || String.IsNullOrEmpty(dllCheck))
+				isValid = false;
+			else
+			{
+				if (publicKey.Length < 150)
+					isValid = false;
+
+				if (dllCheck.Length != 59)
+					isValid = false;
+			}
+
+			return isValid;
 		}
 
 		/// <summary>

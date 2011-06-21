@@ -261,15 +261,6 @@
         </dependencyFromLayerToLayer>
       </dependencyToLayers>
       <references>
-        <reference Id="5caa6809-8de2-4d6e-9ef3-0337f21c00c5" name="Scutex.Generators.DyanmicKeyGeneratorSmall">
-          <ArtifactNode Label="Scutex.Generators.DyanmicKeyGeneratorSmall" Category="CodeSchema_Project" Id="(Assembly=../../Generators/DyanmicKeyGeneratorSmall/Scutex.Generators.DyanmicKeyGeneratorSmall.csproj)">
-            <Category Ref="CodeSchema_SourceFile" />
-          </ArtifactNode>
-          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Generators.DyanmicKeyGeneratorSmall)" Label="WaveTech.Scutex.Generators.DyanmicKeyGeneratorSmall.dll" Category="FileSystem.Category.FileOfType.dll">
-            <LinkCategory Ref="Produces" />
-            <LinkCategory Ref="Represents" />
-          </ExpandedNode>
-        </reference>
         <reference Id="15a7f81a-3e9c-43ab-94c5-2d44147fbc24" name="Scutex.Generators.StaticKeyGeneratorSmall">
           <ArtifactNode Label="Scutex.Generators.StaticKeyGeneratorSmall" Category="CodeSchema_Project" Id="(Assembly=../../Generators/SmallStaticKeyGenerator/Scutex.Generators.StaticKeyGeneratorSmall.csproj)">
             <Category Ref="CodeSchema_SourceFile" />
@@ -279,17 +270,8 @@
             <LinkCategory Ref="Represents" />
           </ExpandedNode>
         </reference>
-        <reference Id="9d850317-7e68-412f-bd42-a886066e27c6" name="Scutex.Generators.DynamicKeyGeneratorLarge">
-          <ArtifactNode Label="Scutex.Generators.DynamicKeyGeneratorLarge" Category="CodeSchema_Project" Id="(Assembly=../../Generators/DynamicKeyGenerator/Scutex.Generators.DynamicKeyGeneratorLarge.csproj)">
-            <Category Ref="CodeSchema_SourceFile" />
-          </ArtifactNode>
-          <ExpandedNode Id="(Assembly=WaveTech.Scutex.Generators.DynamicKeyGenerator)" Label="WaveTech.Scutex.Generators.DynamicKeyGenerator.dll" Category="FileSystem.Category.FileOfType.dll">
-            <LinkCategory Ref="Produces" />
-            <LinkCategory Ref="Represents" />
-          </ExpandedNode>
-        </reference>
-        <reference Id="b03ec5d2-a7b8-4537-9dac-6f5e1e066cb5" name="Scutex.Generators.StaticKeyGeneratorLarge">
-          <ArtifactNode Label="Scutex.Generators.StaticKeyGeneratorLarge" Category="CodeSchema_Project" Id="(Assembly=../../Generators/StaticKeyGenerator/Scutex.Generators.StaticKeyGeneratorLarge.csproj)">
+        <reference Id="50e4282b-dced-4c2a-81f6-0bd5546f4ac3" name="Scutex.Generators.StaticKeyGeneratorLarge">
+          <ArtifactNode Label="Scutex.Generators.StaticKeyGeneratorLarge" Category="CodeSchema_Project" Id="(Assembly=../../Generators/LargeStaticKeyGenerator/Scutex.Generators.StaticKeyGeneratorLarge.csproj)">
             <Category Ref="CodeSchema_SourceFile" />
           </ArtifactNode>
           <ExpandedNode Id="(Assembly=WaveTech.Scutex.Generators.StaticKeyGeneratorLarge)" Label="WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll" Category="FileSystem.Category.FileOfType.dll">
