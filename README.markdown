@@ -1,6 +1,6 @@
 # Scutex
 
-Scutex, pronounced (sec-u-techs), is a 100% managed .Net Framework licensing platform for your applications. Scutex is a flexible licensing system allowing multiple licensing schemes allowing you the most control over how you licensing your products. Unlike any other licensing system on the market, Scutex provides 4 distinct licensing schemes, allowing you to protect your products at different levels using completely different licensing schemes, key types and protection systems.
+Scutex, pronounced (sec-u-techs), is a 100% managed .Net Framework licensing platform for your applications. Scutex is a flexible licensing system providing multiple licensing schemes allowing you the most control over how you license your products. Unlike any other licensing system on the market, Scutex provides 4 distinct licensing schemes, allowing you to protect your products at different levels using completely different licensing schemes, key types and protection systems.
 
 Using Scutex you can create trial versions of your software products and allow your users to buy and use license keys or keyfiles to unlock your product. You can also have edition based licensing to unlock only select features based on the level of the license. Scutex supports upgrade licenses as well as allowing your customers who have an existing version of your product to upgrade to a new version.
 
