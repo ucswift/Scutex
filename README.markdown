@@ -27,3 +27,12 @@ There are a number of additional processes that occur for preparing Scutex to be
 ## Prerequisites
 
 You will need the .Net Framework 4 and SQL Server or SQL Express to use Scutex. 
+
+## Supported License Key Types
+
+There are two license key types supported:
+
+    * Small Static License Key (SSK) XXX-XXXXXX-XXXX
+	* Large Static License Key (LSK) XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+	
+The small static key only supports basic license key functionality, while the large static key supports many licensing scenarios.
