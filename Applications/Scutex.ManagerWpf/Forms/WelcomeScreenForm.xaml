@@ -70,6 +70,11 @@
                 <TextBlock ToolTip="Help Desk">Help Desk</TextBlock>
             </Hyperlink>
 					</TextBlock>
+					<TextBlock>
+						<Hyperlink x:Name="hplGitHub" Click="hplGitHub_Click">
+                <TextBlock ToolTip="GitHub Source">GitHub</TextBlock>
+            </Hyperlink>
+					</TextBlock>
 				</StackPanel>
 
 				<StackPanel Margin="5,0,0,0" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom">

@@ -135,6 +135,45 @@
     <Compile Include="Framework\StringHelperTests.cs" />
     <Compile Include="Generators\StaticKeyGeneratorLargeTests.cs" />
     <Compile Include="Generators\StaticKeyGeneratorSmallTests.cs" />
+    <Compile Include="Generators\when_using_get_weighting_modifer.should_be_11_with_weights_of_3_and_4.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_get_weighting_modifer.should_be_5_with_weights_of_29_and_19.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_get_weighting_modifer.should_be_9_with_weights_of_31_and_8.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_get_weighting_modifer.should_be_able_to_handle_ramdom_numbers.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_the_key_value_deobfuscator.should_be_4_with_char_of_C_and_weights_of_7_and_19.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_the_key_value_deobfuscator.should_be_5_with_char_of_R_and_weights_of_6_and_3.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_the_key_value_deobfuscator.should_be_F_with_char_of_R_and_weights_of_G_and_3.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_the_key_value_obfuscator.should_be_6_with_char_of_R_and_weights_of_5_and_3.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_the_key_value_obfuscator.should_be_G_with_char_of_C_and_weights_of_4_and_19.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_using_the_key_value_obfuscator.should_be_G_with_char_of_R_and_weights_of_15_and_3.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_validating_a_single_key.should_be_98_precent_accurate_when_validating_100000_bad_licenses.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_validating_a_single_key.should_throw_exception_when_invalid.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\when_validating_a_single_key.should_work_when_using_valid_key.g.cs">
+      <DependentUpon>StaticKeyGeneratorSmallTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Helpers\ConfigFileWriter.cs" />
     <Compile Include="Helpers\LicenseHelper.cs" />

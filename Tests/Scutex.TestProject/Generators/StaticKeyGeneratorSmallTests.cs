@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using Microsoft.Pex.Framework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveTech.Scutex.Generators.StaticKeyGeneratorSmall;
 using WaveTech.Scutex.Model;
@@ -10,6 +11,7 @@ using WaveTech.Scutex.Model.Interfaces.Providers;
 using WaveTech.Scutex.Providers.AsymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.HashingProvider;
 using WaveTech.Scutex.Providers.SymmetricEncryptionProvider;
+using Microsoft.Pex.Framework.Validation;
 
 namespace WaveTech.Scutex.UnitTests.Generators
 {
@@ -66,7 +68,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 		}
 
 		[TestClass]
-		public class when_using_the_licese_placeholders_with_generationoptions : with_the_small_static_key_generator
+		public partial class when_using_the_licese_placeholders_with_generationoptions : with_the_small_static_key_generator
 		{
 			[TestMethod]
 			public void should_not_be_null()
@@ -160,22 +162,22 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 		}
 
-		[TestClass]
-		public class when_using_get_weighting_modifer : with_the_small_static_key_generator
+		[TestClass, PexClass]
+		public partial class when_using_get_weighting_modifer : with_the_small_static_key_generator
 		{
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_11_with_weights_of_3_and_4()
 			{
 				Assert.AreEqual(11.0, KeyGenerator.GetWeightingModifer(3, 4));
 			}
 
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_9_with_weights_of_31_and_8()
 			{
 				Assert.AreEqual(9.0, KeyGenerator.GetWeightingModifer(31, 8));
 			}
 
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_5_with_weights_of_29_and_19()
 			{
 				Assert.AreEqual(5.0, KeyGenerator.GetWeightingModifer(25, 19));
@@ -207,44 +209,44 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 		}
 
-		[TestClass]
-		public class when_using_the_key_value_obfuscator : with_the_small_static_key_generator
+		[TestClass, PexClass]
+		public partial class when_using_the_key_value_obfuscator : with_the_small_static_key_generator
 		{
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_6_with_char_of_R_and_weights_of_5_and_3()
 			{
 				Assert.AreEqual(char.Parse("6"), KeyGenerator.KeyIntegerValueObfuscator(char.Parse("R"), 5, 3));
 			}
 
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_G_with_char_of_R_and_weights_of_15_and_3()
 			{
 				Assert.AreEqual(char.Parse("G"), KeyGenerator.KeyIntegerValueObfuscator(char.Parse("R"), 15, 3));
 			}
 
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_G_with_char_of_C_and_weights_of_4_and_19()
 			{
 				Assert.AreEqual(char.Parse("7"), KeyGenerator.KeyIntegerValueObfuscator(char.Parse("C"), 4, 19));
 			}
 		}
 
-		[TestClass]
-		public class when_using_the_key_value_deobfuscator : with_the_small_static_key_generator
+		[TestClass, PexClass]
+		public partial class when_using_the_key_value_deobfuscator : with_the_small_static_key_generator
 		{
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_5_with_char_of_R_and_weights_of_6_and_3()
 			{
 				Assert.AreEqual(char.Parse("5"), KeyGenerator.KeyIntegerValueDeObfuscator(char.Parse("R"), char.Parse("6"), 3));
 			}
 
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_F_with_char_of_R_and_weights_of_G_and_3()
 			{
 				Assert.AreEqual(CharacterMap.Map[15], KeyGenerator.KeyIntegerValueDeObfuscator(char.Parse("R"), char.Parse("G"), 3));
 			}
 
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_be_4_with_char_of_C_and_weights_of_7_and_19()
 			{
 				Assert.AreEqual(char.Parse("4"), KeyGenerator.KeyIntegerValueDeObfuscator(char.Parse("C"), char.Parse("7"), 19));
@@ -278,11 +280,11 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 		}
 
-		[TestClass]
-		public class when_validating_a_single_key : with_the_small_static_key_generator
+		[TestClass, PexClass]
+		public partial class when_validating_a_single_key : with_the_small_static_key_generator
 		{
-			[TestMethod]
-			[ExpectedException(typeof(ScutexLicenseException))]
+			[TestMethod, PexMethod]
+			[ExpectedException(typeof(ScutexLicenseException)), PexAllowedException(typeof(ScutexLicenseException))]
 			public void should_throw_exception_when_invalid()
 			{
 				char[] keyArray = key.ToCharArray();
@@ -341,7 +343,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				Assert.IsTrue(accuracy > .98);
 			}
 
-			[TestMethod]
+			[TestMethod, PexMethod]
 			public void should_work_when_using_valid_key()
 			{
 				bool test = smallKeyGenerator.ValidateLicenseKey(key, license);

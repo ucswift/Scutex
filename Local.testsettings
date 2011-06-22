@@ -3,8 +3,58 @@
   <Description>These are default test settings for a local test run.</Description>
   <Deployment enabled="false" />
   <Execution>
-    <TestTypeSpecific />
-    <AgentRule name="Execution Agents">
+    <TestTypeSpecific>
+      <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+        <AssemblyResolution>
+          <TestDirectory useLoadContext="true" />
+        </AssemblyResolution>
+      </UnitTestRunConfig>
+      <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">
+        <Browser name="Internet Explorer 7.0">
+          <Headers>
+            <Header name="User-Agent" value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" />
+            <Header name="Accept" value="*/*" />
+            <Header name="Accept-Language" value="{{$IEAcceptLanguage}}" />
+            <Header name="Accept-Encoding" value="GZIP" />
+          </Headers>
+        </Browser>
+      </WebTestRunConfiguration>
+    </TestTypeSpecific>
+    <AgentRule name="LocalMachineDefaultRole">
+      <DataCollectors>
+        <DataCollector uri="datacollector://microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="Code Coverage">
+          <Configuration>
+            <CodeCoverage keyFile="Other\Scutex-PubPriv-KeyFile.snk" xmlns="">
+              <Regular>
+                <CodeCoverageItem binaryFile="Applications\Scutex.ManagerWpf\bin\Debug\LicensingManager.exe" pdbFile="Applications\Scutex.ManagerWpf\bin\Debug\LicensingManager.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Applications\Scutex.LicenseMaintenance\bin\Debug\Scutex.LicenseMaintenance.exe" pdbFile="Applications\Scutex.LicenseMaintenance\bin\Debug\Scutex.LicenseMaintenance.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Applications\Scutex.LicensingCOM\bin\Debug\ScutexLicensingCCW.dll" pdbFile="Applications\Scutex.LicensingCOM\bin\Debug\ScutexLicensingCCW.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Generators\LargeStaticKeyGenerator\bin\Debug\WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll" pdbFile="Generators\LargeStaticKeyGenerator\bin\Debug\WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Generators\SmallStaticKeyGenerator\bin\Debug\WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.dll" pdbFile="Generators\SmallStaticKeyGenerator\bin\Debug\WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Applications\Licensing\bin\Debug\WaveTech.Scutex.Licensing.dll" pdbFile="Applications\Licensing\bin\Debug\WaveTech.Scutex.Licensing.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Core\Model\bin\Debug\WaveTech.Scutex.Model.dll" pdbFile="Core\Model\bin\Debug\WaveTech.Scutex.Model.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\AsymmetricEncryptionProvider\bin\Debug\WaveTech.Scutex.Providers.AsymmetricEncryptionProvider.dll" pdbFile="Providers\AsymmetricEncryptionProvider\bin\Debug\WaveTech.Scutex.Providers.AsymmetricEncryptionProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\COM\Scutex.Providers.COM.ComBypassProvider\bin\Debug\WaveTech.Scutex.Providers.COM.ComBypassProvider.dll" pdbFile="Providers\COM\Scutex.Providers.COM.ComBypassProvider\bin\Debug\WaveTech.Scutex.Providers.COM.ComBypassProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\Scutex.Providers.ComBypassProvider\bin\Debug\WaveTech.Scutex.Providers.ComBypassProvider.dll" pdbFile="Providers\Scutex.Providers.ComBypassProvider\bin\Debug\WaveTech.Scutex.Providers.ComBypassProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\CompressionProvider\bin\Debug\WaveTech.Scutex.Providers.CompressionProvider.dll" pdbFile="Providers\CompressionProvider\bin\Debug\WaveTech.Scutex.Providers.CompressionProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\Scutex.Providers.DatabaseUpdateProvider\bin\Debug\WaveTech.Scutex.Providers.DatabaseUpdateProvider.dll" pdbFile="Providers\Scutex.Providers.DatabaseUpdateProvider\bin\Debug\WaveTech.Scutex.Providers.DatabaseUpdateProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\Scutex.Providers.DataGenerationProvider\bin\Debug\WaveTech.Scutex.Providers.DataGenerationProvider.dll" pdbFile="Providers\Scutex.Providers.DataGenerationProvider\bin\Debug\WaveTech.Scutex.Providers.DataGenerationProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\HashingProvider\bin\Debug\WaveTech.Scutex.Providers.HashingProvider.dll" pdbFile="Providers\HashingProvider\bin\Debug\WaveTech.Scutex.Providers.HashingProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\Scutex.Providers.NetworkTimeProvider\bin\Debug\WaveTech.Scutex.Providers.NetworkTimeProvider.dll" pdbFile="Providers\Scutex.Providers.NetworkTimeProvider\bin\Debug\WaveTech.Scutex.Providers.NetworkTimeProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\ObjectSerializationProvider\bin\Debug\WaveTech.Scutex.Providers.ObjectSerializationProvider.dll" pdbFile="Providers\ObjectSerializationProvider\bin\Debug\WaveTech.Scutex.Providers.ObjectSerializationProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\SymmetricEncryptionProvider\bin\Debug\WaveTech.Scutex.Providers.SymmetricEncryptionProvider.dll" pdbFile="Providers\SymmetricEncryptionProvider\bin\Debug\WaveTech.Scutex.Providers.SymmetricEncryptionProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\WebServicesProvider\bin\Debug\WaveTech.Scutex.Providers.WebServicesProvider.dll" pdbFile="Providers\WebServicesProvider\bin\Debug\WaveTech.Scutex.Providers.WebServicesProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Providers\WmiDataProvider\bin\Debug\WaveTech.Scutex.Providers.WmiDataProvider.dll" pdbFile="Providers\WmiDataProvider\bin\Debug\WaveTech.Scutex.Providers.WmiDataProvider.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Repositories\ClientDataRepository\bin\Debug\WaveTech.Scutex.Repositories.ClientDataRepository.dll" pdbFile="Repositories\ClientDataRepository\bin\Debug\WaveTech.Scutex.Repositories.ClientDataRepository.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Repositories\ManagerDataRepository\bin\Debug\WaveTech.Scutex.Repositories.ManagerDataRepository.dll" pdbFile="Repositories\ManagerDataRepository\bin\Debug\WaveTech.Scutex.Repositories.ManagerDataRepository.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Repositories\ServicesDataRepository\bin\Debug\WaveTech.Scutex.Repositories.ServicesDataRepository.dll" pdbFile="Repositories\ServicesDataRepository\bin\Debug\WaveTech.Scutex.Repositories.ServicesDataRepository.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Core\Services\bin\Debug\WaveTech.Scutex.Services.dll" pdbFile="Core\Services\bin\Debug\WaveTech.Scutex.Services.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Services\ServicesLibrary\bin\Debug\WaveTech.Scutex.WcfServices.ServicesLibrary.dll" pdbFile="Services\ServicesLibrary\bin\Debug\WaveTech.Scutex.WcfServices.ServicesLibrary.pdb" instrumentInPlace="true" />
+              </Regular>
+            </CodeCoverage>
+          </Configuration>
+        </DataCollector>
+      </DataCollectors>
     </AgentRule>
   </Execution>
 </TestSettings>

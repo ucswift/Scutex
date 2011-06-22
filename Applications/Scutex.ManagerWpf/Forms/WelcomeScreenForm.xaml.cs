@@ -41,5 +41,10 @@ namespace WaveTech.Scutex.Manager.Forms
 		{
 			System.Diagnostics.Process.Start("http://support.wtdt.com:9996/Main/Default.aspx");
 		}
+
+		private void hplGitHub_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			System.Diagnostics.Process.Start("https://github.com/wavetech/Scutex");
+		}
 	}
 }

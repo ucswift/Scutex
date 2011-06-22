@@ -185,6 +185,7 @@
     <Compile Include="Results\GetLicenseKeysForProductResult.cs" />
     <Compile Include="Results\QueryActiveServiceProductsResult.cs" />
     <Compile Include="Results\QueryActiveServiceProductsResultData.cs" />
+    <Compile Include="ScutexComponentLicense.cs" />
     <Compile Include="ServiceData\AddLicenseKeysForProductData.cs" />
     <Compile Include="ServiceLicenseKey.cs" />
     <Compile Include="ServiceProduct.cs" />

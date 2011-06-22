@@ -194,6 +194,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScutexLicenseProvider.cs" />
     <Compile Include="ThreadRunner.cs" />
   </ItemGroup>
   <ItemGroup>
