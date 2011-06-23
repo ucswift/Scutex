@@ -357,9 +357,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{5173F8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VBNet", "VBNet", "{D393CE75-2380-4097-A8D8-03411B2A8E11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scutex.Samples.CSharp.WpfCustomControlLibrary", "Samples\CSharp\Scutex.Samples.CSharp.WpfCustomControlLibrary\Scutex.Samples.CSharp.WpfCustomControlLibrary.csproj", "{C2FDC80C-D7F1-4BE6-9236-159903609F2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scutex.Samples.CSharp.WindowsFormsControlLibrary", "Samples\CSharp\Scutex.Samples.CSharp.WindowsFormsControlLibrary\Scutex.Samples.CSharp.WindowsFormsControlLibrary.csproj", "{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 33
+		SccNumberOfProjects = 35
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = http://tfs.wtdt.com:8181/tfs/imported
 		SccLocalPath0 = .
@@ -491,6 +495,14 @@ Global
 		SccProjectTopLevelParentUniqueName32 = Scutex.sln
 		SccProjectName32 = Generators/LargeStaticKeyGenerator
 		SccLocalPath32 = Generators\\LargeStaticKeyGenerator
+		SccProjectUniqueName33 = Samples\\CSharp\\Scutex.Samples.CSharp.WpfCustomControlLibrary\\Scutex.Samples.CSharp.WpfCustomControlLibrary.csproj
+		SccProjectTopLevelParentUniqueName33 = Scutex.sln
+		SccProjectName33 = Samples/CSharp/Scutex.Samples.CSharp.WpfCustomControlLibrary
+		SccLocalPath33 = Samples\\CSharp\\Scutex.Samples.CSharp.WpfCustomControlLibrary
+		SccProjectUniqueName34 = Samples\\CSharp\\Scutex.Samples.CSharp.WindowsFormsControlLibrary\\Scutex.Samples.CSharp.WindowsFormsControlLibrary.csproj
+		SccProjectTopLevelParentUniqueName34 = Scutex.sln
+		SccProjectName34 = Samples/CSharp/Scutex.Samples.CSharp.WindowsFormsControlLibrary
+		SccLocalPath34 = Samples\\CSharp\\Scutex.Samples.CSharp.WindowsFormsControlLibrary
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Scutex.vsmdi
@@ -885,6 +897,28 @@ Global
 		{61ED9CC2-E40A-4DAE-B591-4576222B686E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{61ED9CC2-E40A-4DAE-B591-4576222B686E}.Release|x86.ActiveCfg = Release|Any CPU
 		{61ED9CC2-E40A-4DAE-B591-4576222B686E}.Release|x86.Build.0 = Release|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Debug|x86.Build.0 = Debug|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Debug|x86.Build.0 = Debug|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -946,5 +980,7 @@ Global
 		{9E5AA9BC-F1FF-4976-8997-354C642E5EA0} = {021D54F8-A043-44D1-A953-2A22CEFBB9F9}
 		{5173F8ED-53E6-4757-8D4B-2E03FE995A0F} = {09398A30-3AFD-444F-B177-93D2453F13D5}
 		{D393CE75-2380-4097-A8D8-03411B2A8E11} = {09398A30-3AFD-444F-B177-93D2453F13D5}
+		{C2FDC80C-D7F1-4BE6-9236-159903609F2F} = {5173F8ED-53E6-4757-8D4B-2E03FE995A0F}
+		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18} = {5173F8ED-53E6-4757-8D4B-2E03FE995A0F}
 	EndGlobalSection
 EndGlobal

@@ -170,6 +170,7 @@
     <Compile Include="Interfaces\Wcf\IProductManagementService.cs" />
     <Compile Include="KeyData.cs" />
     <Compile Include="LicenseActivationPayload.cs" />
+    <Compile Include="LicensingManagerOptions.cs" />
     <Compile Include="ProcessCodes.cs" />
     <Compile Include="RegisterResult.cs" />
     <Compile Include="Resources\Strings.Designer.cs">

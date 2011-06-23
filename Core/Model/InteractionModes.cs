@@ -24,6 +24,11 @@
 		/// <summary>
 		/// Scutex will not report any data
 		/// </summary>
-		Silent = 3
+		Silent = 3,
+
+		/// <summary>
+		/// Scutex will display a minimal GUI for Control/Component interaction
+		/// </summary>
+		Component = 4
 	}
 }

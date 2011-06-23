@@ -4,9 +4,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using Microsoft.Pex.Framework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using WaveTech.Scutex.Generators.StaticKeyGeneratorSmall;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Exceptions;
+using WaveTech.Scutex.Model.Interfaces.Generators;
 using WaveTech.Scutex.Model.Interfaces.Providers;
 using WaveTech.Scutex.Providers.AsymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.HashingProvider;
@@ -159,6 +161,64 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			public void should_not_be_null()
 			{
 				Assert.IsNotNull(KeyGenerator.GetRandomCharacter());
+			}
+		}
+
+		[TestClass]
+		public class when_getting_license_capibilites : with_the_small_static_key_generator
+		{
+			[TestMethod]
+			public void should_not_be_null()
+			{
+				Assert.IsNotNull(smallKeyGenerator.GetLicenseCapability());
+			}
+
+			[TestMethod]
+			public void should_support_single_user_type()
+			{
+				LicenseCapability lc = smallKeyGenerator.GetLicenseCapability();
+
+				Assert.IsTrue(lc.SupportedLicenseKeyTypes.IsSet(LicenseKeyTypeFlag.SingleUser));
+			}
+
+			[TestMethod]
+			public void should_support_multi_user_type()
+			{
+				LicenseCapability lc = smallKeyGenerator.GetLicenseCapability();
+
+				Assert.IsTrue(lc.SupportedLicenseKeyTypes.IsSet(LicenseKeyTypeFlag.MultiUser));
+			}
+
+			[TestMethod]
+			public void should_support_unlimited_type()
+			{
+				LicenseCapability lc = smallKeyGenerator.GetLicenseCapability();
+
+				Assert.IsTrue(lc.SupportedLicenseKeyTypes.IsSet(LicenseKeyTypeFlag.Unlimited));
+			}
+
+			[TestMethod]
+			public void should_support_enterprise_type()
+			{
+				LicenseCapability lc = smallKeyGenerator.GetLicenseCapability();
+
+				Assert.IsTrue(lc.SupportedLicenseKeyTypes.IsSet(LicenseKeyTypeFlag.Enterprise));
+			}
+
+			[TestMethod]
+			public void should_allow_only_50000_keys_per_batch()
+			{
+				LicenseCapability lc = smallKeyGenerator.GetLicenseCapability();
+
+				Assert.AreEqual(50000, lc.MaxLicenseKeysPerBatch);
+			}
+
+			[TestMethod]
+			public void should_allow_only_500000_max_keys()
+			{
+				LicenseCapability lc = smallKeyGenerator.GetLicenseCapability();
+
+				Assert.AreEqual(500000, lc.MaxTotalLicenseKeys);
 			}
 		}
 
@@ -349,6 +409,20 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				bool test = smallKeyGenerator.ValidateLicenseKey(key, license);
 
 				Assert.IsTrue(test);
+			}
+
+			[TestMethod, PexMethod]
+			[ExpectedException(typeof(ScutexLicenseException)), PexAllowedException(typeof(ScutexLicenseException))]
+			public void should_throw_exception_when_key_is_too_small()
+			{
+				smallKeyGenerator.ValidateLicenseKey("ASX-A41ASH", license);
+			}
+
+			[TestMethod, PexMethod]
+			[ExpectedException(typeof(ScutexLicenseException)), PexAllowedException(typeof(ScutexLicenseException))]
+			public void should_throw_exception_when_key_is_too_long()
+			{
+				smallKeyGenerator.ValidateLicenseKey("ASX-A41ASH-AS1317-AS9", license);
 			}
 		}
 	}

@@ -17,11 +17,5 @@ namespace WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests
 {
 	public partial class when_validating_a_single_key
 	{
-[TestMethod]
-[PexGeneratedBy(typeof(when_validating_a_single_key))]
-public void should_work_when_using_valid_key01()
-{
-    this.should_work_when_using_valid_key();
-}
 	}
 }

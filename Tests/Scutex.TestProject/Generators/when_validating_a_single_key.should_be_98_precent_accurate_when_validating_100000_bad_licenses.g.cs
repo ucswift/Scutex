@@ -17,13 +17,5 @@ namespace WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests
 {
 	public partial class when_validating_a_single_key
 	{
-[TestMethod]
-[PexGeneratedBy(typeof(when_validating_a_single_key))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void should_be_98_precent_accurate_when_validating_100000_bad_licenses01()
-{
-    this.should_be_98_precent_accurate_when_validating_100000_bad_licenses();
-}
 	}
 }

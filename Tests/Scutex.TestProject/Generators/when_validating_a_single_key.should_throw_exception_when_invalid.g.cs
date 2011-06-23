@@ -10,6 +10,7 @@
 // compile anymore, you may delete this file and invoke Pex again.
 // </auto-generated>
 using System;
+using Microsoft.Pex.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Pex.Framework.Generated;
 using WaveTech.Scutex.Model.Exceptions;
@@ -18,12 +19,5 @@ namespace WaveTech.Scutex.UnitTests.Generators.SmallStaticKeyGeneratorTests
 {
 	public partial class when_validating_a_single_key
 	{
-[TestMethod]
-[PexGeneratedBy(typeof(when_validating_a_single_key))]
-[PexRaisedException(typeof(ScutexLicenseException))]
-public void should_throw_exception_when_invalidThrowsScutexLicenseException449()
-{
-    this.should_throw_exception_when_invalid();
-}
 	}
 }

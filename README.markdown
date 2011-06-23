@@ -26,7 +26,17 @@ There are a number of additional processes that occur for preparing Scutex to be
 
 ## Prerequisites
 
-You will need the .Net Framework 4 and SQL Server or SQL Express to use Scutex. 
+You will need the .Net Framework 4 and SQL Server or SQL Express to use Scutex. To develop Scutex you will need the following installed.
+
+	* Visual Studio 2010 (WPF/MSTest)
+	* SQL Server 2005/2008/2008 R2 or SQL Express 2005/2008 R2
+	* Microsoft MOLES & Pex Power Tools
+	* Infragistics WPF v10.3 (Temporary)
+	* IIS, IIS Express or Casini for testing Services
+
+## Unit Test
+
+I moved the unit tests from NUnit to MSTest to get integrated MOLES support, and to play around with Pex a little. Unfortunately the way MSTest plays and moves things around it makes getting the paths for required files a major issue. The ReSharper Unit Test Runner does not have that issue, and still runes the MOLES tests. If you run the unit tests from within Visual Studio using MSTest all the test dependent on location will fail. Additionally the performance of the unit tests went downhill due to how MSTest wires things up. Eventually I'll get back in there are refactor the Setup and Teardowns so that they work with MSTest.
 
 ## Supported License Key Types
 
@@ -36,3 +46,4 @@ There are two license key types supported:
 	* Large Static License Key (LSK) XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 	
 The small static key only supports basic license key functionality, while the large static key supports many licensing scenarios.
+

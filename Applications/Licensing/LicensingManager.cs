@@ -24,6 +24,7 @@ namespace WaveTech.Scutex.Licensing
 		private string publicKey;
 		private string dllCheck;
 		private object instance;
+		private LicensingManagerOptions _options;
 		//private bool assemblyVerified;
 		#endregion Private Members
 
@@ -88,6 +89,25 @@ namespace WaveTech.Scutex.Licensing
 			SetCriticalVerificationData();
 			VerifyLicensingAssembly();
 		}
+
+		/// <summary>
+		/// Override constructor to instantiate the Licensing Manager and
+		/// set options for its use.
+		/// </summary>
+		/// <remarks>
+		/// This constructor is useful when calling Scutex from an instance
+		/// where there is no running application or objects that can be 
+		/// used to run a attribute check. For example a .Net Component or
+		/// Control.
+		/// </remarks>
+		/// <param name="options">
+		/// Options to override the default Licensing Manager behavior
+		/// </param>
+		public LicensingManager(LicensingManagerOptions options)
+		{
+			_options = options;
+		}
+
 		#endregion Constructors
 
 		#region Public Methods
