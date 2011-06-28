@@ -7,18 +7,43 @@ namespace WaveTech.Scutex.Licensing
 {
 	public class ScutexLicenseProvider : LicenseProvider
 	{
+		private static LicensingManager _licensingManager;
+
 		public override License GetLicense(LicenseContext context, Type type, object instance, bool allowExceptions)
 		{
-			bool isLicenseValid = true;
+			ScutexLicense license = null;
 
-			if (!isLicenseValid)
+			try
 			{
-				throw new LicenseException(type, instance, "Invalid license.");
+				if (context.UsageMode == LicenseUsageMode.Designtime)
+				{
+					if (_licensingManager != null)
+						license = _licensingManager.Validate(InteractionModes.Silent);
+
+					if (license != null)
+					{
+						if (!license.IsLicenseValid())
+						{
+							throw new LicenseException(type, instance, "Invalid license or trial expired");
+						}
+						else
+						{
+							return new ScutexComponentLicense(license);
+						}
+					}
+				}
+
+				return null;
 			}
-			else
+			catch (Exception ex)
 			{
-				return new ScutexComponentLicense();
+				return null;
 			}
+		}
+
+		public static void SetLicensingManager(LicensingManager licenseManager)
+		{
+			_licensingManager = licenseManager;
 		}
 	}
 }

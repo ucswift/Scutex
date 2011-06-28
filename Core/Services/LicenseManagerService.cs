@@ -27,6 +27,16 @@ namespace WaveTech.Scutex.Services
 			return GetScutexLicense(clientLicense);
 		}
 
+		public ScutexLicense GetScutexLicense(string path)
+		{
+			ClientLicense clientLicense = _clientLicenseService.GetClientLicense(path);
+
+			if (clientLicense == null)
+				return null;
+
+			return GetScutexLicense(clientLicense);
+		}
+
 		public ScutexLicense GetScutexLicense(ClientLicense clientLicense)
 		{
 			ScutexLicense scutexLicense = new ScutexLicense();

@@ -15,6 +15,8 @@ namespace WaveTech.Scutex.Model
 	/// </remarks>
 	public class ScutexLicense
 	{
+		public string LicenseKey { get; set; }
+
 		public bool IsLicensed { get; set; }
 		public bool IsActivated { get; set; }
 
@@ -45,5 +47,18 @@ namespace WaveTech.Scutex.Model
 		}
 
 		public TrialInterfaceInteraction InterfaceInteraction { get; set; }
+
+		public bool IsLicenseValid()
+		{
+			bool isValid = true;
+
+			if (IsLicensed == false && IsTrialExpired == true)
+				isValid = false;	// Not licensed and the trial is expired
+
+			if (IsLicensed == false && IsTrialExpired == false && IsTrialValid == false)
+				isValid = false;	// Not licenses, trial not expired but it isn't valid
+
+			return isValid;
+		}
 	}
 }

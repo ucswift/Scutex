@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			WaveTech.Scutex.Licensing.LicensingManager licensingManager1 = new WaveTech.Scutex.Licensing.LicensingManager();
 			this.component11 = new Scutex.Samples.CSharp.WindowsFormsControlLibrary.Component1(this.components);
 			this.SuspendLayout();
 			// 

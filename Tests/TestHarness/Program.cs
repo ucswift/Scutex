@@ -77,7 +77,9 @@ namespace TestHarness
 			//SerializeServiceData();
 			//SerializeMasterServiceData();
 
-			HashTokenWithSalt();
+			//HashTokenWithSalt();
+
+			TestLicensingManagerWithOptions();
 
 			//Console.WriteLine();
 			//Console.WriteLine("Press enter to exit.");
@@ -692,5 +694,19 @@ namespace TestHarness
 			Console.WriteLine("Press enter to exit.");
 			Console.ReadLine();
 		}
+
+		public static void TestLicensingManagerWithOptions()
+		{
+			LicensingManagerOptions options = new LicensingManagerOptions
+		                                                 	{
+		                                                 		DataFileLocation = @"C:\Temp\Scutex\License.lic",
+																												PublicKey = "123",
+																												DllHash = "123",
+																												KillOnError = false
+		                                                 	};
+
+		LicensingManager LicensingManager = new LicensingManager(null, options);
+		}
+
 	}
 }

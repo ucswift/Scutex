@@ -21,5 +21,15 @@
 		/// 
 		/// </summary>
 		public string DllHash { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool KillOnError { get; set; }
+
+		public LicensingManagerOptions()
+		{
+			KillOnError = true;
+		}
 	}
 }

@@ -122,11 +122,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\AssemblyInfo.cs">
-      <Link>AssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="Applications\ComWraperTests.cs" />
     <Compile Include="Applications\LicensingManagerTests.cs" />
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Common\TestDatabase.cs" />
     <Compile Include="Common\TestWebServer.cs" />
     <Compile Include="Foundational\MathTests.cs" />

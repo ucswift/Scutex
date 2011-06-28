@@ -24,6 +24,7 @@ namespace WaveTech.Scutex.Licensing
 		private string publicKey;
 		private string dllCheck;
 		private object instance;
+		private bool _killOnError = true;
 		private LicensingManagerOptions _options;
 		//private bool assemblyVerified;
 		#endregion Private Members
@@ -72,7 +73,31 @@ namespace WaveTech.Scutex.Licensing
 		/// Reference to an object were the required attributes can be located
 		/// </param>
 		public LicensingManager(object instance)
+			:this(instance, null)
 		{
+
+		}
+
+		/// <summary>
+		/// Override constructor to instantiate the Licensing Manager and
+		/// set options for its use.
+		/// </summary>
+		/// <remarks>
+		/// This constructor is useful when calling Scutex from an instance
+		/// where there is no running application or objects that can be 
+		/// used to run a attribute check. For example a .Net Component or
+		/// Control.
+		/// </remarks>
+		/// <param name="instance">
+		/// Reference to an object were the required attributes can be located
+		/// </param>
+		/// <param name="options">
+		/// Options to override the default Licensing Manager behavior
+		/// </param>
+		public LicensingManager(object instance, LicensingManagerOptions options)
+		{
+			_options = options;
+			_killOnError = _options.KillOnError;
 			this.instance = instance;
 
 			Bootstrapper.Configure();
@@ -88,24 +113,6 @@ namespace WaveTech.Scutex.Licensing
 
 			SetCriticalVerificationData();
 			VerifyLicensingAssembly();
-		}
-
-		/// <summary>
-		/// Override constructor to instantiate the Licensing Manager and
-		/// set options for its use.
-		/// </summary>
-		/// <remarks>
-		/// This constructor is useful when calling Scutex from an instance
-		/// where there is no running application or objects that can be 
-		/// used to run a attribute check. For example a .Net Component or
-		/// Control.
-		/// </remarks>
-		/// <param name="options">
-		/// Options to override the default Licensing Manager behavior
-		/// </param>
-		public LicensingManager(LicensingManagerOptions options)
-		{
-			_options = options;
 		}
 
 		#endregion Constructors
@@ -127,13 +134,19 @@ namespace WaveTech.Scutex.Licensing
 		/// </param>
 		public ScutexLicense Validate(InteractionModes interactionMode)
 		{
-			ScutexLicense scutexLicense = licenseManagerService.GetScutexLicense();
+			ScutexLicense scutexLicense;
+
+			if (_options != null && String.IsNullOrEmpty(_options.DataFileLocation) == false)
+				scutexLicense = licenseManagerService.GetScutexLicense(_options.DataFileLocation);
+			else
+				scutexLicense = licenseManagerService.GetScutexLicense();
 
 			if (scutexLicense == null)
 				throw new ScutexAuditException();
 
 			if (scutexLicense.IsLicensed == false)
 			{
+
 				switch (interactionMode)
 				{
 					case InteractionModes.None:
@@ -162,7 +175,10 @@ namespace WaveTech.Scutex.Licensing
 						break;
 					case InteractionModes.Silent:
 						break;
+					case InteractionModes.Component:
+						break;
 				}
+
 			}
 
 			scutexLicense.InterfaceInteraction = InterfaceInteraction;
@@ -283,38 +299,63 @@ namespace WaveTech.Scutex.Licensing
 
 		private void GetLicenseAttributeInfo()
 		{
-			object[] attibutes;
+			object[] attibutes = null;
 			bool foundAttibute = false;
 
-			if (instance != null)
+			if (_options != null && String.IsNullOrEmpty(_options.DllHash) == false && String.IsNullOrEmpty(_options.PublicKey) == false)
 			{
-				Assembly assembly = Assembly.GetAssembly(instance.GetType());
-				attibutes = assembly.GetCustomAttributes(true);
+				try
+				{
+					publicKey = encodingService.Decode(_options.PublicKey);
+					dllCheck = encodingService.Decode(_options.DllHash);
+
+					foundAttibute = true;
+				}
+				catch
+				{
+					GetLicenseAttributeInfoFailed();
+				}
 			}
 			else
 			{
-				attibutes = Assembly.GetEntryAssembly().GetCustomAttributes(true);
-			}
 
-			foreach (object o in attibutes)
-			{
-				if (o.GetType() == typeof(LicenseAttribute))
+				if (instance != null)
 				{
-					if (String.IsNullOrEmpty(((LicenseAttribute)o).Key) || String.IsNullOrEmpty(((LicenseAttribute)o).Check))
-						GetLicenseAttributeInfoFailed();
-
+					Assembly assembly = Assembly.GetAssembly(instance.GetType());
+					attibutes = assembly.GetCustomAttributes(true);
+				}
+				else
+				{
 					try
 					{
-						publicKey = encodingService.Decode(((LicenseAttribute)o).Key);
-						dllCheck = encodingService.Decode(((LicenseAttribute)o).Check);
+						attibutes = Assembly.GetEntryAssembly().GetCustomAttributes(true);
 					}
 					catch
 					{
 						GetLicenseAttributeInfoFailed();
 					}
+				}
 
-					foundAttibute = true;
-					break;
+				foreach (object o in attibutes)
+				{
+					if (o.GetType() == typeof (LicenseAttribute))
+					{
+						if (String.IsNullOrEmpty(((LicenseAttribute) o).Key) || String.IsNullOrEmpty(((LicenseAttribute) o).Check))
+							GetLicenseAttributeInfoFailed();
+
+						try
+						{
+							publicKey = encodingService.Decode(((LicenseAttribute) o).Key);
+							dllCheck = encodingService.Decode(((LicenseAttribute) o).Check);
+						}
+						catch
+						{
+							GetLicenseAttributeInfoFailed();
+						}
+
+						foundAttibute = true;
+						break;
+					}
 				}
 			}
 
@@ -364,7 +405,7 @@ namespace WaveTech.Scutex.Licensing
 			}
 			else
 				isValid = false;
-			
+
 
 			return isValid;
 		}
@@ -404,7 +445,7 @@ namespace WaveTech.Scutex.Licensing
 			// hash will keep on changing, and this will kill the application and any tests.
 			if (currentFileHash != dllCheck)
 			{
-				MessageBox.Show("Scutex Licensing\r\n\r\n" + "If you are getting this error message Scutex Licensing was unable to \r\n" + "verify the licensing DLL. This means that the DLL might have been\r\n" + "corrupted or might have been tampered with.\r\n\r\n" + "To fix this issue you need to either replace the DLL file with the correct file or regenerate the licening data file from the Scutex Licensing Manager.", "Scutex Licensing", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Scutex Licensing\r\n\r\n" + "If you are getting this error message Scutex Licensing was unable to \r\n" + "verify the licensing DLL. This means that the DLL might have been\r\n" + "corrupted or might have been tampered with.\r\n\r\n" + "To fix this issue you need to either replace the DLL file with the correct file or regenerate the licensing data file from the Scutex Licensing Manager.", "Scutex Licensing", MessageBoxButton.OK, MessageBoxImage.Error);
 				//Environment.Exit(1001);
 
 				throw new ScutexAuditException();
@@ -418,8 +459,11 @@ namespace WaveTech.Scutex.Licensing
 		/// </summary>
 		private void GetLicenseAttributeInfoFailed()
 		{
+			if (_options != null)
 			MessageBox.Show("Scutex Licensing\r\n\r\n" + "If you are getting this error message you might be missing the\r\n" + "LicensingAttribute in your protected application's AssemblyInfo file.\r\n\r\n" + "You should check to ensure that the LicensingAttribute exists and that\r\n" + "both parameters of the attribute are populated.", "Scutex Licensing", MessageBoxButton.OK, MessageBoxImage.Error);
-			Environment.Exit(1002);
+			
+			if (_killOnError)
+				Environment.Exit(1002);
 		}
 
 		/// <summary>

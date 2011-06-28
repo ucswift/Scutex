@@ -19,11 +19,29 @@ namespace Scutex.Samples.CSharp.WindowsFormsControlLibrary
 		private static LicensingManagerOptions options = new LicensingManagerOptions
 		                                                 	{
 		                                                 		DataFileLocation = @"C:\Temp\Scutex\License.lic",
-																												PublicKey = "",
-																												DllHash = ""
+																												PublicKey = "123",
+																												DllHash = "123",
+																												KillOnError = false
 		                                                 	};
 
-		public static LicensingManager License = new LicensingManager(options);
+		public static LicensingManager LicensingManager = new LicensingManager(null, options);
+		public static ScutexComponentLicense License;
+
+		public void ValidateLicense()
+		{
+			ScutexLicenseProvider.SetLicensingManager(LicensingManager);
+			ScutexComponentLicense lic = (ScutexComponentLicense)LicenseManager.Validate(typeof (Component1), this);
+
+			if (lic != null)
+			{
+				License = lic;
+			}
+		}
+
+		public void SetLicense()
+		{
+			
+		}
 
 		/// <summary> 
 		/// Clean up any resources being used.
@@ -47,8 +65,6 @@ namespace Scutex.Samples.CSharp.WindowsFormsControlLibrary
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-
-			License = new LicensingManager(this);
 		}
 
 		#endregion
@@ -87,7 +103,7 @@ namespace Scutex.Samples.CSharp.WindowsFormsControlLibrary
 
 		private void OnRegister(object sender, EventArgs e)
 		{
-				Component1.License.Validate(InteractionModes.Component);
+			Component1.LicensingManager.Validate(InteractionModes.Component);
 		}
 	}
 
