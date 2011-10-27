@@ -24,7 +24,8 @@ namespace WaveTech.Scutex.Licensing
 					{
 						if (!license.IsLicenseValid())
 						{
-							throw new LicenseException(type, instance, "Invalid license or trial expired");
+							//throw new LicenseException(type, instance, "Invalid license or trial expired");
+							return null;
 						}
 						else
 						{
