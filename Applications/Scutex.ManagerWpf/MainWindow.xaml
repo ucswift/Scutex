@@ -5,8 +5,13 @@
         xmlns:igRibbon="http://infragistics.com/Ribbon"
         xmlns:local="clr-namespace:WaveTech.Scutex.Manager"
         xmlns:Classes="clr-namespace:WaveTech.Scutex.Manager.Classes" 
-        Title="Scutex Licensing Manager" WindowStartupLocation="CenterScreen"
-        MinWidth="800" MinHeight="580" Height="580" Width="800" ResizeMode="CanResizeWithGrip">
+        Title="Scutex Licensing Manager" 
+				WindowStartupLocation="CenterScreen"
+        MinWidth="800" 
+				MinHeight="580" 
+				Height="580" 
+				Width="800" 
+				ResizeMode="CanResizeWithGrip">
 
 	<my:XamRibbonWindow.Resources>
 		<ResourceDictionary>

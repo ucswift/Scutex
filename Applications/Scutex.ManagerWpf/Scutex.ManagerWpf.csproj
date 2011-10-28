@@ -114,6 +114,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=0.3.0.54, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
+    <Reference Include="Fluent">
+      <HintPath>..\..\References\FluentRibbon\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="InfragisticsWPF4.DataPresenter.ExcelExporter.v10.3, Version=10.3.20103.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -182,6 +185,9 @@
     </Compile>
     <Compile Include="Forms\WelcomeScreenForm.xaml.cs">
       <DependentUpon>WelcomeScreenForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow2.xaml.cs">
+      <DependentUpon>MainWindow2.xaml</DependentUpon>
     </Compile>
     <Compile Include="MasterHooker.cs" />
     <Compile Include="Resources\Strings.Designer.cs">
@@ -290,6 +296,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Screens\ProductsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -586,6 +596,22 @@
     <Resource Include="img\ProductAdd-48x48.png" />
     <Resource Include="img\ProductDelete-48x48.png" />
     <Resource Include="img\ProductEdit-48x48.png" />
+    <Resource Include="img\Help.png" />
+    <Resource Include="img\close.png" />
+    <Resource Include="img\Exit.png" />
+    <Resource Include="img\open.png" />
+    <Resource Include="img\Save.png" />
+    <Resource Include="img\New.png" />
+    <Resource Include="img\new-large.png" />
+    <Resource Include="img\close-large.png" />
+    <Resource Include="img\open-large.png" />
+    <Resource Include="img\save-large.png" />
+    <Resource Include="img\application_add.png" />
+    <Resource Include="img\application_remove.png" />
+    <Resource Include="img\blog_post_accept.png" />
+    <Resource Include="img\computer.png" />
+    <Resource Include="img\window_edit.png" />
+    <Resource Include="img\window_lock.png" />
     <Content Include="ScutexDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
