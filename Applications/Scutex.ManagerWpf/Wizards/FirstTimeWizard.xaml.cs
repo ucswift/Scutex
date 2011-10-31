@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using System.Timers;
 using System.Windows;
 using System.Windows.Media;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Providers.DatabaseUpdateProvider;
 
@@ -14,7 +13,7 @@ namespace WaveTech.Scutex.Manager.Wizards
 	/// <summary>
 	/// Interaction logic for FristTimeWizard.xaml
 	/// </summary>
-	public partial class FirstTimeWizard : XamRibbonWindow
+	public partial class FirstTimeWizard : Window
 	{
 		#region Externals/Constants
 		[DllImport("user32.dll", EntryPoint = "GetSystemMenu")]

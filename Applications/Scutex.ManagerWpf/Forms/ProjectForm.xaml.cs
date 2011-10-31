@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
 
 namespace WaveTech.Scutex.Manager.Forms
@@ -19,6 +20,8 @@ namespace WaveTech.Scutex.Manager.Forms
 		public ProjectForm()
 		{
 			InitializeComponent();
+
+			WindowHelper.CheckAndApplyTheme(this);
 		}
 
 		public License License

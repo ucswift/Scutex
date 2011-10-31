@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -20,7 +19,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for GenerationWindow.xaml
 	/// </summary>
-	public partial class GenerationWindow : XamRibbonWindow
+	public partial class GenerationWindow : Window
 	{
 		#region Dependency Properties
 		public static readonly DependencyProperty LicenseKeysProperty =

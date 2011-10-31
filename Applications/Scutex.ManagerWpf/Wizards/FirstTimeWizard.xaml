@@ -1,12 +1,11 @@
-﻿<Ribbon:XamRibbonWindow x:Class="WaveTech.Scutex.Manager.Wizards.FirstTimeWizard"
+﻿<Window x:Class="WaveTech.Scutex.Manager.Wizards.FirstTimeWizard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls" 
-        xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3" 
         xmlns:Classes="clr-namespace:WaveTech.Scutex.Manager.Classes" xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes" 
         Title="Scutex Frist Run Wizard" Height="500" Width="600" WindowStartupLocation="CenterScreen" Topmost="True" 
         Closing="XamRibbonWindow_Closing" ResizeMode="NoResize">
-    <Ribbon:XamRibbonWindow.Resources>
+    <Window.Resources>
         <Controls:NavigationMultiConverter x:Key="navigationMultiConverter" />
 
         <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.HeaderPanelBorderResourceKey}">
@@ -138,13 +137,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Ribbon:XamRibbonWindow.Resources>
-
-    <Ribbon:RibbonWindowContentHost>
-        <Ribbon:RibbonWindowContentHost.Ribbon>
-            <Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
-            </Ribbon:XamRibbon>
-        </Ribbon:RibbonWindowContentHost.Ribbon>
+    </Window.Resources>
         <Grid>
             <Controls:Wizard x:Name="m_Wizard" CancelClick="Wizard_OnCancelClick" FinishClick="Wizard_OnFinishClick">
 
@@ -278,5 +271,4 @@
 
             </Controls:Wizard>
         </Grid>
-    </Ribbon:RibbonWindowContentHost>
-</Ribbon:XamRibbonWindow>
+</Window>

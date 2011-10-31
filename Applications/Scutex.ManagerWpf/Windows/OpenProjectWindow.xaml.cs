@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -10,7 +9,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for OpenProjectWindow.xaml
 	/// </summary>
-	public partial class OpenProjectWindow : XamRibbonWindow
+	public partial class OpenProjectWindow : Window
 	{
 		#region Constructors
 		public OpenProjectWindow()

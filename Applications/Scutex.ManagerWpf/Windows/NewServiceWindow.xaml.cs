@@ -3,8 +3,6 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
-using Infragistics.Windows.DataPresenter;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -19,7 +17,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for NewServiceWindow.xaml
 	/// </summary>
-	public partial class NewServiceWindow : XamRibbonWindow
+	public partial class NewServiceWindow : Window
 	{
 		private IServicesService servicesService;
 		private bool _hasPackgageBeenDownloaded = false;
@@ -32,7 +30,7 @@ namespace WaveTech.Scutex.Manager.Windows
 			WindowHelper.CheckAndApplyTheme(this);
 
 			servicesService = ObjectLocator.GetInstance<IServicesService>();
-			gridServices.DataSource = servicesService.GetAllNonInitializedNonTestedServices();
+			gridServices.ItemsSource = servicesService.GetAllNonInitializedNonTestedServices();
 		}
 
 		/// <summary>
@@ -171,7 +169,7 @@ namespace WaveTech.Scutex.Manager.Windows
 						_service.LockToIp = chkLockToIp.IsChecked.Value;
 
 					servicesService.SaveService(_service);
-					gridServices.DataSource = servicesService.GetAllNonInitializedServices();
+					gridServices.ItemsSource = servicesService.GetAllNonInitializedServices();
 					ResetForm();
 				}
 				else
@@ -183,12 +181,9 @@ namespace WaveTech.Scutex.Manager.Windows
 
 		private void btnUpdateService_Click(object sender, RoutedEventArgs e)
 		{
-			if (gridServices.ActiveRecord != null)
+			if (gridServices.SelectedItem != null)
 			{
-				DataRecord record = gridServices.ActiveRecord as DataRecord;
-				int id = (int)record.Cells["ServiceId"].Value;
-
-				Service service = servicesService.GetServiceById(id);
+				Service service = gridServices.SelectedItem as Service;
 
 				UpdateServiceWindow updateServiceWindow = new UpdateServiceWindow(this.Owner, service);
 				updateServiceWindow.Show();
@@ -201,13 +196,12 @@ namespace WaveTech.Scutex.Manager.Windows
 
 		private void btnInitializeService_Click(object sender, RoutedEventArgs e)
 		{
-			if (gridServices.ActiveRecord != null)
+			if (gridServices.SelectedItem != null)
 			{
 				BackgroundWorker worker = new BackgroundWorker();
 				loadingAnimation.Visibility = Visibility.Visible;
 
-				DataRecord record = gridServices.ActiveRecord as DataRecord;
-				int id = (int)record.Cells["ServiceId"].Value;
+				Service service = gridServices.SelectedItem as Service;
 
 				worker.DoWork += delegate(object s, DoWorkEventArgs args)
 				{
@@ -215,8 +209,6 @@ namespace WaveTech.Scutex.Manager.Windows
 					int resultCode = 0;
 
 					IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
-
-					Service service = _servicesService.GetServiceById(id);
 					bool result;
 
 					try
@@ -275,7 +267,7 @@ namespace WaveTech.Scutex.Manager.Windows
 					}
 
 					IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
-					gridServices.DataSource = _servicesService.GetAllNonInitializedNonTestedServices();
+					gridServices.ItemsSource = _servicesService.GetAllNonInitializedNonTestedServices();
 
 					IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
 					eventAggregator.SendMessage<ServicesUpdatedEvent>();
@@ -285,7 +277,7 @@ namespace WaveTech.Scutex.Manager.Windows
 
 				worker.RunWorkerAsync(new object[]
 				                      	{
-				                      		id
+				                      		service
 				                      	});
 			}
 			else

@@ -14,6 +14,9 @@
 	<ObjectDataProvider x:Key="productsData" ObjectInstance="{StaticResource dataContext}" MethodName="GetProducts"
             IsAsynchronous="False"  IsInitialLoadEnabled="False" />
 
+	<ObjectDataProvider x:Key="servicesData" ObjectInstance="{StaticResource dataContext}" MethodName="GetServices"
+            IsAsynchronous="False"  IsInitialLoadEnabled="False" />
+
 	<ObjectDataProvider x:Key="licenseSetData" ObjectInstance="{StaticResource dataContext}" MethodName="GetLicenseSets"
             IsAsynchronous="False"  IsInitialLoadEnabled="False" />
 

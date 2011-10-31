@@ -1,6 +1,7 @@
-﻿using System.Windows.Controls;
-using Infragistics.Windows.DataPresenter;
+﻿using System.Collections.Generic;
+using System.Windows.Controls;
 using WaveTech.Scutex.Framework;
+using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Events;
 using WaveTech.Scutex.Model.Interfaces.Framework;
@@ -20,22 +21,22 @@ namespace WaveTech.Scutex.Manager.Screens
 		{
 			InitializeComponent();
 
+			WindowHelper.CheckAndApplyTheme(this);
+
 			_productsService = ObjectLocator.GetInstance<IProductsService>();
 			_eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
 
-			_eventAggregator.AddListener<ProductsUpdatedEvent>(x => gridProducts.DataSource = _productsService.GetAllProducts());
+			_eventAggregator.AddListener<ProductsUpdatedEvent>(x => gridProducts.ItemsSource = _productsService.GetAllProducts());
 		}
 
 		public Product SelectedProduct
 		{
 			get
 			{
-				if (gridProducts.ActiveRecord != null)
+				if (gridProducts.SelectedItem != null)
 				{
-					DataRecord record = gridProducts.ActiveRecord as DataRecord;
-					int productId = (int)record.Cells["ProductId"].Value;
-
-					return _productsService.GetProductById(productId);
+					Product prod = gridProducts.SelectedItem as Product;
+					return _productsService.GetProductById(prod.ProductId);
 				}
 
 				return null;

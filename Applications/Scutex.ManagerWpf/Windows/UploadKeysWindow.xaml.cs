@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -12,7 +11,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for UploadKeysWindow.xaml
 	/// </summary>
-	public partial class UploadKeysWindow : XamRibbonWindow
+	public partial class UploadKeysWindow : Window
 	{
 		#region Private Readonly Members
 		private readonly IServicesService _servicesService;

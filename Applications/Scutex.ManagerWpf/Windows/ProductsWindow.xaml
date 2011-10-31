@@ -1,97 +1,64 @@
-﻿<Ribbon:XamRibbonWindow xmlns:igDP="clr-namespace:Infragistics.Windows.DataPresenter;assembly=InfragisticsWpf4.DataPresenter.v10.3"  
+﻿<Window  
 												x:Class="WaveTech.Scutex.Manager.Windows.ProductsWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls" xmlns:Forms="clr-namespace:WaveTech.Scutex.Manager.Forms" 
-        xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3" 
-        Title="Products" Height="300" Width="550" WindowStartupLocation="CenterOwner">
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+				xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls" xmlns:Forms="clr-namespace:WaveTech.Scutex.Manager.Forms" 
+        xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Title="Products" Height="300" Width="550" WindowStartupLocation="CenterOwner">
 
-    <Ribbon:XamRibbonWindow.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/DataTemplates.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Ribbon:XamRibbonWindow.Resources>
+		<Window.Resources>
+				<ResourceDictionary>
+						<ResourceDictionary.MergedDictionaries>
+								<ResourceDictionary Source="/DataTemplates.xaml" />
+						</ResourceDictionary.MergedDictionaries>
+				</ResourceDictionary>
+		</Window.Resources>
+				<Grid>
+						<Grid.RowDefinitions>
+								<RowDefinition />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-    <Ribbon:RibbonWindowContentHost>
-        <Ribbon:RibbonWindowContentHost.Ribbon>
-            <Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
-            </Ribbon:XamRibbon>
-        </Ribbon:RibbonWindowContentHost.Ribbon>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+						<GroupBox Grid.Row="0" Grid.Column="0" Header="Existing Products" Foreground="White" Margin="4,4,4,4">
+								<Grid>
+										<Grid.RowDefinitions>
+												<RowDefinition Height="*" />
+												<RowDefinition Height="32" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+												<ColumnDefinition />
+										</Grid.ColumnDefinitions>
+				<dg:DataGrid x:Name="gridProducts" Grid.Row="0" ItemsSource="{Binding Source={StaticResource productsData}}">
+				</dg:DataGrid>
 
-            <GroupBox Grid.Row="0" Grid.Column="0" Header="Existing Products" Foreground="White" Margin="4,4,4,4">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="32" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+										<!--<Ribbon:ButtonTool Grid.Row="1" x:Name="btnRemoveSelected" Caption="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click"  Foreground="RoyalBlue" /> -->
+										<Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />
+								</Grid>
+						</GroupBox>
 
-                    <igDP:XamDataGrid x:Name="gridProducts" Grid.Row="0" DataSource="{Binding Source={StaticResource productsData}}">
-                        <igDP:XamDataGrid.FieldLayouts>
-                            <igDP:FieldLayout>
-                                <igDP:FieldLayout.Fields>
+						<GroupBox Grid.Row="0" Grid.Column="1" Header="New Product" Foreground="White" Margin="4,4,4,4">
+								<Grid>
+										<Grid.RowDefinitions>
+												<RowDefinition Height="5" />
+												<RowDefinition Height="25" />
+												<RowDefinition Height="25" />
+												<RowDefinition Height="25" />
+												<RowDefinition Height="*" />
+												<RowDefinition Height="32" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+												<ColumnDefinition />
+										</Grid.ColumnDefinitions>
 
-                                    <igDP:Field Name="Name"  Label="Name">
-                                        <igDP:Field.Settings>
-                                            <igDP:FieldSettings AllowEdit="False" />
-                                        </igDP:Field.Settings>
-                                    </igDP:Field>
-
-                                    <igDP:Field Name="Description" Label="Description">
-                                        <igDP:Field.Settings>
-                                            <igDP:FieldSettings AllowEdit="False" />
-                                        </igDP:Field.Settings>
-                                    </igDP:Field>
-
-                                    <igDP:Field Name="ProductId" Visibility="Collapsed" />
-                                    <igDP:Field Name="UniquePad" Visibility="Collapsed" />
-                                    <igDP:Field Name="IsModified" Visibility="Collapsed" />
-
-                                </igDP:FieldLayout.Fields>
-                            </igDP:FieldLayout>
-                        </igDP:XamDataGrid.FieldLayouts>
-
-                    </igDP:XamDataGrid>
-
-                    <!--<Ribbon:ButtonTool Grid.Row="1" x:Name="btnRemoveSelected" Caption="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click"  Foreground="RoyalBlue" /> -->
-                    <Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />
-                </Grid>
-            </GroupBox>
-
-            <GroupBox Grid.Row="0" Grid.Column="1" Header="New Product" Foreground="White" Margin="4,4,4,4">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="5" />
-                        <RowDefinition Height="25" />
-                        <RowDefinition Height="25" />
-                        <RowDefinition Height="25" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="32" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Row="1" Text="Product Name:" Foreground="Azure" />
-                    <TextBox Grid.Row="2" x:Name="txtProductName" />
-                    <TextBlock Grid.Row="3" Text="Product Description:" Foreground="Azure" />
-                    <TextBox Grid.Row="4" x:Name="txtProductDescription" />
-                    <!--<Ribbon:ButtonTool Grid.Row="5" x:Name="btnAddProduct" Caption="Add Product" HorizontalAlignment="Right" Click="btnAddProduct_Click" Foreground="RoyalBlue" />-->
-                    <Button Grid.Row="5" x:Name="btnAddProduct" Content="Add Product" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnAddProduct_Click" />
-                </Grid>
-            </GroupBox>
-        </Grid>
-    </Ribbon:RibbonWindowContentHost>
-</Ribbon:XamRibbonWindow>
+										<TextBlock Grid.Row="1" Text="Product Name:" Foreground="Azure" />
+										<TextBox Grid.Row="2" x:Name="txtProductName" />
+										<TextBlock Grid.Row="3" Text="Product Description:" Foreground="Azure" />
+										<TextBox Grid.Row="4" x:Name="txtProductDescription" />
+										<!--<Ribbon:ButtonTool Grid.Row="5" x:Name="btnAddProduct" Caption="Add Product" HorizontalAlignment="Right" Click="btnAddProduct_Click" Foreground="RoyalBlue" />-->
+										<Button Grid.Row="5" x:Name="btnAddProduct" Content="Add Product" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnAddProduct_Click" />
+								</Grid>
+						</GroupBox>
+				</Grid>
+</Window>

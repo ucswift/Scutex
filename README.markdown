@@ -18,7 +18,7 @@ Licensed under the Microsoft Public License (MS-PL)
 
 ## Infragistics Components
 
-Currently Scutex uses Infragistics WPF v10.3 components inside the Management project. The Managment project is the main UI interface when working with a licening scheme and product. Although this dependency is being reworked to allow for everyone to build the projects this is currently not the case.  You can install a trial version of Infragistics WPF components and relink the references or if you already have Infragistics WPF installed you can just relink to your installed version. Any of the v10 versions of the Infragistics WPF components should work, you will just need to update the XAML headers with the new DLL name and namespace.
+As of the 10/30/2011 checkin the Infragistics dependancy has been removed.
 
 ## Official Builds & Releases
 

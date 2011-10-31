@@ -1,4 +1,4 @@
-﻿<UserControl xmlns:igRibbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3"  x:Class="WaveTech.Scutex.Manager.Forms.BasicSettings"
+﻿<UserControl x:Class="WaveTech.Scutex.Manager.Forms.BasicSettings"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

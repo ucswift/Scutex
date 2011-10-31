@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Infragistics.Windows.DataPresenter;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -240,15 +239,13 @@ namespace WaveTech.Scutex.Manager.Forms
 
 		private void btnRemoveLicenseSet_Click(object sender, RoutedEventArgs e)
 		{
-			if (gridLicenseSets.ActiveRecord != null)
+			if (gridLicenseSets.SelectedItem != null)
 			{
-				DataRecord record = gridLicenseSets.ActiveRecord as DataRecord;
-				int licenseSetId = (int)record.Cells["LicenseSetId"].Value;
-				string licenseSetName = (string)record.Cells["Name"].Value;
+				LicenseSet licSet = gridLicenseSets.SelectedItem as LicenseSet;
 
-				if (MessageBox.Show(string.Format("Are you sure you want to delete the {0} license set?", licenseSetName), "Delete License Set", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+				if (MessageBox.Show(string.Format("Are you sure you want to delete the {0} license set?", licSet.Name), "Delete License Set", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 				{
-					License.LicenseSets.Remove(License.LicenseSets.Where(x => x.Name == licenseSetName).First());
+					License.LicenseSets.Remove(License.LicenseSets.Where(x => x.Name == licSet.Name).First());
 					//SyncData();
 				}
 			}

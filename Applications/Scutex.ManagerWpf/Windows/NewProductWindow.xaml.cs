@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -13,7 +12,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for NewProductWindow.xaml
 	/// </summary>
-	public partial class NewProductWindow : XamRibbonWindow
+	public partial class NewProductWindow : Window
 	{
 		public NewProductWindow()
 		{

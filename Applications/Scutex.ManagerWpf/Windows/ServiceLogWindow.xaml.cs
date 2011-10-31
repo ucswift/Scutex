@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -12,7 +11,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for ServiceLogWindow.xaml
 	/// </summary>
-	public partial class ServiceLogWindow : XamRibbonWindow
+	public partial class ServiceLogWindow : Window
 	{
 		#region Dependency Properties
 		public static readonly DependencyProperty ServiceProperty =
@@ -81,8 +80,8 @@ namespace WaveTech.Scutex.Manager.Windows
 				{
 					object[] result = args.Result as object[];
 
-					gridActivationLogs.DataSource = (List<ActivationLog>)result[0];
-					gridLicenseActiviations.DataSource = (List<LicenseActivation>)result[1];
+					gridActivationLogs.ItemsSource = (List<ActivationLog>)result[0];
+					gridLicenseActiviations.ItemsSource = (List<LicenseActivation>)result[1];
 
 					loadingAnimation.Visibility = Visibility.Collapsed;
 				};

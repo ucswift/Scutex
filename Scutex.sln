@@ -285,6 +285,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{CE159ED8-BC0
 	ProjectSection(SolutionItems) = preProject
 		References\Wpf\System.Windows.Interactivity.dll = References\Wpf\System.Windows.Interactivity.dll
 		References\Wpf\WPF.Themes.dll = References\Wpf\WPF.Themes.dll
+		References\Wpf\WPFToolkit.Extended.dll = References\Wpf\WPFToolkit.Extended.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scutex.Providers.DatabaseUpdateProvider", "Providers\Scutex.Providers.DatabaseUpdateProvider\Scutex.Providers.DatabaseUpdateProvider.csproj", "{15E64BB9-1163-4C10-B7FA-3E6A32ABEBC1}"

@@ -48,6 +48,19 @@ namespace WaveTech.Scutex.Manager.Classes
 			}
 		}
 
+		public static BindingList<Service> GetServices()
+		{
+			try
+			{
+				IServicesService servicesService = ObjectLocator.GetInstance<IServicesService>();
+				return new BindingList<Service>(servicesService.GetAllServices());
+			}
+			catch
+			{
+				return null;
+			}
+		}
+
 		public static BindingList<LicenseSet> GetLicenseSets()
 		{
 			if (_license != null && _license.LicenseSets != null)

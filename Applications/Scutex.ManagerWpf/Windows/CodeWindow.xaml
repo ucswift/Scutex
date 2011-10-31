@@ -1,23 +1,15 @@
-﻿<Ribbon:XamRibbonWindow x:Class="WaveTech.Scutex.Manager.Windows.CodeWindow"
+﻿<Window x:Class="WaveTech.Scutex.Manager.Windows.CodeWindow"
 				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-				xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3"
-				x:Name="codeWindow"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  x:Name="codeWindow"
 				Title="Software Code" Height="500" Width="500" WindowStartupLocation="CenterOwner">
 
-	<Ribbon:XamRibbonWindow.Resources>
+	<Window.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="/DataTemplates.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
-	</Ribbon:XamRibbonWindow.Resources>
-
-	<Ribbon:RibbonWindowContentHost>
-		<Ribbon:RibbonWindowContentHost.Ribbon>
-			<Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
-			</Ribbon:XamRibbon>
-		</Ribbon:RibbonWindowContentHost.Ribbon>
+	</Window.Resources>
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="135" />
@@ -107,5 +99,4 @@
 				</Grid>
 			</GroupBox>
 		</Grid>
-	</Ribbon:RibbonWindowContentHost>
-</Ribbon:XamRibbonWindow>
+</Window>

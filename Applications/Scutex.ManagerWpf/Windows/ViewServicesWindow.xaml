@@ -1,95 +1,27 @@
-﻿<Ribbon:XamRibbonWindow x:Class="WaveTech.Scutex.Manager.Windows.ViewServicesWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:Ribbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3" 
-				xmlns:igDP="clr-namespace:Infragistics.Windows.DataPresenter;assembly=InfragisticsWpf4.DataPresenter.v10.3" 
-												Title="View Services" Height="300" Width="600" WindowStartupLocation="CenterOwner">
-    <Ribbon:XamRibbonWindow.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/DataTemplates.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Ribbon:XamRibbonWindow.Resources>
+﻿<Window x:Class="WaveTech.Scutex.Manager.Windows.ViewServicesWindow"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Title="View Services" Height="300" Width="600" WindowStartupLocation="CenterOwner">
+		<Window.Resources>
+				<ResourceDictionary>
+						<ResourceDictionary.MergedDictionaries>
+								<ResourceDictionary Source="/DataTemplates.xaml" />
+						</ResourceDictionary.MergedDictionaries>
+				</ResourceDictionary>
+		</Window.Resources>
+				<Grid>
+						<Grid.RowDefinitions>
+								<RowDefinition />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-    <Ribbon:RibbonWindowContentHost>
-        <Ribbon:RibbonWindowContentHost.Ribbon>
-            <Ribbon:XamRibbon x:Name="myRibbon" DockPanel.Dock="Top" Theme="Office2k7Black" Visibility="Collapsed">
-            </Ribbon:XamRibbon>
-        </Ribbon:RibbonWindowContentHost.Ribbon>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+						<GroupBox Grid.Row="0" Grid.Column="1" Header="Services" Margin="4,4,4,4" Foreground="White">
+			<dg:DataGrid x:Name="gridServices">
+			</dg:DataGrid>
 
-            <GroupBox Grid.Row="0" Grid.Column="1" Header="Services" Margin="4,4,4,4" Foreground="White">
-                <igDP:XamDataGrid x:Name="gridServices">
-                    <igDP:XamDataGrid.FieldLayouts>
-                        <igDP:FieldLayout>
-                            <igDP:FieldLayout.Fields>
+						</GroupBox>
 
-                                <igDP:Field Name="Name"  Label="Name">
-                                    <igDP:Field.Settings>
-                                        <igDP:FieldSettings AllowEdit="False" />
-                                    </igDP:Field.Settings>
-                                </igDP:Field>
-
-                                <igDP:Field Name="CreatedDate" Label="Created Date">
-                                    <igDP:Field.Settings>
-                                        <igDP:FieldSettings AllowEdit="False" />
-                                    </igDP:Field.Settings>
-                                </igDP:Field>
-
-                                <igDP:Field Name="ClientUrl" Label="ClientUrl">
-                                    <igDP:Field.Settings>
-                                        <igDP:FieldSettings AllowEdit="False" />
-                                    </igDP:Field.Settings>
-                                </igDP:Field>
-
-                                <igDP:Field Name="ManagementUrl" Label="ManagementUrl">
-                                    <igDP:Field.Settings>
-                                        <igDP:FieldSettings AllowEdit="False" />
-                                    </igDP:Field.Settings>
-                                </igDP:Field>
-
-                                <igDP:Field Name="LockToIp" Label="LockToIp">
-                                    <igDP:Field.Settings>
-                                        <igDP:FieldSettings AllowEdit="False" />
-                                    </igDP:Field.Settings>
-                                </igDP:Field>
-
-                                <igDP:Field Name="Initialized" Label="Initialized">
-                                    <igDP:Field.Settings>
-                                        <igDP:FieldSettings AllowEdit="False" />
-                                    </igDP:Field.Settings>
-                                </igDP:Field>
-
-                                <igDP:Field Name="Tested" Label="Tested">
-                                    <igDP:Field.Settings>
-                                        <igDP:FieldSettings AllowEdit="False" />
-                                    </igDP:Field.Settings>
-                                </igDP:Field>
-
-                                <igDP:Field Name="ServiceId" Visibility="Collapsed" />
-                                <igDP:Field Name="Token" Visibility="Collapsed" />
-                                <igDP:Field Name="InboundKeyPair" Visibility="Collapsed" />
-                                <igDP:Field Name="OutboundKeyPair" Visibility="Collapsed" />
-                                <igDP:Field Name="UniquePad" Visibility="Collapsed" />
-                                <igDP:Field Name="IsModified" Visibility="Collapsed" />
-                                <igDP:Field Name="ManagementInboundKeyPair" Visibility="Collapsed" />
-                                <igDP:Field Name="ManagementOutboundKeyPair" Visibility="Collapsed" />
-                                <igDP:Field Name="ClientRequestToken" Visibility="Collapsed" />
-                                <igDP:Field Name="ManagementRequestToken" Visibility="Collapsed" />
-
-                            </igDP:FieldLayout.Fields>
-                        </igDP:FieldLayout>
-                    </igDP:XamDataGrid.FieldLayouts>
-                </igDP:XamDataGrid>
-            </GroupBox>
-
-        </Grid>
-    </Ribbon:RibbonWindowContentHost>
-</Ribbon:XamRibbonWindow>
+				</Grid>
+</Window>

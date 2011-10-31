@@ -1,11 +1,10 @@
-﻿<UserControl x:Class="WaveTech.Scutex.Manager.Screens.ProductsScreen"
+﻿<UserControl x:Class="WaveTech.Scutex.Manager.Screens.ServicesScreen"
 						 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 						 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-						 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-						 mc:Ignorable="d" 
-						 d:DesignHeight="300" d:DesignWidth="300"
-             xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit">
+						 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+						 xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" mc:Ignorable="d" 
+						 d:DesignHeight="300" d:DesignWidth="300">
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -32,9 +31,9 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<dg:DataGrid x:Name="gridProducts" Grid.Row="0" ItemsSource="{Binding Source={StaticResource productsData}}">
+				<dg:DataGrid x:Name="gridServices" Grid.Row="0" ItemsSource="{Binding Source={StaticResource servicesData}}">
 				</dg:DataGrid>
-				
+
 			</Grid>
 		</GroupBox>
 	</Grid>

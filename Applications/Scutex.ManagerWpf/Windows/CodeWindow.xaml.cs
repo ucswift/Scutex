@@ -2,7 +2,6 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -15,7 +14,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for CodeWindow.xaml
 	/// </summary>
-	public partial class CodeWindow : XamRibbonWindow
+	public partial class CodeWindow : Window
 	{
 		#region Consturctors
 		public CodeWindow()

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -12,7 +11,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for UpdateServiceWindow.xaml
 	/// </summary>
-	public partial class UpdateServiceWindow : XamRibbonWindow
+	public partial class UpdateServiceWindow : Window
 	{
 		public static readonly DependencyProperty ServiceProperty =
 		DependencyProperty.Register("Service", typeof(Service), typeof(UpdateServiceWindow),

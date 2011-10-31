@@ -1,12 +1,10 @@
-﻿<UserControl xmlns:igEditors="clr-namespace:Infragistics.Windows.Editors;assembly=InfragisticsWpf4.Editors.v10.3"  
-						 xmlns:igWindows="clr-namespace:Infragistics.Windows.Controls;assembly=InfragisticsWpf4.v10.3"  
-						 xmlns:igRibbon="clr-namespace:Infragistics.Windows.Ribbon;assembly=InfragisticsWpf4.Ribbon.v10.3"  
+﻿<UserControl 
 						 x:Class="WaveTech.Scutex.Manager.Forms.TrialSettings"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+						 xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended" mc:Ignorable="d" 
              x:Name="trialSettingsControl"
              d:DesignHeight="350" d:DesignWidth="500">
     <UserControl.Resources>
@@ -41,62 +39,43 @@
                 <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cboTrialNotificationType" Margin="4,4,4,4" 
                           ItemsSource="{Binding Source={StaticResource trialNotificaitonTypesEnumData}}" 
                           SelectedValue="{Binding License.TrialNotificationType, ElementName=trialSettingsControl, Mode=TwoWay}" SelectionChanged="cboTrialNotificationType_SelectionChanged" />
-                <igWindows:XamTabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                    <igWindows:TabItemEx Header="Form">
-                        <igWindows:TabItemEx.Content>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
+				<TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+					<TabItem Header="Form">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="30" />
+								<RowDefinition Height="30" />
+								<RowDefinition Height="30" />
+								<RowDefinition Height="30" />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
 
-                                <WrapPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Lock 'Try Now' button for " />
-                                    <igEditors:XamNumericEditor Width="50" SpinButtonDisplayMode="Always" Mask="nnnn" PadChar="0" Text="{Binding License.TrailNotificationSettings.TryButtonDelay, ElementName=trialSettingsControl, Mode=TwoWay}"  />
-                                    <TextBlock Text=" seconds." />
-                                </WrapPanel>
+							<WrapPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+								<TextBlock Text="Lock 'Try Now' button for " />
+								<extToolkit:IntegerUpDown Width="50" Text="{Binding License.TrailNotificationSettings.TryButtonDelay, ElementName=trialSettingsControl, Mode=TwoWay}"></extToolkit:IntegerUpDown>
+								<TextBlock Text=" seconds." />
+							</WrapPanel>
 
-                                <WrapPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Header Text: " />
-                                    <TextBox x:Name="txtTrialFormHeaderText" Text="Scutex" IsEnabled="False" Width="150" />
-                                </WrapPanel>
+							<WrapPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+								<TextBlock Text="Header Text: " />
+								<TextBox x:Name="txtTrialFormHeaderText" Text="Scutex" IsEnabled="False" Width="150" />
+							</WrapPanel>
 
-                                <WrapPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Sub Header Text: " />
-                                    <TextBox x:Name="txtTrialFormSubHeaderText" Text="Product Registration and Trial dialog" IsEnabled="False" Width="205" />
-                                </WrapPanel>
+							<WrapPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+								<TextBlock Text="Sub Header Text: " />
+								<TextBox x:Name="txtTrialFormSubHeaderText" Text="Product Registration and Trial dialog" IsEnabled="False" Width="205" />
+							</WrapPanel>
 
-                                <WrapPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Logo: " />
-                                    <TextBox x:Name="txtTrialFormLogo" Text="" IsEnabled="False" Width="205" />
-                                </WrapPanel>
-                            </Grid>
-                        </igWindows:TabItemEx.Content>
-                    </igWindows:TabItemEx>
-                    <igWindows:TabItemEx Header="Message Box" IsEnabled="False">
-                        <igWindows:TabItemEx.Content>
-                            <Canvas />
-                        </igWindows:TabItemEx.Content>
-                    </igWindows:TabItemEx>
-                    <igWindows:TabItemEx Header="Tray Slider" IsEnabled="False">
-                        <igWindows:TabItemEx.Content>
-                            <Canvas />
-                        </igWindows:TabItemEx.Content>
-                    </igWindows:TabItemEx>
-
-                    <igWindows:TabItemEx Header="Splash Screen" IsEnabled="False">
-                        <igWindows:TabItemEx.Content>
-                            <Canvas />
-                        </igWindows:TabItemEx.Content>
-                    </igWindows:TabItemEx>
-                </igWindows:XamTabControl>
-
+							<WrapPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">
+								<TextBlock Text="Logo: " />
+								<TextBox x:Name="txtTrialFormLogo" Text="" IsEnabled="False" Width="205" />
+							</WrapPanel>
+						</Grid>
+					</TabItem>
+				</TabControl>
             </Grid>
         </GroupBox>
 
@@ -119,28 +98,28 @@
                 <RadioButton Grid.Row="0" x:Name="rdoTrialExpireDays" Content="Expire Trial after number of days" Checked="rdoTrialExpireDays_Checked" />
                 <WrapPanel Grid.Row="1" Margin="20,0,0,0">
                     <TextBlock Text="Expire trial in " VerticalAlignment="Center" />
-                    <igEditors:XamNumericEditor x:Name="txtTrialExpireDays" Width="50" SpinButtonDisplayMode="Always" Mask="nnnn" PadChar="0" Text="{Binding License.TrialSettings.ExpirationData, ElementName=trialSettingsControl, Mode=TwoWay}" />
-                    <TextBlock Text=" days." VerticalAlignment="Center" />
+										<extToolkit:IntegerUpDown x:Name="txtTrialExpireDays" Width="50" Text="{Binding License.TrialSettings.ExpirationData, ElementName=trialSettingsControl, Mode=TwoWay}"></extToolkit:IntegerUpDown>
+										<TextBlock Text=" days." VerticalAlignment="Center" />
                 </WrapPanel>
 
                 <RadioButton Grid.Row="2" Content="Expire Trial after a number of executions" IsEnabled="False" />
                 <WrapPanel Grid.Row="3" Margin="20,0,0,0">
                     <TextBlock Text="Expire trial after " VerticalAlignment="Center" />
-                    <igEditors:XamNumericEditor Width="50" SpinButtonDisplayMode="Always" Mask="nnnn" PadChar="0" IsEnabled="False" />
+					<extToolkit:IntegerUpDown IsEditable="False" />
                     <TextBlock Text=" executions." VerticalAlignment="Center" />
                 </WrapPanel>
 
                 <RadioButton Grid.Row="4" Content="Expire Trial on specific date" IsEnabled="False" />
                 <WrapPanel Grid.Row="5" Margin="20,0,0,0">
                     <TextBlock Text="Expire trial on " VerticalAlignment="Center" />
-                    <igEditors:XamDateTimeEditor  IsEnabled="False" />
-                </WrapPanel>
+					<extToolkit:IntegerUpDown IsEditable="False" />
+				</WrapPanel>
 
                 <RadioButton Grid.Row="6" Content="Expire Trial after total runtime limit" IsEnabled="False" />
                 <WrapPanel Grid.Row="7" Margin="20,0,0,0">
                     <TextBlock Text="Expire trial after " VerticalAlignment="Center" />
-                    <igEditors:XamNumericEditor Width="50" SpinButtonDisplayMode="Always" Mask="nnnn" PadChar="0" IsEnabled="False" />
-                    <TextBlock Text=" minutes of total runtime." VerticalAlignment="Center" />
+					<extToolkit:IntegerUpDown IsEditable="False" />
+					<TextBlock Text=" minutes of total runtime." VerticalAlignment="Center" />
                 </WrapPanel>
             </Grid>
         </GroupBox>
@@ -161,22 +140,22 @@
                 <CheckBox Grid.Row="0" Grid.Column="0" Content="Close after set instance runtime" IsEnabled="False"/>
                 <WrapPanel Grid.Row="1" Grid.Column="0"  Margin="20,0,0,0">
                     <TextBlock Text="Close after " VerticalAlignment="Center" />
-                    <igEditors:XamNumericEditor Width="50" SpinButtonDisplayMode="Always" Mask="nnnn" PadChar="0" IsEnabled="False" />
-                    <TextBlock Text=" minutes of runtime." VerticalAlignment="Center" />
+					<extToolkit:IntegerUpDown IsEditable="False" />
+					<TextBlock Text=" minutes of runtime." VerticalAlignment="Center" />
                 </WrapPanel>
 
                 <CheckBox Grid.Row="2" Grid.Column="0" Content="Limit program executions per day" IsEnabled="False" />
                 <WrapPanel Grid.Row="3" Grid.Column="0"  Margin="20,0,0,0">
                     <TextBlock Text="Limit to " VerticalAlignment="Center" />
-                    <igEditors:XamNumericEditor Width="50" SpinButtonDisplayMode="Always" Mask="nnnn" PadChar="0" IsEnabled="False" />
-                    <TextBlock Text=" executions per day." VerticalAlignment="Center" />
+					<extToolkit:IntegerUpDown IsEditable="False" />
+					<TextBlock Text=" executions per day." VerticalAlignment="Center" />
                 </WrapPanel>
 
                 <CheckBox Grid.Row="0" Grid.Column="1" Content="Limit running program instances" IsEnabled="False" />
                 <WrapPanel Grid.Row="1" Grid.Column="1"  Margin="20,0,0,0">
                     <TextBlock Text="Limit to " VerticalAlignment="Center" />
-                    <igEditors:XamNumericEditor Width="50" SpinButtonDisplayMode="Always" Mask="nnnn" PadChar="0" IsEnabled="False" />
-                    <TextBlock Text=" running instances." VerticalAlignment="Center" />
+					<extToolkit:IntegerUpDown IsEditable="False" />
+					<TextBlock Text=" running instances." VerticalAlignment="Center" />
                 </WrapPanel>
             </Grid>
         </GroupBox>

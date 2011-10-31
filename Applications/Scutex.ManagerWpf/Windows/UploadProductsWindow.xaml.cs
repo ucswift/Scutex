@@ -2,8 +2,6 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using Infragistics.Windows.DataPresenter;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -15,7 +13,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for UploadProductsWindow.xaml
 	/// </summary>
-	public partial class UploadProductsWindow : XamRibbonWindow
+	public partial class UploadProductsWindow : Window
 	{
 		#region Private Readonly Members
 		private readonly IServicesService _servicesService;
@@ -75,26 +73,24 @@ namespace WaveTech.Scutex.Manager.Windows
 		{
 			servicesData = _servicesService.GetServiceLicenses((Service)cboServices.SelectedValue);
 
-			gridRemoteServices.DataSource = DataConverters.ConvertAllLicensesSetsToDisplay(servicesData);
+			gridRemoteServices.ItemsSource = DataConverters.ConvertAllLicensesSetsToDisplay(servicesData);
 		}
 
 		private bool DoesLicenseSetExistOnService()
 		{
 			if (servicesData != null)
 			{
-				DataRecord record = gridLocalServices.ActiveRecord as DataRecord;
-				int licenseSetId = (int)record.Cells["LicenseSetId"].Value;
-				int licenseId = (int)record.Cells["LicenseId"].Value;
+				LicenseSet licSet = gridLocalServices.SelectedItem as LicenseSet;
 
 				var licenseSets = from l in servicesData
-													where l.Key.LicenseId == licenseId
+													where l.Key.LicenseId == licSet.LicenseId
 													select l.Value;
 
 				var sets = licenseSets.FirstOrDefault();
 
 				if (sets != null)
 				{
-					int count = sets.Where(x => x.LicenseSetId == licenseSetId).Count();
+					int count = sets.Where(x => x.LicenseSetId == licSet.LicenseSetId).Count();
 
 					if (count > 0)
 						return true;
@@ -126,7 +122,7 @@ namespace WaveTech.Scutex.Manager.Windows
 				worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
 				{
 					servicesData = (Dictionary<License, List<LicenseSet>>)args.Result;
-					gridRemoteServices.DataSource = DataConverters.ConvertAllLicensesSetsToDisplay(servicesData);
+					gridRemoteServices.ItemsSource = DataConverters.ConvertAllLicensesSetsToDisplay(servicesData);
 
 					loadingAnimation.Visibility = Visibility.Collapsed;
 				};
@@ -142,15 +138,14 @@ namespace WaveTech.Scutex.Manager.Windows
 		{
 			if (cboServices.SelectedValue != null)
 			{
-				if (gridLocalServices.ActiveRecord != null)
+				if (gridLocalServices.SelectedItem != null)
 				{
 					if (DoesLicenseSetExistOnService() == false)
 					{
 						BackgroundWorker worker = new BackgroundWorker();
 						loadingAnimation.Visibility = Visibility.Visible;
 
-						DataRecord record = gridLocalServices.ActiveRecord as DataRecord;
-						int licenseSetId = (int)record.Cells["LicenseSetId"].Value;
+						LicenseSet licenseSet = gridLocalServices.SelectedItem as LicenseSet;
 
 						worker.DoWork += delegate(object s, DoWorkEventArgs args)
 						{
@@ -160,7 +155,7 @@ namespace WaveTech.Scutex.Manager.Windows
 							ILicenseSetService licenseSetService = ObjectLocator.GetInstance<ILicenseSetService>();
 							ILicenseService licenseService = ObjectLocator.GetInstance<ILicenseService>();
 
-							LicenseSet licenseSet = licenseSetService.GetLiceseSetById((int)data[0]);
+							//LicenseSet licenseSet = (LicenseSet) data[0];
 							License license = licenseService.GetLicenseById((int)data[0]);
 
 							List<LicenseSet> sets = new List<LicenseSet>();
@@ -175,14 +170,14 @@ namespace WaveTech.Scutex.Manager.Windows
 						worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
 						{
 							servicesData = (Dictionary<License, List<LicenseSet>>)args.Result;
-							gridRemoteServices.DataSource = DataConverters.ConvertAllLicensesSetsToDisplay(servicesData);
+							gridRemoteServices.ItemsSource = DataConverters.ConvertAllLicensesSetsToDisplay(servicesData);
 
 							loadingAnimation.Visibility = Visibility.Collapsed;
 						};
 
 						worker.RunWorkerAsync(new object[]
 				                      	{
-				                      		licenseSetId,
+				                      		licenseSet,
 																	cboServices.SelectedValue
 				                      	});
 					}

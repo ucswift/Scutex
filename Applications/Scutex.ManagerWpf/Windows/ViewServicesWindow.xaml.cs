@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Infragistics.Windows.Ribbon;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model.Interfaces.Services;
@@ -9,7 +8,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// <summary>
 	/// Interaction logic for ViewServicesWindow.xaml
 	/// </summary>
-	public partial class ViewServicesWindow : XamRibbonWindow
+	public partial class ViewServicesWindow : Window
 	{
 		private IServicesService _servicesService;
 
@@ -20,7 +19,7 @@ namespace WaveTech.Scutex.Manager.Windows
 			WindowHelper.CheckAndApplyTheme(this);
 
 			_servicesService = ObjectLocator.GetInstance<IServicesService>();
-			gridServices.DataSource = _servicesService.GetAllServices();
+			gridServices.ItemsSource = _servicesService.GetAllServices();
 		}
 
 		/// <summary>
