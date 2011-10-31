@@ -13,35 +13,34 @@
 		</ResourceDictionary>
 	</Window.Resources>
 
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
 
-			<GroupBox Grid.Row="0" Grid.Column="0" Header="New Product" Foreground="White" Margin="4,4,4,4">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="5" />
-						<RowDefinition Height="25" />
-						<RowDefinition Height="25" />
-						<RowDefinition Height="25" />
-						<RowDefinition Height="*" />
-						<RowDefinition Height="32" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
+		<GroupBox Grid.Row="0" Grid.Column="0" Header="New Product" Foreground="Black" Margin="4,4,4,4">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="5" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="32" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
 
-					<TextBlock Grid.Row="1" Text="Product Name:" Foreground="Azure" />
-					<TextBox Grid.Row="2" x:Name="txtProductName" />
-					<TextBlock Grid.Row="3" Text="Product Description:" Foreground="Azure" />
-					<TextBox Grid.Row="4" x:Name="txtProductDescription" />
-					<!--<Ribbon:ButtonTool Grid.Row="5" x:Name="btnAddProduct" Caption="Add Product" HorizontalAlignment="Right" Click="btnAddProduct_Click" Foreground="RoyalBlue" />-->
-					<Button Grid.Row="5" x:Name="btnAddProduct" Content="Add Product" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnAddProduct_Click" />
-				</Grid>
-			</GroupBox>
-		</Grid>
+				<TextBlock Grid.Row="1" Text="Product Name:" Foreground="Black" />
+				<TextBox Grid.Row="2" x:Name="txtProductName" />
+				<TextBlock Grid.Row="3" Text="Product Description:" Foreground="Black" />
+				<TextBox Grid.Row="4" x:Name="txtProductDescription" />
+				<Button Grid.Row="5" x:Name="btnAddProduct" Content="Add Product" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnAddProduct_Click" />
+			</Grid>
+		</GroupBox>
+	</Grid>
 </Window>

@@ -283,6 +283,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{CE159ED8-BC04-41EE-8BE3-00D0561B725C}"
 	ProjectSection(SolutionItems) = preProject
+		References\Wpf\DataGridThemes.dll = References\Wpf\DataGridThemes.dll
 		References\Wpf\System.Windows.Interactivity.dll = References\Wpf\System.Windows.Interactivity.dll
 		References\Wpf\WPF.Themes.dll = References\Wpf\WPF.Themes.dll
 		References\Wpf\WPFToolkit.Extended.dll = References\Wpf\WPFToolkit.Extended.dll

@@ -539,7 +539,22 @@ namespace WaveTech.Scutex.Manager
 			{
 				if (mainWindow.ProductsScreen.SelectedProduct != null)
 				{
+					if (MessageBox.Show(string.Format("Are you sure you want to delete the {0} product?", mainWindow.ProductsScreen.SelectedProduct.Name), "Delete Product", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+					{
+						ILicenseService licenseService = ObjectLocator.GetInstance<ILicenseService>();
 
+						if (licenseService.IsProductIdUsed(mainWindow.ProductsScreen.SelectedProduct.ProductId))
+						{
+							MessageBox.Show(string.Format("Cannot delete the {0} product as it is active.", mainWindow.ProductsScreen.SelectedProduct.Name));
+							return;
+						}
+
+						IProductsService productsService = ObjectLocator.GetInstance<IProductsService>();
+						productsService.DeleteProductById(mainWindow.ProductsScreen.SelectedProduct.ProductId);
+
+						IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
+						eventAggregator.SendMessage<ProductsUpdatedEvent>();
+					}
 				}
 				else
 				{

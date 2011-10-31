@@ -3,7 +3,7 @@
 						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 						 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 						 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-						 xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" mc:Ignorable="d" 
+             xmlns:themes="clr-namespace:DataGridThemes;assembly=DataGridThemes" mc:Ignorable="d" 
 						 d:DesignHeight="300" d:DesignWidth="300">
 	<UserControl.Resources>
 		<ResourceDictionary>
@@ -31,9 +31,26 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<dg:DataGrid x:Name="gridServices" Grid.Row="0" ItemsSource="{Binding Source={StaticResource servicesData}}">
-				</dg:DataGrid>
-
+				<DataGrid x:Name="gridServices" Grid.Row="0" ItemsSource="{Binding Source={StaticResource servicesData}}"
+						AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
+					<DataGrid.Columns>
+						<DataGridTextColumn
+						Header="Name" Width="1*" IsReadOnly="True"
+						Binding="{Binding Path=Name}"/>
+						<DataGridTextColumn
+						Header="Client Url" Width="2*" IsReadOnly="True"
+						Binding="{Binding Path=ClientUrl}"/>
+						<DataGridTextColumn
+						Header="Management Url" Width="2*" IsReadOnly="True"
+						Binding="{Binding Path=ManagementUrl}"/>
+						<DataGridCheckBoxColumn
+						Header="Initialized" Width=".5*" IsReadOnly="True"
+						Binding="{Binding Path=Initialized}"/>
+						<DataGridCheckBoxColumn
+						Header="Tested" Width=".5*" IsReadOnly="True"
+						Binding="{Binding Path=Tested}"/>
+					</DataGrid.Columns>
+				</DataGrid>
 			</Grid>
 		</GroupBox>
 	</Grid>

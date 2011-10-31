@@ -70,7 +70,7 @@
 					<ComboBoxItem Content="2048" IsSelected="True" />
 					<ComboBoxItem Content="4096" />
 				</ComboBox>
-				<Button Grid.Column="2" Grid.Row="0" Content="Regenerate Keys" HorizontalAlignment="Right" VerticalAlignment="Center" Width="128" Name="btnRegenerateKeys" Height="24" Click="btnRegenerateKeys_Click" />
+				<Button Grid.Column="2" Grid.Row="0" Content="Regenerate Keys" HorizontalAlignment="Right" VerticalAlignment="Center" Width="128" Name="btnRegenerateKeys" Click="btnRegenerateKeys_Click" />
 
 				<TextBlock Grid.Row="1" Text="Private Key:" VerticalAlignment="Center" />
 				<TextBox  Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding License.KeyPair.PrivateKey, ElementName=basicSettingsControl, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" />

@@ -41,7 +41,7 @@
 													 SelectedValue="{Binding License.KeyGeneratorType, ElementName=licenseSettingsControl, Mode=TwoWay}">
 				</ComboBox>-->
 
-				<ComboBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="cboLicenseKeyType" 
+				<ComboBox Grid.Row="0" Grid.Column="1" Margin="1,1,1,1" x:Name="cboLicenseKeyType" 
                 ItemsSource="{Binding Source={StaticResource licenseKeyTypesEnumData}}"
                 SelectedItem="{Binding License.KeyGeneratorType, ElementName=licenseSettingsControl, Mode=TwoWay}" Height="Auto">
 						<ComboBox.ItemTemplate>
