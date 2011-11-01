@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
@@ -37,7 +26,7 @@ namespace WaveTech.Scutex.Manager.Screens
 			_servicesService = ObjectLocator.GetInstance<IServicesService>();
 			_eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
 
-			_eventAggregator.AddListener<ProductsUpdatedEvent>(x => gridServices.ItemsSource = _servicesService.GetAllServices());
+			_eventAggregator.AddListener<ServicesUpdatedEvent>(x => gridServices.ItemsSource = _servicesService.GetAllServices());
 		}
 
 		public Service SelectedService
@@ -52,6 +41,16 @@ namespace WaveTech.Scutex.Manager.Screens
 
 				return null;
 			}
+		}
+
+		public void StartSpinner()
+		{
+			loadingAnimation.Visibility = Visibility.Visible;
+		}
+
+		public void StopSpinner()
+		{
+			loadingAnimation.Visibility = Visibility.Collapsed;
 		}
 	}
 }

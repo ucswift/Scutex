@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -86,6 +87,12 @@ namespace WaveTech.Scutex.Manager
 
 		public static readonly RoutedUICommand RemoveProductCommand = new RoutedUICommand("RemoveProduct", "RemoveProductCommand", typeof(MainWindow),
 				new InputGestureCollection(new KeyGesture[] { new KeyGesture(Key.T, ModifierKeys.Control, "Ctrl+PD") }));
+
+		public static readonly RoutedUICommand UpdateServiceCommand = new RoutedUICommand("UpdateService", "UpdateServiceCommand", typeof(MainWindow),
+		new InputGestureCollection(new KeyGesture[] { new KeyGesture(Key.E, ModifierKeys.Control, "Ctrl+SU") }));
+
+		public static readonly RoutedUICommand InitializeServiceCommand = new RoutedUICommand("InitializeService", "InitializeServiceCommand", typeof(MainWindow),
+		new InputGestureCollection(new KeyGesture[] { new KeyGesture(Key.E, ModifierKeys.Control, "Ctrl+SI") }));
 		#endregion Command Routers
 
 		#region Windows
@@ -127,6 +134,8 @@ namespace WaveTech.Scutex.Manager
 			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(NewProductsCommand, NewProduct));
 			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(EditProductCommand, EditProduct));
 			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(RemoveProductCommand, RemoveProduct));
+			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(UpdateServiceCommand, UpdateService));
+			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(InitializeServiceCommand, InitializeService));
 		}
 		#endregion Constructor
 
@@ -227,28 +236,6 @@ namespace WaveTech.Scutex.Manager
 					_codeWindow.Show();
 				}
 			}
-		}
-
-		private static void NewService(object sender, ExecutedRoutedEventArgs e)
-		{
-			MainWindow mainWindow = (MainWindow)sender;
-
-			if (_newServiceWindow == null)
-			{
-				_newServiceWindow = new NewServiceWindow(mainWindow);
-				_newServiceWindow.Show();
-			}
-			else
-			{
-				_newServiceWindow.Close();
-				_newServiceWindow = new NewServiceWindow(mainWindow);
-				_newServiceWindow.Show();
-			}
-		}
-
-		private static void RemoveService(object sender, ExecutedRoutedEventArgs e)
-		{
-
 		}
 
 		private static void UploadProduct(object sender, ExecutedRoutedEventArgs e)
@@ -563,6 +550,162 @@ namespace WaveTech.Scutex.Manager
 			}
 		}
 		#endregion Products Menu
+
+		#region Services Menu
+		private static void NewService(object sender, ExecutedRoutedEventArgs e)
+		{
+			MainWindow mainWindow = (MainWindow)sender;
+
+			if (_newServiceWindow == null)
+			{
+				_newServiceWindow = new NewServiceWindow(mainWindow);
+				_newServiceWindow.Show();
+			}
+			else
+			{
+				_newServiceWindow.Close();
+				_newServiceWindow = new NewServiceWindow(mainWindow);
+				_newServiceWindow.Show();
+			}
+		}
+
+		private static void RemoveService(object sender, ExecutedRoutedEventArgs e)
+		{
+			MainWindow mainWindow = (MainWindow)sender;
+
+			if (mainWindow.ServicesScreen != null)
+			{
+				if (mainWindow.ServicesScreen.SelectedService != null)
+				{
+					if (MessageBox.Show(string.Format("Are you sure you want to delete service {0}", mainWindow.ServicesScreen.SelectedService.Name), "Delete Service?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+					{
+						IServicesService servicesService = ObjectLocator.GetInstance<IServicesService>();
+						servicesService.DeleteServiceById(mainWindow.ServicesScreen.SelectedService.ServiceId);
+
+						IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
+						eventAggregator.SendMessage<ServicesUpdatedEvent>();
+					}
+				}
+				else
+				{
+					MessageBox.Show("You must select a service first.");
+				}
+			}
+		}
+
+		private static void UpdateService(object sender, ExecutedRoutedEventArgs e)
+		{
+			MainWindow mainWindow = (MainWindow) sender;
+
+			if (mainWindow.ServicesScreen != null)
+			{
+				if (mainWindow.ServicesScreen.SelectedService != null)
+				{
+					UpdateServiceWindow updateServiceWindow = new UpdateServiceWindow(mainWindow, mainWindow.ServicesScreen.SelectedService);
+					updateServiceWindow.Show();
+				}
+				else
+				{
+					MessageBox.Show("You must select a service first.");
+				}
+			}
+		}
+
+		private static void InitializeService(object sender, ExecutedRoutedEventArgs e)
+		{
+			MainWindow mainWindow = (MainWindow)sender;
+
+			if (mainWindow.ServicesScreen != null)
+			{
+				if (mainWindow.ServicesScreen.SelectedService != null)
+				{
+				BackgroundWorker worker = new BackgroundWorker();
+				mainWindow.ServicesScreen.StartSpinner();
+
+				Service service = mainWindow.ServicesScreen.SelectedService;
+
+				worker.DoWork += delegate(object s, DoWorkEventArgs args)
+				{
+					object[] data = args.Argument as object[];
+					int resultCode = 0;
+
+					IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
+					bool result;
+
+					try
+					{
+						result = _servicesService.InitializeService(service);
+					}
+					catch (System.ServiceModel.EndpointNotFoundException enf)
+					{
+						resultCode = 50;
+						result = false;
+					}
+					catch
+					{
+						throw;
+					}
+
+					if (!result)
+						resultCode = 10;
+
+					service.Initialized = true;
+					_servicesService.SaveService(service);
+					bool testResult = _servicesService.TestService(service);
+
+					if (!testResult)
+					{
+						resultCode = 20;
+					}
+					else
+					{
+						service.Tested = true;
+						_servicesService.SaveService(service);
+					}
+
+					args.Result = resultCode;
+				};
+
+				worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+				{
+					int resultCode = (int)args.Result;
+
+					if (resultCode == 50)
+					{
+						MessageBox.Show("Cannot locate one or more of the services at the supplied urls. Please check the urls and try again.");
+					}
+					else if (resultCode == 20)
+					{
+						MessageBox.Show("Failed to test the service.");
+					}
+					else if (resultCode == 10)
+					{
+						MessageBox.Show("Failed to initialize the service.");
+					}
+					else
+					{
+						MessageBox.Show("Service has successfully been initialized and tested.");
+					}
+
+					IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
+					eventAggregator.SendMessage<ServicesUpdatedEvent>();
+
+					mainWindow.ServicesScreen.StopSpinner();
+				};
+
+				worker.RunWorkerAsync(new object[]
+				                      	{
+				                      		service
+				                      	});
+				}
+				else
+				{
+					MessageBox.Show("You must select a product first.");
+				}
+			}
+		}
+		#endregion
+
 		#endregion Private Event Handlers
 	}
 }

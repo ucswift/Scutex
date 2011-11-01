@@ -631,6 +631,10 @@
     <Resource Include="img\computer.png" />
     <Resource Include="img\window_edit.png" />
     <Resource Include="img\window_lock.png" />
+    <Resource Include="img\initialize-server-icon.png" />
+    <Resource Include="img\lock-server-icon.png" />
+    <Resource Include="img\unlock-server-icon.png" />
+    <Resource Include="img\update-server-icon.png" />
     <Content Include="ScutexDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -58,7 +58,7 @@
 			</Fluent:Ribbon.Menu>
 
 			<Fluent:Ribbon.ToolBarItems>
-				<Fluent:Button Size="Small" Icon="img/Help.png">
+				<Fluent:Button Size="Small" Icon="img/Help.png" Command="{x:Static local:Commands.HelpCommand}">
 				</Fluent:Button>
 			</Fluent:Ribbon.ToolBarItems>
 
@@ -91,6 +91,8 @@
 				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="ServicesGroup" Header="General" IsLauncherVisible="True" LauncherKeys="ZB">
 					<Fluent:Button x:Name="newServiceButton" Fluent:KeyTip.Keys="C" Header="New Service" LargeIcon="img/add-server-icon-48x48.png" Command="{x:Static local:Commands.NewServiceCommand}"/>
 					<Fluent:Button x:Name="removeServiceButton" Fluent:KeyTip.Keys="C" Header="Remove Service" LargeIcon="img/remove-server-icon-48x48.png" Command="{x:Static local:Commands.RemoveServiceCommand}"/>
+					<Fluent:Button x:Name="updateServiceButton" Fluent:KeyTip.Keys="C" Header="Update Service" LargeIcon="img/update-server-icon.png" Command="{x:Static local:Commands.UpdateServiceCommand}"/>
+					<Fluent:Button x:Name="initializeServiceButton" Fluent:KeyTip.Keys="C" Header="Initialize Service" LargeIcon="img/initialize-server-icon.png" Command="{x:Static local:Commands.InitializeServiceCommand}"/>
 				</Fluent:RibbonGroupBox>
 				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="ServicesMgmtGroup" Header="Management" IsLauncherVisible="True" LauncherKeys="ZB">
 					<Fluent:Button x:Name="uploadProductsButton" Fluent:KeyTip.Keys="C" Header="Upload Products" LargeIcon="img/upload-server-icon-48x48.png" Command="{x:Static local:Commands.UploadProductCommand}"/>

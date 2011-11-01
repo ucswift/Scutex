@@ -269,43 +269,43 @@ namespace WaveTech.Scutex.Manager.Forms
 					return;
 				}
 
-				if (ApplicationConstants.IsCommunityEdition && License.LicenseSets.Count < 1)
+				if (((KeyGeneratorTypes)cboLicenseKeyType.SelectedItem) == KeyGeneratorTypes.StaticSmall && License.LicenseSets.Count > 1)
 				{
-					LicenseSet l = new LicenseSet();
-					l.Name = txtLicenseSetName.Text.Trim();
-
-					LicenseKeyTypeFlag flag = new LicenseKeyTypeFlag();
-
-					if (chkSingleUser.IsChecked.HasValue && chkSingleUser.IsChecked.Value)
-						flag = LicenseKeyTypeFlag.SingleUser;
-
-					if (chkMultiUser.IsChecked.HasValue && chkMultiUser.IsChecked.Value)
-						flag = flag | LicenseKeyTypeFlag.MultiUser;
-
-					if (chkHardwareLock.IsChecked.HasValue && chkHardwareLock.IsChecked.Value)
-						flag = flag | LicenseKeyTypeFlag.HardwareLock;
-
-					if (chkUnlimited.IsChecked.HasValue && chkUnlimited.IsChecked.Value)
-						flag = flag | LicenseKeyTypeFlag.Unlimited;
-
-					if (chkEnterprise.IsChecked.HasValue && chkEnterprise.IsChecked.Value)
-						flag = flag | LicenseKeyTypeFlag.Enterprise;
-
-					l.SupportedLicenseTypes = flag;
-
-					if (String.IsNullOrEmpty(txtMaxUsers.Text) == false)
-						l.MaxUsers = int.Parse(txtMaxUsers.Text);
-
-					License.LicenseSets.Add(l);
-					License.RaisePropertyChanged("LicenseSets");
-
-					ResetNewLicenseSetForm();
-					SyncData();
+					MessageBox.Show("The Small Static Key Generator only supports a maximum of 1 license set.");
+					return;
 				}
-				else
-				{
-					MessageBox.Show("The Community Edition of Scutex only supports a maximum of 1 license set.");
-				}
+
+				LicenseSet l = new LicenseSet();
+				l.Name = txtLicenseSetName.Text.Trim();
+
+				LicenseKeyTypeFlag flag = new LicenseKeyTypeFlag();
+
+				if (chkSingleUser.IsChecked.HasValue && chkSingleUser.IsChecked.Value)
+					flag = LicenseKeyTypeFlag.SingleUser;
+
+				if (chkMultiUser.IsChecked.HasValue && chkMultiUser.IsChecked.Value)
+					flag = flag | LicenseKeyTypeFlag.MultiUser;
+
+				if (chkHardwareLock.IsChecked.HasValue && chkHardwareLock.IsChecked.Value)
+					flag = flag | LicenseKeyTypeFlag.HardwareLock;
+
+				if (chkUnlimited.IsChecked.HasValue && chkUnlimited.IsChecked.Value)
+					flag = flag | LicenseKeyTypeFlag.Unlimited;
+
+				if (chkEnterprise.IsChecked.HasValue && chkEnterprise.IsChecked.Value)
+					flag = flag | LicenseKeyTypeFlag.Enterprise;
+
+				l.SupportedLicenseTypes = flag;
+
+				if (String.IsNullOrEmpty(txtMaxUsers.Text) == false)
+					l.MaxUsers = int.Parse(txtMaxUsers.Text);
+
+				License.LicenseSets.Add(l);
+				License.RaisePropertyChanged("LicenseSets");
+
+				ResetNewLicenseSetForm();
+				SyncData();
+
 			}
 			else
 			{

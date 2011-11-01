@@ -1,13 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
-using WaveTech.Scutex.Model.Events;
-using WaveTech.Scutex.Model.Interfaces.Framework;
 using WaveTech.Scutex.Model.Interfaces.Providers;
 using WaveTech.Scutex.Model.Interfaces.Services;
 using MessageBox = System.Windows.MessageBox;
@@ -30,7 +27,6 @@ namespace WaveTech.Scutex.Manager.Windows
 			WindowHelper.CheckAndApplyTheme(this);
 
 			servicesService = ObjectLocator.GetInstance<IServicesService>();
-			gridServices.ItemsSource = servicesService.GetAllNonInitializedNonTestedServices();
 		}
 
 		/// <summary>
@@ -169,120 +165,12 @@ namespace WaveTech.Scutex.Manager.Windows
 						_service.LockToIp = chkLockToIp.IsChecked.Value;
 
 					servicesService.SaveService(_service);
-					gridServices.ItemsSource = servicesService.GetAllNonInitializedServices();
 					ResetForm();
 				}
 				else
 				{
 					MessageBox.Show("Please download the service package before saving.");
 				}
-			}
-		}
-
-		private void btnUpdateService_Click(object sender, RoutedEventArgs e)
-		{
-			if (gridServices.SelectedItem != null)
-			{
-				Service service = gridServices.SelectedItem as Service;
-
-				UpdateServiceWindow updateServiceWindow = new UpdateServiceWindow(this.Owner, service);
-				updateServiceWindow.Show();
-			}
-			else
-			{
-				MessageBox.Show("You must select a service to update.");
-			}
-		}
-
-		private void btnInitializeService_Click(object sender, RoutedEventArgs e)
-		{
-			if (gridServices.SelectedItem != null)
-			{
-				BackgroundWorker worker = new BackgroundWorker();
-				loadingAnimation.Visibility = Visibility.Visible;
-
-				Service service = gridServices.SelectedItem as Service;
-
-				worker.DoWork += delegate(object s, DoWorkEventArgs args)
-				{
-					object[] data = args.Argument as object[];
-					int resultCode = 0;
-
-					IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
-					bool result;
-
-					try
-					{
-						result = _servicesService.InitializeService(service);
-					}
-					catch (System.ServiceModel.EndpointNotFoundException enf)
-					{
-						resultCode = 50;
-						result = false;
-					}
-					catch
-					{
-						throw;
-					}
-
-					if (!result)
-						resultCode = 10;
-
-					service.Initialized = true;
-					_servicesService.SaveService(service);
-					bool testResult = _servicesService.TestService(service);
-
-					if (!testResult)
-					{
-						resultCode = 20;
-					}
-					else
-					{
-						service.Tested = true;
-						_servicesService.SaveService(service);
-					}
-
-					args.Result = resultCode;
-				};
-
-				worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
-				{
-					int resultCode = (int)args.Result;
-
-					if (resultCode == 50)
-					{
-						MessageBox.Show("Cannot locate one or more of the services at the supplied urls. Please check the urls and try again.");
-					}
-					else if (resultCode == 20)
-					{
-						MessageBox.Show("Failed to test the service.");
-					}
-					else if (resultCode == 10)
-					{
-						MessageBox.Show("Failed to initialize the service.");
-					}
-					else
-					{
-						MessageBox.Show("Service has successfully been initialized and tested.");
-					}
-
-					IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
-					gridServices.ItemsSource = _servicesService.GetAllNonInitializedNonTestedServices();
-
-					IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
-					eventAggregator.SendMessage<ServicesUpdatedEvent>();
-
-					loadingAnimation.Visibility = Visibility.Collapsed;
-				};
-
-				worker.RunWorkerAsync(new object[]
-				                      	{
-				                      		service
-				                      	});
-			}
-			else
-			{
-				MessageBox.Show("You must select a service to initialize.");
 			}
 		}
 	}

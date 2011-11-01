@@ -28,6 +28,8 @@ namespace WaveTech.Scutex.Manager
 	public partial class MainWindow : RibbonWindow
 	{
 		private IEventAggregator _eventAggregator;
+		private static ProductsScreen _productsScreen;
+		private static ServicesScreen _servicesScreen;
 
 		public MainWindow()
 		{
@@ -130,26 +132,33 @@ namespace WaveTech.Scutex.Manager
 
 				BindingList<License> lics = UIContext.GetLatestLicenses();
 
+				SeparatorTabItem separator = new SeparatorTabItem();
+				separator.Header = "Recent Projects";
+				recentProjects.Items.Add(separator);
+
 				foreach (var license in lics)
 				{
 					TabItem tb = new TabItem();
-					Fluent.Button b = new Fluent.Button();
+					tb.Header = license.Name;
+
+					Grid g = new Grid();
+					g.RowDefinitions.Add(new RowDefinition{ Height = new GridLength(1, GridUnitType.Auto) });
+					g.RowDefinitions.Add(new RowDefinition());
+					g.RowDefinitions.Add(new RowDefinition());
+					g.RowDefinitions.Add(new RowDefinition());
+
+					g.Children.Add(new TextBlock {Text = string.Format("Project Name: {0}", license.Name)});
+					
+					System.Windows.Controls.Button b = new System.Windows.Controls.Button();
 					b.Content = license.Name;
-					b.Name = license.LicenseId.ToString();
+					b.Name = string.Format("License_{0}", license.LicenseId.ToString());
 					b.Click += new System.Windows.RoutedEventHandler(btn_Click);
 
 					tb.Content = b;
-					//ButtonTool btn = new ButtonTool();
-					//btn.Caption = license.Name;
-					//btn.Id = license.LicenseId.ToString();
-					//btn.Click += new System.Windows.RoutedEventHandler(btn_Click);
-
-					//this.myRibbon.ApplicationMenu.RecentItems.Add(btn);
+					recentProjects.Items.Add(tb);
 				}
-
-				//this.myRibbon.ApplicationMenu.UpdateLayout();
 			}
-			catch { }
+			catch (Exception ex) { }
 		}
 
 		private void VerifyFirstTimeRun()
@@ -184,13 +193,26 @@ namespace WaveTech.Scutex.Manager
 			}
 		}
 
+		public ServicesScreen ServicesScreen
+		{
+			get
+			{
+				if (root.Content.GetType() == typeof(ServicesScreen))
+					return (ServicesScreen)root.Content;
+				else
+					return null;
+			}
+		}
+
 		void btn_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			//ButtonTool button = sender as ButtonTool;
 			Fluent.Button button = sender as Fluent.Button;
 
+			int id = int.Parse(button.Name.Replace("License_", ""));
+
 			ILicenseService licenseService = ObjectLocator.GetInstance<ILicenseService>();
-			UIContext.License = licenseService.GetLicenseById(int.Parse(button.Name));
+			UIContext.License = licenseService.GetLicenseById(id);
 			Initalize();
 		}
 
@@ -221,13 +243,17 @@ namespace WaveTech.Scutex.Manager
 				}
 				else if (((RibbonTabItem)e.AddedItems[0]).Name == "productsTabItem")
 				{
-					ProductsScreen productsScreen = new ProductsScreen();
-					root.Content = productsScreen;
+					if (_productsScreen == null)
+						_productsScreen = new ProductsScreen();
+
+					root.Content = _productsScreen;
 				}
 				else if (((RibbonTabItem)e.AddedItems[0]).Name == "servicesTabItem")
 				{
-					ServicesScreen servicesScreen = new ServicesScreen();
-					root.Content = servicesScreen;
+					if (_servicesScreen == null)
+						_servicesScreen = new ServicesScreen();
+
+					root.Content = _servicesScreen;
 				}
 
 				else if (((RibbonTabItem)e.AddedItems[0]).Name == "projectTabItem")
