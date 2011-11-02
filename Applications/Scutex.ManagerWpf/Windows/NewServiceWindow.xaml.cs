@@ -5,6 +5,8 @@ using System.Windows.Media;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
+using WaveTech.Scutex.Model.Events;
+using WaveTech.Scutex.Model.Interfaces.Framework;
 using WaveTech.Scutex.Model.Interfaces.Providers;
 using WaveTech.Scutex.Model.Interfaces.Services;
 using MessageBox = System.Windows.MessageBox;
@@ -165,7 +167,11 @@ namespace WaveTech.Scutex.Manager.Windows
 						_service.LockToIp = chkLockToIp.IsChecked.Value;
 
 					servicesService.SaveService(_service);
-					ResetForm();
+
+					IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
+					eventAggregator.SendMessage<ServicesUpdatedEvent>();
+
+					this.Close();
 				}
 				else
 				{

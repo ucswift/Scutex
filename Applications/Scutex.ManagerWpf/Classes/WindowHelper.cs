@@ -12,7 +12,7 @@ namespace WaveTech.Scutex.Manager.Classes
 
 			if (os.OSVersion == OSVersion.Win7)
 			{
-				ThemeManager.ApplyTheme(control, "TwilightBlue");
+				ThemeManager.ApplyTheme(control, "BureauBlue");
 			}
 		}
 	}

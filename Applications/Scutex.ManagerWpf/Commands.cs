@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -649,9 +650,23 @@ namespace WaveTech.Scutex.Manager
 					if (!result)
 						resultCode = 10;
 
-					service.Initialized = true;
-					_servicesService.SaveService(service);
-					bool testResult = _servicesService.TestService(service);
+					bool testResult = false;
+
+					try
+					{
+						service.Initialized = true;
+						_servicesService.SaveService(service);
+						testResult = _servicesService.TestService(service);
+					}
+					catch (System.ServiceModel.EndpointNotFoundException enf)
+					{
+						resultCode = 50;
+						result = false;
+					}
+					catch
+					{
+						throw;
+					}
 
 					if (!testResult)
 					{

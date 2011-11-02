@@ -15,24 +15,9 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 	<Grid>
-		<GroupBox>
-			<GroupBox.Background>
-				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-					<GradientStop Color="#FFFFFFFF" Offset="0"/>
-					<GradientStop Color="#FFA4ADBB" Offset="0.521"/>
-					<GradientStop Color="#FFD7E0EA" Offset="0.194"/>
-					<GradientStop Color="#FFBAC1CF" Offset="0.811"/>
-					<GradientStop Color="#FFBCC5D5" Offset="0.507"/>
-					<GradientStop Color="#FFE3E4E6" Offset="1"/>
-				</LinearGradientBrush>
-			</GroupBox.Background>
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition />
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
 				<DataGrid x:Name="gridServices" Grid.Row="0" ItemsSource="{Binding Source={StaticResource servicesData}}"
 						AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
 					<DataGrid.Columns>
@@ -54,9 +39,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 
-				<UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.Column="0"
+				<UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed"
 							WindowHeight="{Binding ElementName=CurrentPresenter, Path=ActualHeight}" WindowWidth="{Binding ElementName=CurrentPresenter, Path=ActualWidth}" />
-			</Grid>
-		</GroupBox>
 	</Grid>
 </UserControl>
