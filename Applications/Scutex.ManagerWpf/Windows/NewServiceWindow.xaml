@@ -37,15 +37,15 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
-				<TextBlock Grid.Row="0" Grid.Column="0" Text="Service Name:" Foreground="Black" />
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Service Name:" Foreground="Black" VerticalAlignment="Center" />
 				<TextBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="txtServiceName" />
 
-				<TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Client Service Url:" Foreground="Black" />
+				<TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Client Service Url:" Foreground="Black" VerticalAlignment="Bottom" />
 				<TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,4,4,4" x:Name="txtClientUrl" />
 
-				<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Management Service Url:" Foreground="Black" />
+				<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Management Service Url:" Foreground="Black" VerticalAlignment="Bottom" />
 				<TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,4,4,4" x:Name="txtManagementUrl" />
-				<TextBlock Grid.Row="5" Grid.Column="0" Text="Lock To IP:" Foreground="Black" />
+				<TextBlock Grid.Row="5" Grid.Column="0" Text="Lock To IP:" Foreground="Black" VerticalAlignment="Center" />
 				<CheckBox  Grid.Row="5" Grid.Column="1" x:Name="chkLockToIp" />
 
 				<!--<Ribbon:ButtonTool Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDownloadService" Caption="Download Service Deployment Package" HorizontalAlignment="Center" Foreground="Red" Click="btnDownloadService_Click"  />-->

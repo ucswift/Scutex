@@ -10,45 +10,45 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Window.Resources>
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-			
-			<GroupBox Grid.Row="1" Grid.Column="0" Header="Upload Keys to Service" Margin="4,4,4,4" Foreground="White">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="30" />
-						<RowDefinition Height="30" />
-						<RowDefinition Height="30" />
-												<RowDefinition Height="30" />
-												<RowDefinition Height="*" />
-												<RowDefinition Height="25" />
-										</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="70" />
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
 
-					<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="Service: " />
-										<ComboBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="cboServices" ItemsSource="{Binding Source={StaticResource allActiveServicesData}}" DisplayMemberPath="Name" SelectedItem="{Binding Service, ElementName=uploadKeysWindow, Mode=TwoWay}" SelectionChanged="cboServices_SelectionChanged" />
+		<GroupBox Grid.Row="1" Grid.Column="0" Header="Upload Keys to Service" Margin="4,4,4,4" Foreground="Black">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="25" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="70" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
 
-					<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="License Sets: " />
-										<ComboBox Grid.Row="1" Grid.Column="1" Margin="4,4,4,4" x:Name="cboLicenseSets" ItemsSource="{Binding Source={StaticResource allProductsLicensesAndSetsData}}" DisplayMemberPath="NameForDisplay" SelectedItem="{Binding LicenseSet, ElementName=uploadKeysWindow, Mode=TwoWay}" SelectionChanged="cboLicenseSets_SelectionChanged" />
+				<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Text="Service: " />
+				<ComboBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="cboServices" ItemsSource="{Binding Source={StaticResource allActiveServicesData}}" DisplayMemberPath="Name" SelectedItem="{Binding Service, ElementName=uploadKeysWindow, Mode=TwoWay}" SelectionChanged="cboServices_SelectionChanged" />
 
-					<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="Local Keys: " />
-										<TextBlock Grid.Row="2" Grid.Column="1" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" x:Name="lblLocalKeyCount" Text="0" />
+				<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Text="License Sets: " />
+				<ComboBox Grid.Row="1" Grid.Column="1" Margin="4,4,4,4" x:Name="cboLicenseSets" ItemsSource="{Binding Source={StaticResource allProductsLicensesAndSetsData}}" DisplayMemberPath="NameForDisplay" SelectedItem="{Binding LicenseSet, ElementName=uploadKeysWindow, Mode=TwoWay}" SelectionChanged="cboLicenseSets_SelectionChanged" />
 
-										<TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="Service Keys: " />
-										<TextBlock Grid.Row="3" Grid.Column="1" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" x:Name="lblServiceKeyCount" Text="0" />
+				<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Text="Local Keys: " />
+				<TextBlock Grid.Row="2" Grid.Column="1" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" x:Name="lblLocalKeyCount" Text="0" />
 
-										<Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="Synchronize" x:Name="btnSynchronize" Click="btnSynchronize_Click" />
-								</Grid>
-			</GroupBox>
-						<UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" 
+				<TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Text="Service Keys: " />
+				<TextBlock Grid.Row="3" Grid.Column="1" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" x:Name="lblServiceKeyCount" Text="0" />
+
+				<Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="Synchronize" x:Name="btnSynchronize" Click="btnSynchronize_Click" />
+			</Grid>
+		</GroupBox>
+		<UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" 
 							WindowHeight="{Binding ElementName=CurrentPresenter, Path=ActualHeight}" WindowWidth="{Binding ElementName=CurrentPresenter, Path=ActualWidth}" />
-		</Grid>
+	</Grid>
 </Window>

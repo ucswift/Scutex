@@ -41,7 +41,7 @@
 													 SelectedValue="{Binding License.KeyGeneratorType, ElementName=licenseSettingsControl, Mode=TwoWay}">
 				</ComboBox>-->
 
-				<ComboBox Grid.Row="0" Grid.Column="1" Margin="1,1,1,1" x:Name="cboLicenseKeyType" 
+				<ComboBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="cboLicenseKeyType" 
                 ItemsSource="{Binding Source={StaticResource licenseKeyTypesEnumData}}"
                 SelectedItem="{Binding License.KeyGeneratorType, ElementName=licenseSettingsControl, Mode=TwoWay}" Height="Auto">
 						<ComboBox.ItemTemplate>
@@ -112,14 +112,14 @@
 				<TextBlock Grid.Row="0" Text="License Set Name:" VerticalAlignment="Bottom" />
 				<TextBox Grid.Row="1" x:Name="txtLicenseSetName"  Margin="4,4,4,4"/>
 
-				<GroupBox Grid.Row="2" Header="Verification Types" Margin="4,4,4,4">
+				<GroupBox Grid.Row="2" Header="Verification Types" Margin="2,2,2,2">
 					<WrapPanel>
-						<CheckBox x:Name="chkSingleUser" Content="Single User" Margin="4,4,4,4" />
-						<CheckBox x:Name="chkMultiUser" Content="Multi User" Margin="4,4,4,4" />
-						<CheckBox x:Name="chkHardwareLock" Content="Hardware Lock" Margin="4,4,4,4" />
-						<CheckBox x:Name="chkUnlimited" Content="Unlimited" Margin="4,4,4,4" />
-						<CheckBox x:Name="chkEnterprise" Content="Enterprise" Margin="4,4,4,4" />
-						<CheckBox x:Name="chkSubscription" Content="Subscription" Margin="4,4,4,4" IsEnabled="False" />
+						<CheckBox x:Name="chkSingleUser" Content="Single User" Margin="2,2,2,2" />
+						<CheckBox x:Name="chkMultiUser" Content="Multi User" Margin="2,2,2,2" />
+						<CheckBox x:Name="chkHardwareLock" Content="Hardware Lock" Margin="2,2,2,2" />
+						<CheckBox x:Name="chkUnlimited" Content="Unlimited" Margin="2,2,2,2" />
+						<CheckBox x:Name="chkEnterprise" Content="Enterprise" Margin="2,2,2,2" />
+						<CheckBox x:Name="chkSubscription" Content="Subscription" Margin="2,2,2,2" IsEnabled="False" />
 					</WrapPanel>
 				</GroupBox>
 

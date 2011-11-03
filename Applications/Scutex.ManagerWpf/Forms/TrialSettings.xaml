@@ -124,7 +124,7 @@
 			</Grid>
 		</GroupBox>
 
-		<GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Header="Trial Limitations" Margin="4,4,4,4">
+		<GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Header="Trial Limitations" Margin="2,2,2,2">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition />

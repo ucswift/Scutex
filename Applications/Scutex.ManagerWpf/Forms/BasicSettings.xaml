@@ -24,27 +24,26 @@
 		</Grid.ColumnDefinitions>
 
 
-		<GroupBox Grid.Row="0" Grid.Column="0" Header="Project Information" Margin="4,4,4,4">
+		<GroupBox Grid.Row="0" Grid.Column="0" Header="Project Information" Margin="2,2,2,2">
 			<Grid Height="110" VerticalAlignment="Top">
 				<Grid.RowDefinitions>
-					<RowDefinition Height="33" />
-					<RowDefinition Height="33" />
-					<RowDefinition Height="33" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="31" />
+					<RowDefinition Height="30" />
 					<RowDefinition Height="11*" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="14" />
+					<ColumnDefinition Width="18" />
 					<ColumnDefinition Width="63" />
 					<ColumnDefinition Width="153*" />
 				</Grid.ColumnDefinitions>
 
 				<TextBlock Text="License Id:" Height="Auto" VerticalAlignment="Center" TextAlignment="Left" Grid.ColumnSpan="2" Margin="0,8" />
-				<TextBox Grid.Column="2" VerticalAlignment="Top" Height="25px" Margin="4,4,4,4" IsReadOnly="True" Text="{Binding ElementName=basicSettingsControl, Mode=OneWay, Path=License.UniqueId, Converter={StaticResource guidToStringConverter}}"  />
+				<TextBox Grid.Column="2" VerticalAlignment="Top" Height="25px" Margin="2,2,2,2" IsReadOnly="True" Text="{Binding ElementName=basicSettingsControl, Mode=OneWay, Path=License.UniqueId, Converter={StaticResource guidToStringConverter}}"  />
 
 				<TextBlock Grid.Row="1" Text="Project Name:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,11" />
-				<TextBox  Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Height="25px" Margin="4,4,4,4" Text="{Binding License.Name, ElementName=basicSettingsControl, Mode=TwoWay}"/>
-
-				<ComboBox Grid.Column="2" x:Name="cboProduct" ItemsSource="{Binding Source={StaticResource productsData}, Mode=OneWay}" SelectedItem="{Binding License.Product, ElementName=basicSettingsControl, Mode=TwoWay}" VerticalAlignment="Center" Height="25px" Text="" Margin="4,4,4,4" DisplayMemberPath="Name" SelectionChanged="cboProduct_SelectionChanged" Grid.Row="2" />
+				<TextBox  Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Height="25px" Margin="2,2,2,2" Text="{Binding License.Name, ElementName=basicSettingsControl, Mode=TwoWay}"/>
+				<ComboBox Grid.Column="2" x:Name="cboProduct" ItemsSource="{Binding Source={StaticResource productsData}, Mode=OneWay}" SelectedItem="{Binding License.Product, ElementName=basicSettingsControl, Mode=TwoWay}" VerticalAlignment="Center" Height="25px" Text="" Margin="2,2,2,2" DisplayMemberPath="Name" SelectionChanged="cboProduct_SelectionChanged" Grid.Row="2" />
 				<TextBlock Grid.Row="2" Text="Product:" Height="Auto" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left" Width="Auto" Grid.ColumnSpan="2" />
 			</Grid>
 		</GroupBox>
@@ -76,42 +75,42 @@
 				<TextBox  Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding License.KeyPair.PrivateKey, ElementName=basicSettingsControl, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" />
 
 				<TextBlock Grid.Row="3" Text="Public Key:" VerticalAlignment="Center" Grid.ColumnSpan="2"  />
-				<TextBox  Grid.Row="4" Text="{Binding License.KeyPair.PublicKey, ElementName=basicSettingsControl, Mode=OneWay}" IsReadOnly="True" HorizontalAlignment="Stretch" TextWrapping="Wrap" Grid.ColumnSpan="2" />
+				<TextBox  Grid.Row="4" Text="{Binding License.KeyPair.PublicKey, ElementName=basicSettingsControl, Mode=OneWay}" IsReadOnly="True" HorizontalAlignment="Stretch" TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="4,4,4,4" />
 			</Grid>
 		</GroupBox>
 
 		<GroupBox Grid.Row="1" Grid.Column="0" Header="Application Information" Margin="4,4,4,4">
 			<Grid VerticalAlignment="Top">
 				<Grid.RowDefinitions>
-					<RowDefinition Height="35" />
-					<RowDefinition Height="35" />
-					<RowDefinition Height="35" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="65" />
+					<ColumnDefinition Width="85" />
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="60" />
 				</Grid.ColumnDefinitions>
 				<!--<igRibbon:ButtonTool x:Name="btnAddProduct" Command="{x:Static Manager:Commands.ProductsCommand}" Grid.Column="2" Content="Add" Margin="0,4,6,6" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Height="24"  /> -->
 
 				<TextBlock Text="Support Email:" Grid.ColumnSpan="2" Height="Auto" VerticalAlignment="Center" TextAlignment="Left" Margin="0,10,0,9" HorizontalAlignment="Left" Width="Auto" />
-				<TextBox Grid.Column="1" Grid.ColumnSpan="2" Margin="18,7,6,5" Text="{Binding License.SupportEmail, ElementName=basicSettingsControl, Mode=TwoWay}" />
+				<TextBox Grid.Column="1" Grid.ColumnSpan="2" Margin="2,2,2,2" Text="{Binding License.SupportEmail, ElementName=basicSettingsControl, Mode=TwoWay}" />
 
 
 				<TextBlock Grid.Row="1" Text="Sales Email:" Height="Auto" VerticalAlignment="Center" TextAlignment="Left" Margin="0,12,0,7" HorizontalAlignment="Left" Width="Auto" />
-				<TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="20,7,4,5" Text="{Binding License.SalesEmail, ElementName=basicSettingsControl, Mode=TwoWay}" />
+				<TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="2,2,2,2" Text="{Binding License.SalesEmail, ElementName=basicSettingsControl, Mode=TwoWay}" />
 				
 				<TextBlock Height="Auto" HorizontalAlignment="Left" Margin="0,11,0,8" Text="Sales Phone:" TextAlignment="Left" VerticalAlignment="Center" Width="Auto" Grid.Row="2" Grid.ColumnSpan="2" />
-				<TextBox Grid.ColumnSpan="2" Margin="104,6,4,6" Text="{Binding License.SalesPhone, ElementName=basicSettingsControl, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" />
+				<TextBox Grid.ColumnSpan="2" Margin="104,2,2,2" Text="{Binding License.SalesPhone, ElementName=basicSettingsControl, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" />
 			</Grid>
 		</GroupBox>
 
 		<GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Header="Project Urls" Margin="4,4,4,4">
 			<Grid>
 				<Grid.RowDefinitions>
-					<RowDefinition />
-					<RowDefinition />
-					<RowDefinition />
+					<RowDefinition Height="30"  />
+					<RowDefinition Height="30"  />
+					<RowDefinition Height="30"  />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="114" />

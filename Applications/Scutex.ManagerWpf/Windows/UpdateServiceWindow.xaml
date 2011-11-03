@@ -1,8 +1,8 @@
 ﻿<Window x:Class="WaveTech.Scutex.Manager.Windows.UpdateServiceWindow"
 				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-				x:Name="updateServiceWindow"
-				Title="Update Service" Height="300" Width="300" WindowStartupLocation="CenterOwner">
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:UserControls="clr-namespace:WaveTech.Scutex.Manager.UserControls" x:Name="updateServiceWindow"
+				Title="Update Service" Height="300" Width="600" WindowStartupLocation="CenterOwner">
 	<Window.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -12,38 +12,52 @@
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="30" />
-			<RowDefinition Height="20" />
-			<RowDefinition Height="30" />
-			<RowDefinition Height="20" />
-			<RowDefinition Height="30" />
-			<RowDefinition Height="25" />
-			<RowDefinition Height="25" />
-			<RowDefinition Height="*" />
-			<RowDefinition Height="30" />
+			<RowDefinition />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="80" />
 			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0" Text="Service Name:" Foreground="Black" />
-		<TextBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="txtServiceName" Text="{Binding Service.Name, ElementName=updateServiceWindow, Mode=TwoWay}" />
+		<GroupBox Grid.Row="0" Grid.Column="0" Header="New Service Information" Margin="4,4,4,4" Foreground="Black">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30" />
+					<RowDefinition Height="20" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="20" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="30" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="80" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Client Service Url:" Foreground="Black" />
-		<TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,4,4,4" x:Name="txtClientUrl" Text="{Binding Service.ClientUrl, ElementName=updateServiceWindow, Mode=TwoWay}" />
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Service Name:" Foreground="Black" VerticalAlignment="Center" />
+				<TextBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="txtServiceName" Text="{Binding Service.Name, ElementName=updateServiceWindow, Mode=TwoWay}" />
 
-		<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Management Service Url:" Foreground="Black" />
-		<TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,4,4,4" x:Name="txtManagementUrl" Text="{Binding Service.ManagementUrl, ElementName=updateServiceWindow, Mode=TwoWay}" />
-		<TextBlock Grid.Row="5" Grid.Column="0" Text="Lock To IP:" Foreground="Black" />
-		<CheckBox  Grid.Row="5" Grid.Column="1" x:Name="chkLockToIp" IsChecked="{Binding Service.LockToIp, ElementName=updateServiceWindow, Mode=TwoWay}" />
+				<TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Client Service Url:" Foreground="Black" VerticalAlignment="Bottom" />
+				<TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,4,4,4" x:Name="txtClientUrl" Text="{Binding Service.ClientUrl, ElementName=updateServiceWindow, Mode=TwoWay}" />
 
-		<!--<Ribbon:ButtonTool Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDownloadService" Caption="Download Service Deployment Package" HorizontalAlignment="Center" Foreground="Red"  />-->
-		<Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDownloadService" Content="Re-Download Service Deployment Package" HorizontalAlignment="Center" />
+				<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Management Service Url:" Foreground="Black" VerticalAlignment="Bottom" />
+				<TextBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,4,4,4" x:Name="txtManagementUrl" Text="{Binding Service.ManagementUrl, ElementName=updateServiceWindow, Mode=TwoWay}" />
+				<TextBlock Grid.Row="5" Grid.Column="0" Text="Lock To IP:" Foreground="Black" VerticalAlignment="Center" />
+				<CheckBox  Grid.Row="5" Grid.Column="1" x:Name="chkLockToIp" IsChecked="{Binding Service.LockToIp, ElementName=updateServiceWindow, Mode=TwoWay}" />
 
-		<!--<Ribbon:ButtonTool Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDeleteService" Caption="Delete Service" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="RoyalBlue" Click="btnDeleteService_Click"  />-->
-		<!--<Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDeleteService" Content="Delete Service" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="btnDeleteService_Click" />-->
-		<!--<Ribbon:ButtonTool Grid.Row="8" Grid.Column="1" x:Name="btnSaveService" Caption="Save Service" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="RoyalBlue" Click="btnSaveService_Click"  />-->
-		<Button Grid.Row="8" Grid.Column="1" x:Name="btnSaveService" Content="Update Service" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnSaveService_Click" />
+				<!--<Ribbon:ButtonTool Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDownloadService" Caption="Download Service Deployment Package" HorizontalAlignment="Center" Foreground="Red"  />-->
+				<Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDownloadService" Content="Re-Download Service Deployment Package" HorizontalAlignment="Center" />
+
+				<!--<Ribbon:ButtonTool Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDeleteService" Caption="Delete Service" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="RoyalBlue" Click="btnDeleteService_Click"  />-->
+				<!--<Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnDeleteService" Content="Delete Service" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="btnDeleteService_Click" />-->
+				<!--<Ribbon:ButtonTool Grid.Row="8" Grid.Column="1" x:Name="btnSaveService" Caption="Save Service" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="RoyalBlue" Click="btnSaveService_Click"  />-->
+				<Button Grid.Row="8" Grid.Column="1" x:Name="btnSaveService" Content="Update Service" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnSaveService_Click" />
+			</Grid>
+		</GroupBox>
+
+		<UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+							WindowHeight="{Binding ElementName=CurrentPresenter, Path=ActualHeight}" WindowWidth="{Binding ElementName=CurrentPresenter, Path=ActualWidth}" />
 	</Grid>
 </Window>

@@ -35,9 +35,9 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
-				<TextBlock Grid.Row="1" Text="Product Name:" Foreground="Black" />
+				<TextBlock Grid.Row="1" Text="Product Name:" Foreground="Black" VerticalAlignment="Bottom" />
 				<TextBox Grid.Row="2" x:Name="txtProductName" />
-				<TextBlock Grid.Row="3" Text="Product Description:" Foreground="Black" />
+				<TextBlock Grid.Row="3" Text="Product Description:" Foreground="Black" VerticalAlignment="Bottom" />
 				<TextBox Grid.Row="4" x:Name="txtProductDescription" />
 				<Button Grid.Row="5" x:Name="btnAddProduct" Content="Add Product" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnAddProduct_Click" />
 			</Grid>
