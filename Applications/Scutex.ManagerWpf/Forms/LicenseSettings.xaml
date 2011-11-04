@@ -4,7 +4,7 @@
 						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 						 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 						 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Manager="clr-namespace:WaveTech.Scutex.Manager"
-             xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" mc:Ignorable="d" 
+						 xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes" mc:Ignorable="d" 
 						 x:Name="licenseSettingsControl"
 						 d:DesignHeight="350" d:DesignWidth="500">
 	<UserControl.Resources>
@@ -88,8 +88,13 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
-				<dg:DataGrid x:Name="gridLicenseSets" Grid.Row="0" ItemsSource="{Binding License.LicenseSets, ElementName=licenseSettingsControl, Mode=TwoWay}">
-				</dg:DataGrid>
+				<DataGrid x:Name="gridLicenseSets" Grid.Row="0" ItemsSource="{Binding License.LicenseSets, ElementName=licenseSettingsControl, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True">
+					<DataGrid.Columns>
+						<DataGridTextColumn
+						Header="License Set" Width="*" IsReadOnly="True"
+						Binding="{Binding Path=Name}"/>
+					</DataGrid.Columns>
+				</DataGrid>
 
 				<!--<igRibbon:ButtonTool Grid.Row="1" x:Name="btnRemoveLicenseSet" Content="Remove Selected" Click="btnRemoveLicenseSet_Click" HorizontalAlignment="Right" /> -->
 				<Button Grid.Row="1" x:Name="btnRemoveLicenseSet" Margin="4,4,4,4" Content="Remove Selected" Click="btnRemoveLicenseSet_Click" HorizontalAlignment="Right" />

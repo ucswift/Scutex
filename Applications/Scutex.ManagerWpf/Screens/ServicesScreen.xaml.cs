@@ -21,6 +21,8 @@ namespace WaveTech.Scutex.Manager.Screens
 		{
 			InitializeComponent();
 
+			WindowHelper.CheckAndApplyTheme(this);
+
 			_servicesService = ObjectLocator.GetInstance<IServicesService>();
 			_eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
 

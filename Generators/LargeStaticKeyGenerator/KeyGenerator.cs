@@ -16,7 +16,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		private readonly IAsymmetricEncryptionProvider asymmetricEncryptionProvider;
 		private readonly IHashingProvider hashingProvider;
 
-		private static string licenseKeyTemplate = "xxkxv-xaaax-xxxxp-pppxl-xcccc";
+		internal static string licenseKeyTemplate = "xxkxv-xaaax-xxxxp-pppxl-xcccc";
 		#endregion Private Readonly Members
 
 		public KeyGenerator(ISymmetricEncryptionProvider symmetricEncryptionProvider,
@@ -31,7 +31,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		{
 			// Init all required variables for the process.
 			Dictionary<int, LicensePlaceholder> placeholerLocations;
-			List<LicensePlaceholder> licensePlaceholders = CreateLicensePlaceholders(scutexLicense);
+			List<LicensePlaceholder> licensePlaceholders = CreateLicensePlaceholders(scutexLicense, generationOptions);
 
 			string licenseKey;
 			char[] licenseKeyArray;
@@ -128,7 +128,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		{
 			// Init all required variables for the process.
 			Dictionary<int, LicensePlaceholder> placeholerLocations;
-			List<LicensePlaceholder> licensePlaceholders = CreateLicensePlaceholders(scutexLicense);
+			List<LicensePlaceholder> licensePlaceholders = CreateLicensePlaceholders(scutexLicense, null);
 			char[] licenseKeyArray;
 			string decodedLicenseKey = licenseKey.Replace("-", "");
 
@@ -187,7 +187,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		}
 
 		#region Internals
-		internal List<LicensePlaceholder> CreateLicensePlaceholders(LicenseBase license)
+		internal List<LicensePlaceholder> CreateLicensePlaceholders(LicenseBase scutexLicense, LicenseGenerationOptions generationOption)
 		{
 			List<LicensePlaceholder> placeholders = new List<LicensePlaceholder>();
 
@@ -214,7 +214,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				Length = 3,
 				Token = Char.Parse("a"),
 				Type = PlaceholderTypes.Number,
-				Value = license.Product.GetFormattedProductId(3),
+				Value = scutexLicense.Product.GetFormattedProductId(3),
 				IsChecksum = false
 			});
 
@@ -223,7 +223,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				Length = 4,
 				Token = Char.Parse("p"),
 				Type = PlaceholderTypes.Number,
-				Value = hashingProvider.Checksum16(license.GetLicenseProductIdentifier()).ToString("X"),
+				Value = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X"),
 				IsChecksum = false
 			});
 
@@ -248,7 +248,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			return placeholders;
 		}
 
-		internal Dictionary<int, LicensePlaceholder> FindAllPlaceholdersInTemplate(string template, List<LicensePlaceholder> placeholders)
+		internal static Dictionary<int, LicensePlaceholder> FindAllPlaceholdersInTemplate(string template, List<LicensePlaceholder> placeholders)
 		{
 			Dictionary<int, LicensePlaceholder> locations = new Dictionary<int, LicensePlaceholder>();
 
@@ -263,7 +263,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			return locations;
 		}
 
-		internal List<int> FindAllSeperatorsInTemplate(string template)
+		internal static List<int> FindAllSeperatorsInTemplate(string template)
 		{
 			List<int> positions = new List<int>();
 
@@ -280,8 +280,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			return positions;
 		}
 
-
-		internal char KeyIntegerValueObfuscator(char previousValue, int data, int position)
+		internal static char KeyIntegerValueObfuscator(char previousValue, int data, int position)
 		{
 			int prevWeight = CharacterMap.ReverseMap[previousValue];
 			double weightValue = GetWeightingModifer(prevWeight, position);
@@ -291,7 +290,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			return CharacterMap.Map[(int)obfKey];
 		}
 
-		internal char KeyIntegerValueDeObfuscator(char previousValue, char data, int position)
+		internal static char KeyIntegerValueDeObfuscator(char previousValue, char data, int position)
 		{
 			int prevWeight = CharacterMap.ReverseMap[previousValue];
 			int obfKey = CharacterMap.ReverseMap[data];
@@ -302,8 +301,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			return CharacterMap.Map[(int)origKey];
 		}
 
-
-		internal char GetRandomCharacter()
+		internal static char GetRandomCharacter()
 		{
 			byte[] randomBytes = new byte[1];
 			RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
@@ -313,7 +311,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			return CharacterMap.Map[rand % 35];
 		}
 
-		internal double GetWeightingModifer(int weight1, int weight2)
+		internal static double GetWeightingModifer(int weight1, int weight2)
 		{
 			/* 
 			 * The formula below contains no mathmatical signifiance that I
