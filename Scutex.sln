@@ -41,7 +41,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{B3CF87C4-7F91-429D-82A6-8EACEBCA94AF}"
 	ProjectSection(SolutionItems) = preProject
 		Documentation\LicenseAgreement.rtf = Documentation\LicenseAgreement.rtf
-		Documentation\LicenseKeyFormat.docx = Documentation\LicenseKeyFormat.docx
 		Documentation\ReadMe.rtf = Documentation\ReadMe.rtf
 		Documentation\ScutexDocumentation.chm = Documentation\ScutexDocumentation.chm
 	EndProjectSection

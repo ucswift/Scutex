@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Security.Cryptography;
 using WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.Properties;
 using WaveTech.Scutex.Model;
@@ -16,9 +18,10 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		private readonly IAsymmetricEncryptionProvider asymmetricEncryptionProvider;
 		private readonly IHashingProvider hashingProvider;
 
-		internal static string licenseKeyTemplate = "xxkxv-xaaax-xxxxp-pppxl-xcccc";
+		internal static string licenseKeyTemplate = "xxkxv-xaaax-xsxxp-pppxl-xcccc";
 		#endregion Private Readonly Members
 
+		#region Constructor
 		public KeyGenerator(ISymmetricEncryptionProvider symmetricEncryptionProvider,
 			IAsymmetricEncryptionProvider asymmetricEncryptionProvider, IHashingProvider hashingProvider)
 		{
@@ -26,13 +29,13 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			this.asymmetricEncryptionProvider = asymmetricEncryptionProvider;
 			this.hashingProvider = hashingProvider;
 		}
+		#endregion Constructor
 
 		public string GenerateLicenseKey(string rsaXmlString, LicenseBase scutexLicense, LicenseGenerationOptions generationOptions)
 		{
 			// Init all required variables for the process.
 			Dictionary<int, LicensePlaceholder> placeholerLocations;
 			List<LicensePlaceholder> licensePlaceholders = CreateLicensePlaceholders(scutexLicense, generationOptions);
-
 			string licenseKey;
 			char[] licenseKeyArray;
 
@@ -78,21 +81,46 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			{
 				if (!p.Value.IsChecksum)
 				{
-					licenseKeyArray = licenseKey.ToCharArray();
-					for (int i = 0; i < p.Value.Length; i++)
+					if (p.Value.Type == PlaceholderTypes.Number)
 					{
-						char previousChar = licenseKeyArray[(p.Key) - 1];
-						int data = int.Parse(licenseKeyArray[p.Key + i].ToString(), System.Globalization.NumberStyles.HexNumber);
-						char obfKey = KeyIntegerValueObfuscator(previousChar, data, p.Key + i);
+						//Console.WriteLine(p.Value.Token);
+						//Console.WriteLine("-----------------");
 
-						licenseKeyArray[p.Key + i] = obfKey;
+						licenseKeyArray = licenseKey.ToCharArray();
+						
+						for (int i = 0; i < p.Value.Length; i++)
+						{
+							char previousChar = licenseKeyArray[(p.Key) - 1];
+							int data = int.Parse(licenseKeyArray[p.Key + i].ToString(), NumberStyles.HexNumber);
+							char obfKey = KeyIntegerValueObfuscator(previousChar, data, p.Key + i);
+
+							licenseKeyArray[p.Key + i] = obfKey;
+						}
+
+						licenseKey = new string(licenseKeyArray);
 					}
+					else if (p.Value.Type == PlaceholderTypes.String)
+					{
+						licenseKeyArray = licenseKey.ToCharArray();
 
-					licenseKey = new string(licenseKeyArray);
+						for (int i = 0; i < p.Value.Length; i++)
+						{
+							char previousChar = licenseKeyArray[(p.Key) - 1];
+
+							int modData = CharacterMap.ReverseMap[licenseKeyArray[p.Key + i]];
+							//Console.WriteLine(string.Format("Char: {0}", licenseKeyArray[p.Key + i]));
+								
+							char obfKey = KeyIntegerValueObfuscator(previousChar, modData, p.Key + i);
+
+							licenseKeyArray[p.Key + i] = obfKey;
+						}
+
+						licenseKey = new string(licenseKeyArray);
+					}
 				}
 			}
 
-			// Now compute and change all the cheksum placeholders in the key
+			// Now compute and change all the checksum placeholders in the key
 			foreach (var p in placeholerLocations)
 			{
 				if (p.Value.IsChecksum)
@@ -115,9 +143,11 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			string finalKey = licenseKey;
 			if (seperatorLocations.Count > 0)
 			{
-				foreach (int location in seperatorLocations)
+				int remaining = seperatorLocations.Count - 1;
+				for (int i = 0; i < seperatorLocations.Count; i++)
 				{
-					finalKey = finalKey.Insert(location, "-");
+					finalKey = finalKey.Insert(seperatorLocations[i] - remaining, "-");
+					remaining--;
 				}
 			}
 
@@ -133,29 +163,46 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			string decodedLicenseKey = licenseKey.Replace("-", "");
 
 			// Locate all the placeholder tokens in the license template
-			placeholerLocations = FindAllPlaceholdersInTemplate(decodedLicenseKey, licensePlaceholders);
+			placeholerLocations = FindAllPlaceholdersInTemplate(licenseKeyTemplate.Replace("-", ""), licensePlaceholders);
 
-			// Compute and verify all the cheksum placeholders in the key
+			// STEP 1: Basic length checks
+			if (licenseKey.Length != licenseKeyTemplate.Length)
+				throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+			if (decodedLicenseKey.Length != licenseKeyTemplate.Replace("-", "").Length)
+				throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+			// STEP 2: Compute and verify all the checksum placeholders in the key
 			foreach (var p in placeholerLocations)
 			{
 				if (p.Value.IsChecksum)
 				{
-					string originalHash = decodedLicenseKey.Substring(p.Key, p.Value.Length);
-					int originalHashValue = int.Parse(originalHash, System.Globalization.NumberStyles.HexNumber);
+					string originalHash;
+					int originalHashValue;
+					int verifyHashValue;
 
-					int verifyHashValue = hashingProvider.Checksum16(decodedLicenseKey.Substring(0, p.Key));
+					try
+					{
+						originalHash = decodedLicenseKey.Substring(p.Key, p.Value.Length);
+						originalHashValue = int.Parse(originalHash, System.Globalization.NumberStyles.HexNumber);
+						verifyHashValue = hashingProvider.Checksum16(decodedLicenseKey.Substring(0, p.Key));
+					}
+					catch
+					{
+						throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+					}
 
 					if (originalHashValue != verifyHashValue)
 						throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
 				}
 			}
 
-			// DeObfuscate key license placeholders that are not cheksums
+			// STEP 3: DeObfuscate key license placeholders that are not checksums
 			foreach (var p in placeholerLocations)
 			{
 				if (!p.Value.IsChecksum)
 				{
-					licenseKeyArray = licenseKey.ToCharArray();
+					licenseKeyArray = decodedLicenseKey.ToCharArray();
 					for (int i = 0; i < p.Value.Length; i++)
 					{
 						char previousChar = licenseKeyArray[(p.Key) - 1];
@@ -164,7 +211,104 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 						licenseKeyArray[p.Key + i] = deObfKey;
 					}
 
-					licenseKey = new string(licenseKeyArray);
+					decodedLicenseKey = new string(licenseKeyArray);
+				}
+			}
+
+			// STEP 4: Validate each non-checksum placeholder
+			foreach (var p in placeholerLocations)
+			{
+				if (!p.Value.IsChecksum)
+				{
+					switch (p.Value.ValidationType)
+					{
+						case ValidationTypes.LicenseKeyType:
+							int licenseKeyTypeValue = 0;
+							bool licenseKeyTypeValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), out licenseKeyTypeValue);
+
+							// The LicenseKeyType value should be able to be converted to an int, else it is invalid
+							if (!licenseKeyTypeValueCheck)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							LicenseKeyTypeFlag typeFlag;
+
+							// It is possible that a LicenseKeyType has no supporting LicenseKeyTypeFlag (which means it was 
+							// placeholded in the LicenseKeyType enum but is not operable). If this parse (cast) fails then
+							// there was a valid LicenseKeyType enum value but no valid LicenseKeyTypeFlag value.
+							try
+							{
+								typeFlag = (LicenseKeyTypeFlag)Enum.Parse(typeof(LicenseKeyTypeFlag), ((LicenseKeyTypes)licenseKeyTypeValue).ToString(), true);
+							}
+							catch (Exception)
+							{
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+							}
+
+							LicenseSet ls = null;
+							try
+							{
+								var licSetPH = placeholerLocations.Where(x => x.Value.ValidationType == ValidationTypes.LicenseSet).SingleOrDefault();
+								int licenseSetIdValue1 = int.Parse(decodedLicenseKey.Substring(licSetPH.Key, licSetPH.Value.Length));
+
+								ls = scutexLicense.LicenseSets.Where(x => x.LicenseSetId == licenseSetIdValue1).SingleOrDefault();
+							}
+							catch 
+							{
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+							}
+
+							if (ls == null)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							// If the LicenseSet does not support the key type supplied then throw an error
+							if (!ls.SupportedLicenseTypes.IsSet(typeFlag))
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							break;
+						case ValidationTypes.LicenseSet:
+							int licenseSetIdValue = 0;
+							bool licenseSetIdValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), out licenseSetIdValue);
+
+							// The LicenseSetId value should be able to be converted to an int, else it is invalid
+							if (!licenseSetIdValueCheck)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							LicenseSet ls1 = null;
+							try
+							{
+								ls1 = scutexLicense.LicenseSets.Where(x => x.LicenseSetId == licenseSetIdValue).SingleOrDefault();
+							}
+							catch
+							{
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+							}
+
+							if (ls1 == null)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							break;
+						case ValidationTypes.Product:
+							int productIdValue = 0;
+							bool productIdValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), out productIdValue);
+
+							// The ProductId value should be able to be converted to an int, else it is invalid
+							if (!productIdValueCheck)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							if (scutexLicense.Product.ProductId != productIdValue)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							break;
+						case ValidationTypes.None:
+							string keyValue = decodedLicenseKey.Substring(p.Key, p.Value.Length);
+
+							if (keyValue != p.Value.Value)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							break;
+						default:
+							throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+					}
 				}
 			}
 
@@ -173,32 +317,139 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 
 		public KeyData GetLicenseKeyData(string licenseKey, LicenseBase scutexLicense)
 		{
-			throw new NotImplementedException();
+			// Init all required variables for the process.
+			Dictionary<int, LicensePlaceholder> placeholerLocations;
+			List<LicensePlaceholder> licensePlaceholders = CreateLicensePlaceholders(scutexLicense, null);
+			char[] licenseKeyArray;
+			string decodedLicenseKey = licenseKey.Replace("-", "");
+			KeyData keyData = new KeyData();
+			keyData.IsKeyValid = true;
+
+			// Locate all the placeholder tokens in the license template
+			placeholerLocations = FindAllPlaceholdersInTemplate(licenseKeyTemplate.Replace("-", ""), licensePlaceholders);
+
+			bool isKeyValid = ValidateLicenseKey(licenseKey, scutexLicense);
+			keyData.IsKeyValid = isKeyValid;
+
+			if (isKeyValid)
+			{
+				foreach (var p in placeholerLocations)
+				{
+					if (!p.Value.IsChecksum)
+					{
+						licenseKeyArray = decodedLicenseKey.ToCharArray();
+						for (int i = 0; i < p.Value.Length; i++)
+						{
+							char previousChar = licenseKeyArray[(p.Key) - 1];
+							char deObfKey = KeyIntegerValueDeObfuscator(previousChar, licenseKeyArray[p.Key + i], p.Key + i);
+
+							licenseKeyArray[p.Key + i] = deObfKey;
+						}
+
+						decodedLicenseKey = new string(licenseKeyArray);
+					}
+				}
+
+				foreach (var p in placeholerLocations)
+				{
+					if (!p.Value.IsChecksum)
+					{
+						if (p.Value.Token == Char.Parse("k"))
+						{
+							int licenseKeyTypeValue = 0;
+							bool licenseKeyTypeValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), out licenseKeyTypeValue);
+
+							if (licenseKeyTypeValueCheck)
+								keyData.LicenseKeyType = (LicenseKeyTypes)licenseKeyTypeValue;
+						}
+						else if (p.Value.Token == Char.Parse("a"))
+						{
+							int prodValue = 0;
+							bool prodValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), out prodValue);
+
+							if (prodValueCheck)
+								keyData.ProductId = prodValue;
+						}
+						else if (p.Value.Token == Char.Parse("s"))
+						{
+							int licenseSetValue = 0;
+							bool licenseSetValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), out licenseSetValue);
+
+							if (licenseSetValueCheck)
+								keyData.LicenseSetId = licenseSetValue;
+						}
+					}
+				}
+			}
+
+			return keyData;
 		}
 
 		public LicenseCapability GetLicenseCapability()
 		{
-			throw new NotImplementedException();
-		}
+			LicenseCapability lc = new LicenseCapability();
 
-		public string GetKeyHash(string key)
-		{
-			throw new NotImplementedException();
+			// Set the license capabilities using a bitwise OR to stack the values.
+			lc.SupportedLicenseKeyTypes = LicenseKeyTypeFlag.SingleUser;
+			lc.SupportedLicenseKeyTypes = lc.SupportedLicenseKeyTypes | LicenseKeyTypeFlag.MultiUser;
+			lc.SupportedLicenseKeyTypes = lc.SupportedLicenseKeyTypes | LicenseKeyTypeFlag.Unlimited;
+			lc.SupportedLicenseKeyTypes = lc.SupportedLicenseKeyTypes | LicenseKeyTypeFlag.Enterprise;
+
+			lc.MaxLicenseKeysPerBatch = 500000;
+			lc.MaxTotalLicenseKeys = 10000000;
+
+			return lc;
 		}
 
 		#region Internals
-		internal List<LicensePlaceholder> CreateLicensePlaceholders(LicenseBase scutexLicense, LicenseGenerationOptions generationOption)
+		internal List<LicensePlaceholder> CreateLicensePlaceholders(LicenseBase scutexLicense, LicenseGenerationOptions generationOptions)
 		{
 			List<LicensePlaceholder> placeholders = new List<LicensePlaceholder>();
 
-			placeholders.Add(new LicensePlaceholder
+			if (generationOptions != null)
 			{
-				Length = 1,
-				Token = Char.Parse("k"),
-				Type = PlaceholderTypes.Number,
-				Value = ((int)LicenseKeyTypes.Enterprise).ToString(),
-				IsChecksum = false
-			});
+				placeholders.Add(new LicensePlaceholder
+				                 	{
+				                 		Length = 1,
+				                 		Token = Char.Parse("k"),
+				                 		Type = PlaceholderTypes.Number,
+				                 		Value = ((int) generationOptions.LicenseKeyType).ToString(),
+				                 		IsChecksum = false,
+				                 		ValidationType = ValidationTypes.LicenseKeyType
+				                 	});
+
+				placeholders.Add(new LicensePlaceholder
+				                 	{
+				                 		Length = 1,
+				                 		Token = Char.Parse("s"),
+				                 		Type = PlaceholderTypes.Number,
+				                 		Value = generationOptions.LicenseSetId.ToString(),
+				                 		IsChecksum = false,
+				                 		ValidationType = ValidationTypes.LicenseSet
+				                 	});
+			}
+			else
+			{
+				placeholders.Add(new LicensePlaceholder
+				{
+					Length = 1,
+					Token = Char.Parse("k"),
+					Type = PlaceholderTypes.Number,
+					Value = "0",
+					IsChecksum = false,
+					ValidationType = ValidationTypes.LicenseKeyType
+				});
+
+				placeholders.Add(new LicensePlaceholder
+				{
+					Length = 1,
+					Token = Char.Parse("s"),
+					Type = PlaceholderTypes.Number,
+					Value = "0",
+					IsChecksum = false,
+					ValidationType = ValidationTypes.LicenseSet
+				});
+			}
 
 			placeholders.Add(new LicensePlaceholder
 			{
@@ -215,16 +466,21 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				Token = Char.Parse("a"),
 				Type = PlaceholderTypes.Number,
 				Value = scutexLicense.Product.GetFormattedProductId(3),
-				IsChecksum = false
+				IsChecksum = false,
+				ValidationType = ValidationTypes.Product
 			});
+
+			string payload = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X");
+			payload = payload.PadLeft(4, char.Parse("0"));
 
 			placeholders.Add(new LicensePlaceholder
 			{
 				Length = 4,
 				Token = Char.Parse("p"),
-				Type = PlaceholderTypes.Number,
-				Value = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X"),
-				IsChecksum = false
+				Type = PlaceholderTypes.String,
+				Value = payload,
+				IsChecksum = false,
+				ValidationType = ValidationTypes.None
 			});
 
 			placeholders.Add(new LicensePlaceholder
@@ -233,14 +489,15 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				Token = Char.Parse("c"),
 				Type = PlaceholderTypes.Number,
 				Value = "",
-				IsChecksum = true
+				IsChecksum = true,
+				ValidationType = ValidationTypes.None
 			});
 
 			placeholders.Add(new LicensePlaceholder
 			{
 				Length = 1,
 				Token = Char.Parse("l"),
-				Type = PlaceholderTypes.Number,
+				Type = PlaceholderTypes.String,
 				Value = "F",
 				IsChecksum = false
 			});
@@ -308,7 +565,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			rng.GetBytes(randomBytes);
 			int rand = Convert.ToInt32(randomBytes[0]);
 
-			return CharacterMap.Map[rand % 35];
+			return CharacterMap.Map[rand % 36];
 		}
 
 		internal static double GetWeightingModifer(int weight1, int weight2)

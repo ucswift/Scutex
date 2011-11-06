@@ -8,7 +8,7 @@ namespace WaveTech.Scutex.Model
 	public class LicenseGenerationOptions
 	{
 		/// <summary>
-		/// The LicenseSet Key type to encode in the generated license keys.
+		/// The License Key type to encode in the generated license keys.
 		/// </summary>
 		public LicenseKeyTypes LicenseKeyType { get; set; }
 
@@ -17,6 +17,11 @@ namespace WaveTech.Scutex.Model
 		/// </summary>
 		public string HardwareFingerprint { get; set; }
 
+
+		/// <summary>
+		/// The LicenseSet id
+		/// </summary>
+		public int LicenseSetId { get; set; }
 
 		public Dictionary<string, string> CustomData { get; set; }
 	}

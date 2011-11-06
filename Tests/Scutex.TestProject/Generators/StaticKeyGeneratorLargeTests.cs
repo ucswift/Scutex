@@ -50,11 +50,13 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				license.LicenseSets = new NotifyList<LicenseSet>();
 				license.LicenseSets.Add(new LicenseSet());
 
+				license.LicenseSets.First().LicenseSetId = 1;
 				license.LicenseSets.First().SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
 				license.LicenseSets.First().SupportedLicenseTypes |= LicenseKeyTypeFlag.Enterprise;
 				license.LicenseSets.First().SupportedLicenseTypes |= LicenseKeyTypeFlag.Unlimited;
 
 				generationOptions.LicenseKeyType = LicenseKeyTypes.Enterprise;
+				generationOptions.LicenseSetId = 1;
 
 				string productHash = hashingProvider.Checksum32(license.GetLicenseProductIdentifier()).ToString("X");
 
@@ -75,9 +77,9 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 
 			[TestMethod]
-			public void should_contain_four_items()
+			public void should_contain_seven_items()
 			{
-				Assert.AreEqual(4, placeholders.Count);
+				Assert.AreEqual(7, placeholders.Count);
 			}
 
 			[TestMethod]
@@ -95,7 +97,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				var placeholder = placeholders.Where(x => x.Token == Char.Parse("a"));
 
 				Assert.AreEqual(1, placeholder.Count());
-				Assert.AreEqual(license.Product.GetFormattedProductId(2), placeholder.First().Value);
+				Assert.AreEqual(license.Product.GetFormattedProductId(3), placeholder.First().Value);
 			}
 
 			[TestMethod]
@@ -128,9 +130,9 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 
 			[TestMethod]
-			public void should_contain_four_items()
+			public void should_contain_seven_items()
 			{
-				Assert.AreEqual(4, placeholdersInTemplate.Count);
+				Assert.AreEqual(7, placeholdersInTemplate.Count);
 			}
 		}
 
@@ -144,9 +146,9 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 
 			[TestMethod]
-			public void should_contain_two_items()
+			public void should_contain_four_items()
 			{
-				Assert.AreEqual(2, KeyGenerator.FindAllSeperatorsInTemplate(KeyGenerator.licenseKeyTemplate).Count);
+				Assert.AreEqual(4, KeyGenerator.FindAllSeperatorsInTemplate(KeyGenerator.licenseKeyTemplate).Count);
 			}
 		}
 
@@ -261,20 +263,22 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 
 			[TestMethod]
-			public void should_be_15_chars_long()
+			public void should_be_29_chars_long()
 			{
-				if (key.Length < 15)
-					Console.WriteLine(string.Format("Small Static Key less then 15 characters long: {0}", key));
+				if (key.Length != 29)
+					Console.WriteLine(string.Format("Large Static Key does not equal 29 characters long: {0}", key));
 
-				Assert.AreEqual(15, key.Length);
+				Assert.AreEqual(29, key.Length);
 			}
 
 			[TestMethod]
-			public void should_be_13_chars_without_dashes()
+			public void should_be_25_chars_without_dashes()
 			{
+				Console.WriteLine(key);
 				string key1 = key.Replace("-", "");
+				Console.WriteLine(key1);
 
-				Assert.AreEqual(13, key1.Length);
+				Assert.AreEqual(25, key1.Length);
 			}
 		}
 
@@ -294,13 +298,15 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			}
 
 			[TestMethod]
-			public void should_be_98_precent_accurate_when_validating_100000_bad_licenses()
+			public void should_be_98_precent_accurate_when_validating_200000_bad_licenses()
 			{
+				const int count = 200000;
+
 				int errorCount = 0;
 				byte[] randomNumber = new byte[1];
 				RNGCryptoServiceProvider Gen = new RNGCryptoServiceProvider();
 
-				for (int i = 0; i < 100000; i++)
+				for (int i = 0; i < count; i++)
 				{
 					char[] keyArray = key.ToCharArray();
 
@@ -326,8 +332,6 @@ namespace WaveTech.Scutex.UnitTests.Generators
 					try
 					{
 						largeKeyGenerator.ValidateLicenseKey(newKey, license);
-						string test1 = key.Replace("-", "");
-						string test2 = newKey;
 					}
 					catch (ScutexLicenseException)
 					{
@@ -335,9 +339,9 @@ namespace WaveTech.Scutex.UnitTests.Generators
 					}
 				}
 
-				double accuracy = (double)errorCount / 100000;
+				double accuracy = (double)errorCount / count;
 
-				Console.WriteLine(string.Format("Actual LargeKeyGenerator validation accuracy: {0} with {1} validation failures out of 100000", accuracy, errorCount));
+				Console.WriteLine(string.Format("Actual LargeKeyGenerator validation accuracy: {0} with {1} validation failures out of {2}", accuracy, errorCount, count));
 				Assert.IsTrue(accuracy > .98);
 			}
 

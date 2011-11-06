@@ -6,5 +6,6 @@ namespace WaveTech.Scutex.Model
 		public bool IsKeyValid { get; set; }
 		public LicenseKeyTypes LicenseKeyType { get; set; }
 		public int ProductId { get; set; }
+		public int LicenseSetId { get; set; }
 	}
 }
