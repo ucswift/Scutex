@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Factory="WaveTech.Scutex.WcfServices.ServicesLibrary.CoreWebServiceHostFactory" Service="WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Management.ReportingService" %>
