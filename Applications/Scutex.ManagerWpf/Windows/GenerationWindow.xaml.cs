@@ -212,6 +212,9 @@ namespace WaveTech.Scutex.Manager.Windows
 				case KeyGeneratorTypes.StaticSmall:
 					return InstanceNames.SmallKeyGenerator;
 
+				case KeyGeneratorTypes.StaticLarge:
+					return InstanceNames.LargeKeyGenerator;
+
 				default:
 					return null;
 			}

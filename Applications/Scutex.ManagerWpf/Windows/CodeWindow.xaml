@@ -10,93 +10,93 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Window.Resources>
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="135" />
-				<RowDefinition Height="60" />
-				<RowDefinition />
-				<RowDefinition Height="60" />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="135" />
+			<RowDefinition Height="65" />
+			<RowDefinition />
+			<RowDefinition Height="60" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
 
-			<GroupBox Grid.Row="0" Grid.Column="0" Header="Instructions" Margin="4,4,4,4" Foreground="White">
-				<TextBlock Text="The Software Code window allows you to get at the necessary data to integrate Scutex licensing into your application. The first step is installing the License attribute in your AssemblyInfo.cs or AssemblyInfo.vb file. Select the language your application is developed in (C# or VB.Net) and then copy the entire text in the Attribute text box and paste it in a new line in your AssemblyInfo.cs or AssemblyInfo.vb file. Once that is done click the 'Get Data File' and save the resulting dialog to your solution or project folder." TextWrapping="Wrap" />
-			</GroupBox>
+		<GroupBox Grid.Row="0" Grid.Column="0" Header="Instructions" Margin="2,2,2,2" Foreground="Black">
+			<TextBlock Text="The Software Code window allows you to get at the necessary data to integrate Scutex licensing into your application. The first step is installing the License attribute in your AssemblyInfo.cs or AssemblyInfo.vb file. Select the language your application is developed in (C# or VB.Net) and then copy the entire text in the Attribute text box and paste it in a new line in your AssemblyInfo.cs or AssemblyInfo.vb file. Once that is done click the 'Get Data File' and save the resulting dialog to your solution or project folder." TextWrapping="Wrap" />
+		</GroupBox>
 
-			<GroupBox Grid.Row="1" Grid.Column="0" Header="Project Type" Margin="4,4,4,4" Foreground="White">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="32" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
-					<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-						<TextBlock Grid.Row="0" Grid.Column="0" Margin="4,4,4,4" VerticalAlignment="Center" Text="Executing Product Type:" />
-						<ComboBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="cboProjectType" Width="250" SelectionChanged='cboProjectType_SelectionChanged'>
-							<ComboBoxItem Selector.IsSelected="true">Managed Windows Application (.Net)</ComboBoxItem>
-							<ComboBoxItem>Unmanaged Windows Application (COM)</ComboBoxItem>
-						</ComboBox>
-					</StackPanel>
-				</Grid>
-			</GroupBox>
+		<GroupBox Grid.Row="1" Grid.Column="0" Header="Project Type" Margin="2,2,2,2" Foreground="Black">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="35" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+					<TextBlock Grid.Row="0" Grid.Column="0" Margin="4,4,4,4" VerticalAlignment="Center" Text="Executing Product Type:" Foreground="Black"/>
+					<ComboBox Grid.Row="0" Grid.Column="1" Margin="4,4,4,4" x:Name="cboProjectType" Width="250" SelectionChanged='cboProjectType_SelectionChanged'>
+						<ComboBoxItem Selector.IsSelected="true">Managed Windows Application (.Net)</ComboBoxItem>
+						<ComboBoxItem>Unmanaged Windows Application (COM)</ComboBoxItem>
+					</ComboBox>
+				</StackPanel>
+			</Grid>
+		</GroupBox>
 
-			<GroupBox x:Name="grpAttribute" Grid.Row="2" Grid.Column="0" Header="Attribute" Margin="4,4,4,4" Foreground="White">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="32" />
-						<RowDefinition />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
+		<GroupBox x:Name="grpAttribute" Grid.Row="2" Grid.Column="0" Header="Attribute" Margin="2,2,2,2" Foreground="White">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="32" />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
 
-					<StackPanel Grid.Row="0" Orientation="Horizontal">
-						<TextBlock Text="Language: " VerticalAlignment="Center" />
-						<TextBlock Width="10" />
-						<RadioButton Content="C#" Foreground="White" x:Name="rdoCodeTypeCSharp" VerticalAlignment="Center" Click="rdoCodeTypeCSharp_Click" />
-						<TextBlock Width="10" />
-						<RadioButton Content="VB.Net" Foreground="White" x:Name="rdoCodeTypeVB" VerticalAlignment="Center" Click="rdoCodeTypeVB_Click" />
-					</StackPanel>
+				<StackPanel Grid.Row="0" Orientation="Horizontal">
+					<TextBlock Text="Language: " VerticalAlignment="Center" Foreground="Black" />
+					<TextBlock Width="10" />
+					<RadioButton Content="C#" Foreground="Black" x:Name="rdoCodeTypeCSharp" VerticalAlignment="Center" Click="rdoCodeTypeCSharp_Click" />
+					<TextBlock Width="10" />
+					<RadioButton Content="VB.Net" Foreground="Black" x:Name="rdoCodeTypeVB" VerticalAlignment="Center" Click="rdoCodeTypeVB_Click" />
+				</StackPanel>
 
-					<TextBox Grid.Row="1" x:Name="txtAttribute" IsReadOnly="True" TextWrapping="Wrap" />
-				</Grid>
-			</GroupBox>
+				<TextBox Grid.Row="1" x:Name="txtAttribute" IsReadOnly="True" TextWrapping="Wrap" />
+			</Grid>
+		</GroupBox>
 
-			<GroupBox x:Name="grpCCW" Grid.Row="2" Grid.Column="0" Header="COM Callable Wrapper" Margin="4,4,4,4" Foreground="White" Visibility="Collapsed">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="32"  />
-						<RowDefinition />
-						<RowDefinition Height="32"  />
-						<RowDefinition />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
+		<GroupBox x:Name="grpCCW" Grid.Row="2" Grid.Column="0" Header="COM Callable Wrapper" Margin="2,2,2,2" Foreground="Black" Visibility="Collapsed">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="32"  />
+					<RowDefinition />
+					<RowDefinition Height="32"  />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
 
-					<TextBlock Grid.Row="0" Text="Prepare Paramater 1:" />
-					<TextBox Grid.Row="1" x:Name="txtParam1" IsReadOnly="True" TextWrapping="Wrap" />
-					<TextBlock Grid.Row="2" Text="Prepare Paramater 2:" />
-					<TextBox Grid.Row="3" x:Name="txtParam2" IsReadOnly="True" TextWrapping="Wrap" />
-				</Grid>
-			</GroupBox>
+				<TextBlock Grid.Row="0" Text="Prepare Paramater 1:" Foreground="Black" VerticalAlignment="Bottom" />
+				<TextBox Grid.Row="1" x:Name="txtParam1" IsReadOnly="True" TextWrapping="Wrap" />
+				<TextBlock Grid.Row="2" Text="Prepare Paramater 2:" Foreground="Black" VerticalAlignment="Bottom" />
+				<TextBox Grid.Row="3" x:Name="txtParam2" IsReadOnly="True" TextWrapping="Wrap" />
+			</Grid>
+		</GroupBox>
 
-			<GroupBox Grid.Row="3" Grid.Column="0" Header="Data File" Margin="4,4,4,4" Foreground="White">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition />
-						<RowDefinition Height="32" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
+		<GroupBox Grid.Row="3" Grid.Column="0" Header="Data File" Margin="2,2,2,2" Foreground="Black">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition Height="32" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
 
-					<!--<Ribbon:ButtonTool Grid.Row="1" Grid.Column="0" x:Name="btnGetDataFile" Caption="Get Data File" Foreground="Azure" HorizontalAlignment="Center" Click="btnGetDataFile_Click"  />-->
-					<Button Grid.Row="1" Grid.Column="0" x:Name="btnGetDataFile" Margin="4,4,4,4" Content="Get Data File" Width="100" HorizontalAlignment="Center" Click="btnGetDataFile_Click" />
-				</Grid>
-			</GroupBox>
-		</Grid>
+				<!--<Ribbon:ButtonTool Grid.Row="1" Grid.Column="0" x:Name="btnGetDataFile" Caption="Get Data File" Foreground="Azure" HorizontalAlignment="Center" Click="btnGetDataFile_Click"  />-->
+				<Button Grid.Row="1" Grid.Column="0" x:Name="btnGetDataFile" Margin="2,2,2,2" Content="Get Data File" Width="100" HorizontalAlignment="Center" Click="btnGetDataFile_Click" />
+			</Grid>
+		</GroupBox>
+	</Grid>
 </Window>

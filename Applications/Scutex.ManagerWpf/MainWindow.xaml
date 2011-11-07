@@ -70,8 +70,8 @@
 					<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="Clipboard" Header="Home" IsLauncherVisible="True" LauncherKeys="ZB">
 					<Fluent:Button x:Name="newButton" Fluent:KeyTip.Keys="C" Header="New Project" LargeIcon="img\new-large.png" Command="{x:Static local:Commands.NewCommand}"/>
 					<Fluent:Button x:Name="openButton" Fluent:KeyTip.Keys="C" Header="Open Project" LargeIcon="img\open-large.png" Command="{x:Static local:Commands.OpenCommand}"/>
-					<Fluent:Button x:Name="saveButton" Fluent:KeyTip.Keys="C" Header="Save Project" LargeIcon="img\save-large.png" Command="{x:Static local:Commands.SaveCommand}"/>
-					<Fluent:Button x:Name="closeButton" Fluent:KeyTip.Keys="C" Header="Close Project" LargeIcon="img\close-large.png" Command="{x:Static local:Commands.CloseProjectCommand}"/>
+					<!--<Fluent:Button x:Name="saveButton" Fluent:KeyTip.Keys="C" Header="Save Project" LargeIcon="img\save-large.png" Command="{x:Static local:Commands.SaveCommand}"/>
+					<Fluent:Button x:Name="closeButton" Fluent:KeyTip.Keys="C" Header="Close Project" LargeIcon="img\close-large.png" Command="{x:Static local:Commands.CloseProjectCommand}"/>-->
 				</Fluent:RibbonGroupBox>
 				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="Help" Header="Help" IsLauncherVisible="True" LauncherKeys="ZB">
 					<Fluent:Button x:Name="helpButton" Fluent:KeyTip.Keys="C" Header="Help" LargeIcon="img\help-48x48.png" Command="{x:Static local:Commands.HelpCommand}"/>

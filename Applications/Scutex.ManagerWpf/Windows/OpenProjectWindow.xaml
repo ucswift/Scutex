@@ -24,6 +24,6 @@
                 <ListBox x:Name="lstProjects" ListBoxItem.MouseDoubleClick="lstProjects_MouseDoubleClick" ItemsSource="{Binding Source={StaticResource allLicensesData}}" DisplayMemberPath="Name" />
             </GroupBox>
 
-		<Button Grid.Row="1" Grid.Column="0" x:Name="btnOpenProject" Content="Open Project" HorizontalAlignment="Right" Click="btnOpenProject_Click" />
+		<Button Grid.Row="1" Grid.Column="0" x:Name="btnOpenProject" Content="Open Project" HorizontalAlignment="Right" Click="btnOpenProject_Click" Margin="2,2,2,2" />
         </Grid>
 </Window>
