@@ -30,7 +30,7 @@ You will need the .Net Framework 4 and SQL Server or SQL Express to use Scutex. 
 
 	* Visual Studio 2010 (WPF/MSTest)
 	* SQL Server 2005/2008/2008 R2 or SQL Express 2005/2008 R2
-	* Microsoft MOLES & Pex Power Tools
+	* Microsoft MOLES & Pex Power Tools <http://research.microsoft.com/en-us/projects/pex/>
 	* Infragistics WPF v10.3 (Temporary)
 	* IIS, IIS Express or Casini for testing Services
 
