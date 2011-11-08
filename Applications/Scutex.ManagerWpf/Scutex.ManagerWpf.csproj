@@ -118,6 +118,9 @@
       <HintPath>..\..\References\FluentRibbon\Fluent.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\References\Wpf\Microsoft.Windows.Design.Extensibility.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=2.6.1.1, Culture=neutral, PublicKeyToken=d9e244627cc0a396, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
