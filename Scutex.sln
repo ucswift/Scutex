@@ -40,8 +40,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{8CED54
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{B3CF87C4-7F91-429D-82A6-8EACEBCA94AF}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\LicenseAgreement.rtf = Documentation\LicenseAgreement.rtf
-		Documentation\ReadMe.rtf = Documentation\ReadMe.rtf
 		Documentation\ScutexDocumentation.chm = Documentation\ScutexDocumentation.chm
 	EndProjectSection
 EndProject
@@ -136,103 +134,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF Toolkit", "WPF Toolkit"
 		References\WPF Toolkit\WPFToolkit.VisualStudio.Design.pdb = References\WPF Toolkit\WPFToolkit.VisualStudio.Design.pdb
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9D640634-7BC2-4F64-95B8-D8C9A75AA64E}"
-	ProjectSection(SolutionItems) = preProject
-		Build\Build.Scutex.Debug-Dev.bat = Build\Build.Scutex.Debug-Dev.bat
-		Build\Build.Scutex.Debug.bat = Build\Build.Scutex.Debug.bat
-		Build\Build.Scutex.Release-Server.bat = Build\Build.Scutex.Release-Server.bat
-		Build\Build.Scutex.Release-ServerPkg.bat = Build\Build.Scutex.Release-ServerPkg.bat
-		Build\Build.Scutex.Release.bat = Build\Build.Scutex.Release.bat
-		Build\Create.Installer.bat = Build\Create.Installer.bat
-		Build\Scutex-DebugBuild-Dev.build = Build\Scutex-DebugBuild-Dev.build
-		Build\Scutex-DebugBuild.build = Build\Scutex-DebugBuild.build
-		Build\Scutex-ReleaseBuild-Server.build = Build\Scutex-ReleaseBuild-Server.build
-		Build\Scutex-ReleaseBuild-ServerPkg.build = Build\Scutex-ReleaseBuild-ServerPkg.build
-		Build\Scutex-ReleaseBuild.build = Build\Scutex-ReleaseBuild.build
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{654AB411-080A-4485-8F16-C58671AB278A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NAnt", "NAnt", "{D5FEADCF-758B-4305-8BAE-FD96920970CF}"
-	ProjectSection(SolutionItems) = preProject
-		Build\Tools\NAnt\log4net.dll = Build\Tools\NAnt\log4net.dll
-		Build\Tools\NAnt\NAnt.CompressionTasks.dll = Build\Tools\NAnt\NAnt.CompressionTasks.dll
-		Build\Tools\NAnt\NAnt.CompressionTasks.xml = Build\Tools\NAnt\NAnt.CompressionTasks.xml
-		Build\Tools\NAnt\NAnt.Core.dll = Build\Tools\NAnt\NAnt.Core.dll
-		Build\Tools\NAnt\NAnt.Core.xml = Build\Tools\NAnt\NAnt.Core.xml
-		Build\Tools\NAnt\NAnt.DotNetTasks.dll = Build\Tools\NAnt\NAnt.DotNetTasks.dll
-		Build\Tools\NAnt\NAnt.DotNetTasks.xml = Build\Tools\NAnt\NAnt.DotNetTasks.xml
-		Build\Tools\NAnt\NAnt.exe = Build\Tools\NAnt\NAnt.exe
-		Build\Tools\NAnt\NAnt.exe.config = Build\Tools\NAnt\NAnt.exe.config
-		Build\Tools\NAnt\NAnt.MSNetTasks.dll = Build\Tools\NAnt\NAnt.MSNetTasks.dll
-		Build\Tools\NAnt\NAnt.MSNetTasks.xml = Build\Tools\NAnt\NAnt.MSNetTasks.xml
-		Build\Tools\NAnt\NAnt.NUnit.dll = Build\Tools\NAnt\NAnt.NUnit.dll
-		Build\Tools\NAnt\NAnt.NUnit.xml = Build\Tools\NAnt\NAnt.NUnit.xml
-		Build\Tools\NAnt\NAnt.NUnit1Tasks.dll = Build\Tools\NAnt\NAnt.NUnit1Tasks.dll
-		Build\Tools\NAnt\NAnt.NUnit1Tasks.xml = Build\Tools\NAnt\NAnt.NUnit1Tasks.xml
-		Build\Tools\NAnt\NAnt.NUnit2Tasks.dll = Build\Tools\NAnt\NAnt.NUnit2Tasks.dll
-		Build\Tools\NAnt\NAnt.NUnit2Tasks.xml = Build\Tools\NAnt\NAnt.NUnit2Tasks.xml
-		Build\Tools\NAnt\NAnt.SourceControlTasks.dll = Build\Tools\NAnt\NAnt.SourceControlTasks.dll
-		Build\Tools\NAnt\NAnt.SourceControlTasks.xml = Build\Tools\NAnt\NAnt.SourceControlTasks.xml
-		Build\Tools\NAnt\NAnt.VisualCppTasks.dll = Build\Tools\NAnt\NAnt.VisualCppTasks.dll
-		Build\Tools\NAnt\NAnt.VisualCppTasks.xml = Build\Tools\NAnt\NAnt.VisualCppTasks.xml
-		Build\Tools\NAnt\NAnt.VSNetTasks.dll = Build\Tools\NAnt\NAnt.VSNetTasks.dll
-		Build\Tools\NAnt\NAnt.VSNetTasks.xml = Build\Tools\NAnt\NAnt.VSNetTasks.xml
-		Build\Tools\NAnt\NAnt.Win32Tasks.dll = Build\Tools\NAnt\NAnt.Win32Tasks.dll
-		Build\Tools\NAnt\NAnt.Win32Tasks.xml = Build\Tools\NAnt\NAnt.Win32Tasks.xml
-		Build\Tools\NAnt\NAnt.xml = Build\Tools\NAnt\NAnt.xml
-		Build\Tools\NAnt\NDoc.Documenter.NAnt.dll = Build\Tools\NAnt\NDoc.Documenter.NAnt.dll
-		Build\Tools\NAnt\scvs.exe = Build\Tools\NAnt\scvs.exe
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{3A417FEE-F965-4E63-AA6E-B3A00C492555}"
-	ProjectSection(SolutionItems) = preProject
-		Build\Tools\NAnt\lib\ICSharpCode.SharpCvsLib.Console.dll = Build\Tools\NAnt\lib\ICSharpCode.SharpCvsLib.Console.dll
-		Build\Tools\NAnt\lib\ICSharpCode.SharpCvsLib.dll = Build\Tools\NAnt\lib\ICSharpCode.SharpCvsLib.dll
-		Build\Tools\NAnt\lib\ICSharpCode.SharpZipLib.dll = Build\Tools\NAnt\lib\ICSharpCode.SharpZipLib.dll
-		Build\Tools\NAnt\lib\NUnitCore.dll = Build\Tools\NAnt\lib\NUnitCore.dll
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net", "net", "{1AB94402-0D2F-429F-9CEF-F034A95F5E5E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.0", "2.0", "{FBE547AB-6EF5-4EC6-9A38-40116FD2507A}"
-	ProjectSection(SolutionItems) = preProject
-		Build\Tools\NAnt\lib\net\2.0\NDoc.Core.dll = Build\Tools\NAnt\lib\net\2.0\NDoc.Core.dll
-		Build\Tools\NAnt\lib\net\2.0\NDoc.Documenter.Msdn.dll = Build\Tools\NAnt\lib\net\2.0\NDoc.Documenter.Msdn.dll
-		Build\Tools\NAnt\lib\net\2.0\NDoc.ExtendedUI.dll = Build\Tools\NAnt\lib\net\2.0\NDoc.ExtendedUI.dll
-		Build\Tools\NAnt\lib\net\2.0\nunit.core.dll = Build\Tools\NAnt\lib\net\2.0\nunit.core.dll
-		Build\Tools\NAnt\lib\net\2.0\nunit.framework.dll = Build\Tools\NAnt\lib\net\2.0\nunit.framework.dll
-		Build\Tools\NAnt\lib\net\2.0\nunit.util.dll = Build\Tools\NAnt\lib\net\2.0\nunit.util.dll
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SA", "SA", "{C290A129-AF22-499A-8C8A-941B5EBBFC33}"
-	ProjectSection(SolutionItems) = preProject
-		Build\Tools\SA\SARunner.exe = Build\Tools\SA\SARunner.exe
-		Build\Tools\SA\SARunner.exe.config = Build\Tools\SA\SARunner.exe.config
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VNManager", "VNManager", "{7094CC9D-7029-4029-87A6-D0764C1B130E}"
-	ProjectSection(SolutionItems) = preProject
-		Build\Tools\VNManager\VNManager.exe = Build\Tools\VNManager\VNManager.exe
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUnit", "NUnit", "{739658FB-7535-49A1-B2FE-2AAD605CD3F0}"
 	ProjectSection(SolutionItems) = preProject
 		References\NUnit\Microsoft.Moles.NUnit.dll = References\NUnit\Microsoft.Moles.NUnit.dll
 		References\NUnit\nunit.core.dll = References\NUnit\nunit.core.dll
 		References\NUnit\nunit.core.interfaces.dll = References\NUnit\nunit.core.interfaces.dll
 		References\NUnit\nunit.framework.dll = References\NUnit\nunit.framework.dll
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "{SmartAssembly}", "{SmartAssembly}", "{BDB108BD-1FB9-4A0A-8933-C03D54E90E18}"
-	ProjectSection(SolutionItems) = preProject
-		{SmartAssembly}\Scutex.Licensing.DEBUG.{sa}proj = {SmartAssembly}\Scutex.Licensing.DEBUG.{sa}proj
-		{SmartAssembly}\Scutex.Licensing.RELEASE.{sa}proj = {SmartAssembly}\Scutex.Licensing.RELEASE.{sa}proj
-		{SmartAssembly}\Scutex.LicensingCOM.RELEASE.{sa}proj = {SmartAssembly}\Scutex.LicensingCOM.RELEASE.{sa}proj
-		{SmartAssembly}\Scutex.Manager.DEBUG.{sa}proj = {SmartAssembly}\Scutex.Manager.DEBUG.{sa}proj
-		{SmartAssembly}\Scutex.Manager.RELEASE.{sa}proj = {SmartAssembly}\Scutex.Manager.RELEASE.{sa}proj
-		{SmartAssembly}\Scutex.Services.DEBUG.{sa}proj = {SmartAssembly}\Scutex.Services.DEBUG.{sa}proj
-		{SmartAssembly}\Scutex.Services.RELEASE.{sa}proj = {SmartAssembly}\Scutex.Services.RELEASE.{sa}proj
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scutex.Providers.NetworkTimeProvider", "Providers\Scutex.Providers.NetworkTimeProvider\Scutex.Providers.NetworkTimeProvider.csproj", "{2D7EF293-72B3-4AD2-9ABC-4A4BE1A3B2F9}"
@@ -832,13 +739,6 @@ Global
 		{9103121F-A76B-478A-99F0-3EAEEE865958} = {575F980A-085F-4BD6-829E-CBFECD61FAFC}
 		{ED70B9F9-C186-4C8A-84AE-9EE4E4737CE6} = {575F980A-085F-4BD6-829E-CBFECD61FAFC}
 		{2CE790DD-36A3-412B-9CE6-6CF353FFF75D} = {575F980A-085F-4BD6-829E-CBFECD61FAFC}
-		{654AB411-080A-4485-8F16-C58671AB278A} = {9D640634-7BC2-4F64-95B8-D8C9A75AA64E}
-		{D5FEADCF-758B-4305-8BAE-FD96920970CF} = {654AB411-080A-4485-8F16-C58671AB278A}
-		{C290A129-AF22-499A-8C8A-941B5EBBFC33} = {654AB411-080A-4485-8F16-C58671AB278A}
-		{7094CC9D-7029-4029-87A6-D0764C1B130E} = {654AB411-080A-4485-8F16-C58671AB278A}
-		{3A417FEE-F965-4E63-AA6E-B3A00C492555} = {D5FEADCF-758B-4305-8BAE-FD96920970CF}
-		{1AB94402-0D2F-429F-9CEF-F034A95F5E5E} = {3A417FEE-F965-4E63-AA6E-B3A00C492555}
-		{FBE547AB-6EF5-4EC6-9A38-40116FD2507A} = {1AB94402-0D2F-429F-9CEF-F034A95F5E5E}
 		{1627620D-180F-46DE-A190-6AD11DE24EA4} = {E8721AB3-98DF-464F-8C78-523AFB57FEC5}
 		{51E012E9-4CC3-470B-B474-EB404F3C6F0C} = {E8721AB3-98DF-464F-8C78-523AFB57FEC5}
 		{8969C10D-485B-40A0-A4AC-FA71806C3E25} = {E8721AB3-98DF-464F-8C78-523AFB57FEC5}
