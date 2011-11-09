@@ -67,15 +67,15 @@ namespace WaveTech.Scutex.Manager
 				_eventAggregator.AddListener<ProductsUpdatedEvent>(x => RefreshData());
 				_eventAggregator.AddListener<LicenseSavedEvent>(x => SetRecentItemsAndRefresh());
 				_eventAggregator.AddListener<ServicesUpdatedEvent>(x => RefreshData());
-
-				Initalize();
-				SetRecentItems();
-				VerifyFirstTimeRun();
-
-				WelcomeScreenForm welcomeScreenForm = new WelcomeScreenForm();
-				root.Content = welcomeScreenForm;
 			}
 			catch { }
+
+			Initalize();
+			SetRecentItems();
+			VerifyFirstTimeRun();
+
+			WelcomeScreenForm welcomeScreenForm = new WelcomeScreenForm();
+			root.Content = welcomeScreenForm;
 		}
 
 		public void Initalize()
