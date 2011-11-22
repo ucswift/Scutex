@@ -145,16 +145,21 @@ namespace WaveTech.Scutex.Manager
 					g.RowDefinitions.Add(new RowDefinition{ Height = new GridLength(1, GridUnitType.Auto) });
 					g.RowDefinitions.Add(new RowDefinition());
 					g.RowDefinitions.Add(new RowDefinition());
-					g.RowDefinitions.Add(new RowDefinition());
+					g.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
 
-					g.Children.Add(new TextBlock {Text = string.Format("Project Name: {0}", license.Name)});
+					TextBlock tb1 = new TextBlock {Text = string.Format("Project Name: {0}", license.Name)};
+					tb1.SetValue(Grid.RowProperty, 0);
+
+					g.Children.Add(tb1);
 					
 					System.Windows.Controls.Button b = new System.Windows.Controls.Button();
-					b.Content = license.Name;
+					b.Content = "Open This Project";
 					b.Name = string.Format("License_{0}", license.LicenseId.ToString());
 					b.Click += new System.Windows.RoutedEventHandler(btn_Click);
+					b.SetValue(Grid.RowProperty, 3);
 
-					tb.Content = b;
+					g.Children.Add(b);
+					tb.Content = g;
 					recentProjects.Items.Add(tb);
 				}
 			}
@@ -206,8 +211,7 @@ namespace WaveTech.Scutex.Manager
 
 		void btn_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			//ButtonTool button = sender as ButtonTool;
-			Fluent.Button button = sender as Fluent.Button;
+			System.Windows.Controls.Button button = sender as System.Windows.Controls.Button;
 
 			int id = int.Parse(button.Name.Replace("License_", ""));
 
