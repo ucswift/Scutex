@@ -12,6 +12,7 @@ namespace WaveTech.Scutex.Model
 		private Guid _uniquePad;
 		private NotifyList<Feature> _features;
 		private int? _maxUsers;
+		private bool _isUpgradeOnly;
 		#endregion Private Members
 
 		#region Constructor
@@ -70,6 +71,23 @@ namespace WaveTech.Scutex.Model
 				{
 					_name = value;
 					OnPropertyChanged("Name");
+				}
+			}
+		}
+
+		public virtual bool IsUpgradeOnly
+		{
+			get
+			{
+				return _isUpgradeOnly;
+			}
+
+			set
+			{
+				if (value != _isUpgradeOnly)
+				{
+					_isUpgradeOnly = value;
+					OnPropertyChanged("IsUpgradeOnly");
 				}
 			}
 		}

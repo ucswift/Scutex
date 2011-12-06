@@ -153,12 +153,14 @@
     <Compile Include="Events\LicenseSavedEvent.cs" />
     <Compile Include="Events\ServicesUpdatedEvent.cs" />
     <Compile Include="Exceptions\ScutexAuditException.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="InteractionModes.cs" />
     <Compile Include="Interfaces\Providers\IDatabaseUpdateProvider.cs" />
     <Compile Include="Interfaces\Providers\IProductsProvider.cs" />
     <Compile Include="Interfaces\Providers\IReportingProvider.cs" />
     <Compile Include="Interfaces\Repositories\IActivationLogRepoistory.cs" />
     <Compile Include="Interfaces\Repositories\ILicenseKeyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProductFeaturesRepository.cs" />
     <Compile Include="Interfaces\Services\IComApiWrappingService.cs" />
     <Compile Include="Interfaces\Providers\IComBypassProvider.cs" />
     <Compile Include="Interfaces\Services\IConsoleInteractionService.cs" />

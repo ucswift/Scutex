@@ -73,7 +73,7 @@ namespace WaveTech.Scutex.Licensing
 		/// Reference to an object were the required attributes can be located
 		/// </param>
 		public LicensingManager(object instance)
-			:this(instance, null)
+			: this(instance, null)
 		{
 
 		}
@@ -178,7 +178,6 @@ namespace WaveTech.Scutex.Licensing
 					case InteractionModes.Component:
 						break;
 				}
-
 			}
 
 			scutexLicense.InterfaceInteraction = InterfaceInteraction;
@@ -338,15 +337,15 @@ namespace WaveTech.Scutex.Licensing
 
 				foreach (object o in attibutes)
 				{
-					if (o.GetType() == typeof (LicenseAttribute))
+					if (o.GetType() == typeof(LicenseAttribute))
 					{
-						if (String.IsNullOrEmpty(((LicenseAttribute) o).Key) || String.IsNullOrEmpty(((LicenseAttribute) o).Check))
+						if (String.IsNullOrEmpty(((LicenseAttribute)o).Key) || String.IsNullOrEmpty(((LicenseAttribute)o).Check))
 							GetLicenseAttributeInfoFailed();
 
 						try
 						{
-							publicKey = encodingService.Decode(((LicenseAttribute) o).Key);
-							dllCheck = encodingService.Decode(((LicenseAttribute) o).Check);
+							publicKey = encodingService.Decode(((LicenseAttribute)o).Key);
+							dllCheck = encodingService.Decode(((LicenseAttribute)o).Check);
 						}
 						catch
 						{
@@ -460,8 +459,8 @@ namespace WaveTech.Scutex.Licensing
 		private void GetLicenseAttributeInfoFailed()
 		{
 			if (_options != null)
-			MessageBox.Show("Scutex Licensing\r\n\r\n" + "If you are getting this error message you might be missing the\r\n" + "LicensingAttribute in your protected application's AssemblyInfo file.\r\n\r\n" + "You should check to ensure that the LicensingAttribute exists and that\r\n" + "both parameters of the attribute are populated.", "Scutex Licensing", MessageBoxButton.OK, MessageBoxImage.Error);
-			
+				MessageBox.Show("Scutex Licensing\r\n\r\n" + "If you are getting this error message you might be missing the\r\n" + "LicensingAttribute in your protected application's AssemblyInfo file.\r\n\r\n" + "You should check to ensure that the LicensingAttribute exists and that\r\n" + "both parameters of the attribute are populated.", "Scutex Licensing", MessageBoxButton.OK, MessageBoxImage.Error);
+
 			if (_killOnError)
 				Environment.Exit(1002);
 		}

@@ -17,7 +17,7 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<DataGrid x:Name="gridProducts" Grid.Row="0" ItemsSource="{Binding Source={StaticResource productsData}}" AutoGenerateColumns="False" 
-			CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
+			CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" VerticalAlignment="Stretch">
 			<DataGrid.Columns>
 				<DataGridTextColumn
 						Header="Name" Width="1*" IsReadOnly="True"

@@ -17,8 +17,8 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-				<DataGrid x:Name="gridServices" Grid.Row="0" ItemsSource="{Binding Source={StaticResource servicesData}}"
-						AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
+				<DataGrid x:Name="gridServices" Grid.Row="0" ItemsSource="{Binding Source={StaticResource servicesData}}" 
+						AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" VerticalAlignment="Stretch">
 					<DataGrid.Columns>
 						<DataGridTextColumn
 						Header="Name" Width="1*" IsReadOnly="True"

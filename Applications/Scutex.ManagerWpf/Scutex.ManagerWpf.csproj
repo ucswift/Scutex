@@ -233,6 +233,9 @@
     <Compile Include="Windows\CodeWindow.xaml.cs">
       <DependentUpon>CodeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\FeaturesWindow.xaml.cs">
+      <DependentUpon>FeaturesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\GenerationWindow.xaml.cs">
       <DependentUpon>GenerationWindow.xaml</DependentUpon>
     </Compile>
@@ -340,6 +343,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FeaturesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -634,6 +641,9 @@
     <Resource Include="img\lock-server-icon.png" />
     <Resource Include="img\unlock-server-icon.png" />
     <Resource Include="img\update-server-icon.png" />
+    <Resource Include="img\application_edit.png" />
+    <Resource Include="img\application_lock.png" />
+    <Resource Include="img\application_up.png" />
     <Content Include="ScutexDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

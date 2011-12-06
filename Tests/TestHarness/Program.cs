@@ -706,7 +706,7 @@ namespace TestHarness
 																											};
 
 			LicensingManager LicensingManager = new LicensingManager(null, options);
-			LicensingManager.Validate(InteractionModes.Component);
+			LicensingManager.Validate(InteractionModes.Gui);
 		}
 
 	}

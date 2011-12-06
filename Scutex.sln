@@ -237,39 +237,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scutex.Samples.CSharp.WpfCu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scutex.Samples.CSharp.WindowsFormsControlLibrary", "Samples\CSharp\Scutex.Samples.CSharp.WindowsFormsControlLibrary\Scutex.Samples.CSharp.WindowsFormsControlLibrary.csproj", "{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infragistics", "Infragistics", "{C7A48243-A69C-44FA-AE37-423354676BC7}"
-	ProjectSection(SolutionItems) = preProject
-		References\Infragistics\Infragistics4.Services.Schedules.WcfConnectorService.v10.3.dll = References\Infragistics\Infragistics4.Services.Schedules.WcfConnectorService.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Chart.v10.3.dll = References\Infragistics\InfragisticsWPF4.Chart.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Editors.XamColorPicker.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Editors.XamColorPicker.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Editors.XamSlider.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Editors.XamSlider.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Interactions.XamDialogWindow.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Interactions.XamDialogWindow.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Interactions.XamSpellChecker.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Interactions.XamSpellChecker.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Menus.XamDataTree.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Menus.XamDataTree.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Menus.XamMenu.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Menus.XamMenu.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Menus.XamTagCloud.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Menus.XamTagCloud.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.Schedules.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.Schedules.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Controls.SchedulesDialogs.v10.3.dll = References\Infragistics\InfragisticsWPF4.Controls.SchedulesDialogs.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.DataManager.v10.3.dll = References\Infragistics\InfragisticsWPF4.DataManager.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.DataPresenter.ExcelExporter.v10.3.dll = References\Infragistics\InfragisticsWPF4.DataPresenter.ExcelExporter.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.DataPresenter.v10.3.dll = References\Infragistics\InfragisticsWPF4.DataPresenter.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.DockManager.v10.3.dll = References\Infragistics\InfragisticsWPF4.DockManager.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.DragDrop.v10.3.dll = References\Infragistics\InfragisticsWPF4.DragDrop.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Editors.v10.3.dll = References\Infragistics\InfragisticsWPF4.Editors.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Excel.v10.3.dll = References\Infragistics\InfragisticsWPF4.Excel.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.OutlookBar.v10.3.dll = References\Infragistics\InfragisticsWPF4.OutlookBar.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Reporting.v10.3.dll = References\Infragistics\InfragisticsWPF4.Reporting.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Ribbon.v10.3.dll = References\Infragistics\InfragisticsWPF4.Ribbon.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Themes.Fall.v10.3.dll = References\Infragistics\InfragisticsWPF4.Themes.Fall.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Themes.ForestGreen.v10.3.dll = References\Infragistics\InfragisticsWPF4.Themes.ForestGreen.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Themes.Leaf.v10.3.dll = References\Infragistics\InfragisticsWPF4.Themes.Leaf.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Themes.Lipstick.v10.3.dll = References\Infragistics\InfragisticsWPF4.Themes.Lipstick.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Themes.Water.v10.3.dll = References\Infragistics\InfragisticsWPF4.Themes.Water.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Themes.Wind.v10.3.dll = References\Infragistics\InfragisticsWPF4.Themes.Wind.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.Tiles.v10.3.dll = References\Infragistics\InfragisticsWPF4.Tiles.v10.3.dll
-		References\Infragistics\InfragisticsWPF4.v10.3.dll = References\Infragistics\InfragisticsWPF4.v10.3.dll
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FluentRibbon", "FluentRibbon", "{F59773D5-E0F2-4133-93BC-1666EAEEA465}"
 	ProjectSection(SolutionItems) = preProject
 		References\FluentRibbon\Fluent.dll = References\FluentRibbon\Fluent.dll
@@ -726,7 +693,6 @@ Global
 		{A8343D08-80F1-4645-B507-9F36BC5E0DFD} = {96E433E3-15A4-4FBF-A4E1-B604E4335ED3}
 		{981AABD0-632D-4221-8FD2-41F5249A9948} = {96E433E3-15A4-4FBF-A4E1-B604E4335ED3}
 		{4388CEB5-4D71-4A1A-AD96-EF9834DDC18E} = {96E433E3-15A4-4FBF-A4E1-B604E4335ED3}
-		{C7A48243-A69C-44FA-AE37-423354676BC7} = {96E433E3-15A4-4FBF-A4E1-B604E4335ED3}
 		{F59773D5-E0F2-4133-93BC-1666EAEEA465} = {96E433E3-15A4-4FBF-A4E1-B604E4335ED3}
 		{5EFB6698-A12A-421C-9467-E298F27661FF} = {DF85AC73-7E4F-43B0-8F97-D2B22667BC44}
 		{8D73AF40-9401-48BB-839D-C7EDDEFF8E7C} = {DF85AC73-7E4F-43B0-8F97-D2B22667BC44}

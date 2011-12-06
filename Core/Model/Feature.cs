@@ -5,26 +5,27 @@ namespace WaveTech.Scutex.Model
 	public class Feature: BaseObject
 	{
 		#region Private Members
-		private int _featureId;
+		private int _productFeatureId;
 		private int _productId;
 		private string _name;
+		private string _description;
 		private Guid _uniquePad;
 		#endregion Private Members
 
 		#region Public Properties
-		public virtual int FeatureId
+		public virtual int ProductFeatureId
 		{
 			get
 			{
-				return _featureId;
+				return _productFeatureId;
 			}
 
 			set
 			{
-				if (value != _featureId)
+				if (value != _productFeatureId)
 				{
-					_featureId = value;
-					OnPropertyChanged("FeatureId");
+					_productFeatureId = value;
+					OnPropertyChanged("ProductFeatureId");
 				}
 			}
 		}
@@ -59,6 +60,23 @@ namespace WaveTech.Scutex.Model
 				{
 					_name = value;
 					OnPropertyChanged("Name");
+				}
+			}
+		}
+
+		public virtual string Description
+		{
+			get
+			{
+				return _description;
+			}
+
+			set
+			{
+				if (value != _description)
+				{
+					_description = value;
+					OnPropertyChanged("Description");
 				}
 			}
 		}

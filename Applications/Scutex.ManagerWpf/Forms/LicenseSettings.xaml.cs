@@ -45,7 +45,6 @@ namespace WaveTech.Scutex.Manager.Forms
 			SetLicenseCapibilites();
 		}
 
-
 		public License License
 		{
 			get { return (License)GetValue(LicenseProperty); }
@@ -77,7 +76,18 @@ namespace WaveTech.Scutex.Manager.Forms
 					case KeyGeneratorTypes.StaticSmall:
 						IKeyGenerator keygen = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.SmallKeyGenerator);
 						capibilities = keygen.GetLicenseCapability();
+
+						chkIsLicenseSetUpgradeOnly.IsChecked = false;
+						chkIsLicenseSetUpgradeOnly.IsEnabled = false;
 						break;
+					case KeyGeneratorTypes.StaticLarge:
+						IKeyGenerator keygenLarge = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.LargeKeyGenerator);
+						capibilities = keygenLarge.GetLicenseCapability();
+
+						chkIsLicenseSetUpgradeOnly.IsChecked = false;
+						chkIsLicenseSetUpgradeOnly.IsEnabled = true;
+						break;
+					break;
 					case KeyGeneratorTypes.None:
 						capibilities = null;
 						break;
@@ -300,6 +310,11 @@ namespace WaveTech.Scutex.Manager.Forms
 				if (String.IsNullOrEmpty(txtMaxUsers.Text) == false)
 					l.MaxUsers = int.Parse(txtMaxUsers.Text);
 
+				if (chkIsLicenseSetUpgradeOnly.IsChecked.HasValue)
+					l.IsUpgradeOnly = chkIsLicenseSetUpgradeOnly.IsChecked.Value;
+				else
+					l.IsUpgradeOnly = false;
+
 				License.LicenseSets.Add(l);
 				License.RaisePropertyChanged("LicenseSets");
 
@@ -317,13 +332,6 @@ namespace WaveTech.Scutex.Manager.Forms
 		{
 			if (cboLicenseKeyType.SelectedValue != null)
 			{
-				if (ApplicationConstants.IsCommunityEdition &&
-						(KeyGeneratorTypes)cboLicenseKeyType.SelectedValue != KeyGeneratorTypes.StaticSmall)
-				{
-					MessageBox.Show("The Community Edition of Scutex only supports The Small Static License Key.");
-					cboLicenseKeyType.SelectedValue = KeyGeneratorTypes.StaticSmall;
-				}
-
 				SetLicenseCapibilites();
 			}
 		}

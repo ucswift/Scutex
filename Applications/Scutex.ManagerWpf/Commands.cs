@@ -89,6 +89,9 @@ namespace WaveTech.Scutex.Manager
 		public static readonly RoutedUICommand RemoveProductCommand = new RoutedUICommand("RemoveProduct", "RemoveProductCommand", typeof(MainWindow),
 				new InputGestureCollection(new KeyGesture[] { new KeyGesture(Key.T, ModifierKeys.Control, "Ctrl+PD") }));
 
+		public static readonly RoutedUICommand ProductFeaturesCommand = new RoutedUICommand("ProductFeatures", "ProductFeaturesCommand", typeof(MainWindow),
+				new InputGestureCollection(new KeyGesture[] { new KeyGesture(Key.T, ModifierKeys.Control, "Ctrl+PF") }));
+
 		public static readonly RoutedUICommand UpdateServiceCommand = new RoutedUICommand("UpdateService", "UpdateServiceCommand", typeof(MainWindow),
 		new InputGestureCollection(new KeyGesture[] { new KeyGesture(Key.E, ModifierKeys.Control, "Ctrl+SU") }));
 
@@ -107,6 +110,7 @@ namespace WaveTech.Scutex.Manager
 		private static ServiceLogWindow _serviceLogWindow;
 		private static ViewServicesWindow _viewServicesWindow;
 		private static NewProductWindow _newProductWindow;
+		private static FeaturesWindow _featuresWindow;
 		#endregion Windows
 
 		#region Constructor
@@ -137,6 +141,7 @@ namespace WaveTech.Scutex.Manager
 			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(RemoveProductCommand, RemoveProduct));
 			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(UpdateServiceCommand, UpdateService));
 			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(InitializeServiceCommand, InitializeService));
+			CommandManager.RegisterClassCommandBinding(typeof(MainWindow), new CommandBinding(ProductFeaturesCommand, ProductFeatures));
 		}
 		#endregion Constructor
 
@@ -214,6 +219,7 @@ namespace WaveTech.Scutex.Manager
 			MainWindow mainWindow = (MainWindow)sender;
 			mainWindow.root.Content = null;
 			UIContext.License = null;
+			mainWindow.Initalize();
 
 			WelcomeScreenForm welcomeScreenForm = new WelcomeScreenForm();
 			mainWindow.root.Content = welcomeScreenForm;
@@ -542,6 +548,33 @@ namespace WaveTech.Scutex.Manager
 
 						IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
 						eventAggregator.SendMessage<ProductsUpdatedEvent>();
+					}
+				}
+				else
+				{
+					MessageBox.Show("You must select a product first.");
+				}
+			}
+		}
+
+		private static void ProductFeatures(object sender, ExecutedRoutedEventArgs e)
+		{
+			MainWindow mainWindow = (MainWindow)sender;
+
+			if (mainWindow.ProductsScreen != null)
+			{
+				if (mainWindow.ProductsScreen.SelectedProduct != null)
+				{
+					if (_featuresWindow == null)
+					{
+						_featuresWindow = new FeaturesWindow(mainWindow, mainWindow.ProductsScreen.SelectedProduct);
+						_featuresWindow.Show();
+					}
+					else
+					{
+						_featuresWindow.Close();
+						_featuresWindow = new FeaturesWindow(mainWindow, mainWindow.ProductsScreen.SelectedProduct);
+						_featuresWindow.Show();
 					}
 				}
 				else

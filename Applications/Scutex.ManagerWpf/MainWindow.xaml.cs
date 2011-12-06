@@ -87,6 +87,8 @@ namespace WaveTech.Scutex.Manager
 			if (UIContext.License == null)
 			{
 				root.Content = null;
+				ribbon.ContextualGroups[0].Visibility = Visibility.Collapsed;
+				ribbon.SelectedTabItem = ribbon.Tabs.Where(x => x.Name == "homeTabItem").FirstOrDefault();
 			}
 			else
 			{

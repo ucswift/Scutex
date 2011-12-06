@@ -83,7 +83,9 @@
 			<Fluent:RibbonTabItem   x:Name="productsTabItem" Header="Products" Fluent:KeyTip.Keys="H" ToolTip="Regular Tool Tip" 	ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)">
 				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="ProductsGroup" Header="Products" IsLauncherVisible="True" LauncherKeys="ZB">
 					<Fluent:Button x:Name="newProductButton" Fluent:KeyTip.Keys="C" Header="New Product" LargeIcon="img\application_add.png" Command="{x:Static local:Commands.NewProductsCommand}"/>
+					<Fluent:Button x:Name="updateProductButton" Fluent:KeyTip.Keys="C" Header="Update Product" LargeIcon="img\application_edit.png" Command="{x:Static local:Commands.EditProductCommand}"/>
 					<Fluent:Button x:Name="removeProductButton" Fluent:KeyTip.Keys="C" Header="Remove Product" LargeIcon="img\application_remove.png" Command="{x:Static local:Commands.RemoveProductCommand}"/>
+					<Fluent:Button x:Name="featuresProductButton" Fluent:KeyTip.Keys="C" Header="Product Features" LargeIcon="img\application_lock.png" Command="{x:Static local:Commands.ProductFeaturesCommand}"/>
 				</Fluent:RibbonGroupBox>
 			</Fluent:RibbonTabItem>
 

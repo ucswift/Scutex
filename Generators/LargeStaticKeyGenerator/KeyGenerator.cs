@@ -18,7 +18,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		private readonly IAsymmetricEncryptionProvider asymmetricEncryptionProvider;
 		private readonly IHashingProvider hashingProvider;
 
-		internal static string licenseKeyTemplate = "xxkxv-xaaax-xsxxp-pppxl-xcccc";
+		internal static string licenseKeyTemplate = "xxkxv-xxaax-xsxxp-pppxl-xcccc";
 		#endregion Private Readonly Members
 
 		#region Constructor
@@ -462,10 +462,10 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 
 			placeholders.Add(new LicensePlaceholder
 			{
-				Length = 3,
+				Length = 2,
 				Token = Char.Parse("a"),
 				Type = PlaceholderTypes.Number,
-				Value = scutexLicense.Product.GetFormattedProductId(3),
+				Value = scutexLicense.Product.GetFormattedProductId(2),
 				IsChecksum = false,
 				ValidationType = ValidationTypes.Product
 			});
@@ -501,6 +501,15 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				Value = "F",
 				IsChecksum = false
 			});
+
+			//placeholders.Add(new LicensePlaceholder
+			//{
+			//  Length = 1,
+			//  Token = Char.Parse("e"),
+			//  Type = PlaceholderTypes.String,
+			//  Value = "0",
+			//  IsChecksum = false
+			//});
 
 			return placeholders;
 		}

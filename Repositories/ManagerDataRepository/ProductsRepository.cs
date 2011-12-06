@@ -32,7 +32,6 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 						 select p;
 		}
 
-
 		public IQueryable<Model.Product> InsertProduct(Model.Product product)
 		{
 			int newId;

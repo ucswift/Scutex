@@ -24,7 +24,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 
 			internal KeyGenerator largeKeyGenerator;
 			protected ClientLicense license;
-			protected LicenseGenerationOptions generationOptions;
+			protected List<LicenseGenerationOptions> generationOptions;
 
 			protected List<LicensePlaceholder> placeholders;
 			protected Dictionary<int, LicensePlaceholder> placeholdersInTemplate;
@@ -40,7 +40,11 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				largeKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
 
 				license = new ClientLicense();
-				generationOptions = new LicenseGenerationOptions();
+				generationOptions = new List<LicenseGenerationOptions>();
+				generationOptions.Add(new LicenseGenerationOptions());
+				generationOptions.Add(new LicenseGenerationOptions());
+				generationOptions.Add(new LicenseGenerationOptions());
+				generationOptions.Add(new LicenseGenerationOptions());
 
 				license.UniqueId = Guid.NewGuid();
 				license.Product = new Product();
@@ -49,21 +53,47 @@ namespace WaveTech.Scutex.UnitTests.Generators
 
 				license.LicenseSets = new NotifyList<LicenseSet>();
 				license.LicenseSets.Add(new LicenseSet());
+				license.LicenseSets.Add(new LicenseSet());
+				license.LicenseSets.Add(new LicenseSet());
+				license.LicenseSets.Add(new LicenseSet());
 
-				license.LicenseSets.First().LicenseSetId = 1;
-				license.LicenseSets.First().SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
-				license.LicenseSets.First().SupportedLicenseTypes |= LicenseKeyTypeFlag.Enterprise;
-				license.LicenseSets.First().SupportedLicenseTypes |= LicenseKeyTypeFlag.Unlimited;
+				license.LicenseSets[0].LicenseSetId = 1;
+				license.LicenseSets[0].Name = "Standard Edition";
+				license.LicenseSets[0].MaxUsers = 5;
+				license.LicenseSets[0].SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
+				license.LicenseSets[0].SupportedLicenseTypes |= LicenseKeyTypeFlag.MultiUser;
+				license.LicenseSets[0].SupportedLicenseTypes |= LicenseKeyTypeFlag.Unlimited;
 
-				generationOptions.LicenseKeyType = LicenseKeyTypes.Enterprise;
-				generationOptions.LicenseSetId = 1;
+				license.LicenseSets[1].LicenseSetId = 2;
+				license.LicenseSets[1].Name = "Professional Edition";
+				license.LicenseSets[1].MaxUsers = 5;
+				license.LicenseSets[1].SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
+				license.LicenseSets[1].SupportedLicenseTypes |= LicenseKeyTypeFlag.MultiUser;
+				license.LicenseSets[1].SupportedLicenseTypes |= LicenseKeyTypeFlag.Unlimited;
+
+				license.LicenseSets[2].LicenseSetId = 2;
+				license.LicenseSets[2].Name = "Enterprise Edition";
+				license.LicenseSets[2].MaxUsers = 5;
+				license.LicenseSets[2].SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
+				license.LicenseSets[2].SupportedLicenseTypes |= LicenseKeyTypeFlag.MultiUser;
+				license.LicenseSets[2].SupportedLicenseTypes |= LicenseKeyTypeFlag.Unlimited;
+				license.LicenseSets[2].SupportedLicenseTypes |= LicenseKeyTypeFlag.Enterprise;
+
+				license.LicenseSets[3].LicenseSetId = 2;
+				license.LicenseSets[3].Name = "Upgrade Edition";
+				license.LicenseSets[3].MaxUsers = 0;
+				license.LicenseSets[3].IsUpgradeOnly = true;
+				license.LicenseSets[3].SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
+
+				generationOptions[0].LicenseKeyType = LicenseKeyTypes.Enterprise;
+				generationOptions[0].LicenseSetId = 1;
 
 				string productHash = hashingProvider.Checksum32(license.GetLicenseProductIdentifier()).ToString("X");
 
-				placeholders = largeKeyGenerator.CreateLicensePlaceholders(license, generationOptions);
+				placeholders = largeKeyGenerator.CreateLicensePlaceholders(license, generationOptions[0]);
 				placeholdersInTemplate = KeyGenerator.FindAllPlaceholdersInTemplate(KeyGenerator.licenseKeyTemplate, placeholders);
 
-				key = largeKeyGenerator.GenerateLicenseKey("TEST", license, generationOptions);
+				key = largeKeyGenerator.GenerateLicenseKey("TEST", license, generationOptions[0]);
 			}
 		}
 
@@ -88,7 +118,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				var placeholder = placeholders.Where(x => x.Token == Char.Parse("k"));
 
 				Assert.AreEqual(1, placeholder.Count());
-				Assert.AreEqual(((int)generationOptions.LicenseKeyType).ToString(), placeholder.First().Value);
+				Assert.AreEqual(((int)generationOptions[0].LicenseKeyType).ToString(), placeholder.First().Value);
 			}
 
 			[TestMethod]
@@ -97,7 +127,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				var placeholder = placeholders.Where(x => x.Token == Char.Parse("a"));
 
 				Assert.AreEqual(1, placeholder.Count());
-				Assert.AreEqual(license.Product.GetFormattedProductId(3), placeholder.First().Value);
+				Assert.AreEqual(license.Product.GetFormattedProductId(2), placeholder.First().Value);
 			}
 
 			[TestMethod]

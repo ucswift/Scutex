@@ -1,0 +1,69 @@
+﻿<Window  
+				x:Class="WaveTech.Scutex.Manager.Windows.FeaturesWindow"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+				xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
+				xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls" xmlns:Forms="clr-namespace:WaveTech.Scutex.Manager.Forms" 
+        xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Title="Product Features" Height="450" Width="450" WindowStartupLocation="CenterOwner">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/DataTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="25" />
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+			<TextBlock Width="10" />
+			<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Grid.Row="0" Grid.Column="0" Text="Features for Product: " />
+			<TextBlock x:Name="lblProductName" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Grid.Row="0" Grid.Column="0" Text="" />
+		</StackPanel>
+
+		<GroupBox Grid.Row="1" Grid.Column="0" Header="Add New Feature" Foreground="Black" Margin="4,4,4,4">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="32" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock Grid.Row="0" Text="Feature Name:" Foreground="Black" VerticalAlignment="Bottom" />
+				<TextBox Grid.Row="1" x:Name="txFeatureName" />
+				<TextBlock Grid.Row="2" Text="Feature Description:" Foreground="Black" VerticalAlignment="Bottom" />
+				<TextBox Grid.Row="3" x:Name="txtFeatureDescription" />
+
+				<Button Grid.Row="4" x:Name="btnAddFeature" Content="Add Feature" Margin="4,4,4,4" HorizontalAlignment="Right" Click="btnAddFeature_Click" />
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Grid.Row="2" Grid.Column="0" Header="Features" Foreground="Black" Margin="4,4,4,4">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="32" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<dg:DataGrid x:Name="gridFeatures" Grid.Row="0" ItemsSource="{Binding Source={StaticResource productsData}}">
+				</dg:DataGrid>
+
+				<Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />
+			</Grid>
+		</GroupBox>
+	</Grid>
+</Window>
