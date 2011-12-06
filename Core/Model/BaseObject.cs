@@ -7,6 +7,8 @@ namespace WaveTech.Scutex.Model
 	/// </summary>
 	public class BaseObject : INotifyPropertyChanged
 	{
+		private bool isModified;
+		protected bool Notifying { get; private set; }
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void OnPropertyChanged(string propertyName)
@@ -29,15 +31,10 @@ namespace WaveTech.Scutex.Model
 			}
 		}
 
-
-		protected bool Notifying { get; private set; }
-
 		public void RaisePropertyChanged(string propertyName)
 		{
 			OnPropertyChanged(propertyName);
 		}
-
-		private bool isModified;
 
 		/// <summary>
 		/// Gets whether data is modified.

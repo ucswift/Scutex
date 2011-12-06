@@ -1,6 +1,8 @@
 ﻿using System.Windows;
+using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
+using WaveTech.Scutex.Model.Interfaces.Services;
 
 namespace WaveTech.Scutex.Manager.Windows
 {
@@ -10,6 +12,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	public partial class FeaturesWindow : Window
 	{
 		private readonly Product _product;
+		private IProductsService _productsService;
 
 		public FeaturesWindow()
 		{
@@ -24,6 +27,11 @@ namespace WaveTech.Scutex.Manager.Windows
 			_product = product;
 		}
 
+		public Product SelectedProduct
+		{
+			get { return _product; }
+		}
+
 		/// <summary>
 		/// Constructor that takes a parent for this GenerationWindow window.
 		/// </summary>
@@ -36,12 +44,25 @@ namespace WaveTech.Scutex.Manager.Windows
 
 		private void btnAddFeature_Click(object sender, RoutedEventArgs e)
 		{
+			if (_productsService == null)
+				_productsService = ObjectLocator.GetInstance<IProductsService>();
 
+			Feature f = new Feature();
+			f.Name = txtFeatureName.Text;
+			f.Description = txtFeatureDescription.Text;
+			f.ProductId = _product.ProductId;
 		}
 
 		private void btnRemoveSelected_Click(object sender, RoutedEventArgs e)
 		{
+			if (_productsService == null)
+				_productsService = ObjectLocator.GetInstance<IProductsService>();
 
+			if (gridFeatures.SelectedItem != null)
+			{
+				Feature feat = gridFeatures.SelectedItem as Feature;
+				
+			}
 		}
 	}
 }

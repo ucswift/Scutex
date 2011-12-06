@@ -22,6 +22,8 @@ namespace WaveTech.Scutex.Model
 		{
 			// Initialize the unique pad to ensure it's always there
 			_uniquePad = Guid.NewGuid().ToString();
+
+			_features = new List<Feature>();
 		}
 		#endregion Constructor
 

@@ -18,7 +18,7 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 			return from feature in db.Features
 						 select new Model.Feature
 						 {
-							 FeatureId = feature.FeatureId,
+							 ProductFeatureId = feature.FeatureId,
 							 ProductId = feature.Product.ProductId,
 							 Name = feature.Name,
 							 UniquePad = feature.UniquePad
@@ -28,7 +28,7 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 		public IQueryable<Model.Feature> GetFeatureById(int featureId)
 		{
 			return from feature in GetAllFeatures()
-						 where feature.FeatureId == featureId
+						 where feature.ProductFeatureId == featureId
 						 select feature;
 		}
 
@@ -59,7 +59,7 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 			//using (ScutexEntities db1 = new ScutexEntities())
 			//{
 			var feat = (from f in db.Features
-									where f.FeatureId == feature.FeatureId
+									where f.FeatureId == feature.ProductFeatureId
 									select f).First();
 
 			feat.Name = feature.Name;

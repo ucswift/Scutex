@@ -4,6 +4,7 @@
 				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
 				xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
 				xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls" xmlns:Forms="clr-namespace:WaveTech.Scutex.Manager.Forms" 
+				x:Name="productFeaturesWindow"
         xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Title="Product Features" Height="450" Width="450" WindowStartupLocation="CenterOwner">
 	<Window.Resources>
 		<ResourceDictionary>
@@ -42,7 +43,7 @@
 				</Grid.ColumnDefinitions>
 
 				<TextBlock Grid.Row="0" Text="Feature Name:" Foreground="Black" VerticalAlignment="Bottom" />
-				<TextBox Grid.Row="1" x:Name="txFeatureName" />
+				<TextBox Grid.Row="1" x:Name="txtFeatureName" />
 				<TextBlock Grid.Row="2" Text="Feature Description:" Foreground="Black" VerticalAlignment="Bottom" />
 				<TextBox Grid.Row="3" x:Name="txtFeatureDescription" />
 
@@ -59,7 +60,7 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<dg:DataGrid x:Name="gridFeatures" Grid.Row="0" ItemsSource="{Binding Source={StaticResource productsData}}">
+				<dg:DataGrid x:Name="gridFeatures" Grid.Row="0" ItemsSource="{Binding SelectedProduct.Features, ElementName=productFeaturesWindow, Mode=TwoWay}">
 				</dg:DataGrid>
 
 				<Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />

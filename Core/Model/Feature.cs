@@ -12,6 +12,12 @@ namespace WaveTech.Scutex.Model
 		private Guid _uniquePad;
 		#endregion Private Members
 
+		public Feature()
+		{
+			// Initialize the unique pad to ensure it's always there
+			_uniquePad = Guid.NewGuid();
+		}
+
 		#region Public Properties
 		public virtual int ProductFeatureId
 		{

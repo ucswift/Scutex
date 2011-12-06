@@ -127,10 +127,16 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -174,6 +180,7 @@
     <Compile Include="Interfaces\Wcf\ICommonService.cs" />
     <Compile Include="Interfaces\Wcf\IKeyPairService.cs" />
     <Compile Include="Interfaces\Wcf\IProductManagementService.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="KeyData.cs" />
     <Compile Include="LicenseActivationPayload.cs" />
     <Compile Include="LicensingManagerOptions.cs" />
@@ -312,6 +319,7 @@
     <None Include="..\..\Other\Scutex-PubPriv-KeyFile.snk">
       <Link>Scutex-PubPriv-KeyFile.snk</Link>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
