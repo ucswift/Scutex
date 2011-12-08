@@ -155,6 +155,7 @@
     <Compile Include="ConsoleInteractionService.cs" />
     <Compile Include="EncodingService.cs" />
     <Compile Include="EventLogInteractionService.cs" />
+    <Compile Include="FeaturesService.cs" />
     <Compile Include="HardwareFingerprintService.cs" />
     <Compile Include="Hooker.cs" />
     <Compile Include="KeyExportService.cs" />

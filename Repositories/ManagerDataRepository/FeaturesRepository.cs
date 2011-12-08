@@ -18,9 +18,10 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 			return from feature in db.Features
 						 select new Model.Feature
 						 {
-							 ProductFeatureId = feature.FeatureId,
+							 FeatureId = feature.FeatureId,
 							 ProductId = feature.Product.ProductId,
 							 Name = feature.Name,
+							 Description = feature.Description,
 							 UniquePad = feature.UniquePad
 						 };
 		}
@@ -28,7 +29,7 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 		public IQueryable<Model.Feature> GetFeatureById(int featureId)
 		{
 			return from feature in GetAllFeatures()
-						 where feature.ProductFeatureId == featureId
+						 where feature.FeatureId == featureId
 						 select feature;
 		}
 
@@ -59,20 +60,38 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 			//using (ScutexEntities db1 = new ScutexEntities())
 			//{
 			var feat = (from f in db.Features
-									where f.FeatureId == feature.ProductFeatureId
+									where f.FeatureId == feature.FeatureId
 									select f).First();
 
 			feat.Name = feature.Name;
+			feat.Description = feature.Description;
 			feat.ProductId = feature.ProductId;
 			feat.UniquePad = feature.UniquePad;
-
-
+			
 			db.SaveChanges();
 
 			newId = feat.FeatureId;
 			//}
 
 			return GetFeatureById(newId);
+		}
+
+		public void DeleteFeatureById(int featureId)
+		{
+			db.DeleteObject(db.Features.FirstOrDefault(x => x.FeatureId == featureId));
+			db.SaveChanges();
+		}
+
+		public bool IsFeatureInUse(int featureId)
+		{
+			var sets = from lsf in db.LicenseSetFeatures
+								 where lsf.FeatureId == featureId
+								 select lsf;
+
+			if (sets.Count() > 0)
+				return true;
+
+			return false;
 		}
 	}
 }

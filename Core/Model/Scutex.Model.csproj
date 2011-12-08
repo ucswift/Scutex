@@ -171,6 +171,7 @@
     <Compile Include="Interfaces\Providers\IComBypassProvider.cs" />
     <Compile Include="Interfaces\Services\IConsoleInteractionService.cs" />
     <Compile Include="Interfaces\Services\IEventLogInteractionService.cs" />
+    <Compile Include="Interfaces\Services\IFeaturesService.cs" />
     <Compile Include="Interfaces\Services\IKeyService.cs" />
     <Compile Include="Interfaces\Services\ILicenseActivationService.cs" />
     <Compile Include="Interfaces\Services\IRegisterService.cs" />
@@ -338,7 +339,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Composites\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

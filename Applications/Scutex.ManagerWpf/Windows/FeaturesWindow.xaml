@@ -26,7 +26,7 @@
 		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
 			<TextBlock Width="10" />
 			<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Grid.Row="0" Grid.Column="0" Text="Features for Product: " />
-			<TextBlock x:Name="lblProductName" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Grid.Row="0" Grid.Column="0" Text="" />
+			<TextBlock x:Name="lblProductName" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Text="" />
 		</StackPanel>
 
 		<GroupBox Grid.Row="1" Grid.Column="0" Header="Add New Feature" Foreground="Black" Margin="4,4,4,4">

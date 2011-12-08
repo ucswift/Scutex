@@ -21,5 +21,8 @@ namespace WaveTech.Scutex.Model.Interfaces.Repositories
 		/// </summary>
 		/// <returns></returns>
 		IQueryable<Model.Feature> UpdateFeature(Model.Feature feature);
+
+		void DeleteFeatureById(int featureId);
+		bool IsFeatureInUse(int featureId);
 	}
 }

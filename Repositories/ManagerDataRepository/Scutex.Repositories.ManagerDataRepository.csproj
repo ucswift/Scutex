@@ -149,7 +149,6 @@
     <Compile Include="LicenseKeyRepository.cs" />
     <Compile Include="LicenseSetsRepository.cs" />
     <Compile Include="LicensesRepository.cs" />
-    <Compile Include="ProductFeaturesRepository.cs" />
     <Compile Include="ProductsRepository.cs" />
     <Compile Include="ServicesRepository.cs" />
     <Compile Include="TrialSettingsRepository.cs" />

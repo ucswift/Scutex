@@ -5,33 +5,35 @@ namespace WaveTech.Scutex.Model
 	public class Feature: BaseObject
 	{
 		#region Private Members
-		private int _productFeatureId;
+		private int _featureId;
 		private int _productId;
 		private string _name;
 		private string _description;
 		private Guid _uniquePad;
 		#endregion Private Members
 
+		#region Constructor
 		public Feature()
 		{
 			// Initialize the unique pad to ensure it's always there
 			_uniquePad = Guid.NewGuid();
 		}
+		#endregion Constructor
 
 		#region Public Properties
-		public virtual int ProductFeatureId
+		public virtual int FeatureId
 		{
 			get
 			{
-				return _productFeatureId;
+				return _featureId;
 			}
 
 			set
 			{
-				if (value != _productFeatureId)
+				if (value != _featureId)
 				{
-					_productFeatureId = value;
-					OnPropertyChanged("ProductFeatureId");
+					_featureId = value;
+					OnPropertyChanged("FeatureId");
 				}
 			}
 		}

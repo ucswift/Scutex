@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ScutexModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="ScutexModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ScutexModelStoreContainer">
           <EntitySet Name="DBVersions" EntityType="ScutexModel.Store.DBVersions" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Features" EntityType="ScutexModel.Store.Features" store:Type="Tables" Schema="dbo" />
@@ -81,6 +81,7 @@
           <Property Name="FeatureId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="UniquePad" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="KeyGeneratorTypes">
@@ -434,6 +435,7 @@
           <Property Type="Guid" Name="UniquePad" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="ScutexModel.FK_Features_Products" FromRole="Feature" ToRole="Product" />
           <NavigationProperty Name="LicenseSetFeatures" Relationship="ScutexModel.FK_LicenseSetFeatures_Features" FromRole="Feature" ToRole="LicenseSetFeature" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KeyGeneratorType">
           <Key>
@@ -741,6 +743,7 @@
           <EntitySetMapping Name="Features">
             <EntityTypeMapping TypeName="ScutexModel.Feature">
               <MappingFragment StoreEntitySet="Features">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="UniquePad" ColumnName="UniquePad" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />

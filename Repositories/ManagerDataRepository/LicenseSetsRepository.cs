@@ -39,7 +39,7 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 										select licSetFeatures.Feature.FeatureId;
 
 			return from f in _featuresRepository.GetAllFeatures()
-						 where licSets.Contains(f.ProductFeatureId)
+						 where licSets.Contains(f.FeatureId)
 						 select f;
 		}
 
@@ -139,7 +139,7 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 			{
 				LicenseSetFeature feature = new LicenseSetFeature();
 				feature.LicenseSetId = licenseSetId;
-				feature.FeatureId = feat.ProductFeatureId;
+				feature.FeatureId = feat.FeatureId;
 
 				db.AddToLicenseSetFeatures(feature);
 			}
