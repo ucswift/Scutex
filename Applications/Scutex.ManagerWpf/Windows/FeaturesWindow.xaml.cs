@@ -26,6 +26,8 @@ namespace WaveTech.Scutex.Manager.Windows
 		{
 			_product = product;
 			lblProductName.Text = _product.Name;
+
+			gridFeatures.ItemsSource = SelectedProduct.Features;
 		}
 
 		public Product SelectedProduct
@@ -70,6 +72,9 @@ namespace WaveTech.Scutex.Manager.Windows
 
 				txtFeatureName.Text = "";
 				txtFeatureDescription.Text = "";
+
+				_product.Features = new NotifyList<Feature>(_featuresService.GetFeaturesForProduct(_product.ProductId));
+				gridFeatures.ItemsSource = SelectedProduct.Features;
 			}
 		}
 
@@ -84,7 +89,7 @@ namespace WaveTech.Scutex.Manager.Windows
 
 				if (_featuresService.IsFeatureInUse(feat.FeatureId))
 				{
-					MessageBox.Show("Cannot delete feature, as it's in use in a feature set");
+					MessageBox.Show("Cannot delete feature, as it's in use in a license/edition set");
 					return;
 				}
 				else
@@ -94,6 +99,7 @@ namespace WaveTech.Scutex.Manager.Windows
 					{
 						_featuresService.DeleteFeatureById(feat.FeatureId);
 						_product.Features = new NotifyList<Feature>(_featuresService.GetFeaturesForProduct(feat.ProductId));
+						gridFeatures.ItemsSource = SelectedProduct.Features;
 					}
 				}
 			}

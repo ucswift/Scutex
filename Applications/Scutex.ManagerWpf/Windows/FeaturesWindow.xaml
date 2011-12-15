@@ -60,7 +60,16 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<DataGrid x:Name="gridFeatures" Grid.Row="0" ItemsSource="{Binding SelectedProduct.Features}" AutoGenerateColumns="True" SelectionMode="Single" VerticalAlignment="Stretch">
+				<DataGrid x:Name="gridFeatures" Grid.Row="0" ItemsSource="{Binding SelectedProduct.Features, ElementName=productFeaturesWindow, Mode=TwoWay}"  AutoGenerateColumns="False" 
+						CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" VerticalAlignment="Stretch">
+					<DataGrid.Columns>
+						<DataGridTextColumn
+						Header="Name" Width="1*" IsReadOnly="True"
+						Binding="{Binding Path=Name}"/>
+						<DataGridTextColumn
+						Header="Description" Width="2*" IsReadOnly="True"
+						Binding="{Binding Path=Description}"/>
+					</DataGrid.Columns>
 				</DataGrid>
 
 				<Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />
