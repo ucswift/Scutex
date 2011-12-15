@@ -14,7 +14,7 @@ namespace WaveTech.Scutex.Model
 		private string _name;
 		private string _description;
 		private string _uniquePad;
-		private List<Feature> _features;
+		private NotifyList<Feature> _features;
 		#endregion Private Members
 
 		#region Constructor
@@ -23,7 +23,7 @@ namespace WaveTech.Scutex.Model
 			// Initialize the unique pad to ensure it's always there
 			_uniquePad = Guid.NewGuid().ToString();
 
-			_features = new List<Feature>();
+			_features = new NotifyList<Feature>();
 		}
 		#endregion Constructor
 
@@ -96,7 +96,7 @@ namespace WaveTech.Scutex.Model
 			}
 		}
 
-		public virtual List<Feature> Features
+		public virtual NotifyList<Feature> Features
 		{
 			get
 			{

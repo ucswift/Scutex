@@ -93,5 +93,12 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 
 			return false;
 		}
+
+		public IQueryable<Model.Feature> GetAllFeaturesByProductId(int productId)
+		{
+			return from feat in GetAllFeatures()
+						 where feat.ProductId == productId
+						 select feat;
+		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using AutoMapper;
+using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Interfaces.Repositories;
 
 namespace WaveTech.Scutex.Repositories.ManagerDataRepository
@@ -7,22 +8,27 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 	internal class ProductsRepository : IProductsRepository
 	{
 		private readonly ScutexEntities db;
+		private readonly IFeaturesRepository _featuresRepository;
 
-		public ProductsRepository(ScutexEntities db)
+		public ProductsRepository(ScutexEntities db, IFeaturesRepository featuresRepository)
 		{
 			this.db = db;
+			_featuresRepository = featuresRepository;
 		}
 
 		public IQueryable<Model.Product> GetAllProducts()
 		{
-			return from prod in db.Products
+			var query = from prod in db.Products.AsEnumerable()
 						 select new Model.Product
 											{
 												ProductId = prod.ProductId,
 												Description = prod.Description,
 												Name = prod.Name,
-												UniquePad = prod.UniquePad
+												UniquePad = prod.UniquePad,
+												Features = new NotifyList<Model.Feature>(_featuresRepository.GetAllFeatures().Where(x => x.ProductId == prod.ProductId).ToList())
 											};
+
+			return query.AsQueryable();
 		}
 
 		public IQueryable<Model.Product> GetProductById(int productId)

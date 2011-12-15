@@ -67,6 +67,9 @@ namespace WaveTech.Scutex.Manager.Windows
 			else
 			{
 				_featuresService.SaveFeature(f);
+
+				txtFeatureName.Text = "";
+				txtFeatureDescription.Text = "";
 			}
 		}
 
@@ -90,7 +93,7 @@ namespace WaveTech.Scutex.Manager.Windows
 					    MessageBoxResult.Yes)
 					{
 						_featuresService.DeleteFeatureById(feat.FeatureId);
-						_product.Features = _featuresService.GetFeaturesForProduct(feat.ProductId);
+						_product.Features = new NotifyList<Feature>(_featuresService.GetFeaturesForProduct(feat.ProductId));
 					}
 				}
 			}

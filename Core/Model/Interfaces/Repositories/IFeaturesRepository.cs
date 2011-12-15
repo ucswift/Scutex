@@ -24,5 +24,6 @@ namespace WaveTech.Scutex.Model.Interfaces.Repositories
 
 		void DeleteFeatureById(int featureId);
 		bool IsFeatureInUse(int featureId);
+		IQueryable<Model.Feature> GetAllFeaturesByProductId(int productId);
 	}
 }

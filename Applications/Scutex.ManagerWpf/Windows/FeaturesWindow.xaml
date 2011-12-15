@@ -60,8 +60,8 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<dg:DataGrid x:Name="gridFeatures" Grid.Row="0" ItemsSource="{Binding SelectedProduct.Features, ElementName=productFeaturesWindow, Mode=TwoWay}">
-				</dg:DataGrid>
+				<DataGrid x:Name="gridFeatures" Grid.Row="0" ItemsSource="{Binding SelectedProduct.Features}" AutoGenerateColumns="True" SelectionMode="Single" VerticalAlignment="Stretch">
+				</DataGrid>
 
 				<Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />
 			</Grid>
