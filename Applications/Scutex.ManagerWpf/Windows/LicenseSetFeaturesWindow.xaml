@@ -1,0 +1,69 @@
+﻿<Window x:Class="WaveTech.Scutex.Manager.Windows.LicenseSetFeaturesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:UserControls="clr-namespace:WaveTech.Scutex.Manager.UserControls"
+        xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes" x:Name="licenseSetFeaturesWindow"
+        Title="License Set Features" Height="300" Width="600" WindowStartupLocation="CenterOwner">
+<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/DataTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="25" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition Width="25" />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+
+		<GroupBox Grid.Row="1" Grid.Column="0" Header="Local Products" Margin="4,4,4,4" Foreground="Black">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+				<DataGrid Grid.Row="0" Grid.Column="0"  x:Name="gridLocalServices" ItemsSource="{Binding Source={StaticResource allProductsLicensesAndSetsData}}" HorizontalAlignment="Stretch"
+									AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
+					<DataGrid.Columns>
+						<DataGridTextColumn
+						Header="Name" Width="*" IsReadOnly="True"
+						Binding="{Binding Path=NameForDisplay}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Grid.Row="1" Grid.Column="2" Header="Service Products" Margin="4,4,4,4" Foreground="Black">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+				<DataGrid Grid.Row="0" Grid.Column="0" x:Name="gridRemoteServices" HorizontalAlignment="Stretch"
+									AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
+					<DataGrid.Columns>
+						<DataGridTextColumn
+						Header="Name" Width="*" IsReadOnly="True"
+						Binding="{Binding Path=NameForDisplay}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+			</Grid>
+		</GroupBox>
+
+		<UserControls:LoadingAnimation x:Name="loadingAnimation" Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"
+							WindowHeight="{Binding ElementName=CurrentPresenter, Path=ActualHeight}" WindowWidth="{Binding ElementName=CurrentPresenter, Path=ActualWidth}" />
+	</Grid>
+</Window>

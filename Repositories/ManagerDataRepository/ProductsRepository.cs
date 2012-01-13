@@ -46,7 +46,7 @@ namespace WaveTech.Scutex.Repositories.ManagerDataRepository
 			//{
 			Product prod = new Product();
 
-			Mapper.CreateMap<Model.Product, Product>();
+			Mapper.CreateMap<Model.Product, Product>().ForMember(dest => dest.Features, opt => opt.Ignore()); ;
 			prod = Mapper.Map<Model.Product, Product>(product);
 
 			db.AddToProducts(prod);

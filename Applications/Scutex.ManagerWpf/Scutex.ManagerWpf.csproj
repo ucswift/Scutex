@@ -239,6 +239,9 @@
     <Compile Include="Windows\GenerationWindow.xaml.cs">
       <DependentUpon>GenerationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LicenseSetFeaturesWindow.xaml.cs">
+      <DependentUpon>LicenseSetFeaturesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NewProductWindow.xaml.cs">
       <DependentUpon>NewProductWindow.xaml</DependentUpon>
     </Compile>
@@ -351,6 +354,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\GenerationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LicenseSetFeaturesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
