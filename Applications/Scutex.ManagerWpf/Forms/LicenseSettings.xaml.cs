@@ -340,5 +340,17 @@ namespace WaveTech.Scutex.Manager.Forms
 		{
 			Commands.NewServiceCommand.Execute(this, this);
 		}
+
+		private void btnSetLicenseSetFeatures_Click(object sender, RoutedEventArgs e)
+		{
+			if (gridLicenseSets.SelectedItem != null)
+			{
+				
+			}
+			else
+			{
+				MessageBox.Show("You must select a license set to set features for.");
+			}
+		}
 	}
 }

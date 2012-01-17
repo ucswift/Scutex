@@ -93,6 +93,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 
+				<Button Grid.Row="1" x:Name="btnSetLicenseSetFeatures" Margin="4,4,4,4" Content="Set License Set Features" Click="btnSetLicenseSetFeatures_Click" HorizontalAlignment="Left" />
 				<Button Grid.Row="1" x:Name="btnRemoveLicenseSet" Margin="4,4,4,4" Content="Remove Selected" Click="btnRemoveLicenseSet_Click" HorizontalAlignment="Right" />
 			</Grid>
 		</GroupBox>

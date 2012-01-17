@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using WaveTech.Scutex.Manager.Classes;
+using WaveTech.Scutex.Model;
 
 namespace WaveTech.Scutex.Manager.Windows
 {
@@ -18,9 +9,29 @@ namespace WaveTech.Scutex.Manager.Windows
 	/// </summary>
 	public partial class LicenseSetFeaturesWindow : Window
 	{
+		private readonly LicenseSet _licenseSet;
+
 		public LicenseSetFeaturesWindow()
 		{
 			InitializeComponent();
+
+			WindowHelper.CheckAndApplyTheme(this);
+		}
+
+				/// <summary>
+		/// Constructor that takes a parent for this GenerationWindow window.
+		/// </summary>
+		/// <param name="parent">Parent window for this dialog.</param>
+		public LicenseSetFeaturesWindow(Window parent)
+			: this()
+		{
+			this.Owner = parent;
+		}
+
+		public LicenseSetFeaturesWindow(Window parent, LicenseSet licenseSet)
+			: this(parent)
+		{
+			_licenseSet = licenseSet;
 		}
 	}
 }
