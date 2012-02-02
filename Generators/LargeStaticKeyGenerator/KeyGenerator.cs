@@ -394,6 +394,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			lc.SupportedLicenseKeyTypes = lc.SupportedLicenseKeyTypes | LicenseKeyTypeFlag.MultiUser;
 			lc.SupportedLicenseKeyTypes = lc.SupportedLicenseKeyTypes | LicenseKeyTypeFlag.Unlimited;
 			lc.SupportedLicenseKeyTypes = lc.SupportedLicenseKeyTypes | LicenseKeyTypeFlag.Enterprise;
+			lc.SupportedLicenseKeyTypes = lc.SupportedLicenseKeyTypes | LicenseKeyTypeFlag.HardwareLock;
 
 			lc.MaxLicenseKeysPerBatch = 500000;
 			lc.MaxTotalLicenseKeys = 10000000;

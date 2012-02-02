@@ -23,7 +23,7 @@
 		</Grid.ColumnDefinitions>
 
 
-		<GroupBox Grid.Row="1" Grid.Column="0" Header="Local Products" Margin="4,4,4,4" Foreground="Black">
+		<GroupBox Grid.Row="1" Grid.Column="0" Header="Product Features" Margin="4,4,4,4" Foreground="Black">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition />
@@ -32,18 +32,18 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
-				<DataGrid Grid.Row="0" Grid.Column="0"  x:Name="gridLocalServices" ItemsSource="{Binding Source={StaticResource allProductsLicensesAndSetsData}}" HorizontalAlignment="Stretch"
+				<DataGrid Grid.Row="0" Grid.Column="0"  x:Name="gridProductFeatures" HorizontalAlignment="Stretch"
 									AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
 					<DataGrid.Columns>
 						<DataGridTextColumn
 						Header="Name" Width="*" IsReadOnly="True"
-						Binding="{Binding Path=NameForDisplay}"/>
+						Binding="{Binding Path=Name}"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</Grid>
 		</GroupBox>
 
-		<GroupBox Grid.Row="1" Grid.Column="2" Header="Service Products" Margin="4,4,4,4" Foreground="Black">
+		<GroupBox Grid.Row="1" Grid.Column="2" Header="Edition/Set Features" Margin="4,4,4,4" Foreground="Black">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition />
@@ -52,7 +52,7 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
-				<DataGrid Grid.Row="0" Grid.Column="0" x:Name="gridRemoteServices" HorizontalAlignment="Stretch"
+				<DataGrid Grid.Row="0" Grid.Column="0" x:Name="gridLicenseSetFeatures" HorizontalAlignment="Stretch"
 									AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
 					<DataGrid.Columns>
 						<DataGridTextColumn

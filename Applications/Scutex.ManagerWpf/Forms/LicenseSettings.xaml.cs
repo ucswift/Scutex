@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
+using WaveTech.Scutex.Manager.Windows;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Events;
 using WaveTech.Scutex.Model.Interfaces.Framework;
@@ -345,7 +346,8 @@ namespace WaveTech.Scutex.Manager.Forms
 		{
 			if (gridLicenseSets.SelectedItem != null)
 			{
-				
+				LicenseSetFeaturesWindow setFeaturesWindow = new LicenseSetFeaturesWindow((Window)this.FindName("mainWindow"), UIContext.License.Product, (LicenseSet)gridLicenseSets.SelectedItem);
+				setFeaturesWindow.Show();
 			}
 			else
 			{

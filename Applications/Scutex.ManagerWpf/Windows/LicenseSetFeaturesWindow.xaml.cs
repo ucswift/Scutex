@@ -1,6 +1,8 @@
 ﻿using System.Windows;
+using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
+using WaveTech.Scutex.Model.Interfaces.Services;
 
 namespace WaveTech.Scutex.Manager.Windows
 {
@@ -10,6 +12,7 @@ namespace WaveTech.Scutex.Manager.Windows
 	public partial class LicenseSetFeaturesWindow : Window
 	{
 		private readonly LicenseSet _licenseSet;
+		private readonly Product _product;
 
 		public LicenseSetFeaturesWindow()
 		{
@@ -28,10 +31,14 @@ namespace WaveTech.Scutex.Manager.Windows
 			this.Owner = parent;
 		}
 
-		public LicenseSetFeaturesWindow(Window parent, LicenseSet licenseSet)
+		public LicenseSetFeaturesWindow(Window parent, Product product, LicenseSet licenseSet)
 			: this(parent)
 		{
 			_licenseSet = licenseSet;
+			_product = product;
+
+			gridProductFeatures.DataContext =
+				ObjectLocator.GetInstance<IFeaturesService>().GetFeaturesForProduct(_product.ProductId);
 		}
 	}
 }
