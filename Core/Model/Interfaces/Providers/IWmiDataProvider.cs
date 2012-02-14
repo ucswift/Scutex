@@ -5,5 +5,6 @@
 		string GetProcessorData();
 		string GetMotherboardData();
 		string GetBiosData();
+		string GetPrimaryHardDriveSerial();
 	}
 }

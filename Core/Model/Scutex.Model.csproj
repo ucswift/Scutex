@@ -159,6 +159,7 @@
     <Compile Include="Events\LicenseSavedEvent.cs" />
     <Compile Include="Events\ServicesUpdatedEvent.cs" />
     <Compile Include="Exceptions\ScutexAuditException.cs" />
+    <Compile Include="FingerprintTypes.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="InteractionModes.cs" />
     <Compile Include="Interfaces\Providers\IDatabaseUpdateProvider.cs" />

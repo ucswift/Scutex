@@ -7,6 +7,7 @@ using WaveTech.Scutex.Generators.StaticKeyGeneratorLarge;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Exceptions;
 using WaveTech.Scutex.Model.Interfaces.Providers;
+using WaveTech.Scutex.Model.Interfaces.Services;
 using WaveTech.Scutex.Providers.AsymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.HashingProvider;
 using WaveTech.Scutex.Providers.SymmetricEncryptionProvider;
@@ -21,6 +22,8 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			protected IAsymmetricEncryptionProvider asymmetricEncryptionProvider;
 			protected ISymmetricEncryptionProvider symmetricEncryptionProvider;
 			protected IHashingProvider hashingProvider;
+
+			protected IHardwareFingerprintService _hardwareFingerprintService;
 
 			internal KeyGenerator largeKeyGenerator;
 			protected ClientLicense license;
@@ -381,6 +384,16 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				bool test = largeKeyGenerator.ValidateLicenseKey(key, license);
 
 				Assert.IsTrue(test);
+			}
+		}
+
+		[TestClass]
+		public class when_hardware_locking_a_key : with_the_large_static_key_generator
+		{
+			[TestMethod]
+			public void should_be_able_to_lock_a_key_to_a_fingerprint()
+			{
+				
 			}
 		}
 	}

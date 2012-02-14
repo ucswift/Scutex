@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Management;
 using WaveTech.Scutex.Model.Interfaces.Providers;
 using WaveTech.Scutex.Providers.WmiDataProvider.Properties;
@@ -21,7 +22,6 @@ namespace WaveTech.Scutex.Providers.WmiDataProvider
 		{
 			return GetBiosName() + GetBiosVersion();
 		}
-
 
 		public string GetCpuManufacturer()
 		{
@@ -95,7 +95,6 @@ namespace WaveTech.Scutex.Providers.WmiDataProvider
 			return cpuMan;
 		}
 
-
 		public string GetMotherboardManufacturer()
 		{
 			string cpuMan = String.Empty;
@@ -168,6 +167,33 @@ namespace WaveTech.Scutex.Providers.WmiDataProvider
 			return cpuMan;
 		}
 
+		public string GetPrimaryHardDriveSerial()
+		{
+			string serial = String.Empty;
+			var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
+
+			int i = 0;
+			foreach (ManagementObject wmi_HD in searcher.Get())
+			{
+				string trySerial = String.Empty;
+				try
+				{
+					if (wmi_HD["SerialNumber"] != null)
+						trySerial = wmi_HD["SerialNumber"].ToString();
+				}
+				catch { }
+
+				if (!string.IsNullOrEmpty(trySerial))
+				{
+					serial = trySerial;
+					break;
+				}
+
+				++i;
+			}
+
+			return serial;
+		}
 
 		public string GetBiosName()
 		{

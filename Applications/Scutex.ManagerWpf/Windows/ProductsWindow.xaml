@@ -30,11 +30,11 @@
 										<Grid.ColumnDefinitions>
 												<ColumnDefinition />
 										</Grid.ColumnDefinitions>
-				<dg:DataGrid x:Name="gridProducts" Grid.Row="0" ItemsSource="{Binding Source={StaticResource productsData}}">
-				</dg:DataGrid>
+											<dg:DataGrid x:Name="gridProducts" Grid.Row="0" ItemsSource="{Binding Source={StaticResource productsData}}">
+											</dg:DataGrid>
 
-										<!--<Ribbon:ButtonTool Grid.Row="1" x:Name="btnRemoveSelected" Caption="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click"  Foreground="RoyalBlue" /> -->
-										<Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />
+											<!--<Ribbon:ButtonTool Grid.Row="1" x:Name="btnRemoveSelected" Caption="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click"  Foreground="RoyalBlue" /> -->
+											<Button Grid.Row="1" x:Name="btnRemoveSelected" Margin="4,4,4,4" Content="Remove Selected" HorizontalAlignment="Right" Click="btnRemoveSelected_Click" />
 								</Grid>
 						</GroupBox>
 

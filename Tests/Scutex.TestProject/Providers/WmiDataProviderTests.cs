@@ -33,5 +33,14 @@ namespace WaveTech.Scutex.UnitTests.Providers
 
 			Assert.IsNotNull(data);			
 		}
+
+		[TestMethod]
+		public void GetPrimaryHardDriveSerial()
+		{
+			WmiDataProvider provider = new WmiDataProvider();
+			string data = provider.GetPrimaryHardDriveSerial();
+
+			Assert.IsNotNull(data);
+		}
 	}
 }

@@ -22,6 +22,11 @@
 			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
 
+		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" >
+			<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Text="   License Set\Edition:  " />
+			<TextBlock x:Name="lblTitle" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" />
+		</StackPanel>
+
 
 		<GroupBox Grid.Row="1" Grid.Column="0" Header="Product Features" Margin="4,4,4,4" Foreground="Black">
 			<Grid>
@@ -32,7 +37,7 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
-				<DataGrid Grid.Row="0" Grid.Column="0"  x:Name="gridProductFeatures" HorizontalAlignment="Stretch"
+				<DataGrid Grid.Row="0" Grid.Column="0"  x:Name="gridProductFeatures" HorizontalAlignment="Stretch" 
 									AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
 					<DataGrid.Columns>
 						<DataGridTextColumn
@@ -43,6 +48,11 @@
 			</Grid>
 		</GroupBox>
 
+		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Orientation="Vertical" >
+			<Button x:Name="btnAddFeature" VerticalAlignment="Center" HorizontalAlignment="Center" Content="->" FontWeight="Bold" Margin="0,0,0,4" Click="btnAddFeature_OnClick" />
+			<Button x:Name="btnRemoveFeature" VerticalAlignment="Center" HorizontalAlignment="Center" Content="&lt;-" FontWeight="Bold" Margin="0,4,0,0" Click="btnRemoveFeature_Click" />
+		</StackPanel>
+		
 		<GroupBox Grid.Row="1" Grid.Column="2" Header="Edition/Set Features" Margin="4,4,4,4" Foreground="Black">
 			<Grid>
 				<Grid.RowDefinitions>

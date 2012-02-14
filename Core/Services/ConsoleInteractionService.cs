@@ -37,7 +37,6 @@ namespace WaveTech.Scutex.Services
 		{
 			Console.WriteLine("===========================================");
 			Console.WriteLine("=                 SCUTEX                  =");
-			Console.WriteLine("=            COMMUNITY EDITION            =");
 			Console.WriteLine("===========================================");
 		}
 	}

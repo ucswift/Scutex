@@ -2,6 +2,6 @@
 {
 	public interface IHardwareFingerprintService
 	{
-		string GetHardwareFingerprint();
+		string GetHardwareFingerprint(FingerprintTypes type);
 	}
 }

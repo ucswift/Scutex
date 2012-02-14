@@ -37,7 +37,7 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
-				<DataGrid Grid.Row="0" Grid.Column="0"  x:Name="gridLocalServices" ItemsSource="{Binding Source={StaticResource allProductsLicensesAndSetsData}}" HorizontalAlignment="Stretch"
+				<DataGrid Grid.Row="0" Grid.Column="0"  x:Name="gridLocalServices" HorizontalAlignment="Stretch" ItemsSource="{Binding Source={StaticResource allProductsLicensesAndSetsData}}"
 									AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Extended" themes:DataGridHelper.HorizontalMouseWheelScrollingEnabled="True" VerticalAlignment="Stretch">
 					<DataGrid.Columns>
 						<DataGridTextColumn
