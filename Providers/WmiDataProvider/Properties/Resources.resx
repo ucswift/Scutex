@@ -129,6 +129,12 @@
   <data name="Wmi_Disk" xml:space="preserve">
     <value>Win32_DiskDrive</value>
   </data>
+  <data name="Wmi_HardDrive_Query" xml:space="preserve">
+    <value>SELECT * FROM Win32_PhysicalMedia</value>
+  </data>
+  <data name="Wmi_HardDrive_Serial" xml:space="preserve">
+    <value>SerialNumber</value>
+  </data>
   <data name="Wmi_Memory" xml:space="preserve">
     <value>Win32_MemoryDevice</value>
   </data>

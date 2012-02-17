@@ -97,6 +97,24 @@ namespace WaveTech.Scutex.Providers.WmiDataProvider.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM Win32_PhysicalMedia.
+        /// </summary>
+        internal static string Wmi_HardDrive_Query {
+            get {
+                return ResourceManager.GetString("Wmi_HardDrive_Query", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SerialNumber.
+        /// </summary>
+        internal static string Wmi_HardDrive_Serial {
+            get {
+                return ResourceManager.GetString("Wmi_HardDrive_Serial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Win32_MemoryDevice.
         /// </summary>
         internal static string Wmi_Memory {

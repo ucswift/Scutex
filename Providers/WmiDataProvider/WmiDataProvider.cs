@@ -170,7 +170,7 @@ namespace WaveTech.Scutex.Providers.WmiDataProvider
 		public string GetPrimaryHardDriveSerial()
 		{
 			string serial = String.Empty;
-			var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
+			var searcher = new ManagementObjectSearcher(Resources.Wmi_HardDrive_Query);
 
 			int i = 0;
 			foreach (ManagementObject wmi_HD in searcher.Get())
@@ -178,8 +178,8 @@ namespace WaveTech.Scutex.Providers.WmiDataProvider
 				string trySerial = String.Empty;
 				try
 				{
-					if (wmi_HD["SerialNumber"] != null)
-						trySerial = wmi_HD["SerialNumber"].ToString();
+					if (wmi_HD[Resources.Wmi_HardDrive_Serial] != null)
+						trySerial = wmi_HD[Resources.Wmi_HardDrive_Serial].ToString();
 				}
 				catch { }
 

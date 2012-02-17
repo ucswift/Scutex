@@ -19,18 +19,21 @@ namespace WaveTech.Scutex.Model
 		// Unused (Dynamic Keys)
 		Upgrade				= 5,		// Upgrade license
 		UseLimit			= 6,		// # of times the app may be used
-		TimeLimit			= 7,		// Total Clumative running time
+		TimeLimit = 7,				// Total Culmative running time
 		EndDate				= 8, 		// Max date (i.e. a beta period)
-		Unlock				= 9			// Activates/Unlocks for a set time period
+		Unlock				= 9,		// Activates/Unlocks for a set time period
+
+		// Used
+		HardwareLockLocal = 10 // Locks a key with a specific hardware fingerprint, does not talk to the server.
 
 		// WARNING: The maximum enumeration value is locked at 15! (F in Hex)
 	}
 
 	/// <summary>
 	/// Flag Enumeration of the possible license key types that can be used.
-	/// This enumeration applys for both static and dynamic licenses and is
-	/// used to track capiblities of license types to possible <see cref="LicenseKeyTypes"/>
-	/// tyeps.
+	/// This enumeration applies for both static and dynamic licenses and is
+	/// used to track capabilities of license types to possible <see cref="LicenseKeyTypes"/>
+	/// types.
 	/// </summary>
 	[Flags]
 	public enum LicenseKeyTypeFlag

@@ -61,6 +61,7 @@
 									<RadioButton x:Name="cboSingleUser" Content="Single User" Margin="4,4,4,4" />
 									<RadioButton x:Name="cboMultiUser" Content="Multi User" Margin="4,4,4,4" />
 									<RadioButton x:Name="cboHardwareLock" Content="Hardware Lock" Margin="4,4,4,4" />
+									<RadioButton x:Name="cboHardwareLockLocal" Content="Hardware Key" Margin="4,4,4,4" />
 									<RadioButton x:Name="cboUnlimited" Content="Unlimied" Margin="4,4,4,4" />
 									<RadioButton x:Name="cboEnterprise" Content="Enteprise" Margin="4,4,4,4" />
 								</WrapPanel>
@@ -68,7 +69,17 @@
 						</Grid>
 					</TabItem>
 					<TabItem Header="License Key Data">
-
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="35" />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<TextBlock Grid.Row="0" Text="Hardware Key Data:" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" />
+							<TextBox Grid.Row="1" x:Name="txtHardwareKeyData" VerticalAlignment="Center" />
+						</Grid>
 					</TabItem>
 				</TabControl>
 
