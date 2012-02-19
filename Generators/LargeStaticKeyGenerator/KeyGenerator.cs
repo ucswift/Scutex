@@ -76,7 +76,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			}
 			licenseKey = new string(licenseKeyArray);
 
-			// Obfuscate key license placeholders that are not cheksums
+			// Obfuscate key license placeholders that are not checksums
 			foreach (var p in placeholerLocations)
 			{
 				if (!p.Value.IsChecksum)
@@ -414,7 +414,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				                 		Length = 1,
 				                 		Token = Char.Parse("k"),
 				                 		Type = PlaceholderTypes.Number,
-				                 		Value = ((int) generationOptions.LicenseKeyType).ToString(),
+				                 		Value = ((int) generationOptions.LicenseKeyType).ToString("X"),
 				                 		IsChecksum = false,
 				                 		ValidationType = ValidationTypes.LicenseKeyType
 				                 	});
@@ -471,7 +471,12 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				ValidationType = ValidationTypes.Product
 			});
 
-			string payload = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X");
+			string payload = null;
+			if (generationOptions.LicenseKeyType == LicenseKeyTypes.HardwareLockLocal)
+				payload = hashingProvider.Checksum16(generationOptions.HardwareFingerprint).ToString("X");
+			else
+				payload = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X");
+
 			payload = payload.PadLeft(4, char.Parse("0"));
 
 			placeholders.Add(new LicensePlaceholder
@@ -506,7 +511,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 			//placeholders.Add(new LicensePlaceholder
 			//{
 			//  Length = 1,
-			//  Token = Char.Parse("e"),
+			//  Token = Char.Parse("s"),
 			//  Type = PlaceholderTypes.String,
 			//  Value = "0",
 			//  IsChecksum = false

@@ -71,6 +71,7 @@ namespace WaveTech.Scutex.Manager.Windows
 			cboUnlimited.IsChecked = false;
 			cboSingleUser.IsChecked = false;
 			cboHardwareLock.IsChecked = false;
+			cboHardwareLockLocal.IsChecked = false;
 			cboEnterprise.IsChecked = false;
 			cboMultiUser.IsChecked = false;
 
@@ -120,11 +121,15 @@ namespace WaveTech.Scutex.Manager.Windows
 				if (capibilities.SupportedLicenseKeyTypes.IsSet(LicenseKeyTypeFlag.HardwareLock))
 				{
 					cboHardwareLock.IsEnabled = true;
+					cboHardwareLockLocal.IsEnabled = true;
 				}
 				else
 				{
 					cboHardwareLock.IsChecked = false;
 					cboHardwareLock.IsEnabled = false;
+
+					cboHardwareLockLocal.IsChecked = false;
+					cboHardwareLockLocal.IsEnabled = false;
 				}
 
 				if (capibilities.SupportedLicenseKeyTypes.IsSet(LicenseKeyTypeFlag.Unlimited))
@@ -176,11 +181,15 @@ namespace WaveTech.Scutex.Manager.Windows
 				if (((LicenseSet)cboLicenseSet.SelectedValue).SupportedLicenseTypes.IsSet(LicenseKeyTypeFlag.HardwareLock))
 				{
 					cboHardwareLock.IsEnabled = true;
+					cboHardwareLockLocal.IsEnabled = true;
 				}
 				else
 				{
 					cboHardwareLock.IsChecked = false;
 					cboHardwareLock.IsEnabled = false;
+
+					cboHardwareLockLocal.IsChecked = false;
+					cboHardwareLockLocal.IsEnabled = false;
 				}
 
 				if (((LicenseSet)cboLicenseSet.SelectedValue).SupportedLicenseTypes.IsSet(LicenseKeyTypeFlag.Unlimited))
@@ -239,6 +248,10 @@ namespace WaveTech.Scutex.Manager.Windows
 			if (cboHardwareLock.IsChecked.HasValue && cboHardwareLock.IsChecked.Value)
 				selection++;
 
+			if (cboHardwareLock.IsChecked.HasValue && cboHardwareLock.IsChecked.Value)
+				if (string.IsNullOrEmpty(txtHardwareKeyData.Text))
+					return false;
+
 			if (cboUnlimited.IsChecked.HasValue && cboUnlimited.IsChecked.Value)
 				selection++;
 
@@ -272,6 +285,11 @@ namespace WaveTech.Scutex.Manager.Windows
 					licenseGenerationOptions.LicenseKeyType = LicenseKeyTypes.Unlimited;
 				else if (cboEnterprise.IsChecked.HasValue && cboEnterprise.IsChecked.Value)
 					licenseGenerationOptions.LicenseKeyType = LicenseKeyTypes.Enterprise;
+				else if (cboHardwareLockLocal.IsChecked.HasValue && cboHardwareLockLocal.IsChecked.Value)
+				{
+					licenseGenerationOptions.LicenseKeyType = LicenseKeyTypes.HardwareLockLocal;
+					licenseGenerationOptions.HardwareFingerprint = txtHardwareKeyData.Text;
+				}
 
 				worker.DoWork += delegate(object s, DoWorkEventArgs args)
 													{

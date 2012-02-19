@@ -18,15 +18,35 @@ namespace WaveTech.Scutex.Services
 
 		public string GetHardwareFingerprint(FingerprintTypes type)
 		{
-			switch (type)
+			string fingerprint = null;
+
+			try
 			{
-				case FingerprintTypes.Default:
-					return _wmiDataProvider.GetPrimaryHardDriveSerial();
-				case FingerprintTypes.HardDriveSerial:
-					return _wmiDataProvider.GetPrimaryHardDriveSerial();
-				default:
-					throw new ArgumentOutOfRangeException("type");
+					switch (type)
+					{
+						case FingerprintTypes.Default:
+							fingerprint = _wmiDataProvider.GetPrimaryHardDriveSerial();
+							break;
+						case FingerprintTypes.HardDriveSerial:
+							fingerprint = _wmiDataProvider.GetPrimaryHardDriveSerial();
+							break;
+						default:
+							throw new ArgumentOutOfRangeException("type");
+					}
 			}
+			catch { }
+
+			if (String.IsNullOrEmpty(fingerprint))
+			{
+				try
+				{
+					fingerprint = _wmiDataProvider.GetProcessorData();
+				}
+				catch { }
+				
+			}
+
+			return _hashingProvider.ComputeHash(fingerprint, "MD5");
 		}
 	}
 }

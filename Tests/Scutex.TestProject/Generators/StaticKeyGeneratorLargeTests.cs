@@ -48,6 +48,8 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				generationOptions.Add(new LicenseGenerationOptions());
 				generationOptions.Add(new LicenseGenerationOptions());
 				generationOptions.Add(new LicenseGenerationOptions());
+				generationOptions.Add(new LicenseGenerationOptions());
+				generationOptions.Add(new LicenseGenerationOptions());
 
 				license.UniqueId = Guid.NewGuid();
 				license.Product = new Product();
@@ -55,6 +57,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				license.Product.ProductId = 1;
 
 				license.LicenseSets = new NotifyList<LicenseSet>();
+				license.LicenseSets.Add(new LicenseSet());
 				license.LicenseSets.Add(new LicenseSet());
 				license.LicenseSets.Add(new LicenseSet());
 				license.LicenseSets.Add(new LicenseSet());
@@ -74,7 +77,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				license.LicenseSets[1].SupportedLicenseTypes |= LicenseKeyTypeFlag.MultiUser;
 				license.LicenseSets[1].SupportedLicenseTypes |= LicenseKeyTypeFlag.Unlimited;
 
-				license.LicenseSets[2].LicenseSetId = 2;
+				license.LicenseSets[2].LicenseSetId = 3;
 				license.LicenseSets[2].Name = "Enterprise Edition";
 				license.LicenseSets[2].MaxUsers = 5;
 				license.LicenseSets[2].SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
@@ -82,14 +85,37 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				license.LicenseSets[2].SupportedLicenseTypes |= LicenseKeyTypeFlag.Unlimited;
 				license.LicenseSets[2].SupportedLicenseTypes |= LicenseKeyTypeFlag.Enterprise;
 
-				license.LicenseSets[3].LicenseSetId = 2;
+				license.LicenseSets[3].LicenseSetId = 4;
 				license.LicenseSets[3].Name = "Upgrade Edition";
 				license.LicenseSets[3].MaxUsers = 0;
 				license.LicenseSets[3].IsUpgradeOnly = true;
 				license.LicenseSets[3].SupportedLicenseTypes = LicenseKeyTypeFlag.SingleUser;
 
+				license.LicenseSets[4].LicenseSetId = 5;
+				license.LicenseSets[4].Name = "Hardware Edition";
+				license.LicenseSets[4].MaxUsers = 0;
+				license.LicenseSets[4].IsUpgradeOnly = false;
+				license.LicenseSets[4].SupportedLicenseTypes = LicenseKeyTypeFlag.HardwareLock;
+
 				generationOptions[0].LicenseKeyType = LicenseKeyTypes.Enterprise;
 				generationOptions[0].LicenseSetId = 1;
+
+				generationOptions[1].LicenseKeyType = LicenseKeyTypes.Enterprise;
+				generationOptions[1].LicenseSetId = 2;
+
+				generationOptions[2].LicenseKeyType = LicenseKeyTypes.Enterprise;
+				generationOptions[2].LicenseSetId = 3;
+
+				generationOptions[3].LicenseKeyType = LicenseKeyTypes.Enterprise;
+				generationOptions[3].LicenseSetId = 4;
+
+				generationOptions[4].LicenseKeyType = LicenseKeyTypes.HardwareLock;
+				generationOptions[4].HardwareFingerprint = "JustATestFingerprint1050";
+				generationOptions[4].LicenseSetId = 5;
+
+				generationOptions[5].LicenseKeyType = LicenseKeyTypes.HardwareLockLocal;
+				generationOptions[5].HardwareFingerprint = "JustATestFingerprint1050";
+				generationOptions[5].LicenseSetId = 5;
 
 				string productHash = hashingProvider.Checksum32(license.GetLicenseProductIdentifier()).ToString("X");
 
@@ -388,12 +414,12 @@ namespace WaveTech.Scutex.UnitTests.Generators
 		}
 
 		[TestClass]
-		public class when_hardware_locking_a_key : with_the_large_static_key_generator
+		public class when_local_hardware_locking_a_key : with_the_large_static_key_generator
 		{
 			[TestMethod]
 			public void should_be_able_to_lock_a_key_to_a_fingerprint()
 			{
-				
+				string hardwareKey = largeKeyGenerator.GenerateLicenseKey("TEST", license, generationOptions[5]);
 			}
 		}
 	}
