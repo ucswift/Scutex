@@ -8,6 +8,7 @@ using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Exceptions;
 using WaveTech.Scutex.Model.Interfaces.Generators;
 using WaveTech.Scutex.Model.Interfaces.Providers;
+using WaveTech.Scutex.Model.Interfaces.Services;
 
 namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 {
@@ -17,17 +18,19 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		private readonly ISymmetricEncryptionProvider symmetricEncryptionProvider;
 		private readonly IAsymmetricEncryptionProvider asymmetricEncryptionProvider;
 		private readonly IHashingProvider hashingProvider;
+		private readonly IHardwareFingerprintService _fingerprintService;
 
 		internal static string licenseKeyTemplate = "xxkxv-xxaax-xsxxp-pppxl-xcccc";
 		#endregion Private Readonly Members
 
 		#region Constructor
 		public KeyGenerator(ISymmetricEncryptionProvider symmetricEncryptionProvider,
-			IAsymmetricEncryptionProvider asymmetricEncryptionProvider, IHashingProvider hashingProvider)
+			IAsymmetricEncryptionProvider asymmetricEncryptionProvider, IHashingProvider hashingProvider, IHardwareFingerprintService fingerprintService)
 		{
 			this.symmetricEncryptionProvider = symmetricEncryptionProvider;
 			this.asymmetricEncryptionProvider = asymmetricEncryptionProvider;
 			this.hashingProvider = hashingProvider;
+			_fingerprintService = fingerprintService;
 		}
 		#endregion Constructor
 
@@ -61,6 +64,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 						token = token + p.Value.Token;
 					}
 
+					
 					licenseKey = licenseKey.Replace(token, p.Value.Value);
 				}
 			}
@@ -224,7 +228,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 					{
 						case ValidationTypes.LicenseKeyType:
 							int licenseKeyTypeValue = 0;
-							bool licenseKeyTypeValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), out licenseKeyTypeValue);
+							bool licenseKeyTypeValueCheck = int.TryParse(decodedLicenseKey.Substring(p.Key, p.Value.Length), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out licenseKeyTypeValue);
 
 							// The LicenseKeyType value should be able to be converted to an int, else it is invalid
 							if (!licenseKeyTypeValueCheck)
@@ -237,7 +241,12 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 							// there was a valid LicenseKeyType enum value but no valid LicenseKeyTypeFlag value.
 							try
 							{
-								typeFlag = (LicenseKeyTypeFlag)Enum.Parse(typeof(LicenseKeyTypeFlag), ((LicenseKeyTypes)licenseKeyTypeValue).ToString(), true);
+								int type = licenseKeyTypeValue;
+
+								if (((LicenseKeyTypes)licenseKeyTypeValue) == LicenseKeyTypes.HardwareLockLocal)
+									type = (int) LicenseKeyTypes.HardwareLock;
+
+								typeFlag = (LicenseKeyTypeFlag)Enum.Parse(typeof(LicenseKeyTypeFlag), ((LicenseKeyTypes)type).ToString(), true);
 							}
 							catch (Exception)
 							{
@@ -296,6 +305,21 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
 
 							if (scutexLicense.Product.ProductId != productIdValue)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							break;
+						case ValidationTypes.Fingerprint:
+							string fingerPrint = hashingProvider.Checksum16(_fingerprintService.GetHardwareFingerprint(FingerprintTypes.Default)).ToString("X");
+
+							if (fingerPrint != p.Value.Value)
+								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							break;
+						case ValidationTypes.ProductIdentifier:
+							string prodId = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X");
+							prodId = prodId.PadLeft(4, char.Parse("0"));
+
+							if (prodId != p.Value.Value)
 								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
 
 							break;
@@ -406,6 +430,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		internal List<LicensePlaceholder> CreateLicensePlaceholders(LicenseBase scutexLicense, LicenseGenerationOptions generationOptions)
 		{
 			List<LicensePlaceholder> placeholders = new List<LicensePlaceholder>();
+			string payload = null;
 
 			if (generationOptions != null)
 			{
@@ -428,6 +453,19 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				                 		IsChecksum = false,
 				                 		ValidationType = ValidationTypes.LicenseSet
 				                 	});
+
+				if (generationOptions.LicenseKeyType == LicenseKeyTypes.HardwareLockLocal)
+				{
+					placeholders.Add(new LicensePlaceholder
+					                 	{
+					                 		Length = 4,
+					                 		Token = Char.Parse("p"),
+					                 		Type = PlaceholderTypes.String,
+															Value = hashingProvider.Checksum16(generationOptions.HardwareFingerprint).ToString("X"),
+					                 		IsChecksum = false,
+					                 		ValidationType = ValidationTypes.Fingerprint
+					                 	});
+				}
 			}
 			else
 			{
@@ -450,6 +488,19 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 					IsChecksum = false,
 					ValidationType = ValidationTypes.LicenseSet
 				});
+
+				payload = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X");
+				payload = payload.PadLeft(4, char.Parse("0"));
+
+				placeholders.Add(new LicensePlaceholder
+				{
+					Length = 4,
+					Token = Char.Parse("p"),
+					Type = PlaceholderTypes.String,
+					Value = payload,
+					IsChecksum = false,
+					ValidationType = ValidationTypes.ProductIdentifier
+				});
 			}
 
 			placeholders.Add(new LicensePlaceholder
@@ -469,24 +520,6 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 				Value = scutexLicense.Product.GetFormattedProductId(2),
 				IsChecksum = false,
 				ValidationType = ValidationTypes.Product
-			});
-
-			string payload = null;
-			if (generationOptions.LicenseKeyType == LicenseKeyTypes.HardwareLockLocal)
-				payload = hashingProvider.Checksum16(generationOptions.HardwareFingerprint).ToString("X");
-			else
-				payload = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X");
-
-			payload = payload.PadLeft(4, char.Parse("0"));
-
-			placeholders.Add(new LicensePlaceholder
-			{
-				Length = 4,
-				Token = Char.Parse("p"),
-				Type = PlaceholderTypes.String,
-				Value = payload,
-				IsChecksum = false,
-				ValidationType = ValidationTypes.None
 			});
 
 			placeholders.Add(new LicensePlaceholder

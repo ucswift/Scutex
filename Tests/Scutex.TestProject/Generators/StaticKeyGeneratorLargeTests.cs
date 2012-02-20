@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using WaveTech.Scutex.Generators.StaticKeyGeneratorLarge;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Exceptions;
@@ -11,6 +12,8 @@ using WaveTech.Scutex.Model.Interfaces.Services;
 using WaveTech.Scutex.Providers.AsymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.HashingProvider;
 using WaveTech.Scutex.Providers.SymmetricEncryptionProvider;
+using WaveTech.Scutex.Providers.WmiDataProvider;
+using WaveTech.Scutex.Services;
 
 namespace WaveTech.Scutex.UnitTests.Generators
 {
@@ -40,7 +43,12 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				symmetricEncryptionProvider = new SymmetricEncryptionProvider();
 				hashingProvider = new HashingProvider();
 
-				largeKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
+				var mock = new Mock<IHardwareFingerprintService>();
+				mock.Setup(foo => foo.GetHardwareFingerprint(FingerprintTypes.Default)).Returns("JustATestFingerprint1050");
+
+				_hardwareFingerprintService = new HardwareFingerprintService(new WmiDataProvider(), hashingProvider);
+
+				largeKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, mock.Object);
 
 				license = new ClientLicense();
 				generationOptions = new List<LicenseGenerationOptions>();
@@ -420,6 +428,15 @@ namespace WaveTech.Scutex.UnitTests.Generators
 			public void should_be_able_to_lock_a_key_to_a_fingerprint()
 			{
 				string hardwareKey = largeKeyGenerator.GenerateLicenseKey("TEST", license, generationOptions[5]);
+			}
+
+			[TestMethod]
+			public void should_be_able_to_verify_a_hardware_locked_key()
+			{
+				string hardwareKey = largeKeyGenerator.GenerateLicenseKey("TEST", license, generationOptions[5]);
+				bool isValid = largeKeyGenerator.ValidateLicenseKey(hardwareKey, license);
+
+				Assert.IsTrue(isValid);
 			}
 		}
 	}

@@ -38,11 +38,11 @@ namespace WaveTech.Scutex.Model
 	[Flags]
 	public enum LicenseKeyTypeFlag
 	{
-		None					= 0,		// Disabled
-		SingleUser		= 1,		// For a single user/install (Talks to License Server)
-		MultiUser			= 2,		// Multiple users/installs (Talks to License Server)
-		HardwareLock	= 4,		// Locks to a specific hardware profile (Talks to License Server)
-		Unlimited			= 8,		// Unlimited installs, with License Server (Talks to License Server)
-		Enterprise		= 16		// Unlimited installs, no License Server
+		None					= 0,			// Disabled
+		SingleUser		= 1,			// For a single user/install (Talks to License Server)
+		MultiUser			= 2,			// Multiple users/installs (Talks to License Server)
+		HardwareLock	= 4,			// Locks to a specific hardware profile (Talks to License Server)
+		Unlimited			= 8,			// Unlimited installs, with License Server (Talks to License Server)
+		Enterprise		= 16,			// Unlimited installs, no License Server
 	}
 }
