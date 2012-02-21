@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using WaveTech.Scutex.Framework;
+using WaveTech.Scutex.Licensing.Gui.Controls;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Exceptions;
 using WaveTech.Scutex.Model.Interfaces.Services;
@@ -48,6 +49,9 @@ namespace WaveTech.Scutex.Licensing.Gui
 				case KeyGeneratorTypes.StaticLarge:
 					txtLicenseKey.InputMask = @"wwwww-wwwww-wwwww-wwwww-wwwww";
 					break;
+				//default:
+				//  txtLicenseKey.InputMask = @"wwwww-wwwww-wwwww-wwwww-wwwww";
+				//  break;
 			}
 		}
 

@@ -10,12 +10,17 @@ namespace WaveTech.Scutex.Services
 		private readonly IWmiDataProvider _wmiDataProvider;
 		private readonly IHashingProvider _hashingProvider;
 
-		internal HardwareFingerprintService(IWmiDataProvider wmiDataProvider, IHashingProvider hashingProvider)
+		public HardwareFingerprintService(IWmiDataProvider wmiDataProvider, IHashingProvider hashingProvider)
 		{
 			_wmiDataProvider = wmiDataProvider;
 			_hashingProvider = hashingProvider;
 		}
 
+		/// <summary>
+		/// Returns the hardware fingerprint for the current system. Requires WMI enabled.
+		/// </summary>
+		/// <param name="type">Type of hardware to use in the Fingerprint</param>
+		/// <returns>Hardware Fingerprint as a String</returns>
 		public string GetHardwareFingerprint(FingerprintTypes type)
 		{
 			string fingerprint = null;

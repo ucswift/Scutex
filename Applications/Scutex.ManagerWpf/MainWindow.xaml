@@ -1,23 +1,22 @@
-﻿<Fluent:RibbonWindow
-		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
-		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-		xmlns:System="clr-namespace:System;assembly=mscorlib" 
-		x:Name="mainWindow" 
-		x:Class="WaveTech.Scutex.Manager.MainWindow"
-		xmlns:local="clr-namespace:WaveTech.Scutex.Manager"
-		xmlns:Classes="clr-namespace:WaveTech.Scutex.Manager.Classes" 
-		Title="Scutex Licensing Manager" 
-		WindowStartupLocation="CenterScreen"
-		MinWidth="800" 
-		MinHeight="580" 
-		Height="580" 
-		Width="800" 
-		ResizeMode="CanResizeWithGrip"
-		mc:Ignorable="d"
-		FlowDirection="LeftToRight">
+﻿<Fluent:RibbonWindow x:Class="WaveTech.Scutex.Manager.MainWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:Classes="clr-namespace:WaveTech.Scutex.Manager.Classes"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+                     xmlns:local="clr-namespace:WaveTech.Scutex.Manager"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:System="clr-namespace:System;assembly=mscorlib"
+                     x:Name="mainWindow"
+                     Title="Scutex Licensing Manager"
+                     Width="800"
+                     Height="580"
+                     MinWidth="800"
+                     MinHeight="580"
+                     FlowDirection="LeftToRight"
+                     ResizeMode="CanResizeWithGrip"
+                     WindowStartupLocation="CenterScreen"
+                     mc:Ignorable="d">
 	<Fluent:RibbonWindow.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -25,106 +24,279 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Fluent:RibbonWindow.Resources>
-	<Fluent:RibbonWindow.CommandBindings>
-		
-	</Fluent:RibbonWindow.CommandBindings>
+	<Fluent:RibbonWindow.CommandBindings />
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
-		<Fluent:Ribbon AutomaticStateManagement="True" x:Name="ribbon" SelectedTabChanged="ribbon_SelectedTabChanged" >
+		<Fluent:Ribbon x:Name="ribbon"
+		               AutomaticStateManagement="True"
+		               SelectedTabChanged="ribbon_SelectedTabChanged">
 			<Fluent:Ribbon.ContextualGroups>
-				<Fluent:RibbonContextualTabGroup x:Name="projectTabGroup" BorderBrush="Green" Background="Lime" Header="Projects" Visibility="Collapsed"/>
+				<Fluent:RibbonContextualTabGroup x:Name="projectTabGroup"
+				                                 Background="Lime"
+				                                 BorderBrush="Green"
+				                                 Header="Projects"
+				                                 Visibility="Collapsed" />
 			</Fluent:Ribbon.ContextualGroups>
 
 			<Fluent:Ribbon.Menu>
 				<Fluent:Backstage Background="SteelBlue">
-					<!-- CornflowerBlue or DarkSlateBlue or MidnightBlue -->
+					<!--  CornflowerBlue or DarkSlateBlue or MidnightBlue  -->
 					<Fluent:BackstageTabControl>
-						<Fluent:Button Header="New" Icon="img\New.png" Fluent:KeyTip.Keys="S" Command="{x:Static local:Commands.NewCommand}"/>
-						<Fluent:Button Header="Open" Icon="img\open.png" Fluent:KeyTip.Keys="S" Command="{x:Static local:Commands.OpenCommand}"/>
-						<Fluent:Button Header="Save" Icon="img\Save.png" Fluent:KeyTip.Keys="S" Command="{x:Static local:Commands.SaveCommand}"/>
-						<Fluent:Button Header="Close" Icon="img\close.png" Fluent:KeyTip.Keys="S" Command="{x:Static local:Commands.CloseProjectCommand}"/>
-						<Fluent:BackstageTabItem Header="Recent" Fluent:KeyTip.Keys="R">
-							<TabControl Margin="20,5,20,5" x:Name="recentProjects" Style="{DynamicResource InnerBackstageTabControlStyle}">
-								<Fluent:SeparatorTabItem Header="Recent Projects"/>
+						<Fluent:Button Command="{x:Static local:Commands.NewCommand}"
+						               Fluent:KeyTip.Keys="S"
+						               Header="New"
+						               Icon="img\New.png" />
+						<Fluent:Button Command="{x:Static local:Commands.OpenCommand}"
+						               Fluent:KeyTip.Keys="S"
+						               Header="Open"
+						               Icon="img\open.png" />
+						<Fluent:Button Command="{x:Static local:Commands.SaveCommand}"
+						               Fluent:KeyTip.Keys="S"
+						               Header="Save"
+						               Icon="img\Save.png" />
+						<Fluent:Button Command="{x:Static local:Commands.CloseProjectCommand}"
+						               Fluent:KeyTip.Keys="S"
+						               Header="Close"
+						               Icon="img\close.png" />
+						<Fluent:BackstageTabItem Fluent:KeyTip.Keys="R" Header="Recent">
+							<TabControl x:Name="recentProjects"
+							            Margin="20,5,20,5"
+							            Style="{DynamicResource InnerBackstageTabControlStyle}">
+								<Fluent:SeparatorTabItem Header="Recent Projects" />
 							</TabControl>
 						</Fluent:BackstageTabItem>
-						<Fluent:Button Header="Exit" Icon="img\Exit.png" Fluent:KeyTip.Keys="X" Click="btnMenuExit_Click"/>
+						<Fluent:Button Click="btnMenuExit_Click"
+						               Fluent:KeyTip.Keys="X"
+						               Header="Exit"
+						               Icon="img\Exit.png" />
 					</Fluent:BackstageTabControl>
 				</Fluent:Backstage>
 			</Fluent:Ribbon.Menu>
 
 			<Fluent:Ribbon.ToolBarItems>
-				<Fluent:Button Size="Small" Icon="img/Help.png" Command="{x:Static local:Commands.HelpCommand}">
-				</Fluent:Button>
+				<Fluent:Button Command="{x:Static local:Commands.HelpCommand}"
+				               Icon="img/Help.png"
+				               Size="Small" />
 			</Fluent:Ribbon.ToolBarItems>
 
-			<Fluent:Ribbon.QuickAccessItems>
-				
-			</Fluent:Ribbon.QuickAccessItems>
+			<Fluent:Ribbon.QuickAccessItems />
 
-			<Fluent:RibbonTabItem x:Name="homeTabItem" Header="Home" Fluent:KeyTip.Keys="H" ToolTip="General Commands" ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)">
-					<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="Clipboard" Header="Home" IsLauncherVisible="True" LauncherKeys="ZB">
-					<Fluent:Button x:Name="newButton" Fluent:KeyTip.Keys="C" Header="New Project" LargeIcon="img\new-large.png" Command="{x:Static local:Commands.NewCommand}"/>
-					<Fluent:Button x:Name="openButton" Fluent:KeyTip.Keys="C" Header="Open Project" LargeIcon="img\open-large.png" Command="{x:Static local:Commands.OpenCommand}"/>
-					<!--<Fluent:Button x:Name="saveButton" Fluent:KeyTip.Keys="C" Header="Save Project" LargeIcon="img\save-large.png" Command="{x:Static local:Commands.SaveCommand}"/>
-					<Fluent:Button x:Name="closeButton" Fluent:KeyTip.Keys="C" Header="Close Project" LargeIcon="img\close-large.png" Command="{x:Static local:Commands.CloseProjectCommand}"/>-->
+			<Fluent:RibbonTabItem x:Name="homeTabItem"
+			                      Fluent:KeyTip.Keys="H"
+			                      Header="Home"
+			                      ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)"
+			                      ToolTip="General Commands">
+				<Fluent:RibbonGroupBox x:Name="Clipboard"
+				                       Fluent:KeyTip.Keys="C"
+				                       Header="Home"
+				                       Icon=""
+				                       IsLauncherVisible="True"
+				                       LauncherKeys="ZB">
+					<Fluent:Button x:Name="newButton"
+					               Command="{x:Static local:Commands.NewCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="New Project"
+					               LargeIcon="img\new-large.png" />
+					<Fluent:Button x:Name="openButton"
+					               Command="{x:Static local:Commands.OpenCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Open Project"
+					               LargeIcon="img\open-large.png" />
+					<!--
+						<Fluent:Button x:Name="saveButton" Fluent:KeyTip.Keys="C" Header="Save Project" LargeIcon="img\save-large.png" Command="{x:Static local:Commands.SaveCommand}"/>
+						<Fluent:Button x:Name="closeButton" Fluent:KeyTip.Keys="C" Header="Close Project" LargeIcon="img\close-large.png" Command="{x:Static local:Commands.CloseProjectCommand}"/>
+					-->
 				</Fluent:RibbonGroupBox>
-				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="Help" Header="Help" IsLauncherVisible="True" LauncherKeys="ZB">
-					<Fluent:Button x:Name="helpButton" Fluent:KeyTip.Keys="C" Header="Help" LargeIcon="img\help-48x48.png" Command="{x:Static local:Commands.HelpCommand}"/>
-					<Fluent:Button x:Name="homepageButton" Fluent:KeyTip.Keys="C" Header="Homepage" LargeIcon="img\home-next-48x48.png" Command="{x:Static local:Commands.HomeCommand}"/>
-					<Fluent:Button x:Name="aboutButton" Fluent:KeyTip.Keys="C" Header="About" LargeIcon="img\About_32.png" Command="{x:Static local:Commands.AboutCommand}"/>
+				<Fluent:RibbonGroupBox x:Name="Help"
+				                       Fluent:KeyTip.Keys="C"
+				                       Header="Help"
+				                       Icon=""
+				                       IsLauncherVisible="True"
+				                       LauncherKeys="ZB">
+					<Fluent:Button x:Name="helpButton"
+					               Command="{x:Static local:Commands.HelpCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Help"
+					               LargeIcon="img\help-48x48.png" />
+					<Fluent:Button x:Name="homepageButton"
+					               Command="{x:Static local:Commands.HomeCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Homepage"
+					               LargeIcon="img\home-next-48x48.png" />
+					<Fluent:Button x:Name="aboutButton"
+					               Command="{x:Static local:Commands.AboutCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="About"
+					               LargeIcon="img\About_32.png" />
 				</Fluent:RibbonGroupBox>
 			</Fluent:RibbonTabItem>
 
-			<Fluent:RibbonTabItem   x:Name="productsTabItem" Header="Products" Fluent:KeyTip.Keys="H" ToolTip="Regular Tool Tip" 	ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)">
-				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="ProductsGroup" Header="Products" IsLauncherVisible="True" LauncherKeys="ZB">
-					<Fluent:Button x:Name="newProductButton" Fluent:KeyTip.Keys="C" Header="New Product" LargeIcon="img\application_add.png" Command="{x:Static local:Commands.NewProductsCommand}"/>
-					<Fluent:Button x:Name="updateProductButton" Fluent:KeyTip.Keys="C" Header="Update Product" LargeIcon="img\application_edit.png" Command="{x:Static local:Commands.EditProductCommand}"/>
-					<Fluent:Button x:Name="removeProductButton" Fluent:KeyTip.Keys="C" Header="Remove Product" LargeIcon="img\application_remove.png" Command="{x:Static local:Commands.RemoveProductCommand}"/>
-					<Fluent:Button x:Name="featuresProductButton" Fluent:KeyTip.Keys="C" Header="Product Features" LargeIcon="img\application_lock.png" Command="{x:Static local:Commands.ProductFeaturesCommand}"/>
+			<Fluent:RibbonTabItem x:Name="productsTabItem"
+			                      Fluent:KeyTip.Keys="H"
+			                      Header="Products"
+			                      ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)"
+			                      ToolTip="Regular Tool Tip">
+				<Fluent:RibbonGroupBox x:Name="ProductsGroup"
+				                       Fluent:KeyTip.Keys="C"
+				                       Header="Products"
+				                       Icon=""
+				                       IsLauncherVisible="True"
+				                       LauncherKeys="ZB">
+					<Fluent:Button x:Name="newProductButton"
+					               Command="{x:Static local:Commands.NewProductsCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="New Product"
+					               LargeIcon="img\application_add.png" />
+					<Fluent:Button x:Name="updateProductButton"
+					               Command="{x:Static local:Commands.EditProductCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Update Product"
+					               LargeIcon="img\application_edit.png" />
+					<Fluent:Button x:Name="removeProductButton"
+					               Command="{x:Static local:Commands.RemoveProductCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Remove Product"
+					               LargeIcon="img\application_remove.png" />
+					<Fluent:Button x:Name="featuresProductButton"
+					               Command="{x:Static local:Commands.ProductFeaturesCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Product Features"
+					               LargeIcon="img\application_lock.png" />
 				</Fluent:RibbonGroupBox>
 			</Fluent:RibbonTabItem>
 
-			<Fluent:RibbonTabItem   x:Name="servicesTabItem" Header="Services" Fluent:KeyTip.Keys="H" ToolTip="Regular Tool Tip" 	ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)">
-				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="ServicesGroup" Header="General" IsLauncherVisible="True" LauncherKeys="ZB">
-					<Fluent:Button x:Name="newServiceButton" Fluent:KeyTip.Keys="C" Header="New Service" LargeIcon="img/add-server-icon-48x48.png" Command="{x:Static local:Commands.NewServiceCommand}"/>
-					<Fluent:Button x:Name="removeServiceButton" Fluent:KeyTip.Keys="C" Header="Remove Service" LargeIcon="img/remove-server-icon-48x48.png" Command="{x:Static local:Commands.RemoveServiceCommand}"/>
-					<Fluent:Button x:Name="updateServiceButton" Fluent:KeyTip.Keys="C" Header="Update Service" LargeIcon="img/update-server-icon.png" Command="{x:Static local:Commands.UpdateServiceCommand}"/>
-					<Fluent:Button x:Name="initializeServiceButton" Fluent:KeyTip.Keys="C" Header="Initialize Service" LargeIcon="img/initialize-server-icon.png" Command="{x:Static local:Commands.InitializeServiceCommand}"/>
+			<Fluent:RibbonTabItem x:Name="servicesTabItem"
+			                      Fluent:KeyTip.Keys="H"
+			                      Header="Services"
+			                      ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)"
+			                      ToolTip="Regular Tool Tip">
+				<Fluent:RibbonGroupBox x:Name="ServicesGroup"
+				                       Fluent:KeyTip.Keys="C"
+				                       Header="General"
+				                       Icon=""
+				                       IsLauncherVisible="True"
+				                       LauncherKeys="ZB">
+					<Fluent:Button x:Name="newServiceButton"
+					               Command="{x:Static local:Commands.NewServiceCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="New Service"
+					               LargeIcon="img/add-server-icon-48x48.png" />
+					<Fluent:Button x:Name="removeServiceButton"
+					               Command="{x:Static local:Commands.RemoveServiceCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Remove Service"
+					               LargeIcon="img/remove-server-icon-48x48.png" />
+					<Fluent:Button x:Name="updateServiceButton"
+					               Command="{x:Static local:Commands.UpdateServiceCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Update Service"
+					               LargeIcon="img/update-server-icon.png" />
+					<Fluent:Button x:Name="initializeServiceButton"
+					               Command="{x:Static local:Commands.InitializeServiceCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Initialize Service"
+					               LargeIcon="img/initialize-server-icon.png" />
 				</Fluent:RibbonGroupBox>
-				<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="ServicesMgmtGroup" Header="Management" IsLauncherVisible="True" LauncherKeys="ZB">
-					<Fluent:Button x:Name="uploadProductsButton" Fluent:KeyTip.Keys="C" Header="Upload Products" LargeIcon="img/upload-server-icon-48x48.png" Command="{x:Static local:Commands.UploadProductCommand}"/>
-					<Fluent:Button x:Name="uploadKeysButton" Fluent:KeyTip.Keys="C" Header="Upload Keys" LargeIcon="img/upload-server-icon-48x48.png" Command="{x:Static local:Commands.UploadKeysCommand}"/>
-					<Fluent:Button x:Name="downloadLogsButton" Fluent:KeyTip.Keys="C" Header="Download Logs" LargeIcon="img/download-server-icon-48x48.png" Command="{x:Static local:Commands.DownloadLogsCommand}"/>
+				<Fluent:RibbonGroupBox x:Name="ServicesMgmtGroup"
+				                       Fluent:KeyTip.Keys="C"
+				                       Header="Management"
+				                       Icon=""
+				                       IsLauncherVisible="True"
+				                       LauncherKeys="ZB">
+					<Fluent:Button x:Name="uploadProductsButton"
+					               Command="{x:Static local:Commands.UploadProductCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Upload Products"
+					               LargeIcon="img/upload-server-icon-48x48.png" />
+					<Fluent:Button x:Name="uploadKeysButton"
+					               Command="{x:Static local:Commands.UploadKeysCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Upload Keys"
+					               LargeIcon="img/upload-server-icon-48x48.png" />
+					<Fluent:Button x:Name="downloadLogsButton"
+					               Command="{x:Static local:Commands.DownloadLogsCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Download Logs"
+					               LargeIcon="img/download-server-icon-48x48.png" />
 				</Fluent:RibbonGroupBox>
 			</Fluent:RibbonTabItem>
 
-			<Fluent:RibbonTabItem   x:Name="projectTabItem" Header="Project" Fluent:KeyTip.Keys="H" ToolTip="Regular Tool Tip" Group="{Binding ElementName=projectTabGroup, Mode=OneWay}" 	ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)">
-					<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="projectHomeGroup" Header="Project" IsLauncherVisible="True" LauncherKeys="ZB">
-						<Fluent:Button x:Name="newProjectButton" Fluent:KeyTip.Keys="C" Header="New Project" LargeIcon="img\new-large.png" Command="{x:Static local:Commands.NewCommand}"/>
-						<Fluent:Button x:Name="openProjectButton" Fluent:KeyTip.Keys="C" Header="Open Project" LargeIcon="img\open-large.png" Command="{x:Static local:Commands.OpenCommand}"/>
-						<Fluent:Button x:Name="saveProjectButton" Fluent:KeyTip.Keys="C" Header="Save Project" LargeIcon="img\save-large.png" Command="{x:Static local:Commands.SaveCommand}"/>
-						<Fluent:Button x:Name="closeProjectButton" Fluent:KeyTip.Keys="C" Header="Close Project" LargeIcon="img\close-large.png" Command="{x:Static local:Commands.CloseProjectCommand}"/>
-					</Fluent:RibbonGroupBox>
-					<Fluent:RibbonGroupBox Icon="" Fluent:KeyTip.Keys="C" x:Name="settingsProjectGroup" Header="Settings" IsLauncherVisible="True" LauncherKeys="ZB">
-						<Fluent:Button x:Name="generateKeysButton" Fluent:KeyTip.Keys="C" Header="Generate Keys" LargeIcon="img\window_lock.png" Command="{x:Static local:Commands.GenerateKeysCommand}"/>
-						<Fluent:Button x:Name="softwareCodeButton" Fluent:KeyTip.Keys="C" Header="Software Code" LargeIcon="img\window_edit.png" Command="{x:Static local:Commands.SoftwareCodeCommand}"/>
-						<Fluent:Button x:Name="testDemoButton" Fluent:KeyTip.Keys="C" Header="Test Demo" LargeIcon="img\computer.png" Command="{x:Static local:Commands.DemoCommand}"/>
-						<Fluent:Button x:Name="validateButton" Fluent:KeyTip.Keys="C" Header="Validate Project" LargeIcon="img\blog_post_accept.png" Command="{x:Static local:Commands.ValidateProjectCommand}"/>
-					</Fluent:RibbonGroupBox>
+			<Fluent:RibbonTabItem x:Name="projectTabItem"
+			                      Fluent:KeyTip.Keys="H"
+			                      Group="{Binding ElementName=projectTabGroup,
+			                                      Mode=OneWay}"
+			                      Header="Project"
+			                      ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)"
+			                      ToolTip="Regular Tool Tip">
+				<Fluent:RibbonGroupBox x:Name="projectHomeGroup"
+				                       Fluent:KeyTip.Keys="C"
+				                       Header="Project"
+				                       Icon=""
+				                       IsLauncherVisible="True"
+				                       LauncherKeys="ZB">
+					<Fluent:Button x:Name="newProjectButton"
+					               Command="{x:Static local:Commands.NewCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="New Project"
+					               LargeIcon="img\new-large.png" />
+					<Fluent:Button x:Name="openProjectButton"
+					               Command="{x:Static local:Commands.OpenCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Open Project"
+					               LargeIcon="img\open-large.png" />
+					<Fluent:Button x:Name="saveProjectButton"
+					               Command="{x:Static local:Commands.SaveCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Save Project"
+					               LargeIcon="img\save-large.png" />
+					<Fluent:Button x:Name="closeProjectButton"
+					               Command="{x:Static local:Commands.CloseProjectCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Close Project"
+					               LargeIcon="img\close-large.png" />
+				</Fluent:RibbonGroupBox>
+				<Fluent:RibbonGroupBox x:Name="settingsProjectGroup"
+				                       Fluent:KeyTip.Keys="C"
+				                       Header="Settings"
+				                       Icon=""
+				                       IsLauncherVisible="True"
+				                       LauncherKeys="ZB">
+					<Fluent:Button x:Name="generateKeysButton"
+					               Command="{x:Static local:Commands.GenerateKeysCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Generate Keys"
+					               LargeIcon="img\window_lock.png" />
+					<Fluent:Button x:Name="softwareCodeButton"
+					               Command="{x:Static local:Commands.SoftwareCodeCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Software Code"
+					               LargeIcon="img\window_edit.png" />
+					<Fluent:Button x:Name="testDemoButton"
+					               Command="{x:Static local:Commands.DemoCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Test Demo"
+					               LargeIcon="img\computer.png" />
+					<Fluent:Button x:Name="validateButton"
+					               Command="{x:Static local:Commands.ValidateProjectCommand}"
+					               Fluent:KeyTip.Keys="C"
+					               Header="Validate Project"
+					               LargeIcon="img\blog_post_accept.png" />
+				</Fluent:RibbonGroupBox>
 			</Fluent:RibbonTabItem>
 
 		</Fluent:Ribbon>
 
-		<Classes:XamRibbonLocalizationRoot x:Name="root" Padding="10 10 10 25" Grid.Row="1" />
+		<Classes:XamRibbonLocalizationRoot x:Name="root"
+		                                   Grid.Row="1"
+		                                   Padding="10 10 10 25" />
 
-		<Fluent:StatusBar HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1">
-
-		</Fluent:StatusBar>
+		<Fluent:StatusBar Grid.Row="1"
+		                  HorizontalAlignment="Stretch"
+		                  VerticalAlignment="Bottom" />
 	</Grid>
 
 </Fluent:RibbonWindow>

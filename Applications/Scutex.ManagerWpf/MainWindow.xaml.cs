@@ -23,7 +23,7 @@ using License = WaveTech.Scutex.Model.License;
 namespace WaveTech.Scutex.Manager
 {
 	/// <summary>
-	/// Interaction logic for MainWindow2.xaml
+	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow : RibbonWindow
 	{
@@ -142,6 +142,8 @@ namespace WaveTech.Scutex.Manager
 				{
 					TabItem tb = new TabItem();
 					tb.Header = license.Name;
+					tb.Name = string.Format("License_{0}", license.LicenseId.ToString());
+					tb.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(b_MouseDoubleClick);
 
 					Grid g = new Grid();
 					g.RowDefinitions.Add(new RowDefinition{ Height = new GridLength(1, GridUnitType.Auto) });
@@ -214,6 +216,17 @@ namespace WaveTech.Scutex.Manager
 		void btn_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			System.Windows.Controls.Button button = sender as System.Windows.Controls.Button;
+
+			int id = int.Parse(button.Name.Replace("License_", ""));
+
+			ILicenseService licenseService = ObjectLocator.GetInstance<ILicenseService>();
+			UIContext.License = licenseService.GetLicenseById(id);
+			Initalize();
+		}
+
+		private void b_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			System.Windows.Controls.TabItem button = sender as System.Windows.Controls.TabItem;
 
 			int id = int.Parse(button.Name.Replace("License_", ""));
 

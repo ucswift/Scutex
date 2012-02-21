@@ -280,7 +280,7 @@ namespace WaveTech.Scutex.Manager.Forms
 					return;
 				}
 
-				if (((KeyGeneratorTypes)cboLicenseKeyType.SelectedItem) == KeyGeneratorTypes.StaticSmall && License.LicenseSets.Count > 1)
+				if (((KeyGeneratorTypes)cboLicenseKeyType.SelectedItem) == KeyGeneratorTypes.StaticSmall && License.LicenseSets.Count >= 1)
 				{
 					MessageBox.Show("The Small Static Key Generator only supports a maximum of 1 license set.");
 					return;
