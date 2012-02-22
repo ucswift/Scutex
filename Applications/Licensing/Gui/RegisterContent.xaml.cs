@@ -33,6 +33,8 @@ namespace WaveTech.Scutex.Licensing.Gui
 
 			_licenseKeyService = ObjectLocator.GetInstance<ILicenseKeyService>();
 			_registerService = ObjectLocator.GetInstance<IRegisterService>();
+
+
 		}
 
 		public RegisterContent(ClientLicense clientLicense, ScutexLicense scutexLicense)
@@ -41,17 +43,17 @@ namespace WaveTech.Scutex.Licensing.Gui
 			_clientLicense = clientLicense;
 			_scutexLicense = scutexLicense;
 
-			switch (_clientLicense.KeyGeneratorType)
+			if (_clientLicense != null)
 			{
-				case KeyGeneratorTypes.StaticSmall:
-					txtLicenseKey.InputMask = @"www-wwwwww-wwww";
-					break;
-				case KeyGeneratorTypes.StaticLarge:
-					txtLicenseKey.InputMask = @"wwwww-wwwww-wwwww-wwwww-wwwww";
-					break;
-				//default:
-				//  txtLicenseKey.InputMask = @"wwwww-wwwww-wwwww-wwwww-wwwww";
-				//  break;
+				switch (_clientLicense.KeyGeneratorType)
+				{
+					case KeyGeneratorTypes.StaticSmall:
+						txtLicenseKey.InputMask = @"www-wwwwww-wwww";
+						break;
+					case KeyGeneratorTypes.StaticLarge:
+						txtLicenseKey.InputMask = @"WWWWW-WWWWW-WWWWW-WWWWW-WWWWW";
+						break;
+				}
 			}
 		}
 

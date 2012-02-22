@@ -96,8 +96,12 @@ namespace WaveTech.Scutex.Licensing
 		/// </param>
 		public LicensingManager(object instance, LicensingManagerOptions options)
 		{
-			_options = options;
-			_killOnError = _options.KillOnError;
+			if (options != null)
+			{
+				_options = options;
+				_killOnError = _options.KillOnError;
+			}
+
 			this.instance = instance;
 
 			Bootstrapper.Configure();
