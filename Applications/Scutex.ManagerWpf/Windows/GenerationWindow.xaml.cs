@@ -48,6 +48,9 @@ namespace WaveTech.Scutex.Manager.Windows
 
 			WindowHelper.CheckAndApplyTheme(this);
 
+			txtHardwareKeyData.IsEnabled = false;
+			txtHardwareKeyData.Text = null;
+
 			SetLicenseCapibilites();
 		}
 
@@ -74,6 +77,9 @@ namespace WaveTech.Scutex.Manager.Windows
 			cboHardwareLockLocal.IsChecked = false;
 			cboEnterprise.IsChecked = false;
 			cboMultiUser.IsChecked = false;
+
+			txtHardwareKeyData.IsEnabled = true;
+			txtHardwareKeyData.Text = null;
 
 			LicenseKeys = new BindingList<string>();
 			lstLicenseKeys.ItemsSource = LicenseKeys;
@@ -248,9 +254,9 @@ namespace WaveTech.Scutex.Manager.Windows
 			if (cboHardwareLock.IsChecked.HasValue && cboHardwareLock.IsChecked.Value)
 				selection++;
 
-			if (cboHardwareLock.IsChecked.HasValue && cboHardwareLock.IsChecked.Value)
-				if (string.IsNullOrEmpty(txtHardwareKeyData.Text))
-					return false;
+			if (cboHardwareLockLocal.IsChecked.HasValue && cboHardwareLockLocal.IsChecked.Value)
+				if (!string.IsNullOrEmpty(txtHardwareKeyData.Text))
+					selection++;
 
 			if (cboUnlimited.IsChecked.HasValue && cboUnlimited.IsChecked.Value)
 				selection++;
@@ -275,6 +281,8 @@ namespace WaveTech.Scutex.Manager.Windows
 				BackgroundWorker worker = new BackgroundWorker();
 				LicenseGenerationOptions licenseGenerationOptions = new LicenseGenerationOptions();
 
+				int keysToGenerate = int.Parse(txtKeysToGenerate.Text);
+
 				if (cboSingleUser.IsChecked.HasValue && cboSingleUser.IsChecked.Value)
 					licenseGenerationOptions.LicenseKeyType = LicenseKeyTypes.SingleUser;
 				else if (cboMultiUser.IsChecked.HasValue && cboMultiUser.IsChecked.Value)
@@ -289,6 +297,7 @@ namespace WaveTech.Scutex.Manager.Windows
 				{
 					licenseGenerationOptions.LicenseKeyType = LicenseKeyTypes.HardwareLockLocal;
 					licenseGenerationOptions.HardwareFingerprint = txtHardwareKeyData.Text;
+					keysToGenerate = 1;	// Can only generate 1 local hardware locked key at a time.
 				}
 
 				worker.DoWork += delegate(object s, DoWorkEventArgs args)
@@ -316,10 +325,11 @@ namespace WaveTech.Scutex.Manager.Windows
 																				loadingAnimation.Visibility = Visibility.Collapsed;
 																			};
 
+
 				worker.RunWorkerAsync(new object[]
 				                      	{
 				                      		licenseGenerationOptions,
-				                      		txtKeysToGenerate.Text,
+				                      		keysToGenerate,
 				                      		GetGeneratorName()
 				                      	});
 			}
@@ -381,6 +391,20 @@ namespace WaveTech.Scutex.Manager.Windows
 		private void cboLicenseSet_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
 			SetLicenseSetCapibilites();
+		}
+
+		private void cboHardwareLockLocal_Checked(object sender, RoutedEventArgs e)
+		{
+			txtHardwareKeyData.IsEnabled = true;
+			txtKeysToGenerate.Text = "1";
+			txtKeysToGenerate.IsEditable = false;
+		}
+
+		private void cboHardwareLockLocal_Unchecked(object sender, RoutedEventArgs e)
+		{
+			txtHardwareKeyData.Text = null;
+			txtHardwareKeyData.IsEnabled = false;
+			txtKeysToGenerate.IsEditable = true;
 		}
 		#endregion Event Handlers
 	}

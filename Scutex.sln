@@ -242,6 +242,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FluentRibbon", "FluentRibbo
 		References\FluentRibbon\Fluent.dll = References\FluentRibbon\Fluent.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scutex.FingerprintViewer", "Applications\Scutex.FingerprintViewer\Scutex.FingerprintViewer.csproj", "{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Scutex.vsmdi
@@ -658,6 +660,16 @@ Global
 		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4A48BE20-C60F-494F-8B76-D8D6EBB3AF18}.Release|x86.ActiveCfg = Release|Any CPU
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Debug|x86.ActiveCfg = Debug|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Debug|x86.Build.0 = Debug|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Release|Any CPU.ActiveCfg = Release|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Release|x86.ActiveCfg = Release|x86
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -698,6 +710,7 @@ Global
 		{8D73AF40-9401-48BB-839D-C7EDDEFF8E7C} = {DF85AC73-7E4F-43B0-8F97-D2B22667BC44}
 		{4D87B735-AAAE-415B-9632-191244D295C0} = {DF85AC73-7E4F-43B0-8F97-D2B22667BC44}
 		{7C126B34-3826-46B2-9F82-A688824DEE4E} = {DF85AC73-7E4F-43B0-8F97-D2B22667BC44}
+		{5C840246-A8A6-41A6-999B-FDE0ED0C6C1E} = {DF85AC73-7E4F-43B0-8F97-D2B22667BC44}
 		{81D2FD11-681F-4EE5-AF03-9243E2CA804E} = {CCAF1D8A-EF08-4A8F-8A4F-7222156C8E4E}
 		{58D27055-380F-4C72-844F-3D9D48CC9D5F} = {C9A4A047-0034-4F27-8431-0D07FC6D1EF0}
 		{61ED9CC2-E40A-4DAE-B591-4576222B686E} = {C9A4A047-0034-4F27-8431-0D07FC6D1EF0}

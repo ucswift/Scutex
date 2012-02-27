@@ -19,6 +19,7 @@ namespace WaveTech.Scutex.Licensing
 						scanner.AddRegistry(new FrameworkRegistry());
 						scanner.AddRegistry(new ServicesRegistry());
 						scanner.AddRegistry(new GeneratorRegistry());
+						scanner.AddRegistry(new Generators.StaticKeyGeneratorLarge.GeneratorRegistry());
 						scanner.AddRegistry(new Providers.AsymmetricEncryptionProvider.ProviderRegistry());
 						scanner.AddRegistry(new Providers.CompressionProvider.ProviderRegistry());
 						scanner.AddRegistry(new Providers.DataGenerationProvider.ProviderRegistry());

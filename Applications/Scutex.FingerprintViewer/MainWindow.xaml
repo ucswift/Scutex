@@ -1,0 +1,184 @@
+﻿<Window x:Class="WaveTech.Scutex.FingerprintViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:WaveTech.Scutex.FingerprintViewer"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+        x:Name="MainLicensingWindow"
+        Title="Scutex Licensing"
+        Width="581"
+        Height="520"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Closing="Window_Closing"
+        d:DesignHeight="560"
+        d:DesignWidth="740"
+        ResizeMode="NoResize"
+        Topmost="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        mc:Ignorable="d">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Resources/Themes/Black.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<local:GuiRoot x:Name="root"
+	               Width="488"
+	               Background="Transparent">
+		<local:GuiRoot.Resources />
+
+		<Grid x:Name="LayoutRoot"
+		      HorizontalAlignment="Center"
+		      VerticalAlignment="Center"
+		      Background="Transparent">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0" />
+				<ColumnDefinition Width="481" />
+				<ColumnDefinition Width="197*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<Rectangle Grid.Column="1"
+			           Width="464"
+			           Height="326"
+			           Margin="3,3,14,152"
+			           HorizontalAlignment="Stretch"
+			           VerticalAlignment="Stretch"
+			           Fill="Transparent"
+			           RadiusX="5"
+			           RadiusY="5"
+			           Stroke="#FF000000" />
+			<ContentControl x:Name="ThemeBackground"
+			                Grid.Column="1"
+			                Width="467"
+			                Height="329"
+			                Margin="0,0,14,152"
+			                Content="ContentControl"
+			                Style="{DynamicResource ThemeBackground}" />
+
+			<Border Grid.Column="1"
+			        Width="318"
+			        Height="55"
+			        Margin="0,0,163,0"
+			        VerticalAlignment="Top"
+			        Background="{DynamicResource dbHeader}"
+			        CornerRadius="5,5,5,5" />
+
+			<Grid x:Name="Logo"
+			      Grid.Column="1"
+			      Height="45"
+			      Margin="31,10,0,0"
+			      HorizontalAlignment="Left"
+			      VerticalAlignment="Top">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="90" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="45" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Image x:Name="imageIcon"
+				       Width="36"
+				       HorizontalAlignment="Left"
+				       Source="/ScutexNewIcon.png" />
+				<Label Name="headingLabel"
+				       Grid.ColumnSpan="2"
+				       Margin="42,0,0,0"
+				       VerticalAlignment="Bottom"
+				       FontSize="26"
+				       FontWeight="Bold"
+				       Foreground="White">
+					Hardware Fingerprint
+				</Label>
+			</Grid>
+
+
+			<TabControl x:Name="ContentContainer"
+			            Grid.Column="1"
+			            Width="435"
+			            Height="202"
+			            Margin="15,61,0,0"
+			            HorizontalAlignment="Left"
+			            VerticalAlignment="Top"
+			            IsSynchronizedWithCurrentItem="True"
+			            Style="{DynamicResource tcContentHolder}">
+				<TabItem x:Name="ContentTab"
+				         Height="31"
+				         Visibility="Collapsed">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="355*" />
+							<ColumnDefinition Width="72*" />
+						</Grid.ColumnDefinitions>
+						<ContentControl x:Name="ccContent"
+						                Grid.ColumnSpan="2"
+						                Width="420"
+						                Height="85"
+						                Margin="5,5,0,0"
+						                HorizontalAlignment="Left"
+						                VerticalAlignment="Top" />
+
+						<Rectangle x:Name="WarningCancel"
+						           Width="48"
+						           Height="48"
+						           Margin="0,0,0,13"
+						           HorizontalAlignment="Left"
+						           VerticalAlignment="Bottom"
+						           Fill="{DynamicResource AlertSymbol}"
+						           Stroke="{x:Null}" />
+
+						<TextBlock Grid.ColumnSpan="2"
+						           Width="373"
+						           Margin="0,0,0,10"
+						           HorizontalAlignment="Right"
+						           VerticalAlignment="Bottom"
+						           FontFamily="Segoe UI"
+						           FontSize="10"
+						           FontWeight="Bold"
+						           Foreground="{DynamicResource brStockHeader}"
+						           Text="{Binding WarningText,
+						                          ElementName=root,
+						                          Mode=Default}"
+						           TextWrapping="Wrap" />
+					</Grid>
+				</TabItem>
+			</TabControl>
+
+			<!--  Buttons  -->
+			<GroupBox x:Name="gbSideBar"
+			          Grid.Column="1"
+			          Width="435"
+			          Height="55"
+			          Margin="15,269,0,0"
+			          HorizontalAlignment="Left"
+			          VerticalAlignment="Top"
+			          FontSize="10"
+			          FontWeight="Bold"
+			          Foreground="#FFFFFFFF"
+			          Header="{Binding Instructions_Pending_Label,
+			                           ElementName=root}"
+			          Style="{DynamicResource gbButtons}"
+			          d:LayoutOverrides="HorizontalAlignment">
+				<StackPanel FlowDirection="RightToLeft" Orientation="Horizontal">
+					<Button Name="btnExit"
+					        Width="80"
+					        Height="23"
+					        Margin="30,5,5,5"
+					        Click="btnExit_Click"
+					        Content="Exit" />
+					<TextBlock Width="35" />
+				</StackPanel>
+			</GroupBox>
+
+			<!--  Sidebar  -->
+		</Grid>
+	</local:GuiRoot>
+</Window>

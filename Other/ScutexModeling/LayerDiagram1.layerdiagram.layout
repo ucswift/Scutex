@@ -98,7 +98,7 @@
         <layerShapeMoniker Id="57c31d2f-5a5e-4730-8e9a-325f86884635" />
       </nodes>
     </dependencyConnector>
-    <dependencyConnector edgePoints="[(7 : 3.5); (6.95833333333333 : 3.5 : JumpStart); (6.79166666666667 : 3.5 : JumpEnd); (4.76602564102564 : 3.5 : JumpStart); (4.59935897435897 : 3.5 : JumpEnd); (4.375 : 3.5)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(7 : 3.5); (6.08333333333333 : 3.5 : JumpStart); (5.91666666666667 : 3.5 : JumpEnd); (4.375 : 3.5)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="5d534caa-0740-4402-845c-d5d367f483b1" />
       <relativeChildShapes />
       <nodes>
@@ -114,7 +114,7 @@
         <layerShapeMoniker Id="87e9d2b1-166b-4b36-9036-8a8081e5ab46" />
       </nodes>
     </dependencyConnector>
-    <dependencyConnector edgePoints="[(6.75 : 4.5); (6.79166666666667 : 4.5 : JumpStart); (6.95833333333333 : 4.5 : JumpEnd); (9.25 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(6.75 : 4.5); (9.25 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="b3c723bc-956a-45bc-bcc4-0d85be5476a5" />
       <relativeChildShapes />
       <nodes>
@@ -166,7 +166,7 @@
         <layerShapeMoniker Id="d57bd8d5-6eb0-4acc-ae18-c0a330cda5d6" />
       </nodes>
     </dependencyConnector>
-    <dependencyConnector edgePoints="[(4.375 : 5.09375); (5.72916666666667 : 5.09375 : JumpStart); (5.89583333333333 : 5.09375 : JumpEnd); (6.79166666666667 : 5.09375 : JumpStart); (6.95833333333333 : 5.09375 : JumpEnd); (9.25 : 5.09375)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(4.375 : 5.09375); (5.72916666666667 : 5.09375 : JumpStart); (5.89583333333333 : 5.09375 : JumpEnd); (9.25 : 5.09375)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="305bf951-a172-4c83-b95f-f68509b40a0a" />
       <relativeChildShapes />
       <nodes>
@@ -198,7 +198,7 @@
         <layerShapeMoniker Id="602b75f5-e354-4a4b-8aa7-0413ddf9d88a" />
       </nodes>
     </dependencyConnector>
-    <dependencyConnector edgePoints="[(4.375 : 1.71875); (9.25 : 1.71875)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(4.375 : 1.71875); (6.72916666666667 : 1.71875 : JumpStart); (6.89583333333333 : 1.71875 : JumpEnd); (9.25 : 1.71875)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="a952b660-b623-4551-850f-cf098cd7ab77" />
       <relativeChildShapes />
       <nodes>
