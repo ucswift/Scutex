@@ -4,6 +4,16 @@ Scutex, pronounced (sec-u-techs), is a 100% managed .Net Framework licensing pla
 
 Using Scutex you can create trial versions of your software products and allow your users to buy and use license keys or keyfiles to unlock your product. You can also have edition based licensing to unlock only select features based on the level of the license. Scutex supports upgrade licenses as well as allowing your customers who have an existing version of your product to upgrade to a new version.
 
+## Features
+
+	* Multiple License Keys
+	* Backend Service
+	* Multi Use Keys
+	* Offline Keys
+	* Hardware Locking (Online and Offline)
+	* Edition Management
+	* Upgrade Keys
+
 ## License
 
 Licensed under the Microsoft Public License (MS-PL)
@@ -12,8 +22,9 @@ Licensed under the Microsoft Public License (MS-PL)
 
 * **WaveTech's Home page:** <http://www.wtdt.com>
 * **Scutex's Home Page:** <http://www.wtdt.com/Products/Scutex.aspx>
-* **Forum:** <http://www.wtdt.com/Support/Forums/tabid/79/afg/9/Default.aspx>
-* **JIRA:** <http://jira.wtdt.com:8080/browse/SCUTEX>
+* **CodePlex:** <http://scutex.codeplex.com/>
+* **Issue Tracker:** <http://scutex.codeplex.com/workitem/list/basic>
+* **Forum:** <http://scutex.codeplex.com/discussions>
 * **Discussion list:** <http://groups.google.com/group/scutex-dev>
 
 ## Infragistics Components
@@ -22,7 +33,7 @@ As of the 10/30/2011 checkin the Infragistics dependancy has been removed.
 
 ## Official Builds & Releases
 
-There are a number of additional processes that occur for preparing Scutex to be used in your applications. Because of that there is only one place to obtain official builds that you should install and use in your products. To obtain official builds just got to the Scutex homepage at http://www.wtdt.com/Products/Scutex.aspx and click on the Downloads link. Official release builds will be a big bold download link and you can get access to development builds from our CI server.
+There are a number of additional processes that occur for preparing Scutex to be used in your applications. Because of that there are two places to obtain official builds that you should install and use in your products. To obtain official builds just got to the Scutex homepage at http://www.wtdt.com/Products/Scutex.aspx and click on the Downloads link or go to the CodePlex site http://scutex.codeplex.com/ and download the latest release build there. Official release builds will be a big bold download link and you can get access to development builds from our CI server.
 
 ## Prerequisites
 
