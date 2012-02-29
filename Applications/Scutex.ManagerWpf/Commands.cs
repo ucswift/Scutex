@@ -112,6 +112,7 @@ namespace WaveTech.Scutex.Manager
 		private static NewProductWindow _newProductWindow;
 		private static UpdateProductWindow _updateProductWindow;
 		private static FeaturesWindow _featuresWindow;
+		private static ServiceInitializationWindow _serviceInitializationWindow;
 		#endregion Windows
 
 		#region Constructor
@@ -664,102 +665,21 @@ namespace WaveTech.Scutex.Manager
 			{
 				if (mainWindow.ServicesScreen.SelectedService != null)
 				{
-					BackgroundWorker worker = new BackgroundWorker();
-					mainWindow.ServicesScreen.StartSpinner();
-
-					Service service = mainWindow.ServicesScreen.SelectedService;
-
-					worker.DoWork += delegate(object s, DoWorkEventArgs args)
+					if (_serviceInitializationWindow == null)
 					{
-						object[] data = args.Argument as object[];
-						int resultCode = 0;
-
-						IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
-						bool result;
-
-						try
-						{
-							result = _servicesService.InitializeService(service);
-						}
-						catch (System.ServiceModel.EndpointNotFoundException enf)
-						{
-							resultCode = 50;
-							result = false;
-						}
-						catch
-						{
-							throw;
-						}
-
-						if (!result)
-							resultCode = 10;
-
-						bool testResult = false;
-
-						try
-						{
-							service.Initialized = true;
-							_servicesService.SaveService(service);
-							testResult = _servicesService.TestService(service);
-						}
-						catch (System.ServiceModel.EndpointNotFoundException enf)
-						{
-							resultCode = 50;
-							result = false;
-						}
-						catch
-						{
-							throw;
-						}
-
-						if (!testResult)
-						{
-							resultCode = 20;
-						}
-						else
-						{
-							service.Tested = true;
-							_servicesService.SaveService(service);
-						}
-
-						args.Result = resultCode;
-					};
-
-					worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+						_serviceInitializationWindow = new ServiceInitializationWindow(mainWindow, mainWindow.ServicesScreen.SelectedService);
+						_serviceInitializationWindow.Show();
+					}
+					else
 					{
-						int resultCode = (int)args.Result;
-
-						if (resultCode == 50)
-						{
-							MessageBox.Show("Cannot locate one or more of the services at the supplied urls. Please check the urls and try again.");
-						}
-						else if (resultCode == 20)
-						{
-							MessageBox.Show("Failed to test the service.");
-						}
-						else if (resultCode == 10)
-						{
-							MessageBox.Show("Failed to initialize the service.");
-						}
-						else
-						{
-							MessageBox.Show("Service has successfully been initialized and tested.");
-						}
-
-						IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
-						eventAggregator.SendMessage<ServicesUpdatedEvent>();
-
-						mainWindow.ServicesScreen.StopSpinner();
-					};
-
-					worker.RunWorkerAsync(new object[]
-				                      	{
-				                      		service
-				                      	});
+						_serviceInitializationWindow.Close();
+						_serviceInitializationWindow = new ServiceInitializationWindow(mainWindow, mainWindow.ServicesScreen.SelectedService);
+						_serviceInitializationWindow.Show();
+					}
 				}
 				else
 				{
-					MessageBox.Show("You must select a product first.");
+					MessageBox.Show("You must select a service first.");
 				}
 			}
 		}

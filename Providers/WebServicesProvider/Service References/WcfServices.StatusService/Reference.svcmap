@@ -18,13 +18,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:37090/StatusService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/MgmtServiceDev/StatusService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="StatusService.xsd" MetadataType="Schema" ID="3bdc5ff6-0195-42a3-866a-2430195f902f" SourceId="1" SourceUrl="http://localhost:37090/StatusService.svc?xsd=xsd0" />
-    <MetadataFile FileName="StatusService1.xsd" MetadataType="Schema" ID="bb50572a-683d-4a07-be8c-2655be229475" SourceId="1" SourceUrl="http://localhost:37090/StatusService.svc?xsd=xsd1" />
-    <MetadataFile FileName="StatusService.disco" MetadataType="Disco" ID="cce30bba-1caf-4bfd-8ec1-58ae2a6f3473" SourceId="1" SourceUrl="http://localhost:37090/StatusService.svc?disco" />
-    <MetadataFile FileName="StatusService.wsdl" MetadataType="Wsdl" ID="7478ac96-b5f1-4b34-9b50-45259d1161b5" SourceId="1" SourceUrl="http://localhost:37090/StatusService.svc?wsdl" />
+    <MetadataFile FileName="StatusService1.wsdl" MetadataType="Wsdl" ID="0e69dab5-6d61-48f9-8047-ca4b404f4ec4" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/StatusService.svc?wsdl" />
+    <MetadataFile FileName="StatusService1.disco" MetadataType="Disco" ID="49c42bce-0434-485c-9cb9-1ca4abee1590" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/StatusService.svc?disco" />
+    <MetadataFile FileName="StatusService2.xsd" MetadataType="Schema" ID="87fdd1c0-909a-4149-a359-99f847d950cf" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/StatusService.svc?xsd=xsd1" />
+    <MetadataFile FileName="StatusService21.xsd" MetadataType="Schema" ID="f61f0a3f-a2e5-4322-b907-3be9c9104415" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/StatusService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

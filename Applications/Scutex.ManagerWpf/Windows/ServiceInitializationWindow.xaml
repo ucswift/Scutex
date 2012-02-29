@@ -1,0 +1,252 @@
+﻿<Window x:Class="WaveTech.Scutex.Manager.Windows.ServiceInitializationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:WaveTech.Scutex.Manager.Controls"
+        xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+        xmlns:Forms="clr-namespace:WaveTech.Scutex.Manager.Forms"
+        Title="Service Initialization"
+        Width="550"
+        Height="500"
+        WindowStartupLocation="CenterOwner">
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/DataTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="160" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<GroupBox Grid.Row="0"
+		          Grid.Column="0"
+		          Margin="4,4,4,4"
+		          Foreground="White"
+		          Header="Service Initialization">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock Grid.Row="0"
+				           Grid.Column="0"
+				           Foreground="Black"
+				           Text="Service to Initalize:" />
+				<TextBlock x:Name="lblServiceName"
+				           Grid.Row="1"
+				           Grid.Column="0"
+				           Foreground="Gray"
+									 FontWeight="Bold"
+									 FontSize="14"
+									 HorizontalAlignment="Center"
+									 VerticalAlignment="Center"
+									 />
+				<TextBlock Grid.Row="2"
+				           Grid.Column="0"
+				           Foreground="Black"
+				           Text="Service Urls:" />
+				<TextBlock x:Name="lblServiceClientUrl"
+				           Grid.Row="3"
+				           Grid.Column="0"
+				           Foreground="Black" />
+				<TextBlock x:Name="lblServiceMgmtUrl"
+				           Grid.Row="4"
+				           Grid.Column="0"
+				           Foreground="Black" />
+
+				<Button x:Name="btnTestOnly"
+				        Grid.RowSpan="2"
+				        Grid.Column="1"
+				        Margin="4,4,4,4"
+				        Click="btnTestOnly_Click"
+				        Content="Test Service Only" />
+
+				<Button x:Name="btnInitalize"
+				        Grid.Row="2"
+				        Grid.RowSpan="2"
+				        Grid.Column="1"
+				        Margin="4,4,4,4"
+				        Click="btnInitalize_Click"
+				        Content="Test and Initialize Service" />
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Grid.Row="1"
+		          Grid.Column="0"
+		          Margin="4,4,4,4"
+		          Foreground="White"
+		          Header="Initialization Progress">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="25" />
+					<RowDefinition Height="32" />
+					<RowDefinition Height="32" />
+					<RowDefinition Height="32" />
+					<RowDefinition Height="32" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition Width="125" />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock Grid.Row="0"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Left"
+				           VerticalAlignment="Center"
+				           FontWeight="Bold"
+				           Foreground="Gray"
+				           Text="Service Health Checks" />
+
+				<TextBlock Grid.Row="1"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Management Service Url" />
+				<TextBlock x:Name="lblMgmtServiceUrlCheck"
+				           Grid.Row="1"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+				<TextBlock Grid.Row="2"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Client Service Url" />
+				<TextBlock x:Name="lblClientServiceUrlCheck"
+				           Grid.Row="2"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+				<TextBlock Grid.Row="3"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Management Service File Check" />
+				<TextBlock x:Name="lblMgmtServiceFileCheck"
+				           Grid.Row="3"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+				<TextBlock Grid.Row="4"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Client Service File Check" />
+				<TextBlock x:Name="lblClientServiceFileCheck"
+				           Grid.Row="4"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+				<TextBlock Grid.Row="5"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Management Service Db Check" />
+				<TextBlock x:Name="lblMgmtServiceDbCheck"
+				           Grid.Row="5"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+				<TextBlock Grid.Row="6"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Client Service Db Check" />
+				<TextBlock x:Name="lblClientServiceDbCheck"
+				           Grid.Row="6"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+				<TextBlock Grid.Row="7"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Initializing Service" />
+				<TextBlock x:Name="lblInitializingService"
+				           Grid.Row="7"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+				<TextBlock Grid.Row="8"
+				           Grid.Column="0"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Verifying Service Initializion" />
+				<TextBlock x:Name="lblVerifyingServiceInitializion"
+				           Grid.Row="8"
+				           Grid.Column="1"
+				           Margin="4,4,4,4"
+				           HorizontalAlignment="Right"
+				           VerticalAlignment="Center"
+				           Foreground="Black"
+				           Text="Pending" />
+
+			</Grid>
+		</GroupBox>
+
+	</Grid>
+</Window>

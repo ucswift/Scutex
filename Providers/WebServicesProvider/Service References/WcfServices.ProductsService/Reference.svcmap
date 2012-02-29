@@ -18,13 +18,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:37090/ProductsService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/MgmtServiceDev/ProductsService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ProductsService.xsd" MetadataType="Schema" ID="44deb77e-f2c4-4a0f-affd-4d77bfc9eef7" SourceId="1" SourceUrl="http://localhost:37090/ProductsService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ProductsService.disco" MetadataType="Disco" ID="6864a38d-60ed-492c-b73d-053ada5d2768" SourceId="1" SourceUrl="http://localhost:37090/ProductsService.svc?disco" />
-    <MetadataFile FileName="ProductsService1.xsd" MetadataType="Schema" ID="fcfea3ce-8da4-4fe4-ae85-1d1a643b558d" SourceId="1" SourceUrl="http://localhost:37090/ProductsService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ProductsService.wsdl" MetadataType="Wsdl" ID="fa936270-93aa-4d83-a1c7-8a54a2f1aede" SourceId="1" SourceUrl="http://localhost:37090/ProductsService.svc?wsdl" />
+    <MetadataFile FileName="ProductsService2.xsd" MetadataType="Schema" ID="c18c19ec-92de-44e0-8960-3c9da641afda" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ProductsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductsService21.xsd" MetadataType="Schema" ID="db8247c9-3a08-4251-a878-4078b35f3e2e" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ProductsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductsService1.disco" MetadataType="Disco" ID="a26e2470-1c86-4c60-b8f0-2094d10a676c" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ProductsService.svc?disco" />
+    <MetadataFile FileName="ProductsService1.wsdl" MetadataType="Wsdl" ID="8cc10302-7246-44d5-aead-da4dc3b7d8ba" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ProductsService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

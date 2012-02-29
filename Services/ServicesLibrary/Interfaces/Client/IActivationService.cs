@@ -7,5 +7,8 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Interfaces.Client
 	{
 		[OperationContract]
 		string ActivateLicense(string token, string payload);
+
+		[OperationContract]
+		string BasicServiceTest();
 	}
 }

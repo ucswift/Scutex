@@ -18,13 +18,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:56089/ReportingService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/MgmtServiceDev/ReportingService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ReportingService.wsdl" MetadataType="Wsdl" ID="0dac0421-ad05-4ac5-b177-2620ec491564" SourceId="1" SourceUrl="http://localhost:56089/ReportingService.svc?wsdl" />
-    <MetadataFile FileName="ReportingService.xsd" MetadataType="Schema" ID="eda5fe66-7f3f-4cd8-a093-27b324195f05" SourceId="1" SourceUrl="http://localhost:56089/ReportingService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ReportingService1.xsd" MetadataType="Schema" ID="6c23ee5d-8e51-4880-8fa5-d306a46f2e8e" SourceId="1" SourceUrl="http://localhost:56089/ReportingService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ReportingService.disco" MetadataType="Disco" ID="25911275-29c6-436b-8435-e75b8e6c5718" SourceId="1" SourceUrl="http://localhost:56089/ReportingService.svc?disco" />
+    <MetadataFile FileName="ReportingService1.disco" MetadataType="Disco" ID="0f1a75be-fc60-4fbf-b572-2b91c0166af4" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ReportingService.svc?disco" />
+    <MetadataFile FileName="ReportingService2.xsd" MetadataType="Schema" ID="0e23dabc-5ba5-44af-a7e2-d53d56a6d4a4" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ReportingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ReportingService21.xsd" MetadataType="Schema" ID="f50dd1ee-96a3-48af-b73d-48bb12d86ab8" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ReportingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ReportingService1.wsdl" MetadataType="Wsdl" ID="6ffc4b95-3d85-4fcf-8eb5-5feeda64afaa" SourceId="1" SourceUrl="http://localhost/MgmtServiceDev/ReportingService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

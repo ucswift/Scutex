@@ -19,5 +19,8 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Interfaces.Management
 
 		[OperationContract]
 		string QueryActiveProductsAndLiceseSets(string token);
+
+		[OperationContract]
+		string BasicServiceTest();
 	}
 }

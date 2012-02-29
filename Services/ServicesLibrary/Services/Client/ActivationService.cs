@@ -98,6 +98,11 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Client
 			return SerializeAndEncryptResult(result, keyPair);
 		}
 
+		public string BasicServiceTest()
+		{
+			return "Ok";
+		}
+
 		private string SerializeAndEncryptResult(ActivationResult result, KeyPair keyPair)
 		{
 			string serializedResult = _serializationProvider.Serialize(result);

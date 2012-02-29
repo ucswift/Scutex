@@ -119,25 +119,25 @@
     <None Include="Service References\WcfServices.ActivationService\ActivationService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WcfServices.ProductsService\ProductsService.wsdl" />
-    <None Include="Service References\WcfServices.ProductsService\ProductsService.xsd">
+    <None Include="Service References\WcfServices.ProductsService\ProductsService1.wsdl" />
+    <None Include="Service References\WcfServices.ProductsService\ProductsService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WcfServices.ProductsService\ProductsService1.xsd">
+    <None Include="Service References\WcfServices.ProductsService\ProductsService21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WcfServices.ReportingService\ReportingService.wsdl" />
-    <None Include="Service References\WcfServices.ReportingService\ReportingService.xsd">
+    <None Include="Service References\WcfServices.ReportingService\ReportingService1.wsdl" />
+    <None Include="Service References\WcfServices.ReportingService\ReportingService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WcfServices.ReportingService\ReportingService1.xsd">
+    <None Include="Service References\WcfServices.ReportingService\ReportingService21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WcfServices.StatusService\StatusService.wsdl" />
-    <None Include="Service References\WcfServices.StatusService\StatusService.xsd">
+    <None Include="Service References\WcfServices.StatusService\StatusService1.wsdl" />
+    <None Include="Service References\WcfServices.StatusService\StatusService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WcfServices.StatusService\StatusService1.xsd">
+    <None Include="Service References\WcfServices.StatusService\StatusService21.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -188,9 +188,6 @@
     <WCFMetadataStorage Include="Service References\WcfServices.StatusService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WcfServices.StatusService\StatusService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\WcfServices.StatusService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +221,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WcfServices.ProductsService\ProductsService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\WcfServices.ProductsService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +233,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WcfServices.ReportingService\ReportingService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\WcfServices.ReportingService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +243,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfServices.ProductsService\ProductsService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfServices.ReportingService\ReportingService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfServices.StatusService\StatusService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

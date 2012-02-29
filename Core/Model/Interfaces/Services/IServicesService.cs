@@ -17,5 +17,7 @@ namespace WaveTech.Scutex.Model.Interfaces.Services
 		bool AddProductToService(License license, List<LicenseSet> licenseSets, Service service);
 		List<string> GetServiceLicenseKeysForSet(LicenseSet licenseSet, Service service);
 		bool AddLicenseKeysToService(LicenseSet licenseSet, Service service, List<string> keys);
+		bool TestClientServiceUrl(Service service);
+		bool TestManagementServiceUrl(Service service);
 	}
 }

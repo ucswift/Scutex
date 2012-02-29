@@ -45,5 +45,13 @@ namespace WaveTech.Scutex.Providers.WebServicesProvider
 			ActivationResult activationResult = _objectSerializationProvider.Deserialize<ActivationResult>(result);
 			return activationResult;
 		}
+
+		public string BasicServiceTest(string url)
+		{
+			ActivationServiceClient client = ActivationServiceClientCreator(url);
+			string testResult = client.BasicServiceTest();
+
+			return testResult;
+		}
 	}
 }

@@ -254,6 +254,9 @@
     <Compile Include="Windows\ProductsWindow.xaml.cs">
       <DependentUpon>ProductsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ServiceInitializationWindow.xaml.cs">
+      <DependentUpon>ServiceInitializationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ServiceLogWindow.xaml.cs">
       <DependentUpon>ServiceLogWindow.xaml</DependentUpon>
     </Compile>
@@ -377,6 +380,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ProductsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ServiceInitializationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

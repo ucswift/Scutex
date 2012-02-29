@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Interfaces.Providers;
@@ -344,6 +345,38 @@ namespace WaveTech.Scutex.Services
 				return true;
 
 			return false;
+		}
+
+		public bool TestClientServiceUrl(Service service)
+		{
+			string result;
+
+			try
+			{
+				result = _licenseActiviationProvider.BasicServiceTest(service.ClientUrl);
+			}
+			catch
+			{
+				return false;
+			}
+
+			return result == "Ok";
+		}
+
+		public bool TestManagementServiceUrl(Service service)
+		{
+			string result;
+
+			try
+			{
+				result = _serviceStatusProvider.BasicServiceTest(service.ClientUrl);
+			}
+			catch
+			{
+				return false;
+			}
+
+			return result == "Ok";
 		}
 	}
 }

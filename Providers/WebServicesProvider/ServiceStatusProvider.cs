@@ -95,5 +95,13 @@ namespace WaveTech.Scutex.Providers.WebServicesProvider
 
 			return result;
 		}
+
+		public string BasicServiceTest(string url)
+		{
+			StatusServiceClient client = StatusServiceClientCreator(url);
+			string result = client.BasicServiceTest();
+
+			return result;
+		}
 	}
 }

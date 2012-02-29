@@ -182,5 +182,10 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Management
 
 			return _controlService.SerializeAndEncryptMgmtOutboundData(result);
 		}
+
+		public string BasicServiceTest()
+		{
+			return "Ok";
+		}
 	}
 }

@@ -9,5 +9,6 @@ namespace WaveTech.Scutex.Model.Interfaces.Providers
 		SetupTestProductResult SetupTestProduct(string url, string token, string key, EncryptionInfo encryptionInfo);
 		SetupTestProductResult CleanUpTestProductData(string url, string token, EncryptionInfo encryptionInfo);
 		QueryActiveServiceProductsResult GetActiveServiceProducts(string url, string token, EncryptionInfo encryptionInfo, KeyPair serviceKeys);
+		string BasicServiceTest(string url);
 	}
 }

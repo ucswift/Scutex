@@ -158,6 +158,7 @@
     <Compile Include="DeactivatedReasons.cs" />
     <Compile Include="Events\LicenseSavedEvent.cs" />
     <Compile Include="Events\ServicesUpdatedEvent.cs" />
+    <Compile Include="Events\ServiceTestingEvent.cs" />
     <Compile Include="Exceptions\ScutexAuditException.cs" />
     <Compile Include="FingerprintTypes.cs" />
     <Compile Include="IEntity.cs" />
