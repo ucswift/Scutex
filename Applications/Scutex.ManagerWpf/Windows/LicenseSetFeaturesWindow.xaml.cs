@@ -4,6 +4,8 @@ using System.Windows;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Manager.Classes;
 using WaveTech.Scutex.Model;
+using WaveTech.Scutex.Model.Events;
+using WaveTech.Scutex.Model.Interfaces.Framework;
 using WaveTech.Scutex.Model.Interfaces.Services;
 
 namespace WaveTech.Scutex.Manager.Windows

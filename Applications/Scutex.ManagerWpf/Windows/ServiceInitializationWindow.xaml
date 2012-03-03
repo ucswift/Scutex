@@ -50,12 +50,11 @@
 				<TextBlock x:Name="lblServiceName"
 				           Grid.Row="1"
 				           Grid.Column="0"
-				           Foreground="Gray"
-									 FontWeight="Bold"
-									 FontSize="14"
-									 HorizontalAlignment="Center"
-									 VerticalAlignment="Center"
-									 />
+				           HorizontalAlignment="Center"
+				           VerticalAlignment="Center"
+				           FontSize="14"
+				           FontWeight="Bold"
+				           Foreground="Gray" />
 				<TextBlock Grid.Row="2"
 				           Grid.Column="0"
 				           Foreground="Black"
@@ -106,6 +105,7 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
 					<ColumnDefinition Width="125" />
+					<ColumnDefinition Width="32" />
 				</Grid.ColumnDefinitions>
 
 				<TextBlock Grid.Row="0"
@@ -128,10 +128,20 @@
 				           Grid.Row="1"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblMgmtServiceUrlCheck_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblMgmtServiceUrlCheck_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblMgmtServiceUrlCheck_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
+				<Image x:Name="imgMgmtServiceUrlCheck"
+				       Grid.Row="1"
+				       Grid.Column="2" />
 
 				<TextBlock Grid.Row="2"
 				           Grid.Column="0"
@@ -144,10 +154,20 @@
 				           Grid.Row="2"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblClientServiceUrlCheck_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblClientServiceUrlCheck_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblClientServiceUrlCheck_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
+				<Image x:Name="imgClientServiceUrlCheck"
+				       Grid.Row="2"
+				       Grid.Column="2" />
 
 				<TextBlock Grid.Row="3"
 				           Grid.Column="0"
@@ -160,10 +180,17 @@
 				           Grid.Row="3"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblMgmtServiceFileCheck_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblMgmtServiceFileCheck_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblMgmtServiceFileCheck_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
 
 				<TextBlock Grid.Row="4"
 				           Grid.Column="0"
@@ -176,10 +203,17 @@
 				           Grid.Row="4"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblClientServiceFileCheck_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblClientServiceFileCheck_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblClientServiceFileCheck_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
 
 				<TextBlock Grid.Row="5"
 				           Grid.Column="0"
@@ -192,10 +226,17 @@
 				           Grid.Row="5"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblMgmtServiceDbCheck_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblMgmtServiceDbCheck_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblMgmtServiceDbCheck_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
 
 				<TextBlock Grid.Row="6"
 				           Grid.Column="0"
@@ -208,10 +249,17 @@
 				           Grid.Row="6"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblClientServiceDbCheck_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblClientServiceDbCheck_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblClientServiceDbCheck_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
 
 				<TextBlock Grid.Row="7"
 				           Grid.Column="0"
@@ -224,10 +272,17 @@
 				           Grid.Row="7"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblInitializingService_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblInitializingService_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblInitializingService_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
 
 				<TextBlock Grid.Row="8"
 				           Grid.Column="0"
@@ -240,10 +295,17 @@
 				           Grid.Row="8"
 				           Grid.Column="1"
 				           Margin="4,4,4,4"
-				           HorizontalAlignment="Right"
+				           HorizontalAlignment="Center"
 				           VerticalAlignment="Center"
-				           Foreground="Black"
-				           Text="Pending" />
+				           Text="Pending">
+					<TextBlock.Foreground>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop x:Name="lblVerifyingServiceInitializion_gs1" Offset="0" Color="Black" />
+							<GradientStop x:Name="lblVerifyingServiceInitializion_gs2" Offset="-1" Color="Aquamarine" />
+							<GradientStop x:Name="lblVerifyingServiceInitializion_gs3" Offset="1" Color="Black" />
+						</LinearGradientBrush>
+					</TextBlock.Foreground>
+				</TextBlock>
 
 			</Grid>
 		</GroupBox>

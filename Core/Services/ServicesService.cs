@@ -355,7 +355,7 @@ namespace WaveTech.Scutex.Services
 			{
 				result = _licenseActiviationProvider.BasicServiceTest(service.ClientUrl);
 			}
-			catch
+			catch(Exception ex)
 			{
 				return false;
 			}
@@ -369,9 +369,9 @@ namespace WaveTech.Scutex.Services
 
 			try
 			{
-				result = _serviceStatusProvider.BasicServiceTest(service.ClientUrl);
+				result = _serviceStatusProvider.BasicServiceTest(service.ManagementUrl);
 			}
-			catch
+			catch (Exception ex)
 			{
 				return false;
 			}
