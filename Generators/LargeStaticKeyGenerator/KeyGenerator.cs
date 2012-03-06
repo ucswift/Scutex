@@ -466,6 +466,21 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 					                 		ValidationType = ValidationTypes.Fingerprint
 					                 	});
 				}
+				else
+				{
+					payload = hashingProvider.Checksum16(scutexLicense.GetLicenseProductIdentifier()).ToString("X");
+					payload = payload.PadLeft(4, char.Parse("0"));
+
+					placeholders.Add(new LicensePlaceholder
+					{
+						Length = 4,
+						Token = Char.Parse("p"),
+						Type = PlaceholderTypes.String,
+						Value = payload,
+						IsChecksum = false,
+						ValidationType = ValidationTypes.ProductIdentifier
+					});
+				}
 			}
 			else
 			{
