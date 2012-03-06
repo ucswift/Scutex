@@ -146,6 +146,21 @@ namespace WaveTech.Scutex.Repositories.ServicesDataRepository
 			}
 		}
 
+		private void DeleteServiceProductById(int productId)
+		{
+			using (ScutexServiceEntities db1 = new ScutexServiceEntities())
+			{
+				var prods = from prod in db1.Licenses
+								where prod.LicenseId == productId
+								select prod;
+
+				foreach (var p in prods)
+					db1.Licenses.DeleteObject(p);
+
+				db1.SaveChanges();
+			}
+		}
+
 		public ServiceLicenseSet SaveServiceLicenseSet(ServiceLicenseSet licenseSet)
 		{
 			if (GetServiceLicenseSetById(licenseSet.LicenseSetId) != null)

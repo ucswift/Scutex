@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Interfaces.Providers;
@@ -16,23 +17,25 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Management
 		private readonly IControlService _controlService;
 		private readonly IProductManagementService _productManagementService;
 		private readonly IMasterService _masterService;
+		private readonly ICommonService _commonService;
 		#endregion Private Readonly Members
 
 		#region Constructors
 		public StatusService()
 			: this(ObjectLocator.GetInstance<IObjectSerializationProvider>(), ObjectLocator.GetInstance<IControlService>(),
-			ObjectLocator.GetInstance<IProductManagementService>(), ObjectLocator.GetInstance<IMasterService>())
+			ObjectLocator.GetInstance<IProductManagementService>(), ObjectLocator.GetInstance<IMasterService>(), ObjectLocator.GetInstance<ICommonService>())
 		{
 
 		}
 
 		public StatusService(IObjectSerializationProvider serializationProvider, IControlService controlService,
-			IProductManagementService productManagementService, IMasterService masterService)
+			IProductManagementService productManagementService, IMasterService masterService, ICommonService commonService)
 		{
 			_serializationProvider = serializationProvider;
 			_controlService = controlService;
 			_productManagementService = productManagementService;
 			_masterService = masterService;
+			_commonService = commonService;
 		}
 		#endregion Constructors
 
@@ -84,6 +87,10 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Management
 				}
 
 				result.WasInitializionSucessful = true;
+
+				string path = _commonService.GetPath();
+				if (File.Exists(path + "\\AllowDatabaseTest.emp"))
+					File.Delete(path + "\\AllowDatabaseTest.emp");
 			}
 			catch (Exception ex)
 			{
@@ -186,6 +193,44 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Management
 		public string BasicServiceTest()
 		{
 			return "Ok";
+		}
+
+		public bool FileSystemServiceTest()
+		{
+			string path = _commonService.GetPath();
+
+			if (File.Exists(path + "\\FileSysTest.txt"))
+				File.Delete(path + "\\FileSysTest.txt");
+
+			string testString = "ThisIsJustATestoftheFileSystem.";
+
+			using (StreamWriter writer = new StreamWriter(path + "\\FileSysTest.txt"))
+			{
+				writer.Write(testString);
+			}
+
+			string rawFileData = null;
+			using (StreamReader reader = new StreamReader(path + "\\FileSysTest.txt"))
+			{
+				rawFileData = reader.ReadToEnd();
+			}
+
+			return testString == rawFileData;
+		}
+
+		public bool DatabaseServiceTest()
+		{
+			string path = _commonService.GetPath();
+
+			if (File.Exists(path + "\\AllowDatabaseTest.emp"))
+			{
+				_productManagementService.CreateTestProduct("TEST");
+				_productManagementService.DeleteTestServiceProduct();
+
+				return true;
+			}
+
+			return false;
 		}
 	}
 }

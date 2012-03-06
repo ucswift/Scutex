@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using WaveTech.Scutex.Framework;
@@ -21,20 +22,22 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Client
 		private readonly IAsymmetricEncryptionProvider _asymmetricEncryptionProvider;
 		private readonly IActivationLogService _activationLogService;
 		private readonly IMasterService _masterService;
+		private readonly ICommonService _commonService;
+		private readonly IProductManagementService _productManagementService;
 		#endregion Private Readonly Members
 
 		#region Constructors
 		public ActivationService()
 			: this(ObjectLocator.GetInstance<IControlService>(), ObjectLocator.GetInstance<IKeyManagementService>(), ObjectLocator.GetInstance<IKeyPairService>(),
 			ObjectLocator.GetInstance<IObjectSerializationProvider>(), ObjectLocator.GetInstance<IAsymmetricEncryptionProvider>(),
-			ObjectLocator.GetInstance<IActivationLogService>(), ObjectLocator.GetInstance<IMasterService>())
+			ObjectLocator.GetInstance<IActivationLogService>(), ObjectLocator.GetInstance<IMasterService>(), ObjectLocator.GetInstance<ICommonService>(), ObjectLocator.GetInstance<IProductManagementService>())
 		{
 
 		}
 
 		public ActivationService(IControlService controlService, IKeyManagementService keyService, IKeyPairService keyPairService,
 			IObjectSerializationProvider serializationProvider, IAsymmetricEncryptionProvider asymmetricEncryptionProvider,
-			IActivationLogService activationLogService, IMasterService masterService)
+			IActivationLogService activationLogService, IMasterService masterService, ICommonService commonService, IProductManagementService productManagementService)
 		{
 			_controlService = controlService;
 			_keyService = keyService;
@@ -43,6 +46,8 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Client
 			_asymmetricEncryptionProvider = asymmetricEncryptionProvider;
 			_activationLogService = activationLogService;
 			_masterService = masterService;
+			_commonService = commonService;
+			_productManagementService = productManagementService;
 		}
 		#endregion Constructors
 
@@ -101,6 +106,44 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Client
 		public string BasicServiceTest()
 		{
 			return "Ok";
+		}
+
+		public bool FileSystemServiceTest()
+		{
+			string path = _commonService.GetPath();
+
+			if (File.Exists(path + "\\FileSysTest.txt"))
+				File.Delete(path + "\\FileSysTest.txt");
+
+			string testString = "ThisIsJustATestoftheFileSystem.";
+
+			using (StreamWriter writer = new StreamWriter(path + "\\FileSysTest.txt"))
+			{
+				writer.Write(testString);
+			}
+
+			string rawFileData = null;
+			using (StreamReader reader = new StreamReader(path + "\\FileSysTest.txt"))
+			{
+				rawFileData = reader.ReadToEnd();
+			}
+
+			return testString == rawFileData;
+		}
+
+		public bool DatabaseServiceTest()
+		{
+			string path = _commonService.GetPath();
+
+			if (File.Exists(path + "\\AllowDatabaseTest.emp"))
+			{
+				_productManagementService.CreateTestProduct("TEST");
+				_productManagementService.DeleteTestServiceProduct();
+
+				return true;
+			}
+
+			return false;
 		}
 
 		private string SerializeAndEncryptResult(ActivationResult result, KeyPair keyPair)

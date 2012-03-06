@@ -192,6 +192,10 @@
 					</TextBlock.Foreground>
 				</TextBlock>
 
+				<Image x:Name="imgMgmtServiceFileCheck"
+				       Grid.Row="3"
+				       Grid.Column="2" />
+
 				<TextBlock Grid.Row="4"
 				           Grid.Column="0"
 				           Margin="4,4,4,4"
@@ -214,6 +218,10 @@
 						</LinearGradientBrush>
 					</TextBlock.Foreground>
 				</TextBlock>
+
+				<Image x:Name="imgClientServiceFileCheck"
+				       Grid.Row="4"
+				       Grid.Column="2" />
 
 				<TextBlock Grid.Row="5"
 				           Grid.Column="0"
@@ -238,6 +246,10 @@
 					</TextBlock.Foreground>
 				</TextBlock>
 
+				<Image x:Name="imgMgmtServiceDbCheck"
+				       Grid.Row="5"
+				       Grid.Column="2" />
+
 				<TextBlock Grid.Row="6"
 				           Grid.Column="0"
 				           Margin="4,4,4,4"
@@ -260,6 +272,10 @@
 						</LinearGradientBrush>
 					</TextBlock.Foreground>
 				</TextBlock>
+
+				<Image x:Name="imgClientServiceDbCheck"
+				       Grid.Row="6"
+				       Grid.Column="2" />
 
 				<TextBlock Grid.Row="7"
 				           Grid.Column="0"

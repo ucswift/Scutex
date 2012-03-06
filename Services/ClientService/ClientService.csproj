@@ -133,6 +133,7 @@
     <None Include="..\..\Other\Scutex-PubPriv-KeyFile.snk">
       <Link>Scutex-PubPriv-KeyFile.snk</Link>
     </None>
+    <None Include="AllowDatabaseTest.emp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Framework\Scutex.Framework.csproj">

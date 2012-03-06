@@ -32,6 +32,12 @@ namespace WaveTech.Scutex.Providers.WebServicesProvider.WcfServices.StatusServic
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusService/BasicServiceTest", ReplyAction="http://tempuri.org/IStatusService/BasicServiceTestResponse")]
         string BasicServiceTest();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusService/FileSystemServiceTest", ReplyAction="http://tempuri.org/IStatusService/FileSystemServiceTestResponse")]
+        bool FileSystemServiceTest();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusService/DatabaseServiceTest", ReplyAction="http://tempuri.org/IStatusService/DatabaseServiceTestResponse")]
+        bool DatabaseServiceTest();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace WaveTech.Scutex.Providers.WebServicesProvider.WcfServices.StatusServic
         
         public string BasicServiceTest() {
             return base.Channel.BasicServiceTest();
+        }
+        
+        public bool FileSystemServiceTest() {
+            return base.Channel.FileSystemServiceTest();
+        }
+        
+        public bool DatabaseServiceTest() {
+            return base.Channel.DatabaseServiceTest();
         }
     }
 }

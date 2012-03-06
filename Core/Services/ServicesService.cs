@@ -378,5 +378,69 @@ namespace WaveTech.Scutex.Services
 
 			return result == "Ok";
 		}
+
+		public bool TestClientServiceFileSystem(Service service)
+		{
+			bool result;
+
+			try
+			{
+				result = _licenseActiviationProvider.FileSystemServiceTest(service.ClientUrl);
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+
+			return result;
+		}
+
+		public bool TestManagementServiceFileSystem(Service service)
+		{
+			bool result;
+
+			try
+			{
+				result = _serviceStatusProvider.FileSystemServiceTest(service.ManagementUrl);
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+
+			return result;
+		}
+
+		public bool TestClientServiceDatabase(Service service)
+		{
+			bool result;
+
+			try
+			{
+				result = _licenseActiviationProvider.DatabaseServiceTest(service.ClientUrl);
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+
+			return result;
+		}
+
+		public bool TestManagementServiceDatabase(Service service)
+		{
+			bool result;
+
+			try
+			{
+				result = _serviceStatusProvider.DatabaseServiceTest(service.ManagementUrl);
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+
+			return result;
+		}
 	}
 }

@@ -42,6 +42,18 @@
   <wsdl:message name="IStatusService_BasicServiceTest_OutputMessage">
     <wsdl:part name="parameters" element="tns:BasicServiceTestResponse" />
   </wsdl:message>
+  <wsdl:message name="IStatusService_FileSystemServiceTest_InputMessage">
+    <wsdl:part name="parameters" element="tns:FileSystemServiceTest" />
+  </wsdl:message>
+  <wsdl:message name="IStatusService_FileSystemServiceTest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FileSystemServiceTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStatusService_DatabaseServiceTest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseServiceTest" />
+  </wsdl:message>
+  <wsdl:message name="IStatusService_DatabaseServiceTest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatabaseServiceTestResponse" />
+  </wsdl:message>
   <wsdl:portType name="IStatusService">
     <wsdl:operation name="GetServiceStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IStatusService/GetServiceStatus" message="tns:IStatusService_GetServiceStatus_InputMessage" />
@@ -66,6 +78,14 @@
     <wsdl:operation name="BasicServiceTest">
       <wsdl:input wsaw:Action="http://tempuri.org/IStatusService/BasicServiceTest" message="tns:IStatusService_BasicServiceTest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStatusService/BasicServiceTestResponse" message="tns:IStatusService_BasicServiceTest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FileSystemServiceTest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStatusService/FileSystemServiceTest" message="tns:IStatusService_FileSystemServiceTest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStatusService/FileSystemServiceTestResponse" message="tns:IStatusService_FileSystemServiceTest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseServiceTest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStatusService/DatabaseServiceTest" message="tns:IStatusService_DatabaseServiceTest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStatusService/DatabaseServiceTestResponse" message="tns:IStatusService_DatabaseServiceTest_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStatusService" type="tns:IStatusService">
@@ -117,6 +137,24 @@
     </wsdl:operation>
     <wsdl:operation name="BasicServiceTest">
       <soap:operation soapAction="http://tempuri.org/IStatusService/BasicServiceTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FileSystemServiceTest">
+      <soap:operation soapAction="http://tempuri.org/IStatusService/FileSystemServiceTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatabaseServiceTest">
+      <soap:operation soapAction="http://tempuri.org/IStatusService/DatabaseServiceTest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

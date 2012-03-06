@@ -22,5 +22,11 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Interfaces.Management
 
 		[OperationContract]
 		string BasicServiceTest();
+
+		[OperationContract]
+		bool FileSystemServiceTest();
+
+		[OperationContract]
+		bool DatabaseServiceTest();
 	}
 }

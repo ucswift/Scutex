@@ -167,6 +167,18 @@ namespace WaveTech.Scutex.Manager.Windows
 				case 1:
 					TestClientServiceUrl();
 					break;
+				case 2:
+					TestMgmtServiceFileSystem();
+					break;
+				case 3:
+					TestClientServiceFileSystem();
+					break;
+				case 4:
+					TestMgmtServiceDatabase();
+					break;
+				case 5:
+					TestClientServiceDatabase();
+					break;
 			}
 		}
 
@@ -295,6 +307,246 @@ namespace WaveTech.Scutex.Manager.Windows
 			                            _service
 			                          });
 		}
+
+		private void TestMgmtServiceFileSystem()
+		{
+			BackgroundWorker worker = new BackgroundWorker();
+			WorkingAnimation(lblMgmtServiceFileCheck);
+
+			worker.DoWork += delegate(object s, DoWorkEventArgs args)
+			{
+				object[] data = args.Argument as object[];
+				bool result = false;
+
+				try
+				{
+					result = _servicesService.TestManagementServiceFileSystem(_service);
+				}
+				catch
+				{
+					result = false;
+				}
+
+				args.Result = result;
+			};
+
+			worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+			{
+				bool result = (bool)args.Result;
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				if (result)
+				{
+					lblMgmtServiceFileCheck.Foreground = new SolidColorBrush(Colors.DarkGreen);
+					lblMgmtServiceFileCheck.Text = "Success";
+					lblMgmtServiceFileCheck.FontWeight = FontWeights.Bold;
+
+					imgMgmtServiceFileCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Pass.png", UriKind.RelativeOrAbsolute));
+					imgMgmtServiceFileCheck.Cursor = Cursors.Arrow;
+					imgMgmtServiceFileCheck.MouseUp -= imgMgmtServiceFileCheck_MouseUp;
+				}
+				else
+				{
+					lblMgmtServiceFileCheck.Foreground = new SolidColorBrush(Colors.Red);
+					lblMgmtServiceFileCheck.Text = "Failure";
+					lblMgmtServiceFileCheck.FontWeight = FontWeights.Bold;
+
+					imgMgmtServiceFileCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+					imgMgmtServiceFileCheck.Cursor = Cursors.Hand;
+					imgMgmtServiceFileCheck.MouseUp += imgMgmtServiceFileCheck_MouseUp;
+				}
+
+				_eventAggregator.SendMessage<ServiceTestingEvent>();
+			};
+
+			worker.RunWorkerAsync(new object[]
+			                          {
+			                            _service
+			                          });
+		}
+
+		private void TestClientServiceFileSystem()
+		{
+			BackgroundWorker worker = new BackgroundWorker();
+			WorkingAnimation(lblClientServiceFileCheck);
+
+			worker.DoWork += delegate(object s, DoWorkEventArgs args)
+			{
+				object[] data = args.Argument as object[];
+				bool result = false;
+
+				try
+				{
+					result = _servicesService.TestClientServiceFileSystem(_service);
+				}
+				catch
+				{
+					result = false;
+				}
+
+				args.Result = result;
+			};
+
+			worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+			{
+				bool result = (bool)args.Result;
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				if (result)
+				{
+					lblClientServiceFileCheck.Foreground = new SolidColorBrush(Colors.DarkGreen);
+					lblClientServiceFileCheck.Text = "Success";
+					lblClientServiceFileCheck.FontWeight = FontWeights.Bold;
+
+					imgClientServiceFileCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Pass.png", UriKind.RelativeOrAbsolute));
+					imgClientServiceFileCheck.Cursor = Cursors.Arrow;
+					imgClientServiceFileCheck.MouseUp -= imgClientServiceFileCheck_MouseUp;
+				}
+				else
+				{
+					lblClientServiceFileCheck.Foreground = new SolidColorBrush(Colors.Red);
+					lblClientServiceFileCheck.Text = "Failure";
+					lblClientServiceFileCheck.FontWeight = FontWeights.Bold;
+
+					imgClientServiceFileCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+					imgClientServiceFileCheck.Cursor = Cursors.Hand;
+					imgClientServiceFileCheck.MouseUp += imgClientServiceFileCheck_MouseUp;
+				}
+
+				_eventAggregator.SendMessage<ServiceTestingEvent>();
+			};
+
+			worker.RunWorkerAsync(new object[]
+			                          {
+			                            _service
+			                          });
+		}
+
+		private void TestMgmtServiceDatabase()
+		{
+			BackgroundWorker worker = new BackgroundWorker();
+			WorkingAnimation(lblMgmtServiceDbCheck);
+
+			worker.DoWork += delegate(object s, DoWorkEventArgs args)
+			{
+				object[] data = args.Argument as object[];
+				bool result = false;
+
+				try
+				{
+					result = _servicesService.TestManagementServiceDatabase(_service);
+				}
+				catch
+				{
+					result = false;
+				}
+
+				args.Result = result;
+			};
+
+			worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+			{
+				bool result = (bool)args.Result;
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				if (result)
+				{
+					lblMgmtServiceDbCheck.Foreground = new SolidColorBrush(Colors.DarkGreen);
+					lblMgmtServiceDbCheck.Text = "Success";
+					lblMgmtServiceDbCheck.FontWeight = FontWeights.Bold;
+
+					imgMgmtServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Pass.png", UriKind.RelativeOrAbsolute));
+					imgMgmtServiceDbCheck.Cursor = Cursors.Arrow;
+					imgMgmtServiceDbCheck.MouseUp -= imgMgmtServiceDbCheck_MouseUp;
+				}
+				else
+				{
+					lblMgmtServiceDbCheck.Foreground = new SolidColorBrush(Colors.Red);
+					lblMgmtServiceDbCheck.Text = "Failure";
+					lblMgmtServiceDbCheck.FontWeight = FontWeights.Bold;
+
+					imgMgmtServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+					imgMgmtServiceDbCheck.Cursor = Cursors.Hand;
+					imgMgmtServiceDbCheck.MouseUp += imgMgmtServiceDbCheck_MouseUp;
+				}
+
+				_eventAggregator.SendMessage<ServiceTestingEvent>();
+			};
+
+			worker.RunWorkerAsync(new object[]
+			                          {
+			                            _service
+			                          });
+		}
+
+		private void TestClientServiceDatabase()
+		{
+			BackgroundWorker worker = new BackgroundWorker();
+			WorkingAnimation(lblClientServiceDbCheck);
+
+			worker.DoWork += delegate(object s, DoWorkEventArgs args)
+			{
+				object[] data = args.Argument as object[];
+				bool result = false;
+
+				try
+				{
+					result = _servicesService.TestManagementServiceDatabase(_service);
+				}
+				catch
+				{
+					result = false;
+				}
+
+				args.Result = result;
+			};
+
+			worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+			{
+				bool result = (bool)args.Result;
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				if (result)
+				{
+					lblClientServiceDbCheck.Foreground = new SolidColorBrush(Colors.DarkGreen);
+					lblClientServiceDbCheck.Text = "Success";
+					lblClientServiceDbCheck.FontWeight = FontWeights.Bold;
+
+					imgClientServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Pass.png", UriKind.RelativeOrAbsolute));
+					imgClientServiceDbCheck.Cursor = Cursors.Arrow;
+					imgClientServiceDbCheck.MouseUp -= imgClientServiceDbCheck_MouseUp;
+				}
+				else
+				{
+					lblClientServiceDbCheck.Foreground = new SolidColorBrush(Colors.Red);
+					lblClientServiceDbCheck.Text = "Failure";
+					lblClientServiceDbCheck.FontWeight = FontWeights.Bold;
+
+					imgClientServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+					imgClientServiceDbCheck.Cursor = Cursors.Hand;
+					imgClientServiceDbCheck.MouseUp += imgClientServiceDbCheck_MouseUp;
+				}
+
+				_eventAggregator.SendMessage<ServiceTestingEvent>();
+			};
+
+			worker.RunWorkerAsync(new object[]
+			                          {
+			                            _service
+			                          });
+		}
 		#endregion Service Testing Methods
 
 		private void WorkingAnimation(TextBlock control)
@@ -353,6 +605,40 @@ namespace WaveTech.Scutex.Manager.Windows
 																		"\t 3.) Check that the .svc files are accessible" + Environment.NewLine +
 																		"\t 4.) Check that .Net 4 is installed on the web server" + Environment.NewLine +
 																		"\t 5.) Check that WCF is enabled on the web server", _service.ClientUrl));
+		}
+
+		private void imgMgmtServiceFileCheck_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			MessageBox.Show(string.Format("Scutex was unable to verify Read/Write ability on the Management service at Url ({0}). Please try the following to ensure the service is working:" + Environment.NewLine +
+																		"\t 1.) Verify that the worker process running the WCF services is a normal windows account" + Environment.NewLine +
+																		"\t 2.) Ensure the Windows account running the worker process has access to the file system" + Environment.NewLine +
+																		"\t 3.) Check that account has read/write/delete at the directory level and below", _service.ManagementUrl));
+		}
+
+		private void imgClientServiceFileCheck_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			MessageBox.Show(string.Format("Scutex was unable to verify Read/Write ability on the Client service at Url ({0}). Please try the following to ensure the service is working:" + Environment.NewLine +
+																		"\t 1.) Verify that the worker process running the WCF services is a normal windows account" + Environment.NewLine +
+																		"\t 2.) Ensure the Windows account running the worker process has access to the file system" + Environment.NewLine +
+																		"\t 3.) Check that account has read/write/delete at the directory level and below", _service.ClientUrl));
+		}
+
+		private void imgMgmtServiceDbCheck_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			MessageBox.Show(string.Format("Scutex was unable to verify database connectivity on the Management service at Url ({0}). Please try the following to ensure the service is working:" + Environment.NewLine +
+																		"\t 1.) Verify that the database has been created." + Environment.NewLine +
+																		"\t 2.) Verify that the tables exists" + Environment.NewLine +
+																		"\t 3.) Ensure that the connection string has been set in the web.config" + Environment.NewLine +
+																		"\t 4.) Verify that account used to connect to the database has db_owner", _service.ClientUrl));
+		}
+
+		private void imgClientServiceDbCheck_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			MessageBox.Show(string.Format("Scutex was unable to verify database connectivity on the Client service at Url ({0}). Please try the following to ensure the service is working:" + Environment.NewLine +
+																		"\t 1.) Verify that the database has been created." + Environment.NewLine +
+																		"\t 2.) Verify that the tables exists" + Environment.NewLine +
+																		"\t 3.) Ensure that the connection string has been set in the web.config" + Environment.NewLine +
+																		"\t 4.) Verify that account used to connect to the database has db_owner", _service.ClientUrl));
 		}
 		#endregion Error Help Message Displayers
 	}

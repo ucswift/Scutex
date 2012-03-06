@@ -6,5 +6,7 @@ namespace WaveTech.Scutex.Model.Interfaces.Providers
 	{
 		ActivationResult ActivateLicense(string url, string token, EncryptionInfo encryptionInfo, LicenseActivationPayload payload, ClientLicense clientLicense);
 		string BasicServiceTest(string url);
+		bool FileSystemServiceTest(string url);
+		bool DatabaseServiceTest(string url);
 	}
 }

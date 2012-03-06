@@ -53,5 +53,21 @@ namespace WaveTech.Scutex.Providers.WebServicesProvider
 
 			return testResult;
 		}
+
+		public bool FileSystemServiceTest(string url)
+		{
+			ActivationServiceClient client = ActivationServiceClientCreator(url);
+			bool testResult = client.FileSystemServiceTest();
+
+			return testResult;
+		}
+
+		public bool DatabaseServiceTest(string url)
+		{
+			ActivationServiceClient client = ActivationServiceClientCreator(url);
+			bool testResult = client.DatabaseServiceTest();
+
+			return testResult;
+		}
 	}
 }

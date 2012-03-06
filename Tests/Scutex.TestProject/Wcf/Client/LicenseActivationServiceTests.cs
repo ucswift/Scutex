@@ -110,7 +110,7 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 				servicesService = new ServicesService(servicesRepository, serviceStatusProvider, packingService, licenseActiviationProvider, null, null, null, null, null);
 				licenseKeyService = new LicenseKeyService(keyGenerator, packingService, clientLicenseService);
 				keyService = new KeyManagementService(clientRepository, licenseKeyService, activationLogService, hashingProvider, serviceProductsRepository);
-				activationService = new ActivationService(controlService, keyService, keyPairService, objectSerializationProvider, asymmetricEncryptionProvider, activationLogService, masterService);
+				activationService = new ActivationService(controlService, keyService, keyPairService, objectSerializationProvider, asymmetricEncryptionProvider, activationLogService, masterService, commonService, null);
 	
 				string serviceData;
 

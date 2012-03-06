@@ -20,6 +20,12 @@ namespace WaveTech.Scutex.Providers.WebServicesProvider.WcfServices.ActivationSe
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivationService/BasicServiceTest", ReplyAction="http://tempuri.org/IActivationService/BasicServiceTestResponse")]
         string BasicServiceTest();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivationService/FileSystemServiceTest", ReplyAction="http://tempuri.org/IActivationService/FileSystemServiceTestResponse")]
+        bool FileSystemServiceTest();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivationService/DatabaseServiceTest", ReplyAction="http://tempuri.org/IActivationService/DatabaseServiceTestResponse")]
+        bool DatabaseServiceTest();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace WaveTech.Scutex.Providers.WebServicesProvider.WcfServices.ActivationSe
         
         public string BasicServiceTest() {
             return base.Channel.BasicServiceTest();
+        }
+        
+        public bool FileSystemServiceTest() {
+            return base.Channel.FileSystemServiceTest();
+        }
+        
+        public bool DatabaseServiceTest() {
+            return base.Channel.DatabaseServiceTest();
         }
     }
 }
