@@ -300,6 +300,10 @@
 					</TextBlock.Foreground>
 				</TextBlock>
 
+				<Image x:Name="imgInitializingService"
+				       Grid.Row="7"
+				       Grid.Column="2" />
+
 				<TextBlock Grid.Row="8"
 				           Grid.Column="0"
 				           Margin="4,4,4,4"
@@ -322,6 +326,10 @@
 						</LinearGradientBrush>
 					</TextBlock.Foreground>
 				</TextBlock>
+
+				<Image x:Name="imgVerifyingServiceInitializion"
+				       Grid.Row="8"
+				       Grid.Column="2" />
 
 			</Grid>
 		</GroupBox>

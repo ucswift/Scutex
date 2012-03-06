@@ -22,7 +22,7 @@ namespace WaveTech.Scutex.Manager.Windows
 		private IEventAggregator _eventAggregator;
 		private Service _service;
 		private int progress;
-		private bool workingResult;
+		private bool _testOnly;
 		private Storyboard _story;
 		private IServicesService _servicesService;
 
@@ -51,106 +51,13 @@ namespace WaveTech.Scutex.Manager.Windows
 
 		private void btnInitalize_Click(object sender, RoutedEventArgs e)
 		{
-			
-		}
-
-		private void InitializeService()
-		{
-			BackgroundWorker worker = new BackgroundWorker();
-
-
-			worker.DoWork += delegate(object s, DoWorkEventArgs args)
-			{
-				object[] data = args.Argument as object[];
-				int resultCode = 0;
-
-				IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
-				bool result;
-
-				try
-				{
-					result = _servicesService.InitializeService(_service);
-				}
-				catch (System.ServiceModel.EndpointNotFoundException enf)
-				{
-					resultCode = 50;
-					result = false;
-				}
-				catch
-				{
-					throw;
-				}
-
-				if (!result)
-					resultCode = 10;
-
-				bool testResult = false;
-
-				try
-				{
-					_service.Initialized = true;
-					_servicesService.SaveService(_service);
-					testResult = _servicesService.TestService(_service);
-				}
-				catch (System.ServiceModel.EndpointNotFoundException enf)
-				{
-					resultCode = 50;
-					result = false;
-				}
-				catch
-				{
-					throw;
-				}
-
-				if (!testResult)
-				{
-					resultCode = 20;
-				}
-				else
-				{
-					_service.Tested = true;
-					_servicesService.SaveService(_service);
-				}
-
-				args.Result = resultCode;
-			};
-
-			worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
-			{
-				int resultCode = (int)args.Result;
-
-				if (resultCode == 50)
-				{
-					MessageBox.Show("Cannot locate one or more of the services at the supplied urls. Please check the urls and try again.");
-				}
-				else if (resultCode == 20)
-				{
-					MessageBox.Show("Failed to test the service.");
-				}
-				else if (resultCode == 10)
-				{
-					MessageBox.Show("Failed to initialize the service.");
-				}
-				else
-				{
-					MessageBox.Show("Service has successfully been initialized and tested.");
-				}
-
-				IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
-				eventAggregator.SendMessage<ServicesUpdatedEvent>();
-
-
-			};
-
-			worker.RunWorkerAsync(new object[]
-				                      	{
-				                      		_service
-				                      	});
+			_testOnly = false;
+			_eventAggregator.SendMessage<ServiceTestingEvent>();
 		}
 
 		private void ServiceTestingAndInitialization(ServiceTestingEvent e)
 		{
-			if (!e.DoInitialize)
+			if (_testOnly)
 			{
 				lblInitializingService.Text = "Skipped";
 				lblInitializingService.Foreground = new SolidColorBrush(Colors.LightSlateGray);
@@ -179,11 +86,20 @@ namespace WaveTech.Scutex.Manager.Windows
 				case 5:
 					TestClientServiceDatabase();
 					break;
+				case 6:
+					if (!_testOnly)
+						InitializeService();
+					break;
+				case 7:
+					if (!_testOnly)
+						TestService();
+					break;
 			}
 		}
 
 		private void btnTestOnly_Click(object sender, RoutedEventArgs e)
 		{
+			_testOnly = true;
 			_eventAggregator.SendMessage<ServiceTestingEvent>();
 		}
 
@@ -470,13 +386,29 @@ namespace WaveTech.Scutex.Manager.Windows
 				}
 				else
 				{
-					lblMgmtServiceDbCheck.Foreground = new SolidColorBrush(Colors.Red);
-					lblMgmtServiceDbCheck.Text = "Failure";
-					lblMgmtServiceDbCheck.FontWeight = FontWeights.Bold;
+					var service = _servicesService.GetServiceById(_service.ServiceId);
 
-					imgMgmtServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
-					imgMgmtServiceDbCheck.Cursor = Cursors.Hand;
-					imgMgmtServiceDbCheck.MouseUp += imgMgmtServiceDbCheck_MouseUp;
+					if (service.Initialized)
+					{
+						lblMgmtServiceDbCheck.Foreground = new SolidColorBrush(Colors.Orange);
+						lblMgmtServiceDbCheck.Text = "Skipped";
+						lblMgmtServiceDbCheck.FontWeight = FontWeights.Bold;
+
+						imgMgmtServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Skip.png", UriKind.RelativeOrAbsolute));
+						imgMgmtServiceDbCheck.Cursor = Cursors.Hand;
+						imgMgmtServiceDbCheck.MouseUp += imgAlreadyInitialized_MouseUp;
+					}
+					else
+					{
+						lblMgmtServiceDbCheck.Foreground = new SolidColorBrush(Colors.Red);
+						lblMgmtServiceDbCheck.Text = "Failure";
+						lblMgmtServiceDbCheck.FontWeight = FontWeights.Bold;
+
+						imgMgmtServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+						imgMgmtServiceDbCheck.Cursor = Cursors.Hand;
+						imgMgmtServiceDbCheck.MouseUp += imgMgmtServiceDbCheck_MouseUp;
+					}
+
 				}
 
 				_eventAggregator.SendMessage<ServiceTestingEvent>();
@@ -530,13 +462,29 @@ namespace WaveTech.Scutex.Manager.Windows
 				}
 				else
 				{
-					lblClientServiceDbCheck.Foreground = new SolidColorBrush(Colors.Red);
-					lblClientServiceDbCheck.Text = "Failure";
-					lblClientServiceDbCheck.FontWeight = FontWeights.Bold;
+					var service = _servicesService.GetServiceById(_service.ServiceId);
 
-					imgClientServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
-					imgClientServiceDbCheck.Cursor = Cursors.Hand;
-					imgClientServiceDbCheck.MouseUp += imgClientServiceDbCheck_MouseUp;
+					if (service.Initialized)
+					{
+						lblClientServiceDbCheck.Foreground = new SolidColorBrush(Colors.Orange);
+						lblClientServiceDbCheck.Text = "Skipped";
+						lblClientServiceDbCheck.FontWeight = FontWeights.Bold;
+
+						imgClientServiceDbCheck.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Skip.png", UriKind.RelativeOrAbsolute));
+						imgClientServiceDbCheck.Cursor = Cursors.Hand;
+						imgClientServiceDbCheck.MouseUp += imgAlreadyInitialized_MouseUp;
+					}
+					else
+					{
+						lblClientServiceDbCheck.Foreground = new SolidColorBrush(Colors.Red);
+						lblClientServiceDbCheck.Text = "Failure";
+						lblClientServiceDbCheck.FontWeight = FontWeights.Bold;
+
+						imgClientServiceDbCheck.Source =
+							new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+						imgClientServiceDbCheck.Cursor = Cursors.Hand;
+						imgClientServiceDbCheck.MouseUp += imgClientServiceDbCheck_MouseUp;
+					}
 				}
 
 				_eventAggregator.SendMessage<ServiceTestingEvent>();
@@ -548,6 +496,224 @@ namespace WaveTech.Scutex.Manager.Windows
 			                          });
 		}
 		#endregion Service Testing Methods
+
+		#region Service Initialization Methods
+		private void InitializeService()
+		{
+			if (_testOnly)
+			{
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				return;
+			}
+
+			BackgroundWorker worker = new BackgroundWorker();
+			WorkingAnimation(lblInitializingService);
+
+			worker.DoWork += delegate(object s, DoWorkEventArgs args)
+			{
+				object[] data = args.Argument as object[];
+				int resultCode = 0;
+
+				IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
+				bool result = false;
+
+				try
+				{
+					var service = _servicesService.GetServiceById(_service.ServiceId);
+
+					if (!service.Initialized)
+						result = _servicesService.InitializeService(_service);
+				}
+				catch (System.ServiceModel.EndpointNotFoundException enf)
+				{
+					resultCode = 50;
+					result = false;
+				}
+				catch
+				{
+					throw;
+				}
+
+				if (!result)
+					resultCode = 10;
+
+				try
+				{
+					var service = _servicesService.GetServiceById(_service.ServiceId);
+
+					if (!service.Initialized)
+					{
+						_service.Initialized = true;
+						_servicesService.SaveService(_service);
+					}
+					else
+					{
+						resultCode = 500;
+					}
+				}
+				catch (System.ServiceModel.EndpointNotFoundException enf)
+				{
+					resultCode = 50;
+					result = false;
+				}
+				catch
+				{
+					throw;
+				}
+
+				args.Result = resultCode;
+			};
+
+			worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+			{
+				int resultCode = (int)args.Result;
+				bool failed = false;
+
+				if (resultCode == 50)
+				{
+					failed = true;
+					MessageBox.Show("Cannot locate one or more of the services at the supplied urls. Please check the urls and try again.");
+				}
+				else if (resultCode == 10)
+				{
+					failed = true;
+					MessageBox.Show("Failed to initialize the service.");
+				}
+				else if (resultCode == 500)
+				{
+					lblInitializingService.Foreground = new SolidColorBrush(Colors.Orange);
+					lblInitializingService.Text = "Skipped";
+					lblInitializingService.FontWeight = FontWeights.Bold;
+
+					imgInitializingService.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Skip.png", UriKind.RelativeOrAbsolute));
+					imgInitializingService.Cursor = Cursors.Hand;
+					imgInitializingService.MouseUp += imgAlreadyInitialized_MouseUp;
+				}
+				else
+				{
+					lblInitializingService.Foreground = new SolidColorBrush(Colors.DarkGreen);
+					lblInitializingService.Text = "Success";
+					lblInitializingService.FontWeight = FontWeights.Bold;
+
+					imgInitializingService.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Pass.png", UriKind.RelativeOrAbsolute));
+					imgInitializingService.Cursor = Cursors.Arrow;
+					imgInitializingService.MouseUp -= imgInitializingService_MouseUp;
+				}
+
+				if (failed)
+				{
+					lblInitializingService.Foreground = new SolidColorBrush(Colors.Red);
+					lblInitializingService.Text = "Failure";
+					lblInitializingService.FontWeight = FontWeights.Bold;
+
+					imgInitializingService.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+					imgInitializingService.Cursor = Cursors.Hand;
+					imgInitializingService.MouseUp += imgInitializingService_MouseUp;
+				}
+
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				_eventAggregator.SendMessage<ServiceTestingEvent>();
+
+				IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
+				eventAggregator.SendMessage<ServicesUpdatedEvent>();
+			};
+
+			worker.RunWorkerAsync(new object[]
+				                      	{
+				                      		_service
+				                      	});
+		}
+
+		private void TestService()
+		{
+			if (_testOnly)
+			{
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				return;
+			}
+
+			BackgroundWorker worker = new BackgroundWorker();
+			WorkingAnimation(lblVerifyingServiceInitializion);
+
+			worker.DoWork += delegate(object s, DoWorkEventArgs args)
+			{
+				object[] data = args.Argument as object[];
+				IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
+				bool result;
+
+				try
+				{
+					result = _servicesService.TestService(_service);
+				}
+				catch (Exception ex)
+				{
+					result = false;
+				}
+
+
+				if (result)
+				{
+					_service.Tested = true;
+					_servicesService.SaveService(_service);
+				}
+
+				args.Result = result;
+			};
+
+			worker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+			{
+				bool result = (bool)args.Result;
+
+				if (result)
+				{
+					lblVerifyingServiceInitializion.Foreground = new SolidColorBrush(Colors.DarkGreen);
+					lblVerifyingServiceInitializion.Text = "Success";
+					lblVerifyingServiceInitializion.FontWeight = FontWeights.Bold;
+
+					imgVerifyingServiceInitializion.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Pass.png", UriKind.RelativeOrAbsolute));
+					imgVerifyingServiceInitializion.Cursor = Cursors.Arrow;
+					imgVerifyingServiceInitializion.MouseUp -= imgVerifyingServiceInitializion_MouseUp;
+				}
+				else
+				{
+					lblVerifyingServiceInitializion.Foreground = new SolidColorBrush(Colors.Red);
+					lblVerifyingServiceInitializion.Text = "Failure";
+					lblVerifyingServiceInitializion.FontWeight = FontWeights.Bold;
+
+					imgVerifyingServiceInitializion.Source = new BitmapImage(new Uri(@"pack://application:,,/img/Service_Test_Failure.png", UriKind.RelativeOrAbsolute));
+					imgVerifyingServiceInitializion.Cursor = Cursors.Hand;
+					imgVerifyingServiceInitializion.MouseUp += imgVerifyingServiceInitializion_MouseUp;
+				}
+
+				progress++;
+
+				_story.Stop(this);
+				_story = null;
+
+				_eventAggregator.SendMessage<ServiceTestingEvent>();
+
+				IEventAggregator eventAggregator = ObjectLocator.GetInstance<IEventAggregator>();
+				eventAggregator.SendMessage<ServicesUpdatedEvent>();
+			};
+
+			worker.RunWorkerAsync(new object[]
+				                      	{
+				                      		_service
+				                      	});
+		}
+		#endregion Service Initialization Methods
 
 		private void WorkingAnimation(TextBlock control)
 		{
@@ -594,7 +760,7 @@ namespace WaveTech.Scutex.Manager.Windows
 																		"\t 2.) Ensure the path maps to the correct directory" + Environment.NewLine +
 																		"\t 3.) Check that the .svc files are accessible" + Environment.NewLine +
 																		"\t 4.) Check that .Net 4 is installed on the web server" + Environment.NewLine +
-			                              "\t 5.) Check that WCF is enabled on the web server", _service.ManagementUrl));
+																		"\t 5.) Check that WCF is enabled on the web server", _service.ManagementUrl));
 		}
 
 		private void imgClientServiceUrlCheck_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -639,6 +805,29 @@ namespace WaveTech.Scutex.Manager.Windows
 																		"\t 2.) Verify that the tables exists" + Environment.NewLine +
 																		"\t 3.) Ensure that the connection string has been set in the web.config" + Environment.NewLine +
 																		"\t 4.) Verify that account used to connect to the database has db_owner", _service.ClientUrl));
+		}
+
+		private void imgInitializingService_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			MessageBox.Show(string.Format("Scutex was unable to verify database connectivity on the Client service at Url ({0}). Please try the following to ensure the service is working:" + Environment.NewLine +
+																		"\t 1.) Verify that the database has been created." + Environment.NewLine +
+																		"\t 2.) Verify that the tables exists" + Environment.NewLine +
+																		"\t 3.) Ensure that the connection string has been set in the web.config" + Environment.NewLine +
+																		"\t 4.) Verify that account used to connect to the database has db_owner", _service.ClientUrl));
+		}
+
+		private void imgVerifyingServiceInitializion_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			MessageBox.Show(string.Format("Scutex was unable to verify database connectivity on the Client service at Url ({0}). Please try the following to ensure the service is working:" + Environment.NewLine +
+																		"\t 1.) Verify that the database has been created." + Environment.NewLine +
+																		"\t 2.) Verify that the tables exists" + Environment.NewLine +
+																		"\t 3.) Ensure that the connection string has been set in the web.config" + Environment.NewLine +
+																		"\t 4.) Verify that account used to connect to the database has db_owner", _service.ClientUrl));
+		}
+
+		private void imgAlreadyInitialized_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			MessageBox.Show(string.Format("Scutex was unable to perform this task as the service is already initialized."));
 		}
 		#endregion Error Help Message Displayers
 	}

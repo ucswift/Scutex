@@ -667,6 +667,7 @@
     <Resource Include="img\application_up.png" />
     <Resource Include="img\Service_Test_Failure.png" />
     <Resource Include="img\Service_Test_Pass.png" />
+    <Resource Include="img\Service_Test_Skip.png" />
     <Content Include="ScutexDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
