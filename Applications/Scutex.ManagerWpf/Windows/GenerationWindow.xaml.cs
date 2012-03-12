@@ -304,12 +304,18 @@ namespace WaveTech.Scutex.Manager.Windows
 													{
 														object[] data = args.Argument as object[];
 
-														IKeyGenerator keygen = ObjectLocator.GetInstance<IKeyGenerator>((string)data[2]);
+														IKeyGenerator smallKeygen = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.SmallKeyGenerator);
+														IKeyGenerator largeKeygen = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.LargeKeyGenerator);
 														ILicenseActiviationProvider licenseActiviationProvider = ObjectLocator.GetInstance<ILicenseActiviationProvider>();
 														IPackingService packingService = ObjectLocator.GetInstance<IPackingService>();
 														IClientLicenseService clientLicenseService = ObjectLocator.GetInstance<IClientLicenseService>();
 
-														LicenseKeyService service = new LicenseKeyService(keygen, packingService, clientLicenseService);
+														if ((string)data[2] == InstanceNames.SmallKeyGenerator)
+															((LicenseGenerationOptions) data[0]).GeneratorType = KeyGeneratorTypes.StaticSmall;
+														else
+															((LicenseGenerationOptions) data[0]).GeneratorType = KeyGeneratorTypes.StaticLarge;
+
+														LicenseKeyService service = new LicenseKeyService(smallKeygen, largeKeygen, packingService, clientLicenseService);
 														List<string> keys = service.GenerateLicenseKeys(UIContext.License.KeyPair.PrivateKey,
 																																						UIContext.License,
 																																						(LicenseGenerationOptions)data[0],

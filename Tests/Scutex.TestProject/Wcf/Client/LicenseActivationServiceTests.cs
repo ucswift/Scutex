@@ -5,6 +5,7 @@ using Moq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveTech.Scutex.Generators.StaticKeyGeneratorSmall;
 using WaveTech.Scutex.Model;
+using WaveTech.Scutex.Model.Interfaces.Generators;
 using WaveTech.Scutex.Model.Interfaces.Repositories;
 using WaveTech.Scutex.Model.Interfaces.Services;
 using WaveTech.Scutex.Model.Interfaces.Wcf;
@@ -15,6 +16,7 @@ using WaveTech.Scutex.Providers.HashingProvider;
 using WaveTech.Scutex.Providers.ObjectSerialization;
 using WaveTech.Scutex.Providers.SymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.WebServicesProvider;
+using WaveTech.Scutex.Providers.WmiDataProvider;
 using WaveTech.Scutex.Repositories.ClientDataRepository;
 using WaveTech.Scutex.Repositories.ManagerDataRepository;
 using WaveTech.Scutex.Repositories.ServicesDataRepository;
@@ -44,6 +46,7 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 			internal ClientRepository clientRepository;
 			internal LicenseKeyService licenseKeyService;
 			internal KeyGenerator keyGenerator;
+			internal IKeyGenerator keyGeneratorLarge;
 			internal ServicesService servicesService;
 			internal ServicesRepository servicesRepository;
 			internal ServiceStatusProvider serviceStatusProvider;
@@ -55,6 +58,7 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 			internal IServiceProductsRepository serviceProductsRepository;
 			internal IClientLicenseRepository clientLicenseRepoistory;
 			internal IClientLicenseService clientLicenseService;
+			internal IHardwareFingerprintService hardwareFingerprintService;
 
 			internal Service service;
 			internal MasterServiceData masterServiceData;
@@ -75,6 +79,8 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 				clientRepository = new ClientRepository(new ScutexServiceEntities());
 				keyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
 				masterService = new MasterService(commonRepository);
+				hardwareFingerprintService = new HardwareFingerprintService(new WmiDataProvider(), new HashingProvider());
+				keyGeneratorLarge = new Scutex.Generators.StaticKeyGeneratorLarge.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
 
 				var mockActivationLogRepository = new Mock<IActivationLogRepoistory>();
 				mockActivationLogRepository.Setup(log => log.SaveActivationLog(It.IsAny<Scutex.Model.ActivationLog>()));
@@ -108,7 +114,7 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 				serviceStatusProvider = new ServiceStatusProvider(symmetricEncryptionProvider, objectSerializationProvider, asymmetricEncryptionProvider);
 				licenseActiviationProvider = new LicenseActiviationProvider(asymmetricEncryptionProvider, symmetricEncryptionProvider, objectSerializationProvider);
 				servicesService = new ServicesService(servicesRepository, serviceStatusProvider, packingService, licenseActiviationProvider, null, null, null, null, null);
-				licenseKeyService = new LicenseKeyService(keyGenerator, packingService, clientLicenseService);
+				licenseKeyService = new LicenseKeyService(keyGenerator, keyGeneratorLarge, packingService, clientLicenseService);
 				keyService = new KeyManagementService(clientRepository, licenseKeyService, activationLogService, hashingProvider, serviceProductsRepository);
 				activationService = new ActivationService(controlService, keyService, keyPairService, objectSerializationProvider, asymmetricEncryptionProvider, activationLogService, masterService, commonService, null);
 	

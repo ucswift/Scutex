@@ -20,6 +20,7 @@ using WaveTech.Scutex.Providers.HashingProvider;
 using WaveTech.Scutex.Providers.ObjectSerialization;
 using WaveTech.Scutex.Providers.SymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.WebServicesProvider;
+using WaveTech.Scutex.Providers.WmiDataProvider;
 using WaveTech.Scutex.Repositories.ClientDataRepository;
 using WaveTech.Scutex.Services;
 using WaveTech.Scutex.TestHarness.WcfServices.ActivationService;
@@ -372,13 +373,15 @@ namespace TestHarness
 				asymmetricEncryptionProvider, symmetricEncryptionProvider, objectSerializationProvider);
 			INumberDataGeneratorProvider numberDataGeneratorProvider = new NumberDataGenerator();
 			IPackingService packingService = new PackingService(numberDataGeneratorProvider);
+			IHardwareFingerprintService hardwareFingerprintService = new HardwareFingerprintService(new WmiDataProvider(), hashingProvider);
 
 			IClientLicenseRepository clientLicenseRepository = new ClientLicenseRepository(objectSerializationProvider,
 																																										 symmetricEncryptionProvider);
 			IClientLicenseService clientLicenseService = new ClientLicenseService(clientLicenseRepository);
 
 			KeyGenerator staticKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
-			LicenseKeyService licenseKeyService = new LicenseKeyService(staticKeyGenerator, packingService, clientLicenseService);
+			IKeyGenerator staticKeyGeneratorLarge = new WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
+			LicenseKeyService licenseKeyService = new LicenseKeyService(staticKeyGenerator, staticKeyGeneratorLarge, packingService, clientLicenseService);
 
 			ClientLicense license = new ClientLicense();
 			LicenseGenerationOptions generationOptions = new LicenseGenerationOptions();
@@ -428,13 +431,15 @@ namespace TestHarness
 				asymmetricEncryptionProvider, symmetricEncryptionProvider, objectSerializationProvider);
 			INumberDataGeneratorProvider numberDataGeneratorProvider = new NumberDataGenerator();
 			IPackingService packingService = new PackingService(numberDataGeneratorProvider);
+			IHardwareFingerprintService hardwareFingerprintService = new HardwareFingerprintService(new WmiDataProvider(), hashingProvider);
 
 			IClientLicenseRepository clientLicenseRepository = new ClientLicenseRepository(objectSerializationProvider,
 																																										 symmetricEncryptionProvider);
 			IClientLicenseService clientLicenseService = new ClientLicenseService(clientLicenseRepository);
 
 			IKeyGenerator smallKeyGenerator = new WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
-			LicenseKeyService licenseKeyService = new LicenseKeyService(smallKeyGenerator, packingService, clientLicenseService);
+			IKeyGenerator staticKeyGeneratorLarge = new WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
+			LicenseKeyService licenseKeyService = new LicenseKeyService(smallKeyGenerator, staticKeyGeneratorLarge, packingService, clientLicenseService);
 
 			ClientLicense license = new ClientLicense();
 			LicenseGenerationOptions generationOptions = new LicenseGenerationOptions();
@@ -492,13 +497,15 @@ namespace TestHarness
 				asymmetricEncryptionProvider, symmetricEncryptionProvider, objectSerializationProvider);
 			INumberDataGeneratorProvider numberDataGeneratorProvider = new NumberDataGenerator();
 			IPackingService packingService = new PackingService(numberDataGeneratorProvider);
+			IHardwareFingerprintService hardwareFingerprintService = new HardwareFingerprintService(new WmiDataProvider(), hashingProvider);
 
 			IClientLicenseRepository clientLicenseRepository = new ClientLicenseRepository(objectSerializationProvider,
 																																										 symmetricEncryptionProvider);
 			IClientLicenseService clientLicenseService = new ClientLicenseService(clientLicenseRepository);
 
 			IKeyGenerator smallKeyGenerator = new WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
-			LicenseKeyService licenseKeyService = new LicenseKeyService(smallKeyGenerator, packingService, clientLicenseService);
+			IKeyGenerator staticKeyGeneratorLarge = new WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
+			LicenseKeyService licenseKeyService = new LicenseKeyService(smallKeyGenerator, staticKeyGeneratorLarge, packingService, clientLicenseService);
 
 			ClientLicense license = new ClientLicense();
 			LicenseGenerationOptions generationOptions = new LicenseGenerationOptions();

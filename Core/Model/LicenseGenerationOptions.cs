@@ -7,22 +7,37 @@ namespace WaveTech.Scutex.Model
 	/// </summary>
 	public class LicenseGenerationOptions
 	{
+
+		public LicenseGenerationOptions()
+		{
+			// Default the generator type to small to ensure backwards compatibility
+			// the rest of the system, pre large key
+			GeneratorType = KeyGeneratorTypes.StaticSmall;
+		}
+
+		/// <summary>
+		/// Declares the type of key generator that will be used
+		/// </summary>
+		public KeyGeneratorTypes GeneratorType { get; set; }
+
 		/// <summary>
 		/// The License Key type to encode in the generated license keys.
 		/// </summary>
 		public LicenseKeyTypes LicenseKeyType { get; set; }
 
 		/// <summary>
-		/// 
+		/// The hardware fingerprint of the system used for local hardware keys
 		/// </summary>
 		public string HardwareFingerprint { get; set; }
-
 
 		/// <summary>
 		/// The LicenseSet id
 		/// </summary>
 		public int LicenseSetId { get; set; }
 
+		/// <summary>
+		/// Custom data for the generation system
+		/// </summary>
 		public Dictionary<string, string> CustomData { get; set; }
 	}
 }

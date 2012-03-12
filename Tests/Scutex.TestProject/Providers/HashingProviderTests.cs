@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WaveTech.Scutex.Generators.StaticKeyGeneratorLarge;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Interfaces.Generators;
 using WaveTech.Scutex.Model.Interfaces.Providers;
@@ -13,6 +14,7 @@ using WaveTech.Scutex.Providers.HashingProvider;
 using WaveTech.Scutex.Providers.ObjectSerialization;
 using WaveTech.Scutex.Providers.SymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.WebServicesProvider;
+using WaveTech.Scutex.Providers.WmiDataProvider;
 using WaveTech.Scutex.Repositories.ClientDataRepository;
 using WaveTech.Scutex.Services;
 
@@ -120,13 +122,15 @@ namespace WaveTech.Scutex.UnitTests.Providers
 			ILicenseActiviationProvider licenseActiviationProvider = new LicenseActiviationProvider(
 				asymmetricEncryptionProvider, symmetricEncryptionProvider, objectSerializationProvider);
 			INumberDataGeneratorProvider numberDataGeneratorProvider = new NumberDataGenerator();
+			IHardwareFingerprintService hardwareFingerprintService = new HardwareFingerprintService(new WmiDataProvider(), new HashingProvider());
 			IPackingService packingService = new PackingService(numberDataGeneratorProvider);
 			IClientLicenseRepository clientLicenseRepository = new ClientLicenseRepository(objectSerializationProvider,
 																																										 symmetricEncryptionProvider);
 			IClientLicenseService clientLicenseService = new ClientLicenseService(clientLicenseRepository);
 
+			IKeyGenerator largeKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
 			IKeyGenerator smallKeyGenerator = new WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
-			LicenseKeyService licenseKeyService = new LicenseKeyService(smallKeyGenerator, packingService, clientLicenseService);
+			LicenseKeyService licenseKeyService = new LicenseKeyService(smallKeyGenerator, largeKeyGenerator, packingService, clientLicenseService);
 
 			ClientLicense license = new ClientLicense();
 			LicenseGenerationOptions generationOptions = new LicenseGenerationOptions();

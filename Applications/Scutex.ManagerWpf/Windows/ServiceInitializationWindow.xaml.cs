@@ -651,7 +651,7 @@ namespace WaveTech.Scutex.Manager.Windows
 			{
 				object[] data = args.Argument as object[];
 				IServicesService _servicesService = ObjectLocator.GetInstance<IServicesService>();
-				bool result;
+				bool result = false;
 
 				try
 				{

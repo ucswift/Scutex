@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveTech.Scutex.Generators.StaticKeyGeneratorSmall;
 using WaveTech.Scutex.Model;
+using WaveTech.Scutex.Model.Interfaces.Generators;
 using WaveTech.Scutex.Model.Interfaces.Providers;
 using WaveTech.Scutex.Model.Interfaces.Repositories;
 using WaveTech.Scutex.Model.Interfaces.Services;
@@ -12,6 +13,7 @@ using WaveTech.Scutex.Providers.HashingProvider;
 using WaveTech.Scutex.Providers.ObjectSerialization;
 using WaveTech.Scutex.Providers.SymmetricEncryptionProvider;
 using WaveTech.Scutex.Providers.WebServicesProvider;
+using WaveTech.Scutex.Providers.WmiDataProvider;
 using WaveTech.Scutex.Repositories.ClientDataRepository;
 using WaveTech.Scutex.Services;
 
@@ -25,6 +27,7 @@ namespace WaveTech.Scutex.UnitTests.Services
 		private IHashingProvider hashingProvider = new HashingProvider();
 		private IObjectSerializationProvider objectSerializationProvider = new ObjectSerializationProvider();
 		private INumberDataGeneratorProvider numberDataGenerationProvider = new NumberDataGenerator();
+		private IHardwareFingerprintService hardwareFingerprintService = new HardwareFingerprintService(new WmiDataProvider(), new HashingProvider());
 		private IPackingService packingService;
 		public IClientLicenseRepository clientLicenseRepository;
 		private IClientLicenseService clientLicenseService;
@@ -33,6 +36,7 @@ namespace WaveTech.Scutex.UnitTests.Services
 		private LicenseGenerationOptions generationOptions;
 		private LicenseKeyService licenseKeyService;
 		private KeyGenerator staticKeyGenerator;
+		private IKeyGenerator staticKeyGeneratorLarge;
 
 		[TestInitialize]
 		public void SetupTests()
@@ -62,7 +66,8 @@ namespace WaveTech.Scutex.UnitTests.Services
 			LicenseActiviationProvider licenseActiviationProvider = new LicenseActiviationProvider(asymmetricEncryptionProvider, symmetricEncryptionProvider, objectSerializationProvider);
 
 			staticKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
-			licenseKeyService = new LicenseKeyService(staticKeyGenerator, packingService, clientLicenseService);
+			staticKeyGeneratorLarge = new Scutex.Generators.StaticKeyGeneratorLarge.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
+			licenseKeyService = new LicenseKeyService(staticKeyGenerator, staticKeyGeneratorLarge, packingService, clientLicenseService);
 		}
 
 		[TestMethod]

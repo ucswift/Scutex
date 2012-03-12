@@ -18,6 +18,7 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary
 					scanner.AddRegistry(new FrameworkRegistry());
 					scanner.AddRegistry(new ServicesRegistry());
 					scanner.AddRegistry(new GeneratorRegistry());
+					scanner.AddRegistry(new Generators.StaticKeyGeneratorLarge.GeneratorRegistry());
 					scanner.AddRegistry(new Providers.AsymmetricEncryptionProvider.ProviderRegistry());
 					scanner.AddRegistry(new Providers.DataGenerationProvider.ProviderRegistry());
 					scanner.AddRegistry(new Providers.HashingProvider.ProviderRegistry());

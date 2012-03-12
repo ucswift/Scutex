@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using WaveTech.Scutex.Framework;
 using WaveTech.Scutex.Model;
 using WaveTech.Scutex.Model.Exceptions;
 using WaveTech.Scutex.Model.Interfaces.Generators;
@@ -11,19 +13,28 @@ namespace WaveTech.Scutex.Services
 	internal class LicenseKeyService : ILicenseKeyService
 	{
 		private readonly IKeyGenerator keyGenerator;
+		private readonly IKeyGenerator _largeKeyGenerator;
 		private readonly IPackingService _packingService;
 		private readonly IClientLicenseService _clientLicenseService;
 
-		public LicenseKeyService(IKeyGenerator keyGenerator, IPackingService packingService, IClientLicenseService clientLicenseService)
+		public LicenseKeyService(IKeyGenerator staticSmallKeyGenerator, IKeyGenerator staticLargeKeyGenerator, IPackingService packingService, IClientLicenseService clientLicenseService)
 		{
-			this.keyGenerator = keyGenerator;
+			keyGenerator = staticSmallKeyGenerator;
+			_largeKeyGenerator = staticLargeKeyGenerator;
 			_packingService = packingService;
 			_clientLicenseService = clientLicenseService;
+
+			// Need to find a way to get these passed in correctly
+			keyGenerator = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.SmallKeyGenerator);
+			_largeKeyGenerator = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.LargeKeyGenerator);
 		}
 
 		public string GenerateLicenseKey(string rsaXmlString, LicenseBase scutexLicense, LicenseGenerationOptions generationOptions)
 		{
-			return keyGenerator.GenerateLicenseKey(rsaXmlString, scutexLicense, generationOptions);
+			if (generationOptions.GeneratorType == KeyGeneratorTypes.StaticSmall)
+				return keyGenerator.GenerateLicenseKey(rsaXmlString, scutexLicense, generationOptions);
+			else
+				return _largeKeyGenerator.GenerateLicenseKey(rsaXmlString, scutexLicense, generationOptions);
 		}
 
 		public List<string> GenerateLicenseKeys(string rsaXmlString, LicenseBase scutexLicense, LicenseGenerationOptions generationOptions, int count)
@@ -59,7 +70,10 @@ namespace WaveTech.Scutex.Services
 			{
 				try
 				{
-					return keyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
+					if (licenseKey.Length == 15)
+						return keyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
+					else
+						return _largeKeyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
 				}
 				catch (ScutexLicenseException)
 				{
@@ -72,7 +86,13 @@ namespace WaveTech.Scutex.Services
 
 		public KeyData GetLicenseKeyData(string licenseKey, LicenseBase scutexLicense)
 		{
-			return keyGenerator.GetLicenseKeyData(licenseKey, scutexLicense);
+			if (licenseKey == null)
+				throw new ArgumentNullException("licenseKey");
+
+			if (licenseKey.Length == 15)
+				return keyGenerator.GetLicenseKeyData(licenseKey, scutexLicense);
+			else
+				return _largeKeyGenerator.GetLicenseKeyData(licenseKey, scutexLicense);
 		}
 	}
 }
