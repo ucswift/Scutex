@@ -127,6 +127,9 @@
     <Reference Include="CassiniDev4-lib, Version=4.0.1.7, Culture=neutral, PublicKeyToken=f7f6e0b4240c7c27, processorArchitecture=x86">
       <HintPath>..\..\References\WebHost\CassiniDev4-lib.dll</HintPath>
     </Reference>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\..\packages\FluentAssertions.1.7.0\Lib\net40\FluentAssertions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Moles.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Pex.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -258,15 +261,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Moles Include="System.Web.moles" />
-    <None Include="WebServices\Client\decce341-3673-4b79-ab94-84d299f8b697-IN.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="WebServices\Client\decce341-3673-4b79-ab94-84d299f8b697-OUT.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="WebServices\Client\decce341-3673-4b79-ab94-84d299f8b697-TK.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Applications\Licensing\Scutex.Licensing.csproj">
@@ -381,6 +376,10 @@
   <ItemGroup>
     <Content Include="..\..\Database\ScutexService-CreateDbNG.sql">
       <Link>ScutexService-CreateDbNG.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Generators\LargeStaticKeyGenerator\bin\Debug\WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll">
+      <Link>WebServices\Mgmt\bin\WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\services\clientservice\ActivationService.svc">
@@ -571,6 +570,11 @@
       <Link>WebServices\Mgmt\StatusService.svc</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\Services\ServicesLibrary\bin\Debug\WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll">
+      <Link>WebServices\Client\bin\WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\WaveTech.Scutex.Generators.StaticKeyGeneratorLarge.dll" />
     <Content Include="FileHashingTestFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

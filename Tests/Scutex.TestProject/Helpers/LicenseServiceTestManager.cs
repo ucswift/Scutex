@@ -20,17 +20,17 @@ namespace WaveTech.Scutex.UnitTests.Helpers
 
 		public void Start()
 		{
+			_testDatabase = new TestDatabase(System.IO.File.ReadAllText(Helper.AssemblyDirectory + "\\ScutexService-CreateDbNG.sql"));
+
 			clientWebServerPort = TcpPortFinder.FindOpenTcpPortInRange(8100, 8200);
 			_testClientWebServer = new TestWebServer(clientWebServerPort, @"/", Helper.AssemblyDirectory + @"\WebServices\Client\");
-
-			_testDatabase = new TestDatabase(System.IO.File.ReadAllText(Helper.AssemblyDirectory + "\\ScutexService-CreateDbNG.sql"));
 			ConfigFileWriter.CreateClientWebServiceConfig(_testDatabase.DatabaseName, _testDatabase.DatabaseFilePath);
-			ConfigFileWriter.CreateMgmtWebServiceConfig(_testDatabase.DatabaseName, _testDatabase.DatabaseFilePath);
-
+			
 			_testClientWebServer.Start();
 
 			mgmtWebServerPort = TcpPortFinder.FindOpenTcpPortInRange(8200, 8300);
 			_testMgmtWebServer = new TestWebServer(mgmtWebServerPort, @"/", Helper.AssemblyDirectory + @"\WebServices\Mgmt\");
+			ConfigFileWriter.CreateMgmtWebServiceConfig(_testDatabase.DatabaseName, _testDatabase.DatabaseFilePath);
 
 			_testMgmtWebServer.Start();
 

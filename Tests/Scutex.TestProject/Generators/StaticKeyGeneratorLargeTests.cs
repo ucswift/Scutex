@@ -105,7 +105,7 @@ namespace WaveTech.Scutex.UnitTests.Generators
 				license.LicenseSets[4].IsUpgradeOnly = false;
 				license.LicenseSets[4].SupportedLicenseTypes = LicenseKeyTypeFlag.HardwareLock;
 
-				generationOptions[0].LicenseKeyType = LicenseKeyTypes.Enterprise;
+				generationOptions[0].LicenseKeyType = LicenseKeyTypes.SingleUser;
 				generationOptions[0].LicenseSetId = 1;
 
 				generationOptions[1].LicenseKeyType = LicenseKeyTypes.Enterprise;

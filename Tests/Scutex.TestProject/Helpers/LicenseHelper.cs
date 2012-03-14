@@ -311,6 +311,37 @@ namespace WaveTech.Scutex.UnitTests
 			CreateFile(new ClientLicense(License));
 		}
 
+		public void HardwareUserSetup()
+		{
+			License.Name = "UnitTest Hardware License";
+
+			Product p = new Product();
+			p.Name = "UnitTest Hardware Product";
+			p.Description = "Just a hardware product for unit testing";
+
+			License.LicenseId = 1;
+			License.Product = p;
+			License.KeyGeneratorType = KeyGeneratorTypes.StaticLarge;
+
+			LicenseTrialSettings ts = new LicenseTrialSettings();
+			ts.ExpirationOptions = TrialExpirationOptions.Days;
+			ts.ExpirationData = "30";
+
+			License.TrialSettings = ts;
+
+			LicenseSet ls = new LicenseSet();
+			ls.LicenseId = 1;
+			ls.LicenseSetId = 1;
+			ls.Name = "Unit Test Hardware License Set";
+			ls.MaxUsers = 5;
+			ls.SupportedLicenseTypes = LicenseKeyTypeFlag.HardwareLock;
+
+			License.LicenseSets = new NotifyList<LicenseSet>();
+			License.LicenseSets.Add(ls);
+
+			CreateFile(new ClientLicense(License));
+		}
+
 		public void CreateFile(ClientLicense license)
 		{
 			string path = Helper.AssemblyDirectory;
