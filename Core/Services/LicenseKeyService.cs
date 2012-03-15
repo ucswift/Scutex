@@ -12,12 +12,12 @@ namespace WaveTech.Scutex.Services
 {
 	internal class LicenseKeyService : ILicenseKeyService
 	{
-		private readonly IKeyGenerator keyGenerator;
-		private readonly IKeyGenerator _largeKeyGenerator;
+		private readonly ISmallKeyGenerator keyGenerator;
+		private readonly ILargeKeyGenerator _largeKeyGenerator;
 		private readonly IPackingService _packingService;
 		private readonly IClientLicenseService _clientLicenseService;
 
-		public LicenseKeyService(IKeyGenerator staticSmallKeyGenerator, IKeyGenerator staticLargeKeyGenerator, IPackingService packingService, IClientLicenseService clientLicenseService)
+		public LicenseKeyService(ISmallKeyGenerator staticSmallKeyGenerator, ILargeKeyGenerator staticLargeKeyGenerator, IPackingService packingService, IClientLicenseService clientLicenseService)
 		{
 			keyGenerator = staticSmallKeyGenerator;
 			_largeKeyGenerator = staticLargeKeyGenerator;
@@ -25,8 +25,8 @@ namespace WaveTech.Scutex.Services
 			_clientLicenseService = clientLicenseService;
 
 			// Need to find a way to get these passed in correctly
-			keyGenerator = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.SmallKeyGenerator);
-			_largeKeyGenerator = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.LargeKeyGenerator);
+			//keyGenerator = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.SmallKeyGenerator);
+			//_largeKeyGenerator = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.LargeKeyGenerator);
 		}
 
 		public string GenerateLicenseKey(string rsaXmlString, LicenseBase scutexLicense, LicenseGenerationOptions generationOptions)

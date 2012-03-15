@@ -46,7 +46,7 @@ namespace WaveTech.Scutex.UnitTests.Wcf.Client
 			internal ClientRepository clientRepository;
 			internal LicenseKeyService licenseKeyService;
 			internal KeyGenerator keyGenerator;
-			internal IKeyGenerator keyGeneratorLarge;
+			internal ILargeKeyGenerator keyGeneratorLarge;
 			internal ServicesService servicesService;
 			internal ServicesRepository servicesRepository;
 			internal ServiceStatusProvider serviceStatusProvider;

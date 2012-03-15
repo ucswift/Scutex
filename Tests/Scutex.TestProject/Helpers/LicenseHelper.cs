@@ -43,7 +43,7 @@ namespace WaveTech.Scutex.UnitTests
 		PackingService packingService;
 		HardwareFingerprintService hardwareFingerprintService;
 		KeyGenerator keygen;
-		IKeyGenerator keyGeneratorLarge;
+		ILargeKeyGenerator keyGeneratorLarge;
 		LicenseActiviationProvider licenseActiviationProvider;
 		LicenseKeyService service;
 		private ProductsProvider productsProvider;

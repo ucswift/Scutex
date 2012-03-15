@@ -11,7 +11,7 @@ using WaveTech.Scutex.Model.Interfaces.Providers;
 
 namespace WaveTech.Scutex.Generators.StaticKeyGeneratorSmall
 {
-	internal class KeyGenerator : IKeyGenerator
+	internal class KeyGenerator : IKeyGenerator, ISmallKeyGenerator
 	{
 		#region Private Readonly Members
 		private readonly ISymmetricEncryptionProvider symmetricEncryptionProvider;

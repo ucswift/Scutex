@@ -36,7 +36,7 @@ namespace WaveTech.Scutex.UnitTests.Services
 		private LicenseGenerationOptions generationOptions;
 		private LicenseKeyService licenseKeyService;
 		private KeyGenerator staticKeyGenerator;
-		private IKeyGenerator staticKeyGeneratorLarge;
+		private ILargeKeyGenerator staticKeyGeneratorLarge;
 
 		[TestInitialize]
 		public void SetupTests()

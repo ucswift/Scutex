@@ -163,6 +163,8 @@
     <Compile Include="FingerprintTypes.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="InteractionModes.cs" />
+    <Compile Include="Interfaces\Generators\ISmallKeyGenerator.cs" />
+    <Compile Include="Interfaces\Generators\ILargeKeyGenerator.cs" />
     <Compile Include="Interfaces\Providers\IDatabaseUpdateProvider.cs" />
     <Compile Include="Interfaces\Providers\IProductsProvider.cs" />
     <Compile Include="Interfaces\Providers\IReportingProvider.cs" />

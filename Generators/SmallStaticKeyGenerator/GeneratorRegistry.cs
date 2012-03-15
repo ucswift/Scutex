@@ -9,6 +9,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorSmall
 		{
 			//ForRequestedType<IKeyGenerator>().TheDefault.Is.OfConcreteType<KeyGenerator>().WithName("StaticSmallKeyGenerator");
 			For<IKeyGenerator>().Use<KeyGenerator>().Named("StaticSmallKeyGenerator");
+			For<ISmallKeyGenerator>().Use<KeyGenerator>();
 		}
 	}
 }

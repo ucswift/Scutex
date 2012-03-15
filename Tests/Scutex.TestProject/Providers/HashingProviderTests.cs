@@ -128,8 +128,8 @@ namespace WaveTech.Scutex.UnitTests.Providers
 																																										 symmetricEncryptionProvider);
 			IClientLicenseService clientLicenseService = new ClientLicenseService(clientLicenseRepository);
 
-			IKeyGenerator largeKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
-			IKeyGenerator smallKeyGenerator = new WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
+			ILargeKeyGenerator largeKeyGenerator = new KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider, hardwareFingerprintService);
+			ISmallKeyGenerator smallKeyGenerator = new WaveTech.Scutex.Generators.StaticKeyGeneratorSmall.KeyGenerator(symmetricEncryptionProvider, asymmetricEncryptionProvider, hashingProvider);
 			LicenseKeyService licenseKeyService = new LicenseKeyService(smallKeyGenerator, largeKeyGenerator, packingService, clientLicenseService);
 
 			ClientLicense license = new ClientLicense();

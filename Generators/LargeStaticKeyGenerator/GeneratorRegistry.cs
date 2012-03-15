@@ -8,6 +8,7 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 		public GeneratorRegistry()
 		{
 			For<IKeyGenerator>().Use<KeyGenerator>().Named("StaticLargeKeyGenerator");
+			For<ILargeKeyGenerator>().Use<KeyGenerator>();
 		}
 	}
 }

@@ -12,7 +12,7 @@ using WaveTech.Scutex.Model.Interfaces.Services;
 
 namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 {
-	public class KeyGenerator : IKeyGenerator
+	public class KeyGenerator : IKeyGenerator, ILargeKeyGenerator
 	{
 		#region Private Readonly Members
 		private readonly ISymmetricEncryptionProvider symmetricEncryptionProvider;
