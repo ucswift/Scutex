@@ -89,12 +89,19 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 					return true;
 			}
 
+			if (ls.LicenseType.IsSet(LicenseKeyTypeFlag.HardwareLock))
+			{
+				
+			}
+
 			return false;
 		}
 
-		public bool AuthorizeLicenseForActivation(string licenseKey, ServiceLicense licenseBase)
+		public bool AuthorizeLicenseForActivation(string licenseKey, ServiceLicense licenseBase, string hardwareFingerprint)
 		{
-			// Step 1: Validate the physical license
+			KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, licenseBase);
+			
+			// Step 1: Validate the physical key
 			bool keyValid = _licenseKeyService.ValidateLicenseKey(licenseKey, licenseBase, true);
 
 			if (!keyValid)
@@ -107,15 +114,16 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 			SecureString hashedLicenseKey = SecureStringHelper.StringToSecureString(_hashingProvider.ComputeHash(licenseKey, Resources.KeyHashAlgo));
 			hashedLicenseKey.MakeReadOnly();
 
-			// Step 2: Validate the key itself
-			if (!DoesKeyExistForLicenseSet(SecureStringHelper.SecureStringToString(hashedLicenseKey), licenseBase.LicenseSets.First().LicenseSetId)) // TODO: Only works for SSLK
+			// Step 2: Validate the key against the service
+			if (!DoesKeyExistForLicenseSet(SecureStringHelper.SecureStringToString(hashedLicenseKey), keyData.LicenseSetId))
 			{
 				_activationLogService.LogActiviation(licenseKey, ActivationResults.UnknownKeyFailure, null);
 
 				return false;
 			}
 
-			if (!IsKeyAvialable(SecureStringHelper.SecureStringToString(hashedLicenseKey), licenseBase.LicenseSets.First().LicenseSetId)) // TODO: Only works for SSLK
+			// Step 3: Is this key used already
+			if (!IsKeyAvialable(SecureStringHelper.SecureStringToString(hashedLicenseKey), keyData.LicenseSetId))
 			{
 				_activationLogService.LogActiviation(licenseKey, ActivationResults.TooManyFailure, null);
 
@@ -125,16 +133,17 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 			return true;
 		}
 
-		public Guid? ActivateLicenseKey(string licenseKey, Guid? originalToken, ServiceLicense licenseBase)
+		public Guid? ActivateLicenseKey(string licenseKey, Guid? originalToken, ServiceLicense licenseBase, string hardwareFingerprint)
 		{
+			KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, licenseBase);
 			SecureString hashedLicenseKey = SecureStringHelper.StringToSecureString(_hashingProvider.ComputeHash(licenseKey, Resources.KeyHashAlgo));
 			hashedLicenseKey.MakeReadOnly();
 
-			int licenseSetId = licenseBase.LicenseSets.First().LicenseSetId;// TODO: Only works for SSLK
+			int licenseSetId = keyData.LicenseSetId;// TODO: Only works for SSLK
 			LicenseSet ls = _clientRepository.GetLicenseSetById(licenseSetId);
 			LicenseActivation la = _clientRepository.GetLicenseActivationByKeyAndSetId(SecureStringHelper.SecureStringToString(hashedLicenseKey), licenseSetId);
 
-			if (AuthorizeLicenseForActivation(licenseKey, licenseBase))
+			if (AuthorizeLicenseForActivation(licenseKey, licenseBase, hardwareFingerprint))	// TODO: Possible double call with two log entries here, as this is called in the parent as well. -SJ
 			{
 				ServiceLicenseKey lk = _serviceProductsRepository.GetServiceLicenseKeyByKeyLicenseSet(SecureStringHelper.SecureStringToString(hashedLicenseKey), licenseSetId);
 
@@ -146,6 +155,9 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 				la.HardwareHash = licenseBase.HardwareHash;
 				la.ActivationStatus = ActivationStatus.Normal;
 				la.ActivationStatusUpdatedOn = DateTime.Now;
+
+				if (!String.IsNullOrEmpty(hardwareFingerprint))
+					la.HardwareHash = hardwareFingerprint;
 
 				_clientRepository.InsertLicenseActivation(la);
 

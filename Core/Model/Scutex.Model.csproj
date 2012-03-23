@@ -171,6 +171,7 @@
     <Compile Include="Interfaces\Repositories\IActivationLogRepoistory.cs" />
     <Compile Include="Interfaces\Repositories\ILicenseKeyRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductFeaturesRepository.cs" />
+    <Compile Include="Interfaces\Services\Copy of IConsoleInteractionService.cs" />
     <Compile Include="Interfaces\Services\IComApiWrappingService.cs" />
     <Compile Include="Interfaces\Providers\IComBypassProvider.cs" />
     <Compile Include="Interfaces\Services\IConsoleInteractionService.cs" />

@@ -150,7 +150,6 @@ namespace WaveTech.Scutex.Licensing
 
 			if (scutexLicense.IsLicensed == false)
 			{
-
 				switch (interactionMode)
 				{
 					case InteractionModes.None:
@@ -178,6 +177,9 @@ namespace WaveTech.Scutex.Licensing
 
 						break;
 					case InteractionModes.Silent:
+						ISilentInteractionService silentInteractionService = ObjectLocator.GetInstance<ISilentInteractionService>();
+						silentInteractionService.Validate(scutexLicense);
+
 						break;
 					case InteractionModes.Component:
 						break;

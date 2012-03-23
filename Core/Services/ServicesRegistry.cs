@@ -54,6 +54,7 @@ namespace WaveTech.Scutex.Services
 			For<IEventLogInteractionService>().Use<EventLogInteractionService>();
 			For<IRegisterService>().Use<RegisterService>();
 			For<IFeaturesService>().Use<FeaturesService>();
+			For<ISilentInteractionService>().Use<SilentInteractionService>();
 		}
 	}
 }

@@ -7,11 +7,13 @@ namespace WaveTech.Scutex.Services
 	{
 		private readonly ILicenseKeyService _licenseKeyService;
 		private readonly ILicenseActivationService _licenseActivationService;
+		private readonly IHardwareFingerprintService _hardwareFingerprintService;
 
-		public RegisterService(ILicenseKeyService licenseKeyService, ILicenseActivationService licenseActivationService)
+		public RegisterService(ILicenseKeyService licenseKeyService, ILicenseActivationService licenseActivationService, IHardwareFingerprintService hardwareFingerprintService)
 		{
 			_licenseKeyService = licenseKeyService;
 			_licenseActivationService = licenseActivationService;
+			_hardwareFingerprintService = hardwareFingerprintService;
 		}
 
 		public RegisterResult Register(string licenseKey, LicenseBase scutexLicense, ScutexLicense license)
@@ -28,7 +30,10 @@ namespace WaveTech.Scutex.Services
 
 				if (keyData.LicenseKeyType != LicenseKeyTypes.Enterprise && keyData.LicenseKeyType != LicenseKeyTypes.HardwareLockLocal)
 				{
-					cl = _licenseActivationService.ActivateLicenseKey(licenseKey, null, false, (ClientLicense)scutexLicense);
+					if (keyData.LicenseKeyType == LicenseKeyTypes.HardwareLock)
+						cl = _licenseActivationService.ActivateLicenseKey(licenseKey, null, false, (ClientLicense)scutexLicense, _hardwareFingerprintService.GetHardwareFingerprint(FingerprintTypes.Default));
+					else
+						cl = _licenseActivationService.ActivateLicenseKey(licenseKey, null, false, (ClientLicense)scutexLicense, null);
 
 					if (cl.IsLicensed && cl.IsActivated)
 					{
@@ -42,7 +47,7 @@ namespace WaveTech.Scutex.Services
 				}
 				else
 				{
-					cl = _licenseActivationService.ActivateLicenseKey(licenseKey, null, true, (ClientLicense)scutexLicense);
+					cl = _licenseActivationService.ActivateLicenseKey(licenseKey, null, true, (ClientLicense)scutexLicense, null);
 					registerResult.Result = ProcessCodes.LicenseKeyNotActivated;
 				}
 			}

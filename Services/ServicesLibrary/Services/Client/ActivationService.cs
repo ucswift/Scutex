@@ -74,7 +74,7 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Client
 			string decryptedPayload = _asymmetricEncryptionProvider.DecryptPublic(payload, keyPair);
 			LicenseActivationPayload activationPayload = _serializationProvider.Deserialize<LicenseActivationPayload>(decryptedPayload);
 
-			if (!_keyService.AuthorizeLicenseForActivation(activationPayload.LicenseKey, activationPayload.ServiceLicense))
+			if (!_keyService.AuthorizeLicenseForActivation(activationPayload.LicenseKey, activationPayload.ServiceLicense, activationPayload.HardwareFingerprint))
 			{
 				result.WasOperationSuccessful = false;
 				result.ActivationSuccessful = false;
@@ -82,7 +82,7 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services.Client
 			else
 			{
 				Guid? activiationtoken = _keyService.ActivateLicenseKey(activationPayload.LicenseKey, activationPayload.Token,
-																										 activationPayload.ServiceLicense);
+																										 activationPayload.ServiceLicense, activationPayload.HardwareFingerprint);
 				if (activiationtoken.HasValue)
 				{
 					_activationLogService.LogActiviation(activationPayload.LicenseKey, ActivationResults.Success, GetIpAddress());

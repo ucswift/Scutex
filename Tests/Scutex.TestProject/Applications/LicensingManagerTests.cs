@@ -67,12 +67,82 @@ namespace WaveTech.Scutex.UnitTests.Applications
 		}
 
 		[TestClass]
-		public class when_calling_the_validate_method : with_the_licensing_manager
+		public class when_calling_the_validate_method_with_valid_trial : with_the_licensing_manager
 		{
 			[TestMethod]
 			public void shall_not_throw_an_exception()
 			{
 				_licensingManager.Validate(InteractionModes.Silent);
+			}
+
+			[TestMethod]
+			public void should_be_valid()
+			{
+				var retval = _licensingManager.Validate(InteractionModes.Silent);
+
+				Assert.IsTrue(retval.IsTrialValid);
+			}
+
+			//[TestMethod]
+			//public void expired_trial_should_return_false()
+			//{
+			//  _licenseHelper.ExpiredTrialSetup();
+
+			//  var retval = _licensingManager.Validate(InteractionModes.Silent);
+
+			//  Assert.IsTrue(retval.IsTrialValid);
+			//  Assert.IsTrue(retval.IsTrialExpired);
+			//  //Assert.AreEqual(TrialFaultReasons.TimeFault, retval.TrialFaultReason);
+			//}
+
+			[TestMethod]
+			public void timeinvalid_trial_should_return_time_fault()
+			{
+				_licenseHelper.InvalidTrialSetup();
+
+				var retval = _licensingManager.Validate(InteractionModes.Silent);
+
+				Assert.IsFalse(retval.IsTrialValid);
+				Assert.IsFalse(retval.IsTrialExpired);
+				Assert.AreEqual(TrialFaultReasons.TimeFault, retval.TrialFaultReason);
+			}
+
+			[TestMethod]
+			[ExpectedException(typeof(Scutex.Model.Exceptions.ScutexAuditException))]
+			public void invalid_trial_should_throw_exception()
+			{
+				_licenseHelper.DeleteFile();
+
+				_licensingManager.Validate(InteractionModes.Silent);
+			}
+		}
+
+		[TestClass]
+		public class when_calling_the_validate_method_with_expired_trial : with_the_licensing_manager
+		{
+			[TestInitialize]
+			public void Initialize()
+			{
+				_licenseHelper.ExpiredTrialSetup();
+			}
+
+			[TestMethod]
+			public void expired_trial_should_return_false()
+			{
+				var retval = _licensingManager.Validate(InteractionModes.Silent);
+
+				Assert.IsTrue(retval.IsTrialValid);
+				Assert.IsTrue(retval.IsTrialExpired);
+			}
+		}
+
+		[TestClass]
+		public class when_calling_validate_and_register_with_hardware_locking : with_the_licensing_manager
+		{
+			[TestInitialize]
+			public void Initialize()
+			{
+				_licenseHelper.HardwareUserSetup();
 			}
 
 			[TestMethod]
@@ -84,36 +154,11 @@ namespace WaveTech.Scutex.UnitTests.Applications
 			}
 
 			[TestMethod]
-			public void expired_trial_should_return_false()
+			public void trial_should_be_valid_after_registering_with_valid_hardware_key()
 			{
-				_licenseHelper.ExpiredTrialSetup();
+				string validHardwareKey = _licenseHelper.GenerateLicenseKey(LicenseKeyTypes.HardwareLock);
 
-				var retval = _licensingManager.Validate(InteractionModes.Silent);
-
-				Assert.IsTrue(retval.IsTrialValid);
-				Assert.IsTrue(retval.IsTrialExpired);
-				//Assert.AreEqual(TrialFaultReasons.TimeFault, retval.TrialFaultReason);
-			}
-
-			[TestMethod]
-			public void timeinvalid_trial_should_return_time_fault()
-			{
-				_licenseHelper.InvalidTrialSetup();
-
-				var retval = _licensingManager.Validate(InteractionModes.Silent);
-
-				Assert.IsTrue(retval.IsTrialValid);
-				Assert.IsTrue(retval.IsTrialExpired);
-				//Assert.AreEqual(TrialFaultReasons.TimeFault, retval.TrialFaultReason);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(Scutex.Model.Exceptions.ScutexAuditException))]
-			public void invalid_trial_should_throw_exception()
-			{
-				_licenseHelper.DeleteFile();
-
-				_licensingManager.Validate(InteractionModes.Silent);
+				var retval = _licensingManager.Register(validHardwareKey);
 			}
 		}
 

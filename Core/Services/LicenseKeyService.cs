@@ -17,7 +17,8 @@ namespace WaveTech.Scutex.Services
 		private readonly IPackingService _packingService;
 		private readonly IClientLicenseService _clientLicenseService;
 
-		public LicenseKeyService(ISmallKeyGenerator staticSmallKeyGenerator, ILargeKeyGenerator staticLargeKeyGenerator, IPackingService packingService, IClientLicenseService clientLicenseService)
+		public LicenseKeyService(ISmallKeyGenerator staticSmallKeyGenerator, ILargeKeyGenerator staticLargeKeyGenerator,
+		                         IPackingService packingService, IClientLicenseService clientLicenseService)
 		{
 			keyGenerator = staticSmallKeyGenerator;
 			_largeKeyGenerator = staticLargeKeyGenerator;
@@ -29,7 +30,8 @@ namespace WaveTech.Scutex.Services
 			//_largeKeyGenerator = ObjectLocator.GetInstance<IKeyGenerator>(InstanceNames.LargeKeyGenerator);
 		}
 
-		public string GenerateLicenseKey(string rsaXmlString, LicenseBase scutexLicense, LicenseGenerationOptions generationOptions)
+		public string GenerateLicenseKey(string rsaXmlString, LicenseBase scutexLicense,
+		                                 LicenseGenerationOptions generationOptions)
 		{
 			if (generationOptions.GeneratorType == KeyGeneratorTypes.StaticSmall)
 				return keyGenerator.GenerateLicenseKey(rsaXmlString, scutexLicense, generationOptions);
@@ -37,7 +39,8 @@ namespace WaveTech.Scutex.Services
 				return _largeKeyGenerator.GenerateLicenseKey(rsaXmlString, scutexLicense, generationOptions);
 		}
 
-		public List<string> GenerateLicenseKeys(string rsaXmlString, LicenseBase scutexLicense, LicenseGenerationOptions generationOptions, int count)
+		public List<string> GenerateLicenseKeys(string rsaXmlString, LicenseBase scutexLicense,
+		                                        LicenseGenerationOptions generationOptions, int count)
 		{
 			HashSet<string> licenses = new HashSet<string>();
 			int doupCount = 0;
@@ -59,7 +62,7 @@ namespace WaveTech.Scutex.Services
 			}
 
 			if (doupCount > 0)
-				Debug.WriteLine(string.Format("{0} duplicate keys were generated at a {1}% chance", doupCount, doupCount * 100m / count));
+				Debug.WriteLine(string.Format("{0} duplicate keys were generated at a {1}% chance", doupCount, doupCount*100m/count));
 
 			return licenses.ToList();
 		}
@@ -70,10 +73,7 @@ namespace WaveTech.Scutex.Services
 			{
 				try
 				{
-					if (licenseKey.Length == 15)
-						return keyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
-					else
-						return _largeKeyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
+					return ValidateKey(licenseKey, scutexLicense);
 				}
 				catch (ScutexLicenseException)
 				{
@@ -81,18 +81,40 @@ namespace WaveTech.Scutex.Services
 				}
 			}
 
-			return keyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
+			return ValidateKey(licenseKey, scutexLicense);
 		}
 
-		public KeyData GetLicenseKeyData(string licenseKey, LicenseBase scutexLicense)
+		public KeyData GetLicenseKeyData(string licenseKey, LicenseBase scutexLicense, bool catchException)
 		{
 			if (licenseKey == null)
 				throw new ArgumentNullException("licenseKey");
 
+			KeyData data = null;
+
+			if (catchException)
+			{
+				return GetKeyData(licenseKey, scutexLicense);
+			}
+
+			return GetKeyData(licenseKey, scutexLicense);
+		}
+
+		#region Private Helpers
+		private KeyData GetKeyData(string licenseKey, LicenseBase scutexLicense)
+		{
 			if (licenseKey.Length == 15)
 				return keyGenerator.GetLicenseKeyData(licenseKey, scutexLicense);
 			else
 				return _largeKeyGenerator.GetLicenseKeyData(licenseKey, scutexLicense);
 		}
+
+		private bool ValidateKey(string licenseKey, LicenseBase scutexLicense)
+		{
+			if (licenseKey.Length == 15)
+				return keyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
+			else
+				return _largeKeyGenerator.ValidateLicenseKey(licenseKey, scutexLicense);
+		}
+		#endregion Private Helpers
 	}
 }

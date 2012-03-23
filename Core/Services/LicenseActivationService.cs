@@ -14,7 +14,8 @@ namespace WaveTech.Scutex.Services
 		private readonly ILicenseActiviationProvider _licenseActiviationProvider;
 		private readonly IClientLicenseService _clientLicenseService;
 
-		public LicenseActivationService(ILicenseKeyService licenseKeyService, IPackingService packingService, ILicenseActiviationProvider licenseActiviationProvider, IClientLicenseService clientLicenseService)
+		public LicenseActivationService(ILicenseKeyService licenseKeyService, IPackingService packingService,
+			ILicenseActiviationProvider licenseActiviationProvider, IClientLicenseService clientLicenseService)
 		{
 			_licenseKeyService = licenseKeyService;
 			_packingService = packingService;
@@ -35,7 +36,7 @@ namespace WaveTech.Scutex.Services
 			return ei;
 		}
 
-		public ClientLicense ActivateLicenseKey(string licenseKey, Guid? token, bool isOffline, ClientLicense scutexLicense)
+		public ClientLicense ActivateLicenseKey(string licenseKey, Guid? token, bool isOffline, ClientLicense scutexLicense, string hardwareFingerprint)
 		{
 			/* This method used to live in the LicenseKeyService class, where it should be
 			 *  but because of a circular reference in the WebServicesProvider and the ServicesLibrary
@@ -55,6 +56,9 @@ namespace WaveTech.Scutex.Services
 				payload.LicenseKey = licenseKey;
 				payload.ServiceLicense = new ServiceLicense(scutexLicense);
 				payload.Token = token;
+
+				if (!String.IsNullOrEmpty(hardwareFingerprint))
+					payload.HardwareFingerprint = hardwareFingerprint;
 
 				if (!isOffline)
 				{

@@ -152,9 +152,10 @@
     </Compile>
     <Compile Include="ClientLicenseService.cs" />
     <Compile Include="ComApiWrappingService.cs" />
-    <Compile Include="ConsoleInteractionService.cs" />
+    <Compile Include="Interactions\ConsoleInteractionService.cs" />
     <Compile Include="EncodingService.cs" />
-    <Compile Include="EventLogInteractionService.cs" />
+    <Compile Include="Interactions\SilentInteractionService.cs" />
+    <Compile Include="Interactions\EventLogInteractionService.cs" />
     <Compile Include="FeaturesService.cs" />
     <Compile Include="HardwareFingerprintService.cs" />
     <Compile Include="Hooker.cs" />
