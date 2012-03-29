@@ -26,7 +26,7 @@ namespace WaveTech.Scutex.Services
 
 			if (result)
 			{
-				KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, scutexLicense);
+				KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, scutexLicense, false);
 
 				if (keyData.LicenseKeyType != LicenseKeyTypes.Enterprise && keyData.LicenseKeyType != LicenseKeyTypes.HardwareLockLocal)
 				{

@@ -69,7 +69,17 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 			}
 		}
 
-		public bool IsKeyAvialable(string licenseKey, int licenseSetId)
+		/// <summary>
+		/// Checks the database to see if the key has already been used, and if it's a multi-use capable key
+		/// the number of valid activations will be check to ensure it doesn't exceed the maximum activation
+		/// count. If the key is hardware based it will check the existing key's fingerprint against the one
+		/// saved to see if it matches.
+		/// </summary>
+		/// <param name="licenseKey"></param>
+		/// <param name="licenseSetId"></param>
+		/// <param name="hardwareFingerprint"></param>
+		/// <returns></returns>
+		public bool IsKeyAvialable(string licenseKey, int licenseSetId, string hardwareFingerprint)
 		{
 			ServiceLicenseSet ls = _serviceProductsRepository.GetServiceLicenseSetById(licenseSetId);
 			ServiceLicenseKey lk = _serviceProductsRepository.GetServiceLicenseKeyByKeyLicenseSet(licenseKey, licenseSetId);
@@ -80,26 +90,41 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 
 			Debug.WriteLine(ls.LicenseType.ToString());
 
+			// Enterprise and Unlimited keys have no activation restrictions
 			if (ls.LicenseType.IsSet(LicenseKeyTypeFlag.Unlimited) || ls.LicenseType.IsSet(LicenseKeyTypeFlag.Enterprise))
 				return true;
 
+			// If the key is multi-user, ensure that they are under the MaxUsers count
 			if (ls.LicenseType.IsSet(LicenseKeyTypeFlag.MultiUser))
 			{
 				if (ls.MaxUsers.HasValue && ((lk.ActivationCount + 1) <= ls.MaxUsers.Value))
 					return true;
 			}
 
+			// Hardware keys can activate as many times as they want, provided the hardware fingerprints match.
 			if (ls.LicenseType.IsSet(LicenseKeyTypeFlag.HardwareLock))
 			{
-				
+				if (la != null)
+				{
+					if (la.HardwareHash == hardwareFingerprint)
+						return true;
+				}
 			}
 
 			return false;
 		}
 
+		/// <summary>
+		/// Authorizes a license key to check to see if it can be activated. If not, logs the failure reason and
+		/// returns false. 
+		/// </summary>
+		/// <param name="licenseKey"></param>
+		/// <param name="licenseBase"></param>
+		/// <param name="hardwareFingerprint"></param>
+		/// <returns></returns>
 		public bool AuthorizeLicenseForActivation(string licenseKey, ServiceLicense licenseBase, string hardwareFingerprint)
 		{
-			KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, licenseBase);
+			KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, licenseBase, true);
 			
 			// Step 1: Validate the physical key
 			bool keyValid = _licenseKeyService.ValidateLicenseKey(licenseKey, licenseBase, true);
@@ -123,7 +148,7 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 			}
 
 			// Step 3: Is this key used already
-			if (!IsKeyAvialable(SecureStringHelper.SecureStringToString(hashedLicenseKey), keyData.LicenseSetId))
+			if (!IsKeyAvialable(SecureStringHelper.SecureStringToString(hashedLicenseKey), keyData.LicenseSetId, hardwareFingerprint))
 			{
 				_activationLogService.LogActiviation(licenseKey, ActivationResults.TooManyFailure, null);
 
@@ -133,9 +158,17 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 			return true;
 		}
 
+		/// <summary>
+		/// Attempts to activate the license key
+		/// </summary>
+		/// <param name="licenseKey"></param>
+		/// <param name="originalToken"></param>
+		/// <param name="licenseBase"></param>
+		/// <param name="hardwareFingerprint"></param>
+		/// <returns></returns>
 		public Guid? ActivateLicenseKey(string licenseKey, Guid? originalToken, ServiceLicense licenseBase, string hardwareFingerprint)
 		{
-			KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, licenseBase);
+			KeyData keyData = _licenseKeyService.GetLicenseKeyData(licenseKey, licenseBase, true);
 			SecureString hashedLicenseKey = SecureStringHelper.StringToSecureString(_hashingProvider.ComputeHash(licenseKey, Resources.KeyHashAlgo));
 			hashedLicenseKey.MakeReadOnly();
 
@@ -152,7 +185,6 @@ namespace WaveTech.Scutex.WcfServices.ServicesLibrary.Services
 				la.ActivatedOn = DateTime.Now;
 				la.ActivationToken = Guid.NewGuid();
 				la.OriginalToken = originalToken;
-				la.HardwareHash = licenseBase.HardwareHash;
 				la.ActivationStatus = ActivationStatus.Normal;
 				la.ActivationStatusUpdatedOn = DateTime.Now;
 

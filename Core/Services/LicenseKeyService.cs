@@ -93,7 +93,14 @@ namespace WaveTech.Scutex.Services
 
 			if (catchException)
 			{
-				return GetKeyData(licenseKey, scutexLicense);
+				try
+				{
+					return GetKeyData(licenseKey, scutexLicense);
+				}
+				catch (ScutexLicenseException)
+				{
+					return data;
+				}
 			}
 
 			return GetKeyData(licenseKey, scutexLicense);
