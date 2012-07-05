@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SchemaComparison>
-  <Version>10</Version>
+  <Version>1</Version>
   <SourceModelProvider>
     <ConnectionBasedModelProvider>
       <ConnectionString>Data Source=(local);Initial Catalog=ScutexService;Integrated Security=True;Password=</ConnectionString>
@@ -24,7 +24,7 @@
     </SchemaCompareSettingsService>
     <ConfigurationOptionsElement>
       <PropertyElementName>
-        <Name>SqlDeploymentOptions</Name>
+        <Name>PlanGenerationType</Name>
         <Value>Sql100SchemaDeploymentOptions</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -32,7 +32,7 @@
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>NoAlterStatementsToChangeCLRTypes</Name>
+        <Name>DoNotUseAlterAssemblyStatementsToUpdateCLRTypes</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -100,15 +100,15 @@
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>BlockOnPossibleDataLoss</Name>
+        <Name>BlockIncrementalDeploymentIfDataLoss</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>BackupDatabaseBeforeChanges</Name>
+        <Name>PerformDatabaseBackup</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>DeployDatabaseInSingleUserMode</Name>
+        <Name>SingleUserMode</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -280,11 +280,11 @@
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>CreateNewDatabase</Name>
+        <Name>AlwaysCreateNewDatabase</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>DropObjectsNotInSource</Name>
+        <Name>GenerateDropsIfNotInProject</Name>
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -300,94 +300,93 @@
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlServerOptions</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlServerOptions</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlFullTextIndex</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlFullTextIndex</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlUser</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlUser</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlRole</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlRole</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlApplicationRole</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlApplicationRole</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlRoleMembership</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlRoleMembership</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlPermissionStatement</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlLogin</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlLogin</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlUserDefinedServerRoleMembership</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlServerRoleMembership</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlLinkedServer</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlLinkedServer</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlLinkedServerLogin</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlLinkedServerLogin</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlFilegroup</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlFilegroup</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlFullTextCatalog</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlFullTextCatalog</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlFile</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlFile</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlExtendedProperty</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISqlExtendedProperty</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlServerDdlTrigger</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISql90ServerDdlTrigger</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlAssembly</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISql90Assembly</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlAssemblyFile</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISql90AssemblyFile</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlRoute</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISql90Route</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.Sql100ServerAudit</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISql100ServerAudit</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.Sql100ServerAuditSpecification</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISql100ServerAuditSpecification</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Tools.Schema.Sql.SchemaModel.Sql100FullTextStopList</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.ISql100FullTextStopList</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
     </ConfigurationOptionsElement>
   </SchemaCompareSettingsService>
-  <SchemaCompareViewSettings />
 </SchemaComparison>

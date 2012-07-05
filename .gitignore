@@ -33,6 +33,7 @@ obj/
 Ankh.NoLoad
 UpgradeLog*
 _UpgradeReport_Files/
+Backup/
 
 #Tooling
 _ReSharper*/
@@ -78,3 +79,4 @@ Documentation/*.doc
 Documentation/*.docx
 Documentation/*.rtf
 Database/ScutexDataCompare.sdc
+Database/ScutexDatabase/Sandbox
