@@ -259,6 +259,9 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorSmall
 			KeyData keyData = new KeyData();
 			keyData.IsKeyValid = true;
 
+			if (scutexLicense.LicenseSets != null && scutexLicense.LicenseSets.Count == 1 && scutexLicense.LicenseSets.First().LicenseSetId == int.MaxValue)
+				keyData.LicenseSetId = int.MaxValue;
+
 			// Locate all the placeholder tokens in the license template
 			placeholerLocations = FindAllPlaceholdersInTemplate(licenseKeyTemplate.Replace("-", ""), licensePlaceholders);
 
