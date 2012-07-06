@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -259,6 +260,13 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 								var licSetPH = placeholerLocations.Where(x => x.Value.ValidationType == ValidationTypes.LicenseSet).SingleOrDefault();
 								int licenseSetIdValue1 = int.Parse(decodedLicenseKey.Substring(licSetPH.Key, licSetPH.Value.Length));
 
+								Debug.WriteLine(string.Format("Decoded Key: {0}", decodedLicenseKey));
+								Debug.WriteLine(string.Format("LicenseSet Placeholder: {0}", licSetPH));
+								Debug.WriteLine(string.Format("LicenseSet Placeholder Key: {0}", licSetPH.Key));
+								Debug.WriteLine(string.Format("LicenseSet Placeholder Length: {0}", licSetPH.Value.Length));
+								Debug.WriteLine(string.Format("LicenseSetId Value: {0}", licenseSetIdValue1));
+								Debug.WriteLine(string.Format("LicenseSets: {0}", scutexLicense.LicenseSets.First().LicenseSetId));
+
 								ls = scutexLicense.LicenseSets.Where(x => x.LicenseSetId == licenseSetIdValue1).SingleOrDefault();
 							}
 							catch 
@@ -266,8 +274,12 @@ namespace WaveTech.Scutex.Generators.StaticKeyGeneratorLarge
 								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
 							}
 
+							Debug.WriteLine(string.Format("LicenseSet: {0}", ls));
+
 							if (ls == null)
 								throw new ScutexLicenseException(Resources.ErrorMsg_VerifyLicenseKey);
+
+							Debug.WriteLine(string.Format("LicenseSet Types: {0}", ls.SupportedLicenseTypes));
 
 							// If the LicenseSet does not support the key type supplied then throw an error
 							if (!ls.SupportedLicenseTypes.IsSet(typeFlag))

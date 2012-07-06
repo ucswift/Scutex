@@ -300,6 +300,8 @@ namespace WaveTech.Scutex.Manager.Windows
 					keysToGenerate = 1;	// Can only generate 1 local hardware locked key at a time.
 				}
 
+				licenseGenerationOptions.LicenseSetId = ((LicenseSet) cboLicenseSet.SelectedValue).LicenseSetId;
+
 				worker.DoWork += delegate(object s, DoWorkEventArgs args)
 													{
 														object[] data = args.Argument as object[];
