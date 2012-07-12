@@ -145,7 +145,7 @@ namespace WaveTech.Scutex.Manager.Windows
 						BackgroundWorker worker = new BackgroundWorker();
 						loadingAnimation.Visibility = Visibility.Visible;
 
-						LicenseSet licenseSet = gridLocalServices.SelectedItem as LicenseSet;
+						var productDisplayData = gridLocalServices.SelectedItem as UploadProductDisplayData;
 
 						worker.DoWork += delegate(object s, DoWorkEventArgs args)
 						{
@@ -156,7 +156,8 @@ namespace WaveTech.Scutex.Manager.Windows
 							ILicenseService licenseService = ObjectLocator.GetInstance<ILicenseService>();
 
 							//LicenseSet licenseSet = (LicenseSet) data[0];
-							License license = licenseService.GetLicenseById((int)data[0]);
+							License license = licenseService.GetLicenseById(((UploadProductDisplayData)data[0]).LicenseId);
+							LicenseSet licenseSet = licenseSetService.GetLiceseSetById(((UploadProductDisplayData) data[0]).LicenseSetId);
 
 							List<LicenseSet> sets = new List<LicenseSet>();
 							sets.Add(licenseSet);
@@ -177,7 +178,7 @@ namespace WaveTech.Scutex.Manager.Windows
 
 						worker.RunWorkerAsync(new object[]
 				                      	{
-				                      		licenseSet,
+				                      		productDisplayData,
 																	cboServices.SelectedValue
 				                      	});
 					}
