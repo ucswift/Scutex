@@ -88,12 +88,16 @@ namespace WaveTech.Scutex.Manager
 			{
 				root.Content = null;
 				ribbon.ContextualGroups[0].Visibility = Visibility.Collapsed;
-				//ribbon.SelectedTabItem = ribbon.Tabs.Where(x => x.Name == "homeTabItem").FirstOrDefault();
+				var tab = ribbon.Tabs.Where(x => x.Name == "projectTabItem").FirstOrDefault();
+				tab.Visibility = Visibility.Collapsed;
+				ribbon.SelectedTabItem = tab;
 			}
 			else
 			{
 				ribbon.ContextualGroups[0].Visibility = Visibility.Visible;
-				//ribbon.SelectedTabItem = ribbon.Tabs.Where(x => x.Name == "projectTabItem").FirstOrDefault();
+				var tab = ribbon.Tabs.Where(x => x.Name == "projectTabItem").FirstOrDefault();
+				tab.Visibility = Visibility.Visible;
+				ribbon.SelectedTabItem = tab;
 
 				ProjectForm projectForm = new ProjectForm();
 				projectForm.License = UIContext.License;

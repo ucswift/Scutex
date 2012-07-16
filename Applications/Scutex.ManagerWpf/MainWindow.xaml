@@ -226,12 +226,13 @@
 			</Fluent:RibbonTabItem>
 
 			<Fluent:RibbonTabItem x:Name="projectTabItem"
-			                      Fluent:KeyTip.Keys="H"
+			                      Fluent:KeyTip.Keys="L"
 			                      Group="{Binding ElementName=projectTabGroup,
 			                                      Mode=OneWay}"
 			                      Header="Project"
 			                      ReduceOrder="Font, Font, Font, Font,B,A,A,A,(A),(A),(A),Clipboard,Font,B,B,(A),C,(A),(A)"
-			                      ToolTip="Regular Tool Tip">
+                                  Visibility="Collapsed"
+			                      ToolTip="Licensing Project">
 				<Fluent:RibbonGroupBox x:Name="projectHomeGroup"
 				                       Fluent:KeyTip.Keys="C"
 				                       Header="Project"
