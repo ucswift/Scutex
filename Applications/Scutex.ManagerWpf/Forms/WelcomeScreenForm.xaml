@@ -5,83 +5,83 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 						 x:Name="welcomeScreenControl"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-	<UserControl.Resources>
+             d:DesignHeight="500" d:DesignWidth="800">
+    <UserControl.Resources>
 
-	</UserControl.Resources>
-	<Grid>
-		<GroupBox>
-			<GroupBox.Background>
-				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-					<GradientStop Color="#FFFFFFFF" Offset="0"/>
-					<GradientStop Color="#FFA4ADBB" Offset="0.521"/>
-					<GradientStop Color="#FFD7E0EA" Offset="0.194"/>
-					<GradientStop Color="#FFBAC1CF" Offset="0.811"/>
-					<GradientStop Color="#FFBCC5D5" Offset="0.507"/>
-					<GradientStop Color="#FFE3E4E6" Offset="1"/>
-				</LinearGradientBrush>
-			</GroupBox.Background>
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="20" />
-					<RowDefinition />
-					<RowDefinition />
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="600" />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
+    </UserControl.Resources>
+    <Grid>
+        <GroupBox>
+            <GroupBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                    <GradientStop Color="#FFA4ADBB" Offset="0.521"/>
+                    <GradientStop Color="#FFD7E0EA" Offset="0.194"/>
+                    <GradientStop Color="#FFBAC1CF" Offset="0.811"/>
+                    <GradientStop Color="#FFBCC5D5" Offset="0.507"/>
+                    <GradientStop Color="#FFE3E4E6" Offset="1"/>
+                </LinearGradientBrush>
+            </GroupBox.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="600" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-				<TextBlock Grid.Row="0" Grid.Column="0" Text="Scutex Community Edition" FontSize="14" Foreground="Black" FontWeight="Bold" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Scutex Community Edition" FontSize="14" Foreground="Black" FontWeight="Bold" />
 
-				<TextBlock Grid.Row="1" Grid.Column="0" Margin="5,0,0,0" TextWrapping="Wrap">
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="5,0,0,0" TextWrapping="Wrap">
 					Welcome to Scutex Community Edition. To begin using Scutex you can start a new licensing project by clicking the "New" button. 
 					You can use the "Verify" button at any time to ensure that your licensing project is in good order. To see how your customers
 					will see Scutex and interact with your licensing project and product with it you can click the "Test Demo" button and see the 
 					trial form.
-				</TextBlock>
+                </TextBlock>
 
 
-				<TextBlock Grid.Row="0" Grid.Column="1" Text="Quick Links" FontSize="14" Foreground="Black" FontWeight="Bold" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Quick Links" FontSize="14" Foreground="Black" FontWeight="Bold" />
 
-				<StackPanel Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top">
-					<TextBlock>
-						<Hyperlink x:Name="hplSupport" Click="hplSupport_Click">
-                <TextBlock ToolTip="Premier Support">Premier Support</TextBlock>
-            </Hyperlink>
-					</TextBlock>
-					<TextBlock>
+                <StackPanel Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top">
+                    <TextBlock>
 						<Hyperlink x:Name="hplDocumentation" Click="hplDocumentation_Click">
                 <TextBlock ToolTip="Documentation">Online Documentation</TextBlock>
             </Hyperlink>
 					</TextBlock>
-					<TextBlock>
+                    <TextBlock>
 						<Hyperlink x:Name="hplVideosClick" Click="hplVideosClick_Click">
                 <TextBlock ToolTip="Videos">Videos</TextBlock>
             </Hyperlink>
 					</TextBlock>
-					<TextBlock>
+                    <TextBlock>
 						<Hyperlink x:Name="hplForums" Click="hplForums_Click">
                 <TextBlock ToolTip="Forums">Forums</TextBlock>
             </Hyperlink>
 					</TextBlock>
-					<TextBlock>
+                    <TextBlock>
 						<Hyperlink x:Name="hplHelpDesk" Click="hplHelpDesk_Click">
-                <TextBlock ToolTip="Help Desk">Help Desk</TextBlock>
+                <TextBlock ToolTip="Help Desk">Issue Tracker</TextBlock>
             </Hyperlink>
 					</TextBlock>
-					<TextBlock>
+                    <TextBlock>
 						<Hyperlink x:Name="hplGitHub" Click="hplGitHub_Click">
                 <TextBlock ToolTip="GitHub Source">GitHub</TextBlock>
             </Hyperlink>
 					</TextBlock>
-				</StackPanel>
+                    <TextBlock>
+						<Hyperlink x:Name="hplCodePlex" Click="hplCodePlex_Click_1">
+                <TextBlock ToolTip="Codeplex Source">Codeplex</TextBlock>
+            </Hyperlink>
+					</TextBlock>
+                </StackPanel>
 
-				<StackPanel Margin="5,0,0,0" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom">
-					
-				</StackPanel>
-				<TextBlock x:Name="txtVersion" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Bottom">Version: </TextBlock>
-			</Grid>
-		</GroupBox>
-	</Grid>
+                <StackPanel Margin="5,0,0,0" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom">
+
+                </StackPanel>
+                <TextBlock x:Name="txtVersion" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Bottom">Version:</TextBlock>
+            </Grid>
+        </GroupBox>
+    </Grid>
 </UserControl>

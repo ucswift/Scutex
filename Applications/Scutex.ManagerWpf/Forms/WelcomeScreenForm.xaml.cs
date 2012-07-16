@@ -22,11 +22,6 @@ namespace WaveTech.Scutex.Manager.Forms
 			System.Diagnostics.Process.Start("http://www.wtdt.com/Products/Scutex/ScutexVideos.aspx");
 		}
 
-		private void hplSupport_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			System.Diagnostics.Process.Start("http://www.wtdt.com/Support/PremierSupport.aspx");
-		}
-
 		private void hplDocumentation_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			System.Diagnostics.Process.Start("http://www.wtdt.com/Documentation/Scutex/contents.html");
@@ -34,17 +29,22 @@ namespace WaveTech.Scutex.Manager.Forms
 
 		private void hplForums_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			System.Diagnostics.Process.Start("http://www.wtdt.com/Support/Forums/tabid/79/afg/9/Default.aspx");
+			System.Diagnostics.Process.Start("http://scutex.codeplex.com/discussions");
 		}
 
 		private void hplHelpDesk_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			System.Diagnostics.Process.Start("http://support.wtdt.com:9996/Main/Default.aspx");
+			System.Diagnostics.Process.Start("http://scutex.codeplex.com/workitem/list/basic");
 		}
 
 		private void hplGitHub_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			System.Diagnostics.Process.Start("https://github.com/wavetech/Scutex");
+		}
+
+		private void hplCodePlex_Click_1(object sender, System.Windows.RoutedEventArgs e)
+		{
+			System.Diagnostics.Process.Start("http://scutex.codeplex.com");
 		}
 	}
 }

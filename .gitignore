@@ -80,3 +80,4 @@ Documentation/*.docx
 Documentation/*.rtf
 Database/ScutexDataCompare.sdc
 Database/ScutexDatabase/Sandbox
+*.ldf
