@@ -87,14 +87,14 @@ namespace WaveTech.Scutex.Manager
 			if (UIContext.License == null)
 			{
 				root.Content = null;
-				ribbon.ContextualGroups[0].Visibility = Visibility.Collapsed;
+				//ribbon.ContextualGroups[0].Visibility = Visibility.Collapsed;
 				var tab = ribbon.Tabs.Where(x => x.Name == "projectTabItem").FirstOrDefault();
 				tab.Visibility = Visibility.Collapsed;
 				ribbon.SelectedTabItem = tab;
 			}
 			else
 			{
-				ribbon.ContextualGroups[0].Visibility = Visibility.Visible;
+				//ribbon.ContextualGroups[0].Visibility = Visibility.Visible;
 				var tab = ribbon.Tabs.Where(x => x.Name == "projectTabItem").FirstOrDefault();
 				tab.Visibility = Visibility.Visible;
 				ribbon.SelectedTabItem = tab;

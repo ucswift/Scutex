@@ -38,8 +38,7 @@
 				<Fluent:RibbonContextualTabGroup x:Name="projectTabGroup"
                                                  Background="Lime"
 				                                 BorderBrush="Green"
-				                                 Header="Projects"
-				                                 Visibility="Collapsed" />
+				                                 Header="Projects" />
 			</Fluent:Ribbon.ContextualGroups>
 
 			<Fluent:Ribbon.Menu>
