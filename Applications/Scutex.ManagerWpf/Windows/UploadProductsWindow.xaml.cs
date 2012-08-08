@@ -80,7 +80,7 @@ namespace WaveTech.Scutex.Manager.Windows
 		{
 			if (servicesData != null)
 			{
-				LicenseSet licSet = gridLocalServices.SelectedItem as LicenseSet;
+				UploadProductDisplayData licSet = gridLocalServices.SelectedItem as UploadProductDisplayData;
 
 				var licenseSets = from l in servicesData
 													where l.Key.LicenseId == licSet.LicenseId
